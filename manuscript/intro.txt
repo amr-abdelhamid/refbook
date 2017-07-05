@@ -1,14 +1,43 @@
-# Motivation
-Why I'm writing this book?
+{frontmatter}
 
-## Why refactoring matters
-mention the study about maintenance costs
+# Why am I writing this book?
 
-### Challenges
-The challenges that we face when we try to refactor old code the old way
+The story is back in 2009 when I first started helping organizations and coaching teams to adopt Agile. While working with several teams, we have faced lots of problems working with team and organization trying to adopt agile while their code is extremely poor. This was a show stopper, and teams suffered from frequent code failures and intermittent outages. Such code was literally stopping them from transitioning to shorter iterations or even smaller releases.
 
+## Observations from unsuccessful attempts to refactoring
+
+Over the course of several years, I have struggled with teams to refactor their application code to be easier to understand and cheaper to modify. I have to say that most of the attempts failed. These are some of the observations, or rather surprises of the failed attempts:
+
+* Covering your code with automated tests is not the first step in refactoring!
+* Working on refactoring for a long time is like working on bug fixing for a long time. It simply sucks! There has to be another way which is more sustainable.
+* One of the impediments to successful refactoring is the development team's focus on refactoring to patterns. This shifts their focus from making code simpler and understandable to making the code intelligent and "stylish"!
+* Managers really believe that continuous refactoring is a must to keep the code healthy. If this is true, why don't they sponsor refactoring effort? The key is that _managers will not sponsor something they cannot track or control._
+* For the refactoring effort to succeed, several qualification should exist in the development environment (such as a powerful IDE which supports automatic refactoring, tool support for automatically calculating code metrics, and support for traceability from code to workitems like bugs and CR's, so that to enable calculating business metrics). Qualifying the environment may take so long time to be done; but once done, refactoring is 90% complete!
+
+## The "Other" Way
+
+After these failures, I realized that there has to be another way of doing it. This triggered my research and experiments with some volunteering teams till we reached what we believe to be a better way.
+
+{mainmatter}
+
+# Background
+
+## Why refactoring matters?
 ### Cost of maintenance
 
-## Patterns of poor code refactoring
+## How to refactor - the "old" way
+### Re-write the whole
+### Technical hero
+### As per the book
+### Try-retry
 
-### It doesn't work!
+## Why refactoring fails?
+### Vague and hazy objectives
+### Covering poor code with fragile tests
+### It's non of the managers' business!
+### The Technical Glut Trap
+### Unsustainable development pace
+
+# How to refactor - the "other" way
+
+{backmatter}
