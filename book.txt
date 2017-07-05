@@ -1,0 +1,12 @@
+# Introduction
+This is an introduction text
+
+## Why refactoring matters
+
+### Challenges
+
+### Cost of maintenance
+
+## Patterns of poor code refactoring
+
+### It doesn't work!
