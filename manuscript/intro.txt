@@ -1,9 +1,11 @@
-# Introduction
-This is an introduction text
+# Motivation
+Why I'm writing this book?
 
 ## Why refactoring matters
+mention the study about maintenance costs
 
 ### Challenges
+The challenges that we face when we try to refactor old code the old way
 
 ### Cost of maintenance
 
