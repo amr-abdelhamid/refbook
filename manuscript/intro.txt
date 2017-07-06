@@ -41,27 +41,43 @@ After these failures, I realized that there has to be another way of doing it. T
 # The Sustainable Refactoring Roadmap Overview
 
 ## Quick-wins: simple and least risky enhancements
+
 ## Divide & Conquer code into components
+
 ## Inject quality in using automated tests
 
 # Quick-wins
+
 ## Removing dead code
+
 ## Removing code duplicates
+
 ## Reduce method size
+
 ## Enhance identifier naming
+
 ## Considerations related to the quick-wins stage
+
 ### Reliance on tools support
+
 ### Are these refactorings safe?
+
 ### Should we do them in order?
+
 ### How to determine whether or not we are done?
 
 # Divide & Conquer
+
 ## Software design is all about components and their relationships
+
 ## Types of software components
+
 ## Design principles
 
 # Inject Quality In
 
 {backmatter}
+
 # Catalogue of practices and techniques
+
 # References
