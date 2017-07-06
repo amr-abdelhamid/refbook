@@ -50,7 +50,7 @@ After these failures, I realized that there has to be another way of doing it. T
 
 ### Unsustainable development pace
 
-# The Sustainable Refactoring Roadmap Overview
+# Sustainable Refactoring Roadmap Overview
 
 ## Quick-wins: simple and least risky enhancements
 
