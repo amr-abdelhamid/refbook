@@ -23,12 +23,17 @@ After these failures, I realized that there has to be another way of doing it. T
 # Background
 
 ## Why refactoring matters?
+
 ### Cost of maintenance
 
 ## How to refactor - the "old" way
+
 ### Re-write the whole
+
 ### Technical hero
+
 ### As per the book
+
 ### Try-retry
 
 ## Why refactoring fails?
