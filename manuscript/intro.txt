@@ -14,7 +14,9 @@ Over the course of several years, I have struggled with teams to refactor their 
 * Managers really believe that continuous refactoring is a must to keep the code healthy. If this is true, why don't they sponsor refactoring effort? The key is that _managers will not sponsor something they cannot track or control._
 * For the refactoring effort to succeed, several qualification should exist in the development environment (such as a powerful IDE which supports automatic refactoring, tool support for automatically calculating code metrics, and support for traceability from code to workitems like bugs and CR's, so that to enable calculating business metrics). Qualifying the environment may take so long time to be done; but once done, refactoring is 90% complete!
 
-## The "Other" Way
+***
+
+## Is there a better way?
 
 After these failures, I realized that there has to be another way of doing it. This triggered my research and experiments with some volunteering teams till we reached what we believe to be a better way.
 
@@ -37,10 +39,15 @@ After these failures, I realized that there has to be another way of doing it. T
 ### Try-retry
 
 ## Why refactoring fails?
+
 ### Vague and hazy objectives
+
 ### Covering poor code with fragile tests
+
 ### It's non of the managers' business!
+
 ### The Technical Glut Trap
+
 ### Unsustainable development pace
 
 # The Sustainable Refactoring Roadmap Overview
