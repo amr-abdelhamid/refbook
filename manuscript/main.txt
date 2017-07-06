@@ -42,9 +42,9 @@ In the 90’s, 70 billion of the 100 billion expenditure on software products ar
 ## Removing dead code
 
 It is fairly intuitive to assume that as code grows in size, it needs more maintenance [2]. This can be attributed to three factors:
-1.	More time needed to analyze code and locate bugs.
-2.	Larger code implies bigger amount of functionality, which, in turn, requires more maintenance.
-3.	There is high correlation between size and complexity of software. In the meanwhile, analysis of maintenance effort of business applications shows that highly complex software incurs more costs in maintenance [3]. This indicates that size may also be correlated with maintenance cost.
+1. More time needed to analyze code and locate bugs.
+2. Larger code implies bigger amount of functionality, which, in turn, requires more maintenance.
+3. There is high correlation between size and complexity of software. In the meanwhile, analysis of maintenance effort of business applications shows that highly complex software incurs more costs in maintenance [3]. This indicates that size may also be correlated with maintenance cost.
 
 ## Removing code duplicates
 
@@ -73,7 +73,9 @@ It is fairly intuitive to assume that as code grows in size, it needs more maint
 # Inject Quality In
 
 The final stage in the roadmap is to cover components with unit tests and create what is called ‘trusted code regions’.
-1.1.1	Why Component Tests?
+
+## Which type of tests?
+
 There are several types of automated developer tests. The following diagram is a typical distribution of automated tests for a “healthy” product:
 
 ![Distribution of automated tests](images/test_types.png)
