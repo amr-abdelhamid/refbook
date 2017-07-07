@@ -1,33 +1,5 @@
+
 {mainmatter}
-
-# Background
-
-## Why refactoring matters?
-In the 90’s, 70 billion of the 100 billion expenditure on software products are spent on maintenance; and 60% of which is consumed to locate defective code [1]. Using simple algebra, reducing the amount of time to locate defective code by 30% would reduce the overall expenditure on software by 15%, which is huge improvement.
-
-### Cost of maintenance
-
-## How to refactor - the "old" way
-
-### Re-write the whole
-
-### Technical hero
-
-### As per the book
-
-### Try-retry
-
-## Why refactoring fails?
-
-### Vague and hazy objectives
-
-### Covering poor code with fragile tests
-
-### It's non of the managers' business!
-
-### The Technical Glut Trap
-
-### Unsustainable development pace
 
 # Sustainable Refactoring Roadmap Overview
 
@@ -39,7 +11,7 @@ In the 90’s, 70 billion of the 100 billion expenditure on software products ar
 
 # Quick-wins
 
-## Removing dead code
+## Dead code, the time bomb
 
 It is fairly intuitive to assume that as code grows in size, it needs more maintenance [2]. This can be attributed to three factors:
 
@@ -47,11 +19,9 @@ It is fairly intuitive to assume that as code grows in size, it needs more maint
 2. Larger code implies bigger amount of functionality, which, in turn, requires more maintenance.
 3. There is high correlation between size and complexity of software. In the meanwhile, analysis of maintenance effort of business applications shows that highly complex software incurs more costs in maintenance [3]. This indicates that size may also be correlated with maintenance cost.
 
-## Removing code duplicates
+## Code duplicates, the root of all evil in software
 
-## Reduce method size
-
-## Enhance identifier naming
+## Reduce method size & enhance identifier naming
 
 ## Considerations related to the quick-wins stage
 
@@ -69,7 +39,7 @@ It is fairly intuitive to assume that as code grows in size, it needs more maint
 
 ## Types of software components
 
-## Design principles
+## Guiding design principles
 
 # Inject Quality In
 
@@ -83,8 +53,18 @@ There are several types of automated developer tests. The following diagram is a
 
 In case of legacy application with poor code structure, coding unit tests on method level while mocking/faking everything else would have very little ROI and would take so much time and effort before the team feels any value.
 
-Instead, at this stage, we will concentrate on component, integration, and system tests. These are the 20% of tests which will realize 80% of the value. , for the following reasons:
+Instead, at this stage, we will concentrate on component, integration, and system tests. These are the 20% of tests which will realize 80% of the value. Also, there are some other reasons which makes such higher-level tests more appealing:
 
 1. In the previous stage (divide & conquer), we have already prepared component interfaces, and they became ready for getting covered by tests
 2. Component tests create what is called ‘trusted code regions’, and divides the overall complexity of testing among components
 3. Still, the internal complexity of the component code is still high. Remember that we refrained from doing any risky refactorings so far. This is why unit tests may not be feasible at this stage
+
+## Tracking coverage
+
+# Continuous inspection throughout the roadmap
+
+## Why continuous inspection is important?
+
+## which conventions should be put under continuous inspection
+
+## Example: Code clones continuous inspection using Jenkins and ConQAT

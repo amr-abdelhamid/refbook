@@ -4,6 +4,16 @@
 
 The story is back in 2009 when I first started helping organizations and coaching teams to adopt Agile. While working with several teams, we have faced lots of problems working with team and organization trying to adopt agile while their code is extremely poor. This was a show stopper, and teams suffered from frequent code failures and intermittent outages. Such code was literally stopping them from transitioning to shorter iterations or even smaller releases.
 
+## Why refactoring matters?
+In the 90’s, 70 billion of the 100 billion expenditure on software products are spent on maintenance; and 60% of which is consumed to locate defective code [1]. Using simple algebra, reducing the amount of time to locate defective code by 30% would reduce the overall expenditure on software by 15%, which is huge improvement.
+
+## How to refactor - the "old" way
+
+* Re-write the whole
+* Technical hero
+* As per the book
+* Try-retry
+
 ## Observations from unsuccessful attempts to refactoring
 
 Over the course of several years, I have struggled with teams to refactor their application code to be easier to understand and cheaper to modify. I have to say that most of the attempts failed. These are some of the observations, or rather surprises of the failed attempts:
@@ -13,6 +23,14 @@ Over the course of several years, I have struggled with teams to refactor their 
 * One of the impediments to successful refactoring is the development team's focus on refactoring to patterns. This shifts their focus from making code simpler and understandable to making the code intelligent and "stylish"!
 * Managers really believe that continuous refactoring is a must to keep the code healthy. If this is true, why don't they sponsor refactoring effort? The key is that _managers will not sponsor something they cannot track or control._
 * For the refactoring effort to succeed, several qualification should exist in the development environment (such as a powerful IDE which supports automatic refactoring, tool support for automatically calculating code metrics, and support for traceability from code to workitems like bugs and CR's, so that to enable calculating business metrics). Qualifying the environment may take so long time to be done; but once done, refactoring is 90% complete!
+
+## Why refactoring fails?
+
+* Vague and hazy objectives
+* Covering poor code with fragile tests
+* It's non of the managers' business!
+* The Technical Glut Trap
+* Unsustainable development pace
 
 ***
 

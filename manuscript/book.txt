@@ -1,5 +1,5 @@
-intro.txt
+intro.md
 
-main.txt
+main.md
 
-backmatter.txt
+backmatter.md
