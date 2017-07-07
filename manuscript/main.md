@@ -65,6 +65,6 @@ Instead, at this stage, we will concentrate on component, integration, and syste
 
 ## Why continuous inspection is important?
 
-## which conventions should be put under continuous inspection
+## Which conventions should be put under continuous inspection?
 
 ## Example: Code clones continuous inspection using Jenkins and ConQAT
