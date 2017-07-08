@@ -1,6 +1,6 @@
 {frontmatter}
 
-# Preface
+# Introduction and Background
 
 ## Why am I writing this book?
 
