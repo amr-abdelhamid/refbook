@@ -1,6 +1,8 @@
 {frontmatter}
 
-# Why am I writing this book?
+# Preface
+
+## Why am I writing this book?
 
 The story is back in 2009 when I first started helping organizations and coaching teams to adopt Agile. While working with several teams, we have faced lots of problems working with team and organization trying to adopt agile while their code is extremely poor. This was a show stopper, and teams suffered from frequent code failures and intermittent outages. Such code was literally stopping them from transitioning to shorter iterations or even smaller releases.
 

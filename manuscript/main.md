@@ -1,17 +1,19 @@
 
 {mainmatter}
 
-# Sustainable Refactoring Roadmap Overview
+# 1. Sustainable Refactoring Roadmap Overview
 
-## Quick-wins: simple and least risky enhancements
+## 1.1 Quick-wins: simple and least risky enhancements
 
-## Divide & Conquer code into components
+## 1.2 Divide & Conquer code into components
 
-## Inject quality in using automated tests
+## 1.3 Inject quality in using automated tests
 
-# Quick-wins
+# 2. Quick-wins
 
-## Dead code, the time bomb
+## 2.1 Pin-down tests
+
+## 2.2 Dead code, the time bomb
 
 It is fairly intuitive to assume that as code grows in size, it needs more maintenance [2]. This can be attributed to three factors:
 
@@ -19,11 +21,11 @@ It is fairly intuitive to assume that as code grows in size, it needs more maint
 2. Larger code implies bigger amount of functionality, which, in turn, requires more maintenance.
 3. There is high correlation between size and complexity of software. In the meanwhile, analysis of maintenance effort of business applications shows that highly complex software incurs more costs in maintenance [3]. This indicates that size may also be correlated with maintenance cost.
 
-## Code duplicates, the root of all evil in software
+## 2.3 Code duplicates, the root of all evil in software
 
-## Reduce method size & enhance identifier naming
+## 2.4 Reduce method size & enhance identifier naming
 
-## Considerations related to the quick-wins stage
+## 2.5 Considerations related to the quick-wins stage
 
 ### Reliance on tools support
 
@@ -33,19 +35,19 @@ It is fairly intuitive to assume that as code grows in size, it needs more maint
 
 ### How to determine whether or not we are done?
 
-# Divide & Conquer
+# 3. Divide & Conquer
 
-## Software design is all about components and their relationships
+## 3.1 Software design is all about components and their relationships
 
-## Types of software components
+## 3.2 Types of software components
 
-## Guiding design principles
+## 3.3 Guiding design principles
 
-# Inject Quality In
+# 4. Inject Quality In
 
 The final stage in the roadmap is to cover components with unit tests and create what is called ‘trusted code regions’.
 
-## Which type of tests?
+## 4.1 Which type of tests?
 
 There are several types of automated developer tests. The following diagram is a typical distribution of automated tests for a “healthy” product:
 
@@ -59,12 +61,12 @@ Instead, at this stage, we will concentrate on component, integration, and syste
 2. Component tests create what is called ‘trusted code regions’, and divides the overall complexity of testing among components
 3. Still, the internal complexity of the component code is still high. Remember that we refrained from doing any risky refactorings so far. This is why unit tests may not be feasible at this stage
 
-## Tracking coverage
+## 4.2 Tracking coverage
 
-# Continuous inspection throughout the roadmap
+# 5. Continuous inspection throughout the roadmap
 
-## Why continuous inspection is important?
+## 5.1 Why continuous inspection is important?
 
-## Which conventions should be put under continuous inspection?
+## 5.1 Which conventions should be put under continuous inspection?
 
-## Example: Code clones continuous inspection using Jenkins and ConQAT
+## 5.3 Example: Code clones continuous inspection using Jenkins and ConQAT
