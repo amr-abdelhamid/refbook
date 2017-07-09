@@ -1,6 +1,6 @@
 {backmatter}
 
-# Appendix A - Catalogue of practices and techniques
+# Catalogue of practices and techniques
 
 # References
 

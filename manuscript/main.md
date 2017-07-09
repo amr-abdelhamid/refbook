@@ -1,7 +1,7 @@
 
 {mainmatter}
 
-# 0. Before you start - Prepare a healthy enviornment
+# 0. Before you start - Prepare a healthy environment
 
 ## 0.1 Workitem tracking
 
