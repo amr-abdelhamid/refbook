@@ -1,7 +1,17 @@
 
 {mainmatter}
 
-# 1. Sustainable Refactoring Roadmap Overview
+# 0. Before you start - Prepare a healthy enviornment
+
+## 0.1 Workitem tracking
+
+## 0.2 End-to-end traceability
+
+## 0.3 Production/staging environement
+
+## 0.4 Continuous integration
+
+# 1. Refactoring Roadmap Overview
 
 ## 1.1 Quick-wins: simple and least risky enhancements
 
@@ -70,3 +80,5 @@ Instead, at this stage, we will concentrate on component, integration, and syste
 ## 5.1 Which conventions should be put under continuous inspection?
 
 ## 5.3 Example: Code clones continuous inspection using Jenkins and ConQAT
+
+# Starting a new project? Important considerations
