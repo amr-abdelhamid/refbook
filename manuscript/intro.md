@@ -12,33 +12,74 @@ In the 90’s, 70 billion of the 100 billion expenditure on software products ar
 
 ## How to refactor - the "old" way
 
-* Re-write the whole
-* Technical hero
-* As per the book
-* Try-retry
+These are some patterns of how people approach refactoring for legacy code with large amount of technical debt.
 
-## Observations from unsuccessful attempts to refactoring
+Re-write the whole
 
-Over the course of several years, I have struggled with teams to refactor their application code to be easier to understand and cheaper to modify. I have to say that most of the attempts failed. These are some of the observations, or rather surprises of the failed attempts:
+Technical hero
+
+As per the book
+
+Try-retry
+
+While these are all good efforts, there has to be a better way. The issue is that such haphazard efforts are usually faced with so many circumstances and risks which may lead to immature results and, sometimes, complications to the original problems.
+
+## Observations from failed attempts to refactoring
+
+Over the course of several years, I have struggled with teams to refactor their application code to be easier to understand and cheaper to modify. These attempts followed one or more of the old-way patterns to refactoring described earlier. I have to say that most of these attempts failed or achieved very little value. I have documented some observations (or rather surprises) from these failures in an experience report published several years ago [4]. This is a summary of the most important ones:
 
 * Covering your code with automated tests is not the first step in refactoring!
 * Working on refactoring for a long time is like working on bug fixing for a long time. It simply sucks! There has to be another way which is more sustainable.
 * One of the impediments to successful refactoring is the development team's focus on refactoring to patterns. This shifts their focus from making code simpler and understandable to making the code intelligent and "stylish"!
-* Managers really believe that continuous refactoring is a must to keep the code healthy. If this is true, why don't they sponsor refactoring effort? The key is that _managers will not sponsor something they cannot track or control._
-* For the refactoring effort to succeed, several qualification should exist in the development environment (such as a powerful IDE which supports automatic refactoring, tool support for automatically calculating code metrics, and support for traceability from code to workitems like bugs and CR's, so that to enable calculating business metrics). Qualifying the environment may take so long time to be done; but once done, refactoring is 90% complete!
+* In many cases, managers do believe that continuous refactoring is necessary to keep the code healthy. However, we noticed that they do not sponsor refactoring effort. Why? The answer is that _managers will not sponsor something they cannot track or control._
+* For refactoring to succeed, several qualification should exist in the development environment. Qualifying the environment may take sometime to be done; but once done, refactoring is 90% complete!
 
 ## Why refactoring fails?
 
-* Vague and hazy objectives
-* Covering poor code with fragile tests
-* It's non of the managers' business!
-* The Technical Glut Trap
-* Unsustainable development pace
+In the same report [4], I've listed some key factors or reasons why refactoring failed in early experiments:
 
-***
+#### 1. Vague and hazy objectives
+
+Attempts to refactor had hazy and unclear objectives. It was the gut feeling of the engineering staff that determined what to do
+
+#### 2. Covering poor code with fragile tests
+
+We always thought that an automated test suite is a safety net for any side effects or regression issues which refactoring may cause. Without such safety net, most of the time, we didn't have the courage to change the code and integrate it to the mainline. However, in all three projects, this turned out to be not possible due to many factors. For example, product code lacked clear system interfaces and suffered from scattered business logic in all layers, including the database. In other case, writing automating tests incurred very high costs, not only in development, but in toolset and training. In time, I felt that some team members viewed automated tests as the first impediment to refactoring!
+
+#### 3. It's non of the managers' business!
+
+Technical teams had the attitude that refactoring was “none of the managers’ business”. Also, they did not spend any effort to involve busy managers and get their support. This attitude created a counter effect from managers towards refactoring. The refactoring effort was viewed by senior managers as a non-value adding activity and was only allowed due to pressure from the development teams. Once the planned time for refactoring elapsed, management became more and more resistant to spending any more effort on refactoring.
+
+#### 1. The Technical Glut Trap
+
+Some teams indulged in deep technical reviews and merciless code refactoring with no limits to their technical imagination and creativity. As shown in Fig. 1 below, this formed an endless positive feedback loop, where refactoring could never end. This dynamic intensified when the other dashed loop pushed in the same direction. That is when the enhancements did not enhance the code but only created more cluttered code. This happened when the team concentrated solely on refactoring to patterns, making the code more robust with respect to patterns, but less readable and more complex to maintain!
+
+![The dashed lines are another positive feedback loop. If changes make the code less clean (or less readable and more complex), this may escalate the effect of the inner positive feedback loop. Signs indicate whether an action has a positive or negative effect. The ± sign indicates that changing code may produce either more clean or less clean code based on the kind of change](images/technical_glut_trap.png)
+
+### 5. Unsustainable Development Pace:
+
+The development pace was not sustainable by developers, managers, or customers. Teams were developing new features, fixing bugs, and supporting customers on one branch while on another branch, they were applying large refactorings, experimenting with design patterns, doing architectural spikes, and other refactoring fixes.
+
+Managers and customers started to receive delayed fixes and prolonged plans for new features. To accommodate release fixes, the development team had to apply the same fix twice, once on every branch. After a while, team members couldn’t sustain the huge effort of maintaining multiple versions of the code, and managers stopped supporting them, because they didn't see tangible results out of it. Eventually, the refactoring effort was discontinued and after a while, the refactored code branch was abandoned altogether.
 
 ## Is there a better way?
 
 After these failures, I realized that there has to be another way of doing it. This triggered my research and experiments with some volunteering teams till we reached what we believe to be a better way.
 
-***
+This "new" approach of refactoring is put in a roadmap format, and is explained in detail in the rest of this book. But, before we do that, these are some guiding principles which governed my thinking when I designed this roadmap.
+
+### 1. Simplicity
+
+I always considered myself an average developer. I wasn't that genius/geek software guy who does everything with several clicks on the keyboard. In most of my development live, I always detested complex (and probably genius solution), mainly because I believe that simple and effective solutions need not be explained in more than 10 minutes. If you can't do that, then let's start over and think again with a fresh mind. Guess what, in all cases which I can remember in my 12+ years of development, this worked, and we managed to find a simple solution.
+
+Now, I find this fact, that I'm an average developer who doesn't feel good towards complex solutions; I find this a gift really. Because, when I started thinking of a better way of refactoring legacy applications, I always thought of things which "average" developers (like me) can understand, do, and appreciate.
+
+This is why I have to add this disclaimer: Most of the information in this book is simple, and probably this is why it is very effective.
+
+### 2. Sustainability
+
+Refactoring should always be sustainable for developers, managers, and users.
+
+It's unsustainable for developers when they cannot find support from management to sponsor it and have to stay up at night to do it. It's unsustainable for managers when they wait for months till they see or "feel" the value out of it. It's unsustainable for users and customers when they have to wait for months with no updates or fixes and they have to live with the old code as is till development teams finish with refactoring.
+
+The refactoring roadmap in this book is designed to be sustainable for all; for developers, managers, customers, and end-users.

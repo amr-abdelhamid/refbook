@@ -7,7 +7,7 @@
 
 ## 0.2 End-to-end traceability
 
-## 0.3 Production/staging environement
+## 0.3 Production/staging environment
 
 ## 0.4 Continuous integration
 
