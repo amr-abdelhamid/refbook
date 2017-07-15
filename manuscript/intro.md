@@ -12,21 +12,33 @@ In the 90’s, 70 billion of the 100 billion expenditure on software products ar
 
 ## How to refactor - the "old" way
 
-These are some patterns of how people approach refactoring for legacy code with large amount of technical debt.
+Over the course of several years, I have struggled with teams to refactor their application code to be easier to understand and cheaper to modify. These attempts followed one or more of the old-way patterns described below. I have to say that most of these attempts failed or achieved very little value.
 
-Re-write the whole
+**Re-write the whole**
 
-Technical hero
+This solution looms like the easiest solution from both technical and management point of views. If code is cluttered and causing lots of trouble, trash it and start from scratch. The question is: If you start from scratch, what makes you confident that you'll not hit the same wall again?
 
-As per the book
+> *The question is: If you start from scratch, what makes you confident that you'll not hit the same wall again?*
 
-Try-retry
+It's like the next picture of two accidents. Car capabilities are different, one is ordinary sedan car while the other is an expensive sports car. However, the accidents are similar, because the *driving habits* are also similar.
+
+![Bad driving habits may cause very bad accidents, and bad *development habits* may also lead to very poor code with lots of technical debt](images/car_accidents.png)
+
+So, if you would like to start over again and not hit the same wall, you have to change your development habits, rather than change the code. But, why not change development habits while still maintaining the same code? This would definitely save us millions of investment, and this book gives you a roadmap how to do that.
+
+**Technical hero**
+
+**As per the book**
+
+**Try-retry**
+
+---
 
 While these are all good efforts, there has to be a better way. The issue is that such haphazard efforts are usually faced with so many circumstances and risks which may lead to immature results and, sometimes, complications to the original problems.
 
 ## Observations from failed attempts to refactoring
 
-Over the course of several years, I have struggled with teams to refactor their application code to be easier to understand and cheaper to modify. These attempts followed one or more of the old-way patterns to refactoring described earlier. I have to say that most of these attempts failed or achieved very little value. I have documented some observations (or rather surprises) from these failures in an experience report published several years ago [4]. This is a summary of the most important ones:
+I have documented some observations (or rather surprises) from these failures in an experience report published several years ago [4]. This is a summary of the most important ones:
 
 * Covering your code with automated tests is not the first step in refactoring!
 * Working on refactoring for a long time is like working on bug fixing for a long time. It simply sucks! There has to be another way which is more sustainable.
@@ -49,6 +61,8 @@ We always thought that an automated test suite is a safety net for any side effe
 #### 3. It's non of the managers' business!
 
 Technical teams had the attitude that refactoring was “none of the managers’ business”. Also, they did not spend any effort to involve busy managers and get their support. This attitude created a counter effect from managers towards refactoring. The refactoring effort was viewed by senior managers as a non-value adding activity and was only allowed due to pressure from the development teams. Once the planned time for refactoring elapsed, management became more and more resistant to spending any more effort on refactoring.
+
+> *Managers will not sponsor something they cannot track or control.*
 
 #### 1. The Technical Glut Trap
 
