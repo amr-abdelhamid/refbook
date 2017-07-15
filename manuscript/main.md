@@ -25,6 +25,11 @@
 
 ## 2.2 Dead code, the time bomb
 
+{icon=quote-left}
+G> Deleting dead code is not a technical problem; it is a problem of mindset and culture
+G> <br>
+G> <small><i>\- Kevlin Henney</i></small>
+
 It is fairly intuitive to assume that as code grows in size, it needs more maintenance [2]. This can be attributed to three factors:
 
 1. More time needed to analyze code and locate bugs.
