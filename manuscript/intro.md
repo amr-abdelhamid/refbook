@@ -56,7 +56,7 @@ Some teams indulged in deep technical reviews and merciless code refactoring wit
 
 ![The dashed lines are another positive feedback loop. If changes make the code less clean (or less readable and more complex), this may escalate the effect of the inner positive feedback loop. Signs indicate whether an action has a positive or negative effect. The ± sign indicates that changing code may produce either more clean or less clean code based on the kind of change](images/technical_glut_trap.png)
 
-### 5. Unsustainable Development Pace:
+#### 5. Unsustainable Development Pace:
 
 The development pace was not sustainable by developers, managers, or customers. Teams were developing new features, fixing bugs, and supporting customers on one branch while on another branch, they were applying large refactorings, experimenting with design patterns, doing architectural spikes, and other refactoring fixes.
 
@@ -68,7 +68,7 @@ After these failures, I realized that there has to be another way of doing it. T
 
 This "new" approach of refactoring is put in a roadmap format, and is explained in detail in the rest of this book. But, before we do that, these are some guiding principles which governed my thinking when I designed this roadmap.
 
-### 1. Simplicity
+##### Simplicity
 
 I always considered myself an average developer. I wasn't that genius/geek software guy who does everything with several clicks on the keyboard. In most of my development live, I always detested complex (and probably genius solution), mainly because I believe that simple and effective solutions need not be explained in more than 10 minutes. If you can't do that, then let's start over and think again with a fresh mind. Guess what, in all cases which I can remember in my 12+ years of development, this worked, and we managed to find a simple solution.
 
@@ -76,7 +76,7 @@ Now, I find this fact, that I'm an average developer who doesn't feel good towar
 
 This is why I have to add this disclaimer: Most of the information in this book is simple, and probably this is why it is very effective.
 
-### 2. Sustainability
+##### Sustainability
 
 Refactoring should always be sustainable for developers, managers, and users.
 
