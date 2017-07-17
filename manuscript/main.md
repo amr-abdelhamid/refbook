@@ -63,15 +63,26 @@ These are also called *Unreachable Code* and there is other long list of program
 * Objects allocated and probably does some internal construction logic, but the object itself is never used
 * Unreachable cases in if/else statements
 
-All these cases are simple and straight forward to catch using compilers and static analyzers. More examples of tools in the ![Catalogue of practices and techniques](# Catalogue of practices and techniques). However, if you program allows for dynamic code changes, reflection, or dynamic loading of libraries and late binding; in such cases, static analyzers may not help.
+All these cases are simple and straight forward to catch using compilers and static analyzers. More examples of tools in the ![Catalogue of practices and techniques](#catalogue). However, if you program allows for dynamic code changes, reflection, or dynamic loading of libraries and late binding; in such cases, static analyzers may not help.
 
 ***Files not touched for so long***
 
-Search for files that has never changed since a while. "There are many reasons code may be stable — it’s just right, it’s just dead, it’s just too scary — but unless you investigate you’ll never know." [5]
+Search for files that has never changed since a while. "There are many reasons code may be stable:
+* it’s just right,
+* it’s just dead,
+* it’s just too scary
+
+but unless you investigate you’ll never know." [5]
 
 ***Dynamic program analysis***
 
 Runtime monitoring and Dynamic program analysis may be used to rule out parts of the code which are **not** dead code. This effectively reduces the amount of code under investigation.
+
+The idea is the same as measuring test coverage. In test coverage, tools help you pinpoint lines of code which are *not covered by any test*. In dynamic program coverage, tools help you pinpoint lines of code which are *never run by users*, either because the features themselves are never used, so you may remove them altogether from your product, or the code is just dead.
+
+---
+
+Removing dead code is a quick win by all means. It doesn't take time and gives a big relief for the team. In my experience, teams take no more than 2-3 days removing crap and end up with this feeling of achievement! On average, in this small period of time, teams manage to remove 4% to 7% (and sometimes 10%) or dead code [4].
 
 ## Code duplicates, the root of all evil in software
 
