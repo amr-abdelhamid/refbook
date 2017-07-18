@@ -26,9 +26,9 @@
 ## Dead code, the time bomb
 
 {icon=quote-left}
-G> *Deleting dead code is not a technical problem; it is a pro8blem of mindset and culture*
+G> *Deleting dead code is not a technical problem; it is a problem of mindset and culture*
 G>
-G> *\- Kevlin Henney  *
+G> *\- Kevlin Henney*
 
 It is fairly intuitive to assume that as code grows in size, it needs more maintenance [2]. This can be attributed to three factors:
 
@@ -57,17 +57,19 @@ Static analyzers detects unused code by semantic analysis of static code at comp
 ![Examples of *unreachable code*. In the first method, code returns before the rest of the code runs. The second is a private method which nobody calls in this class ](images/deadcode/eclipse_unreachablecodeerror.png)
 
 These are also called *Unreachable Code* and there is other long list of programming errors which may result into unreachable code, like:
+
 * Exception handling code for exceptions which can never be thrown
 * Unused parameters or local variables
 * Unused default code in switch statements, or switch conditions which can never be true
 * Objects allocated and probably does some internal construction logic, but the object itself is never used
 * Unreachable cases in if/else statements
 
-All these cases are simple and straight forward to catch using compilers and static analyzers. More examples of tools in the ![Catalogue of practices and techniques](#catalogue). However, if you program allows for dynamic code changes, reflection, or dynamic loading of libraries and late binding; in such cases, static analyzers may not help.
+All these cases are simple and straight forward to catch using compilers and static analyzers. More examples of tools in the [Catalogue of practices and techniques](#catalogue). However, if your program allows for dynamic code changes, reflection, or dynamic loading of libraries and late binding; in such cases, static analyzers may not help.
 
 #### Files not touched for so long
 
 Search for files that has never changed since a while. "There are many reasons code may be stable:
+
 * it’s just right,
 * it’s just dead,
 * it’s just too scary
@@ -98,7 +100,7 @@ Removing dead code is a quick win by all means. It doesn't take time and gives a
 
 ### Should we do them in order?
 
-Yes, with little bit of overlap. This is logical and practical. For example, removing dead code, removes about 10% of your code duplicates [^foot]:This is one of our findings. We noticed that a good portion of duplicated code are duplicated and then abandoned. Refer to [4] for more discussion about our findings.
+Yes, with little bit of overlap. This is logical and practical. For example, removing dead code, removes about 10% of your code duplicates [^foo]:This is one of our findings. We noticed that a good portion of duplicated code are duplicated and then abandoned. Refer to [4] for more discussion about our findings.
 
 Another example is working on reducing method size before removing duplicates. This actually is a bad practice. Because, you may split a method apart while it is actually a duplicate of another. In this case, you have lost this similarity and may not be able to detect this duplication anymore.
 
