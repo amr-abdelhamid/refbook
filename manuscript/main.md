@@ -28,7 +28,7 @@
 {icon=quote-left}
 G> *Deleting dead code is not a technical problem; it is a pro8blem of mindset and culture*
 G>
-G> *<small>\- Kevlin Henney </small>*
+G> *\- Kevlin Henney  *
 
 It is fairly intuitive to assume that as code grows in size, it needs more maintenance [2]. This can be attributed to three factors:
 
@@ -36,7 +36,7 @@ It is fairly intuitive to assume that as code grows in size, it needs more maint
 2. Larger code implies bigger amount of functionality, which, in turn, requires more maintenance.
 3. There is high correlation between size and complexity of software. In the meanwhile, analysis of maintenance effort of business applications shows that highly complex software incurs more costs in maintenance [3]. Accordingly, we can fairly deduce that size is also correlated with maintenance costs.
 
-##### What's evil about dead code?
+### What's evil about dead code?
 
 There are many reasons why dead code is bad. First of all, it increases the code size, and thus, as described above, increases the maintenance effort. Have you ever kept staring at a piece of code trying to understand why it is commented out? Did you or anyone of your teammates wasted hours of work trying to locate a bug in a piece of code which turned out to be dead?
 
@@ -44,13 +44,13 @@ While these are very good arguments, there is another reason which makes removin
 
 This piece of dead code "had been dead for years, but was awakened by a change to the flag’s value. The zombie apocalypse arrived and the rest is bankruptcy" [5].
 
-##### How to detect dead code?
+### How to detect dead code?
 
 So, there are plenty of ways to detect dead code. It is as put by Kevlin, "Deleting dead code is not a technical problem; it is a problem of mindset and culture."
 
 To help you start, here are ideas how to find dead code:
 
-***Static analyzers***
+#### Static analyzers
 
 Static analyzers detects unused code by semantic analysis of static code at compile or assembly time. For example:
 
@@ -65,7 +65,7 @@ These are also called *Unreachable Code* and there is other long list of program
 
 All these cases are simple and straight forward to catch using compilers and static analyzers. More examples of tools in the ![Catalogue of practices and techniques](#catalogue). However, if you program allows for dynamic code changes, reflection, or dynamic loading of libraries and late binding; in such cases, static analyzers may not help.
 
-***Files not touched for so long***
+#### Files not touched for so long
 
 Search for files that has never changed since a while. "There are many reasons code may be stable:
 * it’s just right,
@@ -74,7 +74,7 @@ Search for files that has never changed since a while. "There are many reasons c
 
 but unless you investigate you’ll never know." [5]
 
-***Dynamic program analysis***
+#### Dynamic program analysis
 
 Runtime monitoring and Dynamic program analysis may be used to rule out parts of the code which are **not** dead code. This effectively reduces the amount of code under investigation.
 
