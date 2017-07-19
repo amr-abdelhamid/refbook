@@ -86,7 +86,41 @@ The idea is the same as measuring test coverage. In test coverage, tools help yo
 
 Removing dead code is a quick win by all means. It doesn't take time and gives a big relief for the team. In my experience, teams take no more than 2-3 days removing crap and end up with this feeling of achievement! On average, in this small period of time, teams manage to remove 4% to 7% (and sometimes 10%) or dead code [4].
 
-## Code duplicates, the root of all evil in software
+## Code duplicates, 'the root of all evil in software!'
+
+{icon=quote-left}
+G> *Duplication may be the root of all evil in software*
+G>
+G> *\- Robert C Martin, in his book: Clean Coding - A Handbook of Agile Software Craftsmanship *
+
+It is interesting to read what gurus write about code duplication. It is like writing about a plague or a catastrophe which you should avoid by all means.
+
+Andrew Hunt, one of the 17 signatories of the Agile Manifesto, and David Thomas, in their book *"The Pragramtic Programmer"*, have put down several principles for Pragmatic Programming, the first of which is: *Don't Repeat Yourself!*
+
+[SonarQube](https://www.sonarqube.org/), the famous tool for continuous inspection of code quality, lists duplication as one of the *seven deadly sins of developers!*[^Sonar]
+
+[^Sonar]: [Developers' Seven Deadly Sins](https://docs.sonarqube.org/display/HOME/Developers%27+Seven+Deadly+Sins)
+
+Robert C Martin (aka uncle Bob), the famous author, speaker and developer, says that "Duplication may be the root of all evil in software"[^cleancoding]. In another article[^bobarticle], he is no longer hesitant and asserts that "Duplicate code *IS* the root of all evil in software design"
+
+[^cleancoding]: This is mentioned in his famous book: *Clean Code: A Handbook of Agile Software Craftsmanship*
+
+[^bobarticle]: Uncle Bob mentioned that explicitly in a caution box in this article: [
+Robert C. Martin’s Clean Code Tip of the Week #1: An Accidental Doppelgänger in Ruby](http://www.informit.com/articles/article.aspx?p=1313447)
+
+#### What's evil about code duplication
+
+In the introduction, I have mentioned the results of a study about software expenditure. They found that 70 billion of the 100 billion expenditure on software products on a 10-year period were spent on maintenance; and 60% of which is consumed to locate defective code [1]:
+
+![60% of the maintenance effort is spent on locating bugs. That is, debugging and chasing code lines till you finally point to a lines of code and say: 'This is it'. the remaining 40% are for everything else: Fixing, Testing, Reviews, Integration & system testing, Deployment, User Acceptance,...](images/duplicatecode/costoflocatingbugs.png)
+
+#### The fundamental pattern of software development
+
+#### Type of code clones
+
+#### How to remove code clones
+
+---
 
 ## Reduce method size
 
@@ -100,7 +134,9 @@ Removing dead code is a quick win by all means. It doesn't take time and gives a
 
 ### Should we do them in order?
 
-Yes, with little bit of overlap. This is logical and practical. For example, removing dead code, removes about 10% of your code duplicates [^foo]:This is one of our findings. We noticed that a good portion of duplicated code are duplicated and then abandoned. Refer to [4] for more discussion about our findings.
+Yes, with little bit of overlap. This is logical and practical. For example, removing dead code, removes about 10% of your code duplicates[^foo1].
+
+[^foo1]: This is one of our findings. We noticed that a good portion of duplicated code are duplicated and then abandoned. Refer to [4] for more discussion about our findings.
 
 Another example is working on reducing method size before removing duplicates. This actually is a bad practice. Because, you may split a method apart while it is actually a duplicate of another. In this case, you have lost this similarity and may not be able to detect this duplication anymore.
 
