@@ -113,7 +113,19 @@ In the introduction, I have mentioned the results of a study about software expe
 
 ![60% of the maintenance effort is spent on locating bugs. That is, debugging and chasing code lines till you finally point to a lines of code and say 'I found the bug'. The remaining 40% are for everything else: Fixing, testing, reviews, integration, system testing, deployment, user Acceptance,...](images/duplicatecode/costoflocatingbugs.png)
 
-#### The fundamental pattern of software development
+This means that duplication magnifies time of locating bugs. If you have a defective piece of code duplicated three times, then it's not enough to find the defect once (this already takes 60% of overall defect handling and resolution time). Rather, you'll need to find each and every copy of this defect anywhere else in the code, which is sometimes simply not possible. what usually happens is that we get an illusion that the bug is fixed upon fixing the first clone, ship the *fixed* software to the customer, who probably become very annoyed and backfire on us that the bug is still there.
+
+#### Why developers copy and paste code?
+
+Well, if code duplication is that evil. Why do we do it all time? What I've noticed in my career is that all developers follows this pattern one way or another:
+
+![To develop something new, find some code similar to what you need, change it to fit the new new requirement(s), then test it.](images/duplicatecode/copyChangeTestCycle.png)
+
+This is pretty nature. Actually, I spend most of my development career using this pattern and I achieved some excellent results (as far as I think); and, I didn't feel guilty for it. So, where is the problem? The problem is that I used to do a forth step which is necessary and cannot be neglected:
+
+![The forth step is to refactor the code, and restructure it in a way which minimized duplication, if there is any.](images/duplicatecode/copyChangeTestRefactorCycle.png)
+
+Neglecting this step is a fundamental mistake which rightly is one of the "deadly sins of developers", as put by SonarQube.
 
 #### Type of code clones
 
