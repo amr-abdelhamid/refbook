@@ -91,7 +91,7 @@ Removing dead code is a quick win by all means. It doesn't take time and gives a
 {icon=quote-left}
 G> *Duplication may be the root of all evil in software*
 G>
-G> *\- Robert C Martin, in his book: Clean Coding - A Handbook of Agile Software Craftsmanship *
+G> *\- Robert C Martin*
 
 It is interesting to read what gurus write about code duplication. It is like writing about a plague or a catastrophe which you should avoid by all means.
 
@@ -105,14 +105,13 @@ Robert C Martin (aka uncle Bob), the famous author, speaker and developer, says 
 
 [^cleancoding]: This is mentioned in his famous book: *Clean Code: A Handbook of Agile Software Craftsmanship*
 
-[^bobarticle]: Uncle Bob mentioned that explicitly in a caution box in this article: [
-Robert C. Martin’s Clean Code Tip of the Week #1: An Accidental Doppelgänger in Ruby](http://www.informit.com/articles/article.aspx?p=1313447)
+[^bobarticle]: Uncle Bob mentioned this explicitly in his article at infoq: [Robert C. Martin’s Clean Code Tip of the Week #1: An Accidental Doppelgänger in Ruby](http://www.informit.com/articles/article.aspx?p=1313447)
 
 #### What's evil about code duplication
 
 In the introduction, I have mentioned the results of a study about software expenditure. They found that 70 billion of the 100 billion expenditure on software products on a 10-year period were spent on maintenance; and 60% of which is consumed to locate defective code [1]:
 
-![60% of the maintenance effort is spent on locating bugs. That is, debugging and chasing code lines till you finally point to a lines of code and say: 'This is it'. the remaining 40% are for everything else: Fixing, Testing, Reviews, Integration & system testing, Deployment, User Acceptance,...](images/duplicatecode/costoflocatingbugs.png)
+![60% of the maintenance effort is spent on locating bugs. That is, debugging and chasing code lines till you finally point to a lines of code and say 'I found the bug'. The remaining 40% are for everything else: Fixing, testing, reviews, integration, system testing, deployment, user Acceptance,...](images/duplicatecode/costoflocatingbugs.png)
 
 #### The fundamental pattern of software development
 
