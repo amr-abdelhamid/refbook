@@ -123,7 +123,7 @@ Well, if code duplication is that evil. Why do we do it all time? What I've noti
 
 This is pretty nature. Actually, I spend most of my development career using this pattern and I achieved some excellent results (as far as I think); and, I didn't feel guilty for it. So, where is the problem? The problem is that I used to do a forth step which is necessary and cannot be neglected:
 
-![The forth step is to refactor the code, and restructure it in a way which minimized duplication, if there is any.](images/duplicatecode/copyChangeTestRefactorCycle.png)
+![It's ok to copy and paste the code only if you're going to refactor later on.](images/duplicatecode/copyChangeTestRefactorCycle.jpg)
 
 Neglecting this step is a fundamental mistake which rightly is one of the "deadly sins of developers", as put by SonarQube.
 
