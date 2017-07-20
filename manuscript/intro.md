@@ -64,7 +64,7 @@ Technical teams had the attitude that refactoring was “none of the managers’
 
 > *Managers will not sponsor something they cannot track or control.*
 
-#### 1. The Technical Glut Trap
+#### 4. The Technical Glut Trap
 
 Some teams indulged in deep technical reviews and merciless code refactoring with no limits to their technical imagination and creativity. As shown in Fig. 1 below, this formed an endless positive feedback loop, where refactoring could never end. This dynamic intensified when the other dashed loop pushed in the same direction. That is when the enhancements did not enhance the code but only created more cluttered code. This happened when the team concentrated solely on refactoring to patterns, making the code more robust with respect to patterns, but less readable and more complex to maintain!
 
