@@ -117,19 +117,54 @@ This means that duplication magnifies time of locating bugs. If you have a defec
 
 #### Why developers copy and paste code?
 
-Well, if code duplication is that evil. Why do we do it all time? What I've noticed in my career is that all developers follows this pattern one way or another:
+Well, if code duplication is that evil. Why do we do it all the time? Throughout my career, I noticed developers follow this pattern one way or another:
 
-![To develop something new, find some code similar to what you need, change it to fit the new new requirement(s), then test it.](images/duplicatecode/copyChangeTestCycle.png)
+![This pattern is very usual. Copy come code, change it to suite your new requirement, and finally test all changes.](images/duplicatecode/copyChangeTestCycle.png)
 
-This is pretty nature. Actually, I spend most of my development career using this pattern and I achieved some excellent results (as far as I think); and, I didn't feel guilty for it. So, where is the problem? The problem is that I used to do a forth step which is necessary and cannot be neglected:
+This is pretty natural. Actually, I myself always followed this pattern and I'm still following it. And, I've been doing excellent work with the teams I worked with. So, where is the problem? The problem is that I used to do a forth step which is necessary and cannot be neglected:
 
-![It's ok to copy and paste the code only if you're going to refactor later on.](images/duplicatecode/copyChangeTestRefactorCycle.png)
+![It's ok to copy and paste code only if you're going to refactor it later on.](images/duplicatecode/copyChangeTestRefactorCycle.png)
 
 Neglecting this step is a fundamental mistake which rightly is one of the "deadly sins of developers", as put by SonarQube.
 
 #### Type of code clones
 
-#### How to remove code clones
+There are three types of code clones: *Exact, Similar, and Gapped*. Actually there is a forth type of clones which deals with fragments of code doing the same thing but do not share similar structure (for example, implementing a routine which calculates the factorial of a number, one using for loops and another using recursion). There are lots of efforts in the academia to research whether it is possible to detect type 4 of code clones or not. So, till they reach something tangible, we will stick to the first three types.
+
+In the following sections, all examples of code clones are detected by [ConQAT](https://www.cqse.eu/en/products/conqat/overview/), a **Con**tinuous **Q**u**a**li**t**y monitoring tool developed by the Technical University of Munich.
+
+**Exact Clones**
+
+These are the most straight forward and the easiest to detect type of clones. Here is an example of an exact clone:
+
+![Exact clones: Copies of the code is exactly the same](images/duplicateCode/exactClones.png)
+
+**Similar Clones**
+
+Similar clones are more common than exact clones because most probably, when a programmer coppeis some code, he/she changes or renames some of the variables or parameters names:
+
+![Notice that <code>Locator</code> is renamed to AttributeSetInstance and PROPERTY_SEARCHKEY is renamed to PROPERTY_DESCRIPTION ](images/duplicatecode/similarclones.png)
+
+As you can see in the above example, clones are similar, except for some renames of identifiers. Note that the structure of the code is the same, and the positions of the renamed identifiers are all the same.
+
+**Gapped Clones (aka inconsistent clones)**
+
+This type of clones are very interesting. It picks exact or similar code with 1-2 change lines of code. These changes are called *Gaps*. Why are they interesting? Because probably they are defects fixed in one location and wasn't fixed in another!
+
+![Two exact clones with only one line change (or gap). With minimal review, one may discover that this was a bug fixed in the left hand clone, and not in the other.](images/duplicatecode/gappedclones.png)
+
+![Two similar clones (with some renames), but also with one gap: <code>if (criteria.has("fieldName"))</code> check.](images/duplicatecode/gappedclones-2.png)
+
+In both above examples, you may need to introspect the code before doing anything. It may be a valid case which should only be available in one clone and not the other.
+
+A> **Dormant Bugs**
+A> *Dormant bugs* are bugs which have lived some time on production before they are discovered. Recent studies found that 30% of bugs are dormant. This is scary, because this indicates that there are other bugs with each and every deployment which is still not detected. You have no idea when they will fire back; you have no idea what would be the side effects [6].
+A>
+A> Now, think about gapped clones. These are typically probable dormant bugs on production. Another study shows that the percentage of gapped clones in software systems running in large enterprises are 52%. Among these clones, 18% are system faults or defects [7]:
+A> ![If there are 100 code clones, 52 of them are gapped clones. If you drill into these gapped clones, you'll find 18% of them are system faults](images/duplicatecode/PercentageOfDefectsInGappedClones.png)
+A> This means that if you managed to remove 100 gapped clones, then congratulations! You've removed **18 dormant bugs!**
+
+#### Considerations when removing duplicate code
 
 ---
 

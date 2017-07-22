@@ -13,3 +13,8 @@
 [4] Refactoring as a lifeline
 
 [5] Kevlin Henney, [*Dead Code Must Be Removed*](https://www.infoq.com/news/2017/02/dead-code?utm_source=infoqWeeklyNewsletter&utm_medium=WeeklyNL_EditorialContent_culture-methods&utm_campaign=02142017news#anch144792). An interview with infoq.
+
+[6] *An Empirical Study of Dormant Bugs*,
+Queen’s University, Canada, Rochester Institute of Technology, USA
+
+[7] https://www.cqse.eu/publications/2009-do-code-clones-matter.pdf
