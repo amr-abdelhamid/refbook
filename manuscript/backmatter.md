@@ -18,3 +18,5 @@
 Queen’s University, Canada, Rochester Institute of Technology, USA
 
 [7] https://www.cqse.eu/publications/2009-do-code-clones-matter.pdf
+
+[8] Martin Fowler, *Refactoring: Improving the Design of Existing Code*, 1999.

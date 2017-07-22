@@ -1,7 +1,7 @@
 
 {mainmatter}
 
-# Before you start - Prepare a healthy environment
+# Before you start - Prepare a healthy environment {#beforeYouStart}
 
 ## Workitem tracking
 
@@ -157,7 +157,7 @@ This type of clones are very interesting. It picks exact or similar code with 1-
 
 In both above examples, you may need to introspect the code before doing anything. It may be a valid case which should only be available in one clone and not the other.
 
-A> **Dormant Bugs**
+A> #### Dormant Bugs and Gapped Clones
 A> *Dormant bugs* are bugs which have lived some time on production before they are discovered. Recent studies found that 30% of bugs are dormant. This is scary, because this indicates that there are other bugs with each and every deployment which is still not detected. You have no idea when they will fire back; you have no idea what would be the side effects [6].
 A>
 A> Now, think about gapped clones. These are typically probable dormant bugs on production. Another study shows that the percentage of gapped clones in software systems running in large enterprises are 52%. Among these clones, 18% are system faults or defects [7]:
@@ -166,11 +166,143 @@ A> ![If there are 100 code clones, 52 of them are gapped clones. If you drill in
 A>
 A> This means that if you managed to remove 100 gapped clones, then congratulations! You've removed **18 dormant bugs!**
 
-#### Considerations when removing duplicate code
+#### Removing code duplicates ####
+
+There are several refactoring techniques for removing duplicate code. The safest and most straight forward technique is to 'Extract Method', and point all duplicates to it. This is relatively a safe refactoring specially if you rely on tool support to automatically extract methods.
+
+In all projects that I've worked on, we were very cautious while removing duplicates. These are several pre-cautions to keep in mind:
+
+* Rely on automatic refactoring capabilities in IDE's to extract methods. Sometime, it is the most obvious mistakes which you may spend hours trying to discover. Relying on automatic refactoring support will reduce or even eliminate such mistakes.
+* Any change, what so ever, must be reviewed.
+
+Keeping these two pre-cautions in mind will save you, especially that we are refactoring on the mainline, not on a separate long living branch. More on this in this previous chapter on [how to prepare a healthy environment]{#beforeYouStart} section.
 
 ---
 
 ## Reduce method size
+
+{icon=quote-left}
+G> *A change made to the internal structure of software to make it easier to understand and cheaper to modify without changing its existing behavior.*
+G>
+G> *\- Martin Fowler [8]*
+
+One thing I especially like about this definition is the clear two objectives of refactoring: to the make software:
+
+1. Easier to understand
+2. Cheaper to modify
+
+Having these two objectives in mind, it's possible to develop your "gut feeling" about the correct length of a method.
+
+Let's agree that a method is *maintainable* when it fulfills these two criteria: understandability and modifiability, and need no further refactoring;  Consider this method and try to evaluate how *maintainable* it is. To help you do that, start a stopwatch and measure the time to understand the intent of the method code lines.
+
+~~~~~~~~
+public List criteriaFind(String criteria) {
+  if (criteria == null)
+    criteria = "";
+
+  List criteriaList = scanCriteria(criteria);
+  List result = new ArrayList();
+  Iterator dataIterator = getDataCash().iterator();
+  Iterator criteriaIterator = null;
+  DataInfo currentRecord = null;
+  List currentCriterion = null;
+  boolean matching = true;
+
+  while (dataIterator.hasNext() && !interrupted) {
+    currentRecord = (DataInfo) dataIterator.next();
+
+    criteriaIterator = criteriaList.iterator();
+    while (criteriaIterator.hasNext() && !interrupted) {
+      currentCriterion = (List) criteriaIterator.next();
+      if (!currentRecord.contains((String) currentCriterion.get(0), (String) currentCriterion.get(1))) {
+        matching = false;
+        break;
+      }
+    }
+    if (matching)
+      result.add(currentRecord);
+    else
+      matching = true;
+  }
+  if (interrupted) {
+    interrupted = false;
+    result.clear();
+  }
+  Collections.sort(result);
+  return result;
+}
+~~~~~~~~
+
+Now, this is a 28-line method. It seems to be a small method. However, you've spent some time (probably around 1-2 minutes) to grasb how the code works. So, according to our definition, Is this method *maintainable*? The answer is no.
+
+Now, consider this enhanced version of the method:
+
+~~~~~~~~
+public List criteriaFind(String criteria) {
+  if (criteria == null)
+    criteria = "";
+
+  // convert the criteria to ordered pairs of field/value arrays.
+  List criteriaList = scanCriteria(criteria);
+  List result = new ArrayList();
+
+  // search for records which satisfies all the criteria.
+  Iterator dataIterator = getDataCash().iterator();
+  Iterator criteriaIterator = null;
+  DataInfo currentRecord = null;
+  List currentCriterion = null;
+  boolean matching = true;
+
+  while (dataIterator.hasNext() && !interrupted) {
+    currentRecord = (DataInfo) dataIterator.next();
+
+    // loop on the criteria; if any criterion is not fulfilled
+    // set matching to false and break the loop immediately.
+    criteriaIterator = criteriaList.iterator();
+    while (criteriaIterator.hasNext() && !interrupted) {
+      currentCriterion = (List) criteriaIterator.next();
+      if (!currentRecord.contains((String) currentCriterion.get(0), (String) currentCriterion.get(1))) {
+        matching = false;
+        break;
+      }
+    }
+    if (matching)
+      result.add(currentRecord);
+    else
+      matching = true;
+  }
+
+  // clear results if user interrupted search
+  if (interrupted) {
+    interrupted = false;
+    result.clear();
+  }
+
+  // Sort Results
+  Collections.sort(result);
+  return result;
+}
+~~~~~~~~
+
+Adding some comments makes the method somehow more readable. Sometimes, they make it harder to read the code because it overloads the code with more information. But, for this example, it's a bit better.
+
+But, wait a minute. Why are we adding comments? To make the code more readable, right? which indicates that the code is not maintainable, according to our definition. Actually, this is why *explanatory comments* are generally considered a code smell.
+
+Now, let's work on this method. If you notice, comments are placed at perfect places. They give you a hint of the *Boundaries of Logical Units* inside the method. Such logical units are functionally cohesive and are candidate to become standalone methods. Not only that, the comment itself is a perfect starting point for naming of the newly born method.
+
+So, by extracting each chunk into a standalone method, we will reach this version of the method:
+
+~~~~~~~~
+public List criteriaFind(String criteria) {
+  List criteriaList = convertCriteriaToOrderedPairsOfFieldValueArrays(criteria);
+  List result = searchForRecordsWhichSatisfiesAllCriteria(criteriaList);
+  clearResultsIfUserInterruptsSearch(result);
+  sortResults(result);
+  return result;
+}
+~~~~~~~~
+
+This is a 5-line method which narrates a story. No need to add comments to explain anything. It is self explanatory and can very easily navigate through the logic. 
 
 ## Enhance identifier naming
 
