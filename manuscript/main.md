@@ -175,18 +175,18 @@ In all projects that I've worked on, we were very cautious while removing duplic
 * Rely on automatic refactoring capabilities in IDE's to extract methods. Sometime, it is the most obvious mistakes which you may spend hours trying to discover. Relying on automatic refactoring support will reduce or even eliminate such mistakes.
 * Any change, what so ever, must be reviewed.
 
-Keeping these two pre-cautions in mind will save you, especially that we are refactoring on the mainline, not on a separate long living branch. More on this in this previous chapter on [how to prepare a healthy environment]{#beforeYouStart} section.
+Keeping these two pre-cautions in mind will save you, especially that we are refactoring on the mainline, not on a separate long living branch. More on this in this previous chapter on [how to prepare a healthy environment](#beforeYouStart) section.
 
 ---
 
 ## Reduce method size
 
 {icon=quote-left}
-G> *A change made to the internal structure of software to make it easier to understand and cheaper to modify without changing its existing behavior.*
+G> *Refactoring: A change made to the internal structure of software to make it easier to understand and cheaper to modify without changing its existing behavior.*
 G>
 G> *\- Martin Fowler [8]*
 
-One thing I especially like about this definition is the clear two objectives of refactoring: to the make software:
+One thing I especially like about this definition is the clearly stated objectives of refactoring: to the make software:
 
 1. Easier to understand
 2. Cheaper to modify
@@ -195,6 +195,7 @@ Having these two objectives in mind, it's possible to develop your "gut feeling"
 
 Let's agree that a method is *maintainable* when it fulfills these two criteria: understandability and modifiability, and need no further refactoring;  Consider this method and try to evaluate how *maintainable* it is. To help you do that, start a stopwatch and measure the time to understand the intent of the method code lines.
 
+{lang="java"}
 ~~~~~~~~
 public List criteriaFind(String criteria) {
   if (criteria == null)
@@ -214,7 +215,8 @@ public List criteriaFind(String criteria) {
     criteriaIterator = criteriaList.iterator();
     while (criteriaIterator.hasNext() && !interrupted) {
       currentCriterion = (List) criteriaIterator.next();
-      if (!currentRecord.contains((String) currentCriterion.get(0), (String) currentCriterion.get(1))) {
+      if (!currentRecord.contains((String) currentCriterion.get(0),
+        (String) currentCriterion.get(1))) {
         matching = false;
         break;
       }
@@ -237,6 +239,7 @@ Now, this is a 28-line method. It seems to be a small method. However, you've sp
 
 Now, consider this enhanced version of the method:
 
+{lang="java"}
 ~~~~~~~~
 public List criteriaFind(String criteria) {
   if (criteria == null)
@@ -261,7 +264,8 @@ public List criteriaFind(String criteria) {
     criteriaIterator = criteriaList.iterator();
     while (criteriaIterator.hasNext() && !interrupted) {
       currentCriterion = (List) criteriaIterator.next();
-      if (!currentRecord.contains((String) currentCriterion.get(0), (String) currentCriterion.get(1))) {
+      if (!currentRecord.contains((String) currentCriterion.get(0),
+        (String) currentCriterion.get(1))) {
         matching = false;
         break;
       }
@@ -292,6 +296,7 @@ Now, let's work on this method. If you notice, comments are placed at perfect pl
 
 So, by extracting each chunk into a standalone method, we will reach this version of the method:
 
+{lang="java"}
 ~~~~~~~~
 public List criteriaFind(String criteria) {
   List criteriaList = convertCriteriaToOrderedPairsOfFieldValueArrays(criteria);
@@ -302,7 +307,7 @@ public List criteriaFind(String criteria) {
 }
 ~~~~~~~~
 
-This is a 5-line method which narrates a story. No need to add comments to explain anything. It is self explanatory and can very easily navigate through the logic. 
+This is a 5-line method which narrates a story. No need to add comments to explain anything. It is self explanatory and can very easily navigate through the logic.
 
 ## Enhance identifier naming
 
