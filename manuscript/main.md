@@ -141,9 +141,9 @@ These are the most straight forward and the easiest to detect type of clones. He
 
 **Similar Clones**
 
-Similar clones are more common than exact clones because most probably, when a programmer coppeis some code, he/she changes or renames some of the variables or parameters names:
+Similar clones are more common than exact clones because most probably, when a programmer copies some code, he/she changes or renames some of the variables or parameters names:
 
-![Notice that <code>Locator</code> is renamed to AttributeSetInstance and PROPERTY_SEARCHKEY is renamed to PROPERTY_DESCRIPTION ](images/duplicatecode/similarclones.png)
+![Notice that `Locator` is renamed to `AttributeSetInstance` and `PROPERTY_SEARCHKEY` is renamed to `PROPERTY_DESCRIPTION` ](images/duplicatecode/similarclones.png)
 
 As you can see in the above example, clones are similar, except for some renames of identifiers. Note that the structure of the code is the same, and the positions of the renamed identifiers are all the same.
 
@@ -153,7 +153,7 @@ This type of clones are very interesting. It picks exact or similar code with 1-
 
 ![Two exact clones with only one line change (or gap). With minimal review, one may discover that this was a bug fixed in the left hand clone, and not in the other.](images/duplicatecode/gappedclones.png)
 
-![Two similar clones (with some renames), but also with one gap: <code>if (criteria.has("fieldName"))</code> check.](images/duplicatecode/gappedclones-2.png)
+![Two similar clones (with some renames), but also with one gap: `if (criteria.has("fieldName"))` check.](images/duplicatecode/gappedclones-2.png)
 
 In both above examples, you may need to introspect the code before doing anything. It may be a valid case which should only be available in one clone and not the other.
 
@@ -235,7 +235,7 @@ public List criteriaFind(String criteria) {
 }
 ~~~~~~~~
 
-Now, this is a 28-line method. It seems to be a small method. However, you've spent some time (probably around 1-2 minutes) to grasb how the code works. So, according to our definition, Is this method *maintainable*? The answer is no.
+Now, this is a 28-line method. It seems to be a small method. However, you've spent some time (probably around 1-2 minutes) to grasp how the code works. So, according to our definition, Is this method *maintainable*? The answer is no.
 
 Now, consider this enhanced version of the method:
 
@@ -311,9 +311,9 @@ This is a 5-line method which narrates a story. No need to write comments or exp
 
 A> #### Logical units of code
 A>
-A> If you inspect a piece of code which does something functionally cohesive like 'criteriaFind' in the above example, you'll notice that it follows the Single Responsibility Principle (SRP) in a perfect way. However, if you look inside the method, you may notice what I call *Logical Units*, which are single steps in the logic of execution; each step doesn't implement the full functional job, but still implements a conceivable part towards this goal.
+A> Notice that the original form of the `criteriaFind` method in the above example is functionally cohesive and follows the Single Responsibility Principle (SRP) in a perfect way. However, if you look inside the method, you may notice what I call *Logical Units*, which are single steps in the logic of execution; each step doesn't implement the full job, but still implements a conceivable part towards this goal.
 A>
-A> Examples of logical units may be an if statement which validates a business condition, a for loop which does a batch job on a group of data records, a query which retrieves some data from the database, several statements which populates data fields on a new form, etc. In my experience, sometimes the logical unit are as small as two or three lines of code. More frequently, they are bigger (like 7 to 12 lines). On very rare occasions I see logical units which are bigger than that.
+A> Examples of logical units may be an if statement validating a business condition, a for loop doing a batch job on a group of data records, a query statement which retrieves some data from the database, several statements populating data fields on a new form, etc. In my experience, sometimes the logical unit are as small as two or three lines of code. More frequently, they are bigger (like 7 to 12 lines). On very rare occasions I see logical units which are bigger than that.
 A>
 A> Such logical units are perfect candidates to be extracted into *private* methods. If you adopt this practice for a while, you'll start noticing some private methods which are similar in nature or shares the same "interest". In such case, you may extract and group them into a new logical component. More about this in the [Divide and Conquer](#DivideAndConquer) stage.
 
