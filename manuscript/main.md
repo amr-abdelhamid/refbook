@@ -7,7 +7,7 @@
 
 ## End-to-end traceability
 
-## Production/staging environment
+## Production/staging environment readiness
 
 ## Continuous integration
 
@@ -318,6 +318,7 @@ A>
 A> Such logical units are perfect candidates to be extracted into *private* methods. If you adopt this practice for a while, you'll start noticing some private methods which are similar in nature or shares the same "interest". In such case, you may extract and group them into a new logical component. More about this in the [Divide and Conquer](#DivideAndConquer) stage.
 
 ## Enhance identifier naming
+
 
 -- Aside for explanatory methods and fields
 

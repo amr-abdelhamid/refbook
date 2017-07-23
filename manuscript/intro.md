@@ -2,9 +2,13 @@
 
 # Introduction and Background
 
+The story of this book started long ago in 2009 when I first started helping organizations and coaching teams to adopt Agile. While working with several teams, we have faced lots of problems working with team and organization trying to adopt agile while their code is extremely poor. This was a show stopper, and teams suffered from frequent code failures and intermittent outages. Such code was literally stopping them from transitioning to shorter iterations or even smaller releases.
+
 ## Why am I writing this book?
 
-The story is back in 2009 when I first started helping organizations and coaching teams to adopt Agile. While working with several teams, we have faced lots of problems working with team and organization trying to adopt agile while their code is extremely poor. This was a show stopper, and teams suffered from frequent code failures and intermittent outages. Such code was literally stopping them from transitioning to shorter iterations or even smaller releases.
+This book is an assimilation of the large amount of good advice available in books and online; summarized and organized into a roadmap. It is an easy read for juniors and seniors who are responsible for maintaining software regardless of their business domain or technology.
+
+Also, this book is **not** a reference for all clean coding techniques and refactoring best practices. I have intentionally left over many of the good and necessary advice and tools, sometimes because they are not universal and may only apply in some cases, or because I had to chose only a small set of techniques to help teams kick off the refactoring effort and not overwhelm them with so many ideas.
 
 ## Why refactoring matters?
 
@@ -18,7 +22,8 @@ Over the course of several years, I have struggled with teams to refactor their 
 
 This solution looms like the easiest solution from both technical and management point of views. If code is cluttered and causing lots of trouble, trash it and start from scratch. The question is: If you start from scratch, what makes you confident that you'll not hit the same wall again?
 
-> *The question is: If you start from scratch, what makes you confident that you'll not hit the same wall again?*
+{icon=bookmark}
+G> *The question is: If you start from scratch, what makes you confident that you'll not hit the same wall again?*
 
 It's like the next picture of two accidents. Car capabilities are different, one is ordinary sedan car while the other is an expensive sports car. However, the accidents are similar, because the *driving habits* are also similar.
 
@@ -28,9 +33,21 @@ So, if you would like to start over again and not hit the same wall, you have to
 
 **Technical hero**
 
+This is a very common. Hire a highly qualified technical person and give him full authority and power. People usually expect that such a person is magically capable (someway or another) to fix things up and turn around the code from being cluttered and spaghetti to structured, readable, understandable and changeable.
+
+There are two fundamental problems with this approach:
+1. Such persons are very expensive and may not be affordable by many organizations. If this is the only way to go, then refactoring has become a luxury product only attainable by big and wealthy organizations. For all others, hard luck. What we aspire, instead, is to enable all software people to refactor their own code themselves; regardless of their seniority or technical expertise. This is more sustainable, although requires some more time and effort.
+2. Beware that a technical hero may well take wrong refactoring decisions, especially if nobody is reviewing his work. Such decisions may lead the whole team into a dead end and waste so much time. Having full power and authority may also lead very easily to what I called a [Technical Glut Trab](#thetrab) described below.
+
 **As per the book**
 
-**Try-retry**
+There are so many excellent books which teaches you a lot about clean coding, refactoring, design patterns, etc. While all these books are extremely helpful, none of them can be a step-by-step guide to refactoring poor code. Actually, they are not written to do so. Rather, they are like a buffet of so many good advice and proven practices and techniques. However, they don'e tell you which of them is higher priority than other in *your* case.
+
+**Try-then-retry**
+
+This is another pattern which I see very frequently. If you have large amounts of technical debt, try to fix a part of the product once there is a change request related to this part. If it works, then fine. If not, retry with the next change request.
+
+Although this is the most pragmatic approach to handling technical debt, but it incorporates a lot of risks postponed and accumulating over time. At one point of time, the system may reach what we call *system collapse point* where refactoring the code due to a simple change may become so expensive and not affordable.
 
 ---
 
@@ -62,9 +79,10 @@ We always thought that an automated test suite is a safety net for any side effe
 
 Technical teams had the attitude that refactoring was “none of the managers’ business”. Also, they did not spend any effort to involve busy managers and get their support. This attitude created a counter effect from managers towards refactoring. The refactoring effort was viewed by senior managers as a non-value adding activity and was only allowed due to pressure from the development teams. Once the planned time for refactoring elapsed, management became more and more resistant to spending any more effort on refactoring.
 
-> *Managers will not sponsor something they cannot track or control.*
+{icon=quote-left}
+G> *Managers will not sponsor something they cannot track or control.*
 
-#### 4. The Technical Glut Trap
+#### 4. The Technical Glut Trap {#thetrab}
 
 Some teams indulged in deep technical reviews and merciless code refactoring with no limits to their technical imagination and creativity. As shown in Fig. 1 below, this formed an endless positive feedback loop, where refactoring could never end. This dynamic intensified when the other dashed loop pushed in the same direction. That is when the enhancements did not enhance the code but only created more cluttered code. This happened when the team concentrated solely on refactoring to patterns, making the code more robust with respect to patterns, but less readable and more complex to maintain!
 
