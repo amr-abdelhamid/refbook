@@ -307,9 +307,19 @@ public List criteriaFind(String criteria) {
 }
 ~~~~~~~~
 
-This is a 5-line method which narrates a story. No need to add comments to explain anything. It is self explanatory and can very easily navigate through the logic.
+This is a 5-line method which narrates a story. No need to write comments or explain anything. It is self-explanatory and much easier now to instantly capture the intent of the code.
+
+A> #### Logical units of code
+A>
+A> If you inspect a piece of code which does something functionally cohesive like 'criteriaFind' in the above example, you'll notice that it follows the Single Responsibility Principle (SRP) in a perfect way. However, if you look inside the method, you may notice what I call *Logical Units*, which are single steps in the logic of execution; each step doesn't implement the full functional job, but still implements a conceivable part towards this goal.
+A>
+A> Examples of logical units may be an if statement which validates a business condition, a for loop which does a batch job on a group of data records, a query which retrieves some data from the database, several statements which populates data fields on a new form, etc. In my experience, sometimes the logical unit are as small as two or three lines of code. More frequently, they are bigger (like 7 to 12 lines). On very rare occasions I see logical units which are bigger than that.
+A>
+A> Such logical units are perfect candidates to be extracted into *private* methods. If you adopt this practice for a while, you'll start noticing some private methods which are similar in nature or shares the same "interest". In such case, you may extract and group them into a new logical component. More about this in the [Divide and Conquer](#DivideAndConquer) stage.
 
 ## Enhance identifier naming
+
+-- Aside for explanatory methods and fields
 
 ## Considerations related to the quick-wins stage
 
@@ -327,7 +337,7 @@ Another example is working on reducing method size before removing duplicates. T
 
 ### How to determine whether or not we are done?
 
-# Divide & Conquer
+# Divide & Conquer {#DivideAndConquer}
 
 ## Software design is all about components and their relationships
 
