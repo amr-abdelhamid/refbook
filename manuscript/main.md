@@ -21,14 +21,12 @@
 
 # Quick-wins
 
-## Pin-down tests
-
 ## Dead code, the time bomb
 
 {icon=quote-left}
 G> *Deleting dead code is not a technical problem; it is a problem of mindset and culture*
 G>
-G> *\- Kevlin Henney*
+G> \- Kevlin Henney
 
 It is fairly intuitive to assume that as code grows in size, it needs more maintenance [2]. This can be attributed to three factors:
 
@@ -91,7 +89,7 @@ Removing dead code is a quick win by all means. It doesn't take time and gives a
 {icon=quote-left}
 G> *Duplication may be the root of all evil in software*
 G>
-G> *\- Robert C Martin*
+G> \- Robert C Martin
 
 It is interesting to read what gurus write about code duplication. It is like writing about a plague or a catastrophe which you should avoid by all means.
 
@@ -184,7 +182,7 @@ Keeping these two pre-cautions in mind will save you, especially that we are ref
 {icon=quote-left}
 G> *Refactoring: A change made to the internal structure of software to make it easier to understand and cheaper to modify without changing its existing behavior.*
 G>
-G> *\- Martin Fowler [8]*
+G> \- Martin Fowler [8]
 
 One thing I especially like about this definition is the clearly stated objectives of refactoring: to the make software:
 

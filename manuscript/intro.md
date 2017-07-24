@@ -79,7 +79,7 @@ We always thought that an automated test suite is a safety net for any side effe
 
 Technical teams had the attitude that refactoring was “none of the managers’ business”. Also, they did not spend any effort to involve busy managers and get their support. This attitude created a counter effect from managers towards refactoring. The refactoring effort was viewed by senior managers as a non-value adding activity and was only allowed due to pressure from the development teams. Once the planned time for refactoring elapsed, management became more and more resistant to spending any more effort on refactoring.
 
-{icon=quote-left}
+{icon=bookmark}
 G> *Managers will not sponsor something they cannot track or control.*
 
 #### 4. The Technical Glut Trap {#thetrab}
@@ -88,7 +88,7 @@ Some teams indulged in deep technical reviews and merciless code refactoring wit
 
 ![The dashed lines are another positive feedback loop. If changes make the code less clean (or less readable and more complex), this may escalate the effect of the inner positive feedback loop. Signs indicate whether an action has a positive or negative effect. The ± sign indicates that changing code may produce either more clean or less clean code based on the kind of change](images/technical_glut_trap.png)
 
-#### 5. Unsustainable Development Pace:
+#### 5. Unsustainable Development Pace
 
 The development pace was not sustainable by developers, managers, or customers. Teams were developing new features, fixing bugs, and supporting customers on one branch while on another branch, they were applying large refactorings, experimenting with design patterns, doing architectural spikes, and other refactoring fixes.
 
@@ -107,6 +107,9 @@ I always considered myself an average developer. I wasn't that genius/geek softw
 Now, I find this fact, that I'm an average developer who doesn't feel good towards complex solutions; I find this a gift really. Because, when I started thinking of a better way of refactoring legacy applications, I always thought of things which "average" developers (like me) can understand, do, and appreciate.
 
 This is why I have to add this disclaimer: Most of the information in this book is simple, and probably this is why it is very effective.
+
+{icon=bookmark}
+G> *Disclaimer: Most of the information in this book is simple, and probably this is why it is very effective*
 
 ##### Sustainability
 
