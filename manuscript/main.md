@@ -182,7 +182,7 @@ Keeping these two pre-cautions in mind will save you, especially that we are ref
 {icon=quote-left}
 G> *Refactoring: A change made to the internal structure of software to make it easier to understand and cheaper to modify without changing its existing behavior.*
 G>
-G> \- Martin Fowler [8]
+G> - Martin Fowler [8]
 
 One thing I especially like about this definition is the clearly stated objectives of refactoring: to the make software:
 
