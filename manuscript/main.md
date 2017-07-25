@@ -184,7 +184,7 @@ G> *Refactoring: A change made to the internal structure of software to make it 
 G>
 G> - Martin Fowler [8]
 
-One thing I especially like about this definition is the clearly stated objectives of refactoring: to the make software:
+One thing I like about this definition is the clearly-stated objectives of refactoring: to the make software:
 
 1. Easier to understand
 2. Cheaper to modify
@@ -311,7 +311,7 @@ A> #### Logical units of code
 A>
 A> Notice that the original form of the `criteriaFind` method in the above example is functionally cohesive and follows the Single Responsibility Principle (SRP) in a perfect way. However, if you look inside the method, you may notice what I call *Logical Units*, which are single steps in the logic of execution; each step doesn't implement the full job, but still implements a conceivable part towards this goal.
 A>
-A> Examples of logical units may be an if statement validating a business condition, a for loop doing a batch job on a group of data records, a query statement which retrieves some data from the database, several statements populating data fields on a new form, etc. In my experience, sometimes the logical unit are as small as two or three lines of code. More frequently, they are bigger (like 7 to 12 lines). On very rare occasions I see logical units which are bigger than that.
+A> Examples of logical units may be an if statement validating a business condition, a for loop doing a batch job on a group of data records, a query statement which retrieves some data from the database, several statements populating data fields on a new form, etc. In my experience, sometimes the logical unit are as small as two or three lines of code. More frequently, they are bigger (like 5 to 12 lines). On very rare occasions I see logical units which are bigger than that.
 A>
 A> Such logical units are perfect candidates to be extracted into *private* methods. If you adopt this practice for a while, you'll start noticing some private methods which are similar in nature or shares the same "interest". In such case, you may extract and group them into a new logical component. More about this in the [Divide and Conquer](#DivideAndConquer) stage.
 
