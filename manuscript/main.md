@@ -182,7 +182,7 @@ Keeping these two pre-cautions in mind will save you, especially that we are ref
 {icon=quote-left}
 G> *Refactoring: A change made to the internal structure of software to make it easier to understand and cheaper to modify without changing its existing behavior.*
 G>
-G> - Martin Fowler [8]
+G> \- Martin Fowler [8]
 
 One thing I like about this definition is the clearly-stated objectives of refactoring: to the make software:
 
@@ -316,6 +316,9 @@ A>
 A> Such logical units are perfect candidates to be extracted into *private* methods. If you adopt this practice for a while, you'll start noticing some private methods which are similar in nature or shares the same "interest". In such case, you may extract and group them into a new logical component. More about this in the [Divide and Conquer](#DivideAndConquer) stage.
 
 ## Enhance identifier naming
+
+Identifiers constitute 70% of the characters of your program.
+
 A> #### Explanatory methods and fields
 
 -- Aside for explanatory methods and fields
