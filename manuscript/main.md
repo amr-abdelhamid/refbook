@@ -13,7 +13,7 @@
 
 # Refactoring Roadmap Overview
 
-![](images/roadmap.png)
+![](images/roadmap.jpg)
 
 ## Quick-wins: simple and least risky enhancements
 
