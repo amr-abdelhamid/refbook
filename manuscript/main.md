@@ -123,7 +123,7 @@ Well, if code duplication is that evil. Why do we do it all the time? Throughout
 
 This is pretty natural. Actually, I myself always followed this pattern and I'm still following it. And, I've been doing excellent work with the teams I worked with. So, where is the problem? The problem is that I used to do a forth step which is necessary and cannot be neglected:
 
-![It's ok to copy and paste code only if you're going to refactor it later on.](images/duplicatecode/copyChangeTestRefactorCycle.png)
+![It's ok to copy and paste code only if you're going to refactor later on.](images/duplicatecode/copyChangeTestRefactorCycle.png)
 
 Neglecting this step is a fundamental mistake which rightly is one of the "deadly sins of developers", as put by SonarQube.
 
