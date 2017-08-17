@@ -11,15 +11,39 @@
 
 ## Continuous integration
 
+## Pin-down tests
+
+## Ground rules
+
+Before you start, this is a final step in preparing a healthy refactoring environment: to agree on this set of ground rules. These rules are put to account for some of the root causes discussed earlier in *[Why refactoring fails?](#whyrefactoringfails)* section:
+
+* Refactorings are committed daily on the mainline, not a dedicated branch
+* Timebox an agreed upon percentage of the development effort to refactoring
+* Refactoring effort and outcome should be visible to everybody, including management
+* Any change must be reviewed. This can be done by either pair/mob programming the change or peer review it later on.
+
 # Refactoring Roadmap Overview
 
-![](images/roadmap.jpg)
+![Start with high value-add and least risky activities, then work on re-organizing code chunks into components, and finally wrap everything with automated tests. In all stages, automate checks to make sure what is fixed will remain fixed.](images/roadmap.jpg)
 
-## Quick-wins: simple and least risky enhancements
+#### Quick-wins: simple and least risky enhancements
 
-## Divide & Conquer code into components
+In this early stage of refactoring, we rely heavily on tools to detect and fix issues with code. As appears in the roadmap, the kind of issues we are tackling involve the whole code base. So, when we _remove dead code_ or _remove code duplicates_, we do this for the whole code base, not part of the code.
 
-## Inject quality in using automated tests
+Working on the whole code base magnifies the impact and signifies the improvement. You may put it this way: It may be better to move the whole code one foot forward, rather than to move part of the code a thousand feet forward.
+
+{icon=quote-left}
+G> *It may be better to move the whole code one foot forward, rather than to move part of the code a thousand feet forward.*
+
+From my experience, teams working on the quick wins stage for a while usually start feeling "more confident in enhancing the code and applying refactorings ideas". They also have better "more grasp and ownership for the code".
+
+#### Divide & Conquer code into components
+
+
+
+#### Inject quality in using automated tests
+
+#### Continuous Inspection
 
 # Quick-wins
 
@@ -235,7 +259,7 @@ public List criteriaFind(String criteria) {
 }
 ~~~~~~~~
 
-Now, this is a 28-line method. It seems to be a small method. However, you've spent some time (probably around 1-2 minutes) to grasp how the code works. So, according to our definition, Is this method *maintainable*? The answer is no.
+This is a 28-line method. It seems to be a small method. However, you've spent some time (probably around 1-2 minutes) to grasp how the code works. So, according to our definition, Is this method *maintainable*? The answer is no.
 
 Now, consider this enhanced version of the method:
 
@@ -290,7 +314,7 @@ public List criteriaFind(String criteria) {
 
 Adding some comments makes the method somehow more readable. Sometimes, they make it harder to read the code because it overloads the code with more information. But, for this example, it's a bit better.
 
-But, wait a minute. Why are we adding comments? To make the code more readable, right? which indicates that the code is not maintainable, according to our definition. Actually, this is why *explanatory comments* are generally considered a code smell.
+But, wait a minute. Why are we adding comments? To make the code more readable, right? which indicates that the code is not maintainable, according to our definition. Actually, this is why *explanatory comments* are generally considered a code smell, or a sign of bad code.
 
 Now, let's work on this method. If you notice, comments are placed at perfect places. They give you a hint of the *Boundaries of Logical Units* inside the method. Such logical units are functionally cohesive and are candidate to become standalone methods. Not only that, the comment itself is a perfect starting point for naming of the newly born method.
 
@@ -308,6 +332,14 @@ public List criteriaFind(String criteria) {
 ~~~~~~~~
 
 This is a 5-line method which narrates a story. No need to write comments or explain anything. It is self-explanatory and much easier now to instantly capture the intent of the code.
+
+I have done this experiment before, to give the three variants of the method above, without comments, with comments, and refactored into small method. I have measured the time it takes a person to understand the intent of the method. Results were as follows:
+
+* Method without comments: ~ 2 minutes
+* Method with comments: ~ 1 minute
+* Refactored short method: ~ 10 seconds
+
+It is stunning How much time you save by just reducing methods into smaller size with readable method names. It hits the hard of the refactoring effort: to make the code *"easier to understand and cheaper to modify"*.
 
 A> #### Logical units of code
 A>
@@ -327,7 +359,11 @@ A> #### Explanatory methods and fields
 
 ## Considerations related to the quick-wins stage
 
-### Reliance on tools support
+#### Reliance on tools support
+
+One important consideration in this stage is that **no manual refactoring is allowed!**. Detecting dead code, detecting and removing code clones, extracting methods to reduce method size, renaming identifier names; you can do all such activities with the assistance of strong IDE features or add-on tools.
+
+Using automated refactoring tools contributes to safety and makes developers more confident when dealing with poor and cluttered code
 
 ### Are these refactorings safe?
 

@@ -63,7 +63,7 @@ I have documented some observations (or rather surprises) from these failures in
 * In many cases, managers do believe that continuous refactoring is necessary to keep the code healthy. However, we noticed that they do not sponsor refactoring effort. Why? The answer is that _managers will not sponsor something they cannot track or control._
 * For refactoring to succeed, several qualification should exist in the development environment. Qualifying the environment may take sometime to be done; but once done, refactoring is 90% complete!
 
-## Why refactoring fails?
+## Why refactoring fails? {#whyrefactoringfails}
 
 In the same report [4], I've listed some key factors or reasons why refactoring failed in early experiments:
 
@@ -80,7 +80,7 @@ We always thought that an automated test suite is a safety net for any side effe
 Technical teams had the attitude that refactoring was “none of the managers’ business”. Also, they did not spend any effort to involve busy managers and get their support. This attitude created a counter effect from managers towards refactoring. The refactoring effort was viewed by senior managers as a non-value adding activity and was only allowed due to pressure from the development teams. Once the planned time for refactoring elapsed, management became more and more resistant to spending any more effort on refactoring.
 
 {icon=bookmark}
-G> *Managers will not sponsor something they cannot track or control.*
+G> *Managers will not sponsor an activity they cannot track or control.*
 
 #### 4. The Technical Glut Trap {#thetrab}
 
