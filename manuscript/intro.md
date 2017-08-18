@@ -2,13 +2,13 @@
 
 # Introduction and Background
 
-The story of this book started long ago in 2009 when I first started helping organizations and coaching teams to adopt Agile. While working with several teams, we have faced lots of problems working with team and organization trying to adopt agile while their code is extremely poor. This was a show stopper, and teams suffered from frequent code failures and intermittent outages. Such code was literally stopping them from transitioning to shorter iterations or even smaller releases.
+The story of this book started long ago in 2009 while helping organizations and coaching teams to adopt more agile ways of work. I have faced lots of problems working with team whose code is extremely poor. This was a show stopper, and teams suffered from frequent code failures and intermittent outages. Such code was literally stopping them from transitioning to shorter iterations or even smaller releases.
 
 ## Why am I writing this book?
 
 This book is an assimilation of the large amount of good advice available in books and online; summarized and organized into a roadmap. It is an easy read for juniors and seniors who are responsible for maintaining software regardless of their business domain or technology.
 
-Also, this book is **not** a reference for all clean coding techniques and refactoring best practices. I have intentionally left over many of the good and necessary advice and tools, sometimes because they are not universal and may only apply in some cases, or because I had to chose only a small set of techniques to help teams kick off the refactoring effort and not overwhelm them with so many ideas.
+This book is **not** a reference for all clean coding techniques and refactoring best practices. I have intentionally left over many of the good and necessary advice and tools, sometimes because they are not universal and may only apply in some cases, or because I had to chose only a small set of techniques to help teams kick off the refactoring effort and not overwhelm them with so many ideas.
 
 ## Why refactoring matters?
 
@@ -60,7 +60,7 @@ I have documented some observations (or rather surprises) from these failures in
 * Covering your code with automated tests is not the first step in refactoring!
 * Working on refactoring for a long time is like working on bug fixing for a long time. It simply sucks! There has to be another way which is more sustainable.
 * One of the impediments to successful refactoring is the development team's focus on refactoring to patterns. This shifts their focus from making code simpler and understandable to making the code intelligent and "stylish"!
-* In many cases, managers do believe that continuous refactoring is necessary to keep the code healthy. However, we noticed that they do not sponsor refactoring effort. Why? The answer is that _managers will not sponsor something they cannot track or control._
+* In many cases, managers do believe that continuous refactoring is necessary to keep the code healthy. However, we noticed that they do not sponsor refactoring effort. Why? The answer is that _managers will not sponsor an activity which they cannot track or control._
 * For refactoring to succeed, several qualification should exist in the development environment. Qualifying the environment may take sometime to be done; but once done, refactoring is 90% complete!
 
 ## Why refactoring fails? {#whyrefactoringfails}
@@ -80,7 +80,7 @@ We always thought that an automated test suite is a safety net for any side effe
 Technical teams had the attitude that refactoring was “none of the managers’ business”. Also, they did not spend any effort to involve busy managers and get their support. This attitude created a counter effect from managers towards refactoring. The refactoring effort was viewed by senior managers as a non-value adding activity and was only allowed due to pressure from the development teams. Once the planned time for refactoring elapsed, management became more and more resistant to spending any more effort on refactoring.
 
 {icon=bookmark}
-G> *Managers will not sponsor an activity they cannot track or control.*
+G> *Managers will not sponsor an activity which they cannot track or control.*
 
 #### 4. The Technical Glut Trap {#thetrab}
 
@@ -106,10 +106,10 @@ I always considered myself an average developer. I wasn't that genius/geek softw
 
 Now, I find this fact, that I'm an average developer who doesn't feel good towards complex solutions; I find this a gift really. Because, when I started thinking of a better way of refactoring legacy applications, I always thought of things which "average" developers (like me) can understand, do, and appreciate.
 
-This is why I have to add this disclaimer: Most of the information in this book is simple, and probably this is why it is very effective.
+This is why I have to add this disclaimer: Most of the information in this book is simple, and probably this is why it is very useful!
 
 {icon=bookmark}
-G> *Disclaimer: Most of the information in this book is simple, and probably this is why it is very effective*
+G> *Disclaimer: Most of the information in this book is simple, and probably this is why it is very useful!*
 
 ##### Sustainability
 
