@@ -1,7 +1,7 @@
 
 {mainmatter}
 
--# Before you start - Prepare a healthy environment {#beforeYouStart}
+# Before you start - Prepare a healthy environment {#beforeYouStart}
 
 ## Workitem tracking
 
@@ -24,7 +24,9 @@ Before you start, this is a final step in preparing a healthy refactoring enviro
 
 # Refactoring Roadmap Overview
 
-![Start with high value-add and least risky activities, then work on re-organizing code chunks into components, and finally wrap everything with automated tests. In all stages, automate checks to make sure what is fixed will remain fixed.](images/roadmap.jpg)
+Start with high value-add and least risky activities, then work on re-organizing code chunks into components, and finally wrap everything with automated tests. In all stages, automate checks to make sure what is fixed will remain fixed.
+
+![](images/roadmap.jpg)
 
 #### Quick-wins: simple and least risky enhancements
 
@@ -378,6 +380,52 @@ Another example is working on reducing method size before removing duplicates. T
 ### How to determine whether or not we are done?
 
 # Divide & Conquer {#DivideAndConquer}
+
+## Component, Module, or Service?
+
+First, we need to answer this question: Are we splitting our code into modules, components, or services? Before we do that, let's agree on what a module, component, and service is.
+
+#### Module
+
+The *UML User Guide* provided a very brief and broad definition of what a module is. It is a "software unit of storage and manipulation".
+
+To elaborate on this definition, a module is any logical grouping of cohesive code functions which provides access to these functions in a uniform manner. This can be as big as a sub-system, like an accounting or HR module, or as small as a class, like a calculator or an xml parser.
+
+#### Component
+
+{icon=quote-left}
+G> “A component is a physical and replaceable part of a system that conforms to and provides the realization of a set of interfaces. It is intended to be easily substitutable for other components that meet the same specifications.”
+G>
+G> – *The UML User Guide*
+
+From this definition, we understand that a component is a physical standalone file; a jar, war, dll, gem, etc. Also, it is replaceable, meaning that it can be deployed on its own. Also, we understand that a component may contain one or more smaller modules; and vice versa, a big module may contain one or more components.
+
+#### Service
+
+In essence, web services (or just services), are components. They are physical, replaceable, provides clear interfaces, and easily substitutable. However, there is value in differentiating services from components.
+
+{icon=quote-left}
+G> “A service is similar to a component in that it's used by foreign applications. The main difference is that I expect a component to be used locally (think jar file, assembly, dll, or a source import). A service will be used remotely through some remote interface, either synchronous or asynchronous (eg web service, messaging system, RPC, or socket.)”[^fowler_article]
+G>
+G> – *Martin Fowler*
+
+[^fowler_article]: This quote is from Martin's article: [Inversion of Control Containers and the Dependency Injection pattern](https://www.martinfowler.com/articles/injection.html). For other interesting distinctions between components and services, please refer to Martin's famous article: [Microservices: a definition of this new architectural term](https://martinfowler.com/articles/microservices.html)
+
+One very important difference between a component and a service is that a component cannot run on its own. It has to be integrated in a bigger whole to become usable. Unlike a service, which is available and standalone. It can be located and used whether on its own or as part of a bigger application.
+
+---
+
+So, what's the value of outlining these differences between modules, components, and services?
+
+As you may notice, there is increasing formality in defining interfaces and increased level of decoupling when moving from modules, to components, to services.
+
+Modules may co-exist in the same (physical) deployable package, unlike components. Components run typically in the same process, unlike services.
+
+Services enjoys the maximum level of decoupling. You can view them as standalone applications which could be glued together in order to provide greater value for some end user.
+
+---
+
+
 
 ## Software design is all about components and their relationships
 
