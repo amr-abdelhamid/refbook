@@ -53,7 +53,7 @@ Although this is the most pragmatic approach to handling technical debt, but it 
 
 While these are all good efforts, there has to be a better way. The issue is that such haphazard efforts are usually faced with so many circumstances and risks which may lead to immature results and, sometimes, complications to the original problems.
 
-## Observations from failed attempts to refactoring
+## Why refactoring fails? {#whyrefactoringfails}
 
 I have documented some observations (or rather surprises) from these failures in an experience report published several years ago [4]. This is a summary of the most important ones:
 
@@ -62,8 +62,6 @@ I have documented some observations (or rather surprises) from these failures in
 * One of the impediments to successful refactoring is the development team's focus on refactoring to patterns. This shifts their focus from making code simpler and understandable to making the code intelligent and "stylish"!
 * In many cases, managers do believe that continuous refactoring is necessary to keep the code healthy. However, we noticed that they do not sponsor refactoring effort. Why? The answer is that _managers will not sponsor an activity which they cannot track or control._
 * For refactoring to succeed, several qualification should exist in the development environment. Qualifying the environment may take sometime to be done; but once done, refactoring is 90% complete!
-
-## Why refactoring fails? {#whyrefactoringfails}
 
 In the same report [4], I've listed some key factors or reasons why refactoring failed in early experiments:
 

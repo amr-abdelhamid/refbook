@@ -49,12 +49,12 @@ From my experience, teams working on the quick wins stage for a while usually st
 
 # Quick-wins
 
-## Dead code, the time bomb
+## Dead code - the time bomb
 
 {icon=quote-left}
 G> *Deleting dead code is not a technical problem; it is a problem of mindset and culture*
 G>
-G> \- Kevlin Henney
+G> \- - Kevlin Henney
 
 It is fairly intuitive to assume that as code grows in size, it needs more maintenance [2]. This can be attributed to three factors:
 
@@ -104,7 +104,7 @@ but unless you investigate you’ll never know." [5]
 
 #### Dynamic program analysis
 
-Runtime monitoring and Dynamic program analysis may be used to rule out parts of the code which are **not** dead code. This effectively reduces the amount of code under investigation.
+Runtime monitoring and dynamic program analysis may be used to rule out parts of the code which are **not** dead code. This effectively reduces the amount of code to be inspected.
 
 The idea is the same as measuring test coverage. In test coverage, tools help you pinpoint lines of code which are *not covered by any test*. In dynamic program coverage, tools help you pinpoint lines of code which are *never run by users*, either because the features themselves are never used, so you may remove them altogether from your product, or the code is just dead.
 
@@ -112,12 +112,12 @@ The idea is the same as measuring test coverage. In test coverage, tools help yo
 
 Removing dead code is a quick win by all means. It doesn't take time and gives a big relief for the team. In my experience, teams take no more than 2-3 days removing crap and end up with this feeling of achievement! On average, in this small period of time, teams manage to remove 4% to 7% (and sometimes 10%) or dead code [4].
 
-## Code duplicates, 'the root of all evil in software!'
+## Code duplicates - the root of all evil in software!
 
 {icon=quote-left}
 G> *Duplication may be the root of all evil in software*
 G>
-G> \- Robert C Martin
+G> \- - Robert C Martin
 
 It is interesting to read what gurus write about code duplication. It is like writing about a plague or a catastrophe which you should avoid by all means.
 
@@ -143,29 +143,29 @@ This means that duplication magnifies time of locating bugs. If you have a defec
 
 #### Why developers copy and paste code?
 
-Well, if code duplication is that evil. Why do we do it all the time? Throughout my career, I noticed developers follow this pattern one way or another:
+Well, if code duplication is that evil. Why do we do it all the time? Throughout my career, I noticed developers follow this pattern one way or another: Copy Some code, change it to suite your new requirement, and finally test all changes.
 
-![This pattern is very usual. Copy come code, change it to suite your new requirement, and finally test all changes.](images/duplicatecode/copyChangeTestCycle.png)
+![](images/duplicatecode/copyChangeTestCycle.png)
 
-This is pretty natural. Actually, I myself always followed this pattern and I'm still following it. And, I've been doing excellent work with the teams I worked with. So, where is the problem? The problem is that I used to do a forth step which is necessary and cannot be neglected:
+This is pretty natural. Actually, I myself always followed this pattern and I'm still following it. And, I've been doing excellent work with teams I worked with. So, where is the problem? The problem is that I always do a forth step which is necessary and cannot be neglected, which is refactoring. It's ok to copy and paste code only if you're going to refactor this code later on.
 
-![It's ok to copy and paste code only if you're going to refactor later on.](images/duplicatecode/copyChangeTestRefactorCycle.png)
+![](images/duplicatecode/copyChangeTestRefactorCycle.png)
 
 Neglecting this step is a fundamental mistake which rightly is one of the "deadly sins of developers", as put by SonarQube.
 
 #### Type of code clones
 
-There are three types of code clones: *Exact, Similar, and Gapped*. Actually there is a forth type of clones which deals with fragments of code doing the same thing but do not share similar structure (for example, implementing a routine which calculates the factorial of a number, one using for loops and another using recursion). There are lots of efforts in the academia to research whether it is possible to detect type 4 of code clones or not. So, till they reach something tangible, we will stick to the first three types.
+There are four types of code clones: *Exact, Similar, Gapped, and Semantic*. In the following sections, we will only shed light on each of them to help you detect and remove them mercilessly!
 
-In the following sections, all examples of code clones are detected by [ConQAT](https://www.cqse.eu/en/products/conqat/overview/), a **Con**tinuous **Q**u**a**li**t**y monitoring tool developed by the Technical University of Munich.
+Note: All examples of code clones are detected by [ConQAT](https://www.cqse.eu/en/products/conqat/overview/), a **Con**tinuous **Q**u**a**li**t**y monitoring tool developed by the Technical University of Munich.
 
-**Exact Clones**
+**Type 1: Exact Clones**
 
 These are the most straight forward and the easiest to detect type of clones. Here is an example of an exact clone:
 
 ![Exact clones: Copies of the code is exactly the same](images/duplicateCode/exactClones.png)
 
-**Similar Clones**
+**Type 2: Similar Clones**
 
 Similar clones are more common than exact clones because most probably, when a programmer copies some code, he/she changes or renames some of the variables or parameters names:
 
@@ -173,7 +173,7 @@ Similar clones are more common than exact clones because most probably, when a p
 
 As you can see in the above example, clones are similar, except for some renames of identifiers. Note that the structure of the code is the same, and the positions of the renamed identifiers are all the same.
 
-**Gapped Clones (aka inconsistent clones)**
+**Type 3: Gapped Clones (aka inconsistent clones)**
 
 This type of clones are very interesting. It picks exact or similar code with 1-2 change lines of code. These changes are called *Gaps*. Why are they interesting? Because probably they are defects fixed in one location and wasn't fixed in another!
 
@@ -191,6 +191,10 @@ A>
 A> ![If there are 100 code clones, 52 of them are gapped clones. If you drill into these gapped clones, you'll find 18% of them are system faults](images/duplicatecode/PercentageOfDefectsInGappedClones.png)
 A>
 A> This means that if you managed to remove 100 gapped clones, then congratulations! You've removed **18 dormant bugs!**
+
+**Type 4: Semantic clones**
+
+The forth type of clones deals with fragments of code doing the same thing but do not share similar structure. For example, implementing a routine which calculates the factorial of a number, one using for loops and another using recursion. There are lots of efforts in the academia to research whether it is possible to detect type 4 of code clones or not. Till they reach something tangible, we will work on the first three types.
 
 #### Removing code duplicates ####
 
@@ -210,7 +214,7 @@ Keeping these two pre-cautions in mind will save you, especially that we are ref
 {icon=quote-left}
 G> *Refactoring: A change made to the internal structure of software to make it easier to understand and cheaper to modify without changing its existing behavior.*
 G>
-G> - Martin Fowler [8]
+G> \- - Martin Fowler [8]
 
 One thing I like about this definition is the clearly-stated objectives of refactoring: to the make software:
 
@@ -371,9 +375,9 @@ Using automated refactoring tools contributes to safety and makes developers mor
 
 ### Should we do them in order?
 
-Yes, with little bit of overlap. This is logical and practical. For example, removing dead code, removes about 10% of your code duplicates[^foo1].
+Yes, with little bit of overlap. This is logical and practical. For example, removing dead code, removes about 10% of your code duplicates[^deadcode].
 
-[^foo1]: This is one of our findings. We noticed that a good portion of duplicated code are duplicated and then abandoned. Refer to [4] for more discussion about our findings.
+[^deadcode]: This was validated in one of our experiments. We found that removing dead code removes also 10% of duplicate code [4]. This is totally reasonable, because a good portion of duplicated code are duplicated and then abandoned.
 
 Another example is working on reducing method size before removing duplicates. This actually is a bad practice. Because, you may split a method apart while it is actually a duplicate of another. In this case, you have lost this similarity and may not be able to detect this duplication anymore.
 
@@ -381,7 +385,7 @@ Another example is working on reducing method size before removing duplicates. T
 
 # Divide & Conquer {#DivideAndConquer}
 
-## Component, Module, or Service?
+## Component, module, or service?
 
 First, we need to answer this question: Are we splitting our code into modules, components, or services? Before we do that, let's agree on what a module, component, and service is.
 
@@ -394,9 +398,9 @@ To elaborate on this definition, a module is any logical grouping of cohesive co
 #### Component
 
 {icon=quote-left}
-G> “A component is a physical and replaceable part of a system that conforms to and provides the realization of a set of interfaces. It is intended to be easily substitutable for other components that meet the same specifications.”
+G> *“A component is a physical and replaceable part of a system that conforms to and provides the realization of a set of interfaces. It is intended to be easily substitutable for other components that meet the same specifications.”*
 G>
-G> – *The UML User Guide*
+G> \– - The UML User Guide
 
 From this definition, we understand that a component is a physical standalone file; a jar, war, dll, gem, etc. Also, it is replaceable, meaning that it can be deployed on its own. Also, we understand that a component may contain one or more smaller modules; and vice versa, a big module may contain one or more components.
 
@@ -405,9 +409,9 @@ From this definition, we understand that a component is a physical standalone fi
 In essence, web services (or just services), are components. They are physical, replaceable, provides clear interfaces, and easily substitutable. However, there is value in differentiating services from components.
 
 {icon=quote-left}
-G> “A service is similar to a component in that it's used by foreign applications. The main difference is that I expect a component to be used locally (think jar file, assembly, dll, or a source import). A service will be used remotely through some remote interface, either synchronous or asynchronous (eg web service, messaging system, RPC, or socket.)”[^fowler_article]
+G> *“A service is similar to a component in that it's used by foreign applications. The main difference is that I expect a component to be used locally (think jar file, assembly, dll, or a source import). A service will be used remotely through some remote interface, either synchronous or asynchronous (eg web service, messaging system, RPC, or socket.)”[^fowler_article]*
 G>
-G> – *Martin Fowler*
+G> \– - Martin Fowler
 
 [^fowler_article]: This quote is from Martin's article: [Inversion of Control Containers and the Dependency Injection pattern](https://www.martinfowler.com/articles/injection.html). For other interesting distinctions between components and services, please refer to Martin's famous article: [Microservices: a definition of this new architectural term](https://martinfowler.com/articles/microservices.html)
 
@@ -417,15 +421,18 @@ One very important difference between a component and a service is that a compon
 
 So, what's the value of outlining these differences between modules, components, and services?
 
-As you may notice, there is increasing formality in defining interfaces and increased level of decoupling when moving from modules, to components, to services.
+As you may noticed from the past definitions, there is an increased formality in defining interfaces and higher level of decoupling when moving from modules, to components, to services.
 
-Modules may co-exist in the same (physical) deployable package, unlike components. Components run typically in the same process, unlike services.
+Modules may co-exist in the same (physical) deployable package; unlike components or services, which are physically standalone.
 
-Services enjoys the maximum level of decoupling. You can view them as standalone applications which could be glued together in order to provide greater value for some end user.
+Modules and components run typically in the same process; unlike services, which runs every service in its own process. Modules and components may communicate through in-memory method calls, while services may require inter-process communication through web-service requests or remote procedure calls.
 
----
+So, Services enjoys the maximum level of decoupling. You can view them as standalone applications which could be glued together in order to provide greater value for some end user.
 
+Now, the questions is: *Do we need to divide our code into modules or components or services?* The only affirmative answer that I can provide is that: Divide the code into modules. Then, assess whether it is useful and safe to go forward and upgrade them to components or services or not.
 
+{icon=bookmark}
+G> *Divide the code into modules. Then, assess whether it is useful and safe to go forward and upgrade them to components or services or not.*
 
 ## Software design is all about components and their relationships
 
