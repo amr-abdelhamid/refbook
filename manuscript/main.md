@@ -54,13 +54,15 @@ From my experience, teams working on the quick wins stage for a while usually st
 {icon=quote-left}
 G> *Deleting dead code is not a technical problem; it is a problem of mindset and culture*
 G>
-G> \- - Kevlin Henney
+G> \- *- Kevlin Henney*
 
-It is fairly intuitive to assume that as code grows in size, it needs more maintenance [2]. This can be attributed to three factors:
+Dead code is the "unnecessary, inoperative code that can be removed without affecting program’s functionality". These include: "functions and sub-programs that are never called, properties that are never read or written, and variables, constants and enumerators that are never referenced, user-defined types that are never used, API declarations that are redundant, and even entire modules and classes that are redundant." [10]
 
-1. More time needed to analyze code and locate bugs.
-2. Larger code implies bigger amount of functionality, which, in turn, requires more maintenance.
-3. There is high correlation between size and complexity of software. In the meanwhile, analysis of maintenance effort of business applications shows that highly complex software incurs more costs in maintenance [3]. Accordingly, we can fairly deduce that size is also correlated with maintenance costs.
+It is fairly intuitive (and was shown empirically) that as code grows in size, it needs more maintenance [2][9]. This can be attributed to three factors:
+
+1. More time needed to analyze code and locate bugs
+2. Larger code implies bigger amount of functionality, which, in turn, requires more maintenance
+3. Software size has significant influence on quality. That is, as code size increases, code quality decreases. Which, in turn, has significant effect on maintenance cost [9]
 
 ### What's evil about dead code?
 
@@ -72,7 +74,7 @@ This piece of dead code "had been dead for years, but was awakened by a change t
 
 ### How to detect dead code?
 
-So, there are plenty of ways to detect dead code. It is as put by Kevlin, "Deleting dead code is not a technical problem; it is a problem of mindset and culture."
+So, there are plenty of ways to detect dead code. It is as put by Kevlin Henney, "Deleting dead code is not a technical problem; it is a problem of mindset and culture." [5]
 
 To help you start, here are ideas how to find dead code:
 
@@ -117,7 +119,7 @@ Removing dead code is a quick win by all means. It doesn't take time and gives a
 {icon=quote-left}
 G> *Duplication may be the root of all evil in software*
 G>
-G> \- - Robert C Martin
+G> \- *- Robert C. Martin*
 
 It is interesting to read what gurus write about code duplication. It is like writing about a plague or a catastrophe which you should avoid by all means.
 
@@ -214,7 +216,7 @@ Keeping these two pre-cautions in mind will save you, especially that we are ref
 {icon=quote-left}
 G> *Refactoring: A change made to the internal structure of software to make it easier to understand and cheaper to modify without changing its existing behavior.*
 G>
-G> \- - Martin Fowler [8]
+G> \- *- Martin Fowler [8]*
 
 One thing I like about this definition is the clearly-stated objectives of refactoring: to the make software:
 
@@ -400,7 +402,7 @@ To elaborate on this definition, a module is any logical grouping of cohesive co
 {icon=quote-left}
 G> *“A component is a physical and replaceable part of a system that conforms to and provides the realization of a set of interfaces. It is intended to be easily substitutable for other components that meet the same specifications.”*
 G>
-G> \– - The UML User Guide
+G> \– *- The UML User Guide*
 
 From this definition, we understand that a component is a physical standalone file; a jar, war, dll, gem, etc. Also, it is replaceable, meaning that it can be deployed on its own. Also, we understand that a component may contain one or more smaller modules; and vice versa, a big module may contain one or more components.
 
@@ -411,7 +413,7 @@ In essence, web services (or just services), are components. They are physical, 
 {icon=quote-left}
 G> *“A service is similar to a component in that it's used by foreign applications. The main difference is that I expect a component to be used locally (think jar file, assembly, dll, or a source import). A service will be used remotely through some remote interface, either synchronous or asynchronous (eg web service, messaging system, RPC, or socket.)”[^fowler_article]*
 G>
-G> \– - Martin Fowler
+G> \– *- Martin Fowler*
 
 [^fowler_article]: This quote is from Martin's article: [Inversion of Control Containers and the Dependency Injection pattern](https://www.martinfowler.com/articles/injection.html). For other interesting distinctions between components and services, please refer to Martin's famous article: [Microservices: a definition of this new architectural term](https://martinfowler.com/articles/microservices.html)
 
@@ -432,7 +434,7 @@ So, Services enjoys the maximum level of decoupling. You can view them as standa
 Now, the questions is: *Do we need to divide our code into modules or components or services?* The only affirmative answer that I can provide is that: Divide the code into modules. Then, assess whether it is useful and safe to go forward and upgrade them to components or services or not.
 
 {icon=bookmark}
-G> *Divide the code into modules. Then, assess whether it is useful and safe to go forward and upgrade them to components or services or not.*
+G> *Divide the code into modules. Then, assess whether it is useful AND safe to go forward and upgrade them to components or services or not.*
 
 ## Software design is all about components and their relationships
 

@@ -20,3 +20,7 @@ Queen’s University, Canada, Rochester Institute of Technology, USA
 [7] https://www.cqse.eu/publications/2009-do-code-clones-matter.pdf
 
 [8] Martin Fowler, *Refactoring: Improving the Design of Existing Code*, 1999.
+
+[9] Nancy L, John M, Kimberly A (2005) *[IS Project Management: Size, Complexity, Practices and the Project Management Office](https://www.computer.org/csdl/proceedings/hicss/2005/2268/08/22680234b.pdf)*, Proceedings of the 38th Hawaii International Conference on System Sciences.
+
+[10] Edward E, *[On the Relationship between Software Complexity and Maintenance Costs](http://file.scirp.org/pdf/JCC_2014112117243300.pdf)*, Journal of Computer and Communications, 2014, 2, 1-16.
