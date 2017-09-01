@@ -209,8 +209,6 @@ In all projects that I've worked on, we were very cautious while removing duplic
 
 Keeping these two pre-cautions in mind will save you, especially that we are refactoring on the mainline, not on a separate long living branch. More on this in this previous chapter on [how to prepare a healthy environment](#beforeYouStart) section.
 
----
-
 ## Reduce method size
 
 {icon=quote-left}
@@ -386,6 +384,12 @@ Another example is working on reducing method size before removing duplicates. T
 ### How to determine whether or not we are done?
 
 # Divide & Conquer {#DivideAndConquer}
+
+Software design is all about components and their relationships. The better you divide your software into loosely-coupled and highly-cohesive parts, the more agile and the more responsive to change your software design becomes.
+
+So, the goal of this stage is to enhance the organization of software and discover and polish components and their interfaces:
+
+![](\images\introduce_structure.jpg)
 
 ## Component, module, or service?
 
