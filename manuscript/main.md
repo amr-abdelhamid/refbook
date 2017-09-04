@@ -449,7 +449,7 @@ A> This is why I have intentionally omitted microservices as one of the options 
 
 [^nealford]: More discussion about why microservice architecture is not suitable when refactoring monolithic applications is at this excellent talk by Neal Ford: [Comparing service-based architectures](https://vimeo.com/163918385).
 
-## Moving from spaghetti/cluttered code to components
+## Componentization - Moving from spaghetti/cluttered code to components
 
 The journey from cluttered code to module, components, or services is progressive and multi-stage. Code with large amount of technical debt usually looks like this figure. No clear boundaries between modules, high level glimpses of module interfaces, unstructured or unbounded module communication, etc.
 
