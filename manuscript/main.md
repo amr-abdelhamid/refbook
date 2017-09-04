@@ -455,7 +455,7 @@ The journey from cluttered code to module, components, or services is progressiv
 
 ![](images/divideandconquer/modules-unstructured.png)
 
-Gradually, we start moving methods and classes around to let modules emerge and polish their interfaces. Remember, only safe refactoring with support of an automated refactoring tools are allowed. In most of the cases, you can depend on the following refactorings:
+Gradually, we start moving methods and classes around to let modules emerge and become more apparent. Remember, only safe refactoring with support of an automated refactoring tools are allowed. In most of the cases, you can depend on the following refactorings:
 
 * Move Method
 * Move Class
@@ -463,7 +463,7 @@ Gradually, we start moving methods and classes around to let modules emerge and 
 * Extract Class/Interface
 * Extract Method
 
-The result are clearer and more apparent module boundaries and better manifestation of module interfaces.
+This results in clearer module boundaries and better manifestation of module interfaces.
 
 ![](images/divideandconquer/modules-structured.png)
 
@@ -471,6 +471,7 @@ Next, we should concentrate on more decoupling modules and create a solo-deploya
 
 * Change Method Signature (to remove or reorder method parameters)
 * Introduce Parameter or Parameter Object
+* Turn Public Methods Private
 
 ![](images/divideandconquer/components.png)
 
