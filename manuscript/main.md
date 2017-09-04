@@ -391,13 +391,13 @@ So, the goal of this stage is to enhance the organization of software and discov
 
 ![](\images\introduce_structure.jpg)
 
-## Component, module, or service?
+## Modules, components, or services?
 
 First, we need to answer this question: Are we splitting our code into modules, components, or services? Before we do that, let's agree on what a module, component, and service is.
 
 #### Module
 
-The *UML User Guide* provided a very brief and broad definition of what a module is. It is a "software unit of storage and manipulation".
+The *UML User Guide* provided a very brief and broad definition of what a module is. It is a *"software unit of storage and manipulation"*.
 
 To elaborate on this definition, a module is any logical grouping of cohesive code functions which provides access to these functions in a uniform manner. This can be as big as a sub-system, like an accounting or HR module, or as small as a class, like a calculator or an xml parser.
 
@@ -408,7 +408,7 @@ G> *“A component is a physical and replaceable part of a system that conforms 
 G>
 G> \– *- The UML User Guide*
 
-From this definition, we understand that a component is a physical standalone file; a jar, war, dll, gem, etc. Also, it is replaceable, meaning that it can be deployed on its own. Also, we understand that a component may contain one or more smaller modules; and vice versa, a big module may contain one or more components.
+From this definition, we understand that a component is a physical standalone file; a jar, war, dll, gem, etc. Also, it is replaceable, meaning that it can be deployed/redeployed on its own. Also, we understand that a component may contain one or more smaller modules; and vice versa, a big module may contain one or more components.
 
 #### Service
 
@@ -421,13 +421,13 @@ G> \– *- Martin Fowler*
 
 [^fowler_article]: This quote is from Martin's article: [Inversion of Control Containers and the Dependency Injection pattern](https://www.martinfowler.com/articles/injection.html). For other interesting distinctions between components and services, please refer to Martin's famous article: [Microservices: a definition of this new architectural term](https://martinfowler.com/articles/microservices.html)
 
-One very important difference between a component and a service is that a component cannot run on its own. It has to be integrated in a bigger whole to become usable. Unlike a service, which is available and standalone. It can be located and used whether on its own or as part of a bigger application.
+One very important difference between a component and a service is that a component cannot run on its own. It has to be integrated in a bigger whole to achieve any value out of it. Unlike a service, which is available and standalone. It can be located and used whether on its own or as part of a bigger application.
 
 ---
 
 So, what's the value of outlining these differences between modules, components, and services?
 
-As you may noticed from the past definitions, there is an increased formality in defining interfaces and higher level of decoupling when moving from modules, to components, to services.
+As you may noticed from the past definitions, there are higher level of decoupling and increased formality in defining interfaces when moving from modules to components to services.
 
 Modules may co-exist in the same (physical) deployable package; unlike components or services, which are physically standalone.
 
@@ -435,12 +435,48 @@ Modules and components run typically in the same process; unlike services, which
 
 So, Services enjoys the maximum level of decoupling. You can view them as standalone applications which could be glued together in order to provide greater value for some end user.
 
-Now, the questions is: *Do we need to divide our code into modules or components or services?* The only affirmative answer that I can provide is that: Divide the code into modules. Then, assess whether it is useful and safe to go forward and upgrade them to components or services or not.
+Now, the questions is: *Do we need to divide our code into modules or components or services?* The only affirmative answer that I can provide is that: Divide the code into modules. Then, assess whether or not it is useful and safe to upgrade them to components or services.
 
 {icon=bookmark}
-G> *Divide the code into modules. Then, assess whether it is useful AND safe to go forward and upgrade them to components or services or not.*
+G> *Divide the code into modules. Then, assess whether or not it is **useful AND safe** to upgrade them to components or services.*
 
-## Software design is all about components and their relationships
+A> ## What about Microservices?
+The main difference between Web-services (or just services), which what I referenced in the past discussion, is that each microservice has a separate standalone datastore. Services, on the other hand, share a common datastore.
+A>
+A> When looking from the angle of refactoring legacy or monolithic application code bases, it is not feasible to exert any effort or even think about splitting a large backend database into smaller ones and move towards a microservices architecture. Some other challenges looms in the way like handling distributed transactions and understanding and supporting the call chain for every business transaction[^neelford].
+A>
+A> This is why I have intentionally omitted microservices as one of the options to which one can upgrade newly-born components. In stead, a middle-way is a course-grained service, following a service-based architecture of some kind.
+
+[^nealford]: More discussion about why microservice architecture is not suitable when refactoring monolithic applications is at this excellent talk by Neal Ford: [Comparing service-based architectures](https://vimeo.com/163918385).
+
+## Moving from spaghetti/cluttered code to components
+
+The journey from cluttered code to module, components, or services is progressive and multi-stage. Code with large amount of technical debt usually looks like this figure. No clear boundaries between modules, high level glimpses of module interfaces, unstructured or unbounded module communication, etc.
+
+![](images/divideandconquer/modules-unstructured.png)
+
+Gradually, we start moving methods and classes around to let modules emerge and polish their interfaces. Remember, only safe refactoring with support of an automated refactoring tools are allowed. In most of the cases, you can depend on the following refactorings:
+
+* Move Method
+* Move Class
+* Rename
+* Extract Class/Interface
+* Extract Method
+
+The result are clearer and more apparent module boundaries and better manifestation of module interfaces.
+
+![](images/divideandconquer/modules-structured.png)
+
+Next, we should concentrate on more decoupling modules and create a solo-deployable components. At this stage, we should work more on polishing interfaces, move away un-needed interface methods and interface parameters. Some useful refactorings at this stage are:
+
+* Change Method Signature (to remove or reorder method parameters)
+* Introduce Parameter or Parameter Object
+
+![](images/divideandconquer/components.png)
+
+You may stop at this stage. Or, you move to the next step and turn components into services. Remind you that you may chose to do so only if you find it *valuable and safe*.
+
+![](images/divideandconquer/services.png)
 
 ## Types of software components
 
