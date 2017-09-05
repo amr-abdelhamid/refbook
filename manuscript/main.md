@@ -37,13 +37,15 @@ Working on the whole code base magnifies the impact and signifies the improvemen
 {icon=bookmark}
 G> *It may be better to move the whole code one foot forward, rather than to move part of the code a thousand feet forward.*
 
-From my experience, teams working on the quick wins stage for a while usually start feeling "more confident in enhancing the code and applying refactorings ideas". They also have better "more grasp and ownership for the code".
+From my experience, teams working on the quick wins stage for a while usually start feeling "more confident in enhancing the code and applying refactorings ideas". They also have "better grasp and ownership for the code".
 
-#### Divide & Conquer code into components
+#### Divide & Conquer: Split code into components
 
+After getting rid of most of the fat during the last stage, we gradually start introducing structure into the code. The key idea is to move "similar" code together and giving room for cohesive code to form modules with clear interfaces.
 
+Usually, code is already organized in high level modules. We will keep that and polish the existing modules. However, such modules have usually grown in size and gathered so much functionality in time. It may already be doing so many things for a middle-size code module; part of these things may well belong to another module, whether a new or existing one.
 
-#### Inject quality in using automated tests
+#### Inject quality in: Cover components with automated tests
 
 #### Continuous Inspection
 
@@ -357,11 +359,18 @@ A> Such logical units are perfect candidates to be extracted into *private* meth
 
 ## Enhance identifier naming
 
+{icon=quote-left}
+G> *You know you are working on clean code when each routine you read turns out to be pretty much what you expected[^clean-ron]*
+G>
+G> /- *- Ron Jeffries*
+
 Identifiers constitute 70% of the characters of your program.
 
 A> #### Explanatory methods and fields
 
 -- Aside for explanatory methods and fields
+
+[^clean-ron]: Quoted in *Leading Lean Software Development: Results Are not the Point*, by Mary and Tom Poppendieck.
 
 ## Considerations related to the quick-wins stage
 
@@ -443,7 +452,7 @@ G> *Divide the code into modules. Then, assess whether or not it is **useful AND
 A> ## What about Microservices?
 The main difference between Web-services (or just services), which what I referenced in the past discussion, is that each microservice has a separate standalone datastore. Services, on the other hand, share a common datastore.
 A>
-A> When looking from the angle of refactoring legacy or monolithic application code bases, it is not feasible to exert any effort or even think about splitting a large backend database into smaller ones and move towards a microservices architecture. Some other challenges looms in the way like handling distributed transactions and understanding and supporting the call chain for every business transaction[^neelford].
+A> When looking from the angle of refactoring legacy or monolithic application code bases, it is not feasible to exert any effort or even think about splitting a large backend database into smaller ones and move towards a microservices architecture. Some other challenges looms in the way like handling distributed transactions and understanding and supporting the call chain for every business transaction[^nealford].
 A>
 A> This is why I have intentionally omitted microservices as one of the options to which one can upgrade newly-born components. In stead, a middle-way is a course-grained service, following a service-based architecture of some kind.
 
