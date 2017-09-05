@@ -1,6 +1,6 @@
 {backmatter}
 
-# Catalogue of practices and techniques {#catalogue}
+# Catalogue of Practices and Techniques {#catalogue}
 
 # References
 

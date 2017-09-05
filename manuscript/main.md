@@ -1,7 +1,7 @@
 
 {mainmatter}
 
-# Before you start - Prepare a healthy environment {#beforeYouStart}
+# Before You Start - Prepare a Healthy Environment {#beforeYouStart}
 
 ## Workitem tracking
 
@@ -11,9 +11,9 @@
 
 ## Continuous integration
 
-## Pin-down tests
+## Starting with pin-down (aka characterization) tests
 
-## Ground rules
+## Ground rules for sustainable refactoring
 
 Before you start, this is a final step in preparing a healthy refactoring environment: to agree on this set of ground rules. These rules are put to account for some of the root causes discussed earlier in *[Why refactoring fails?](#whyrefactoringfails)* section:
 
@@ -49,7 +49,7 @@ Usually, code is already organized in high level modules. We will keep that and 
 
 #### Continuous Inspection
 
-# Quick-wins
+# Quick-Wins
 
 ## Dead code - the time bomb
 
@@ -392,13 +392,19 @@ Another example is working on reducing method size before removing duplicates. T
 
 ### How to determine whether or not we are done?
 
-# Divide & Conquer {#DivideAndConquer}
+# Divide and Conquer {#DivideAndConquer}
 
 Software design is all about components and their relationships. The better you divide your software into loosely-coupled and highly-cohesive parts, the more agile and the more responsive to change your software design becomes.
 
-So, the goal of this stage is to enhance the organization of software and discover and polish components and their interfaces:
+So far, we have spend much time trying to remove "fat" from the application's body of code. Namely, we have removed dead code, and reduced code duplication. We have also made some enhancements which makes the code slightly more readable, like reducing method size and using proper naming conventions. Although all these enhancements made the code *better*, but not *more structured*.
 
-![](\images\introduce_structure.jpg)
+Introducing structure is the goal of this stage. The goad is to enhance the organization of the code by discovering/uncovering components and enhance their interfaces:
+
+![](\images\introduce_structure.png)
+
+## Guiding design principles
+
+
 
 ## Modules, components, or services?
 
@@ -488,9 +494,17 @@ You may stop at this stage. Or, you move to the next step and turn components in
 
 ![](images/divideandconquer/services.png)
 
-## Types of software components
+## Types of software components - Strategies for breaking code apart
 
-## Guiding design principles
+## A walk through an example
+
+## Considerations while breaking code apart
+
+#### Break circular dependencies
+
+#### Honor existing architecture
+
+#### Avoid introducing inheritance trees
 
 # Inject Quality In
 
@@ -520,4 +534,4 @@ Instead, at this stage, we will concentrate on component, integration, and syste
 
 ## Example: Code clones continuous inspection using Jenkins and ConQAT
 
-# Starting a new project? Important considerations
+# Starting a New Project? Important Considerations
