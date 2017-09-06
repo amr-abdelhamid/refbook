@@ -24,3 +24,9 @@ Queen’s University, Canada, Rochester Institute of Technology, USA
 [9] Nancy L, John M, Kimberly A (2005) *[IS Project Management: Size, Complexity, Practices and the Project Management Office](https://www.computer.org/csdl/proceedings/hicss/2005/2268/08/22680234b.pdf)*, Proceedings of the 38th Hawaii International Conference on System Sciences.
 
 [10] Edward E, *[On the Relationship between Software Complexity and Maintenance Costs](http://file.scirp.org/pdf/JCC_2014112117243300.pdf)*, Journal of Computer and Communications, 2014, 2, 1-16.
+
+[11] Robert C. Martin (2003). *Agile Software Development, Principles, Patterns, and Practices*. Prentice Hall. pp. 127–131
+
+[12]  Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides (1994). Design Patterns: Elements of Reusable Object-Oriented Software. Addison Wesley. pp. 19.
+
+[13] Eric S. Raymond (2003). ["The Art of Unix Programming: Unix and Object-Oriented Languages"](http://www.catb.org/esr/writings/taoup/html/unix_and_oo.html). Retrieved 2017-9-6.

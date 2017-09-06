@@ -13,14 +13,17 @@
 
 ## Starting with pin-down (aka characterization) tests
 
-## Ground rules for sustainable refactoring
+## Ground rules for sustainable refactoring {#ground-rules}
 
 Before you start, this is a final step in preparing a healthy refactoring environment: to agree on this set of ground rules. These rules are put to account for some of the root causes discussed earlier in *[Why refactoring fails?](#whyrefactoringfails)* section:
 
 * Refactorings are committed daily on the mainline, not a dedicated branch
 * Timebox an agreed upon percentage of the development effort to refactoring
 * Refactoring effort and outcome should be visible to everybody, including management
-* Any change must be reviewed. This can be done by either pair/mob programming the change or peer review it later on.
+* Any change *must* be reviewed. This can be done by either pair/mob programming the change or peer review it later on
+* Large refactorings are not allowed. Example large refactorings is to introduce an architectural enhancement which may require changes in multiple places in code. These are some rules of thumb how to detect whether or not a refactoring is large:
+  * Think a lot before you start working on it
+  * Take more than 10-30 minutes to get things running
 
 # Refactoring Roadmap Overview
 
@@ -51,7 +54,7 @@ Usually, code is already organized in high level modules. We will keep that and 
 
 # Quick-Wins
 
-## Dead code - the time bomb
+## Removing dead code
 
 {icon=quote-left}
 G> *Deleting dead code is not a technical problem; it is a problem of mindset and culture*
@@ -116,7 +119,7 @@ The idea is the same as measuring test coverage. In test coverage, tools help yo
 
 Removing dead code is a quick win by all means. It doesn't take time and gives a big relief for the team. In my experience, teams take no more than 2-3 days removing crap and end up with this feeling of achievement! On average, in this small period of time, teams manage to remove 4% to 7% (and sometimes 10%) or dead code [4].
 
-## Code duplicates - the root of all evil in software!
+## Removing code duplicates
 
 {icon=quote-left}
 G> *Duplication may be the root of all evil in software*
@@ -374,15 +377,39 @@ A> #### Explanatory methods and fields
 
 ## Considerations related to the quick-wins stage
 
-#### Reliance on tools support
+#### Avoid introducing inheritance trees
+
+One tempting technique to remove duplication is to introduce a parent type and gather common behavior among two or more child types:
+
+![Highlighted parts represent duplicated behavior among A and B](images/duplicatecode/inheritanceisbad.png)
+
+In general, I prefer composition over inheritance. Inheritance hierarchies are notorious for their complexity and difficulty of understanding polymorphic behavior of sub-types. Moreover, they are especially not recommended at this very early stage of refactoring.
+
+Instead, you may chose one of the following three simple alternatives:
+
+1. *Inline Classes* into one class, especially if the level of duplication is high between the two of them.
+1. *Extract Methods* in one class and reuse them in the other
+
+    ![](images/duplicatecode/reusesame.png)
+
+1. *Extract Methods* in one class then *Move Methods* to a common class used by all original ones:
+
+    ![](images/duplicatecode/reusenew.png)
+
+A> **** Should we favor composition over inheritance?
+A>
+A> This is a controversial topic since the inception of object-oriented design. A lot has been said about when to use inheritance and whether you should favor composition and when. However, it seems there is a general "impression" that over use of inheritance causes problems and deteriorates program clarity; something which we are already trying to enhance. Here are some references:
+A>
+A> * The GOF book, way back in 1995, advices us to "Favor 'object composition' over 'class inheritance'." They rightly argue that "because inheritance exposes a subclass to details of its parent's implementation, it's often said that 'inheritance breaks encapsulation'" [12]
+A> * Eric S. Raymond, in his book *The Art of Unix Programming*, argues that the over use of inheritance introduces layers in code and "destroys transparencies" [13]. I absolutely agree on this. From my experience, looking for a bug in a pile of inheritance hierarchy with several layers of polymorphic behavior is like searching for a needle in a haystack!
+
+#### Always reply on tools support
 
 One important consideration in this stage is that **no manual refactoring is allowed!**. Detecting dead code, detecting and removing code clones, extracting methods to reduce method size, renaming identifier names; you can do all such activities with the assistance of strong IDE features or add-on tools.
 
 Using automated refactoring tools contributes to safety and makes developers more confident when dealing with poor and cluttered code
 
-### Are these refactorings safe?
-
-### Should we do them in order?
+#### Should we do them in order?
 
 Yes, with little bit of overlap. This is logical and practical. For example, removing dead code, removes about 10% of your code duplicates[^deadcode].
 
@@ -390,7 +417,9 @@ Yes, with little bit of overlap. This is logical and practical. For example, rem
 
 Another example is working on reducing method size before removing duplicates. This actually is a bad practice. Because, you may split a method apart while it is actually a duplicate of another. In this case, you have lost this similarity and may not be able to detect this duplication anymore.
 
-### How to determine whether or not we are done?
+#### How to determine whether or not we are done?
+
+#### Are these refactorings safe?
 
 # Divide and Conquer {#DivideAndConquer}
 
@@ -404,7 +433,9 @@ Introducing structure is the goal of this stage. The goad is to enhance the orga
 
 ## Guiding design principles
 
+#### Coupling and Cohesion
 
+Cohesion "measures the degree of connectivity among the elements of a single module" [grady booch, object oriented analysis and design]
 
 ## Modules, components, or services?
 
@@ -500,11 +531,33 @@ You may stop at this stage. Or, you move to the next step and turn components in
 
 ## Considerations while breaking code apart
 
-#### Break circular dependencies
+#### Break circular (aka cyclic) dependencies
+
+Circular dependencies occurs when one component depends on another component which in turn depends directly or indirectly on the first one:
+
+![A dependency cycle causing circular dependency between components B and C](images/divideandconquer/circular_dependency.png)
+
+With workarounds in compilation and late binding strategies, you can live with circular dependencies. However, overlooking this type of cyclic dependency increases coupling between components. After a while, this may grow more and more and result in higher level of complexity, more regression type of defects, upfront load time, and possible memory leaks due to cyclic references which never releases used objects.
+
+Here are some strategies to break circular dependencies:
+
+1. Move variable/method/class to the dependent component. This should always be the first solution to think about, because very often this variable or method was created by a lazy programmer who didn't bother to place things in the proper place. Using an IDE's automated refactoring for moving things around would be the safest, fastest, and cleanest solution.
+
+    ![Move code from A to B, so that B is no longer dependent on A](images/divideandconquer/break_cycles_1.png)
+
+1. Extract common logic into a standalone component, on which both original components depend
+
+    ![Extract common logic into a standalone component](images/divideandconquer/break_cycles_2.png)
+
+1. Apply the Dependency Inversion Principle[^solid], which states that *High-level modules should not depend on low-level modules. Both should depend on abstractions.* To do that, split one component (component B in the example below) into two components: One holds the abstractions (or the generic definitions of types and interfaces) and the other provides the concretions (or one default implementation). Then, component A and B depends on the newly-cerated component C.
+
+    ![Apply the Dependency Inversion Principle](images/divideandconquer/break_cycles_3.png)
+
+1. Make use of some architectural patterns, like the Observer pattern. In my experience, this may be considered a large refactoring at this stage and breaks the [ground rules](#ground_rules) upon which we have agreed at the beginning of this book. In stead, I would resort to one of the previous two solutions.
+
+[^solid]: This is the sixth principle of the famous SOLID principles of object oriented design by Robert C. Martin [11]
 
 #### Honor existing architecture
-
-#### Avoid introducing inheritance trees
 
 # Inject Quality In
 
@@ -526,7 +579,7 @@ Instead, at this stage, we will concentrate on component, integration, and syste
 
 ## Tracking coverage
 
-# Continuous inspection throughout the roadmap
+# Continuous Inspection Throughout the Roadmap
 
 ## Why continuous inspection is important?
 
