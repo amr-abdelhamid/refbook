@@ -387,12 +387,12 @@ In general, I prefer composition over inheritance. Inheritance hierarchies are n
 
 Instead, you may chose one of the following three simple alternatives:
 
-1. *Inline Classes* into one class, especially if the level of duplication is high between the two of them.
-1. *Extract Methods* in one class and reuse them in the other
+1. *Inline Classes* into one class, especially if the coupling and/or level of duplication is high between the two of them.
+1. *Extract Methods* in class B and reuse them in class A. This creates a dependency on B, which may or may not be a bad thing.
 
     ![](images/duplicatecode/reusesame.png)
 
-1. *Extract Methods* in one class then *Move Methods* to a common class used by all original ones:
+1. If coupling between A and B is bad, then *Extract Methods* in A and then chose whether to *Move Methods* to an existing class, or *Extract Class*, a new class C. In both cases, A and B will depend on the common class:
 
     ![](images/duplicatecode/reusenew.png)
 
@@ -518,7 +518,8 @@ Gradually, we start moving methods and classes around to let modules emerge and 
 * Move Method
 * Move Class
 * Rename
-* Extract Class/Interface
+* Extract Class
+* Extract Interface
 * Extract Method
 
 This results in clearer module boundaries and better manifestation of module interfaces.
