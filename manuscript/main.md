@@ -396,14 +396,26 @@ Instead, you may chose one of the following three simple alternatives:
 
     ![](images/duplicatecode/reusenew.png)
 
-A> **** Should we favor composition over inheritance?
+A> #### Why we should favor composition over inheritance
 A>
 A> This is a controversial topic since the inception of object-oriented design. A lot has been said about when to use inheritance and whether you should favor composition and when. However, it seems there is a general "impression" that over use of inheritance causes problems and deteriorates program clarity; something which we are already trying to enhance. Here are some references:
 A>
 A> * The GOF book, way back in 1995, advices us to "Favor 'object composition' over 'class inheritance'." They rightly argue that "because inheritance exposes a subclass to details of its parent's implementation, it's often said that 'inheritance breaks encapsulation'" [12]
-A> * Eric S. Raymond, in his book *The Art of Unix Programming*, argues that the over use of inheritance introduces layers in code and "destroys transparencies" [13]. I absolutely agree on this. From my experience, looking for a bug in a pile of inheritance hierarchy with several layers of polymorphic behavior is like searching for a needle in a haystack!
+A> * Eric S. Raymond, in his book *The Art of Unix Programming*, argues that the over use of inheritance introduces layers in code and "destroys transparencies" [13]. I absolutely agree on this. From my experience, looking for a bug in a pile of inheritance hierarchy with five or six layers of polymorphic behavior is like searching for a needle in a haystack!
+A>
+A> Im many cases, using composition with the [Strategy pattern](https://en.wikipedia.org/wiki/Strategy_pattern) hits a sweet sport between composition and inheritance. Consider this example: We are building a car system simulator in which a car may have two breaking systems: standard and ABS. In this case, it may be straight forward to use inheritance:
+A>
+A> ![](images/cartype1.png)
+A>
+A> Now, consider adding a capability to simulate two steering systems: Power and Electric. If we continue using inheritance, we will have to introduce duplication, the enemy of clean code. In the example, the logic of power steering is now duplicated in `PowerSteeringAbsBrakingCar` and `PowerSteeringStandardBrakingCar`; and the logic of electric steering is duplicated in `ElectricSteeringAbsBrakingCar` and `ElectricSteeringStandardBrakingCar`:
+A>
+A> ![](images/cartype2.png)
+A>
+A> Instead, let's collapse this inheritance tree, and use composition with the Strategy pattern. Here, we will design a Car with many components, each component is an *abstract strategy* which may have several *concrete implementations*:
+A>
+A> ![](images/cartype3.png)
 
-#### Always reply on tools support
+#### Always rely on tools support
 
 One important consideration in this stage is that **no manual refactoring is allowed!**. Detecting dead code, detecting and removing code clones, extracting methods to reduce method size, renaming identifier names; you can do all such activities with the assistance of strong IDE features or add-on tools.
 
@@ -452,7 +464,7 @@ To elaborate on this definition, a module is any logical grouping of cohesive co
 {icon=quote-left}
 G> *“A component is a physical and replaceable part of a system that conforms to and provides the realization of a set of interfaces. It is intended to be easily substitutable for other components that meet the same specifications.”*
 G>
-G> \– *- The UML User Guide*
+G> \- *- The UML User Guide*
 
 From this definition, we understand that a component is a physical standalone file; a jar, war, dll, gem, etc. Also, it is replaceable, meaning that it can be deployed/redeployed on its own. Also, we understand that a component may contain one or more smaller modules; and vice versa, a big module may contain one or more components.
 
@@ -463,7 +475,7 @@ In essence, web services (or just services), are components. They are physical, 
 {icon=quote-left}
 G> *“A service is similar to a component in that it's used by foreign applications. The main difference is that I expect a component to be used locally (think jar file, assembly, dll, or a source import). A service will be used remotely through some remote interface, either synchronous or asynchronous (eg web service, messaging system, RPC, or socket.)”[^fowler_article]*
 G>
-G> \– *- Martin Fowler*
+G> \- *- Martin Fowler*
 
 [^fowler_article]: This quote is from Martin's article: [Inversion of Control Containers and the Dependency Injection pattern](https://www.martinfowler.com/articles/injection.html). For other interesting distinctions between components and services, please refer to Martin's famous article: [Microservices: a definition of this new architectural term](https://martinfowler.com/articles/microservices.html)
 
