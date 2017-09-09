@@ -1,34 +1,9 @@
 
-{mainmatter}
-
-# Before You Start - Prepare a Healthy Environment {#beforeYouStart}
-
-## Workitem tracking
-
-## End-to-end traceability
-
-## Production/staging environment readiness
-
-## Continuous integration
-
-## Starting with pin-down (aka characterization) tests
-
-## Ground rules for sustainable refactoring {#ground-rules}
-
-Before you start, this is a final step in preparing a healthy refactoring environment: to agree on this set of ground rules. These rules are put to account for some of the root causes discussed earlier in *[Why refactoring fails?](#whyrefactoringfails)* section:
-
-* Refactorings are committed daily on the mainline, not a dedicated branch
-* Timebox an agreed upon percentage of the development effort to refactoring
-* Refactoring effort and outcome should be visible to everybody, including management
-* Any change *must* be reviewed. This can be done by either pair/mob programming the change or peer review it later on
-* Large refactorings are not allowed. Example large refactorings is to introduce an architectural enhancement which may require changes in multiple places in code. These are some rules of thumb how to detect whether or not a refactoring is large:
-  * Think a lot before you start working on it
-  * Take more than 10-30 minutes to get things running
-
 # Refactoring Roadmap Overview
 
 Start with high value-add and least risky activities, then work on re-organizing code chunks into components, and finally wrap everything with automated tests. In all stages, automate checks to make sure what is fixed will remain fixed.
 
+{id="refactoring_roadmap"}
 ![](images/roadmap.jpg)
 
 #### Quick-wins: simple and least risky enhancements
@@ -435,11 +410,22 @@ Another example is working on reducing method size before removing duplicates. T
 
 # Divide and Conquer {#DivideAndConquer}
 
-Software design is all about components and their relationships. The better you divide your software into loosely-coupled and highly-cohesive parts, the more agile and the more responsive to change your software design becomes.
+Software design is all about components and their relationships. The better you divide your software into loosely-coupled and highly-cohesive parts, the more comprehensible, more responsive to change, and more agile your software design becomes. The act of partitioning your software in such manner is described by Fairbanks as authoring "a story at many levels", which results in a software design that will "tell a story to whoever looks at it, and it will be easy to understand":
 
-So far, we have spend much time trying to remove "fat" from the application's body of code. Namely, we have removed dead code, and reduced code duplication. We have also made some enhancements which makes the code slightly more readable, like reducing method size and using proper naming conventions. Although all these enhancements made the code *better*, but not *more structured*.
+> *"To be comprehensible, your software should be structured so that it reveals a story at many levels. Each level of nesting tells a story about how those parts interact. A developer who was unfamiliar with the system could be dropped it at any level and still make sense of it, rather than being swamped."*
+>
+> \- George Fairbanks [14]
 
-Introducing structure is the goal of this stage. The goad is to enhance the organization of the code by discovering/uncovering components and enhance their interfaces:
+Now, here is a question: If software partitioning is that important, why didn't we start with it right away in the [refactoring roadmap](#refactoring_roadmap)?
+
+We can describe what we achieved so far as removing "fat" from the application's body of code; namely, removing dead code, and reducing code duplication, plus applying some very basic and intuitive enhancements which makes the code slightly more readable, like reducing method size and using proper naming conventions. This is like *preparing the scene* or *organizing our backyard* before we start on re-organizing the parts. And, this has two very important side effects:
+
+1. We have saved the time that we would have spent working on dead or duplicate code.
+2. The team reached a better grasp of the code while scanning and reviewing duplicates and suspect dead code. They formed better understanding while breaking up large methods and trying to give better names to identifiers and code constructs
+
+I have noticed the effect in the second point above many times while working with teams on refactoring. As I explained before in the Introduction and Background section, teams become more courageous and bold in enhancing the code especially after the quick-wins stage.
+
+In this stage, introducing structure is the goal. Although all the enhancements in the quick-wins stage made the code *better*, but still *lacks structured* and the mission now is discovering/uncovering components and enhance their interfaces:
 
 ![](\images\introduce_structure.png)
 
@@ -540,6 +526,52 @@ You may stop at this stage. Or, you move to the next step and turn components in
 
 ## Types of software components - Strategies for breaking code apart
 
+This section is a primer about types of software components. As you may expect, software components may take some universal types which many experienced developers have noted. This will help you detect/uncover modules and enhance your code structure more effectively and efficiently. So, let's start with the first simple guideline for partitioning code:
+
+> Group similar code together!
+
+But, what if the component gets very large, the answer is a second guideline:
+
+> If a module become large, look for similar code inside it, and reapply the first guideline.
+
+Note that determining whether or not a component is large is a subjective decision. In the meanwhile, some experts have coined some "rules of thumb" which may give indication that a module or component is becoming big. One of these rules is the 3-30 rule. Which states that a module may provide at least 3 and at most 30 interfaces methods or functions.
+
+#### Functional (or Business) modules ####
+
+The first thing to think about while grouping similar code together is the business functions. The reason is that they are the easiest to detect and results in the most cohesive module type. The strategy of partitioning code according to business function results in a system abstraction which is more comprehensible and easier to read and understand.
+
+#### Utility modules ####
+
+When grouping business functions together, you'll notice parts of the code doing some redundant type of work. Sometimes, this is part of the business function itself, like `validateEmployeeId` for validating an multi-part employee id is correctly formed; or `formatEmployeeName` for preparing a special print name of employees based on their name, department, and hiring date. For this type of redundancy, No need to move them to a separate module.
+
+In other cases, you may detect utility functions which are distinctive and may not relate to the core business functionality. These are some examples of utility functions:
+* Standard mathematical or string calculations, like `calculatePercentage(base, percent)` for calculating a percentage out of a base number, or `divideFullNameIntoParts` which returns person first to last names organized into an array
+* Batch operations on collections of raw data, like `multiplyByPercent`, which receives a collection of values and returns the same set multiplied by a parameter value.
+* Reading or writing records from an excel file.
+* Parsing XML or JSON structures
+* etc.
+
+In these cases, the first step is to group all utility functions in a separate generic "utility" module or class. Then, revisit this module and see what groups of utilities emerged and need to be grouped in a separate more cohesive utility class:
+
+![](images/divideandconquer/utilityclasses.png)
+
+#### Port modules ####
+
+Port modules are those which encapsulate communication logic to and from a special resource. For example, communicating with web-services, RMI/IIOP, databases, file system, network resources, etc. So, any type of communication which may be needed by more than one *functional modules* should be encapsulated in a standalone module.
+
+#### Archtypes (aka Core types)
+
+Archtypes are the most noticeable or important data types. Usually, these types are gathered in one core module used by almost all others. Although this raises coupling between this module and the rest of the system, gathering core types in one module reduces the overall coupling among all other modules in the system.
+
+#### View modules
+
+Any software with a graphical user interface needs one or more view modules. Usually, views are tightly coupled with its corresponding functional modules; therefore, it is tempting to package them together in one deployable component. On the other hand, the *Release Reuse Equivalency Principle* states that *"The granule of reuse is the granule of release"* [14]. Meaning that you should keep an eye on how your components are reused. If part on the component is reused more than another, then it should be placed in a separate deployable release, or component.
+
+The *Common Closure Principle* gives another dimension. It states that: *"Classes that change together are packaged together"* [14]. Sometimes, change in business requires a counterpart change in view and vice versa. In this case, following the principle, you should keep them together. However, if the changes are usually confined to view or business, you should place each one of them in a separate component.
+
+#### Architectural style
+
+
 ## A walk through an example
 
 ## Considerations while breaking code apart
@@ -571,33 +603,3 @@ Here are some strategies to break circular dependencies:
 [^solid]: This is the sixth principle of the famous SOLID principles of object oriented design by Robert C. Martin [11]
 
 #### Honor existing architecture
-
-# Inject Quality In
-
-The final stage in the roadmap is to cover components with unit tests and create what is called ‘trusted code regions’.
-
-## Which type of tests?
-
-There are several types of automated developer tests. The following diagram is a typical distribution of automated tests for a “healthy” product:
-
-![Distribution of automated tests](images/test_types.png)
-
-In case of legacy application with poor code structure, coding unit tests on method level while mocking/faking everything else would have very little ROI and would take so much time and effort before the team feels any value.
-
-Instead, at this stage, we will concentrate on component, integration, and system tests. These are the 20% of tests which will realize 80% of the value. Also, there are some other reasons which makes such higher-level tests more appealing:
-
-1. In the previous stage (divide & conquer), we have already prepared component interfaces, and they became ready for getting covered by tests
-2. Component tests create what is called ‘trusted code regions’, and divides the overall complexity of testing among components
-3. Still, the internal complexity of the component code is still high. Remember that we refrained from doing any risky refactorings so far. This is why unit tests may not be feasible at this stage
-
-## Tracking coverage
-
-# Continuous Inspection Throughout the Roadmap
-
-## Why continuous inspection is important?
-
-## Which conventions should be put under continuous inspection?
-
-## Example: Code clones continuous inspection using Jenkins and ConQAT
-
-# Starting a New Project? Important Considerations

@@ -1,5 +1,13 @@
 intro.md
 
+BeforeYouStart.md
+
 main.md
+
+injectQualityIn.md
+
+ContinuousInspection.md
+
+NewProjects.md
 
 backmatter.md

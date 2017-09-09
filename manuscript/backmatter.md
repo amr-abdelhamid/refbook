@@ -29,4 +29,6 @@ Queen’s University, Canada, Rochester Institute of Technology, USA
 
 [12]  Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides (1994). *Design Patterns: Elements of Reusable Object-Oriented Software*. Addison Wesley. pp. 19.
 
-[13] Eric S. Raymond (2003). *["The Art of Unix Programming: Unix and Object-Oriented Languages"](http://www.catb.org/esr/writings/taoup/html/unix_and_oo.html)*. Retrieved 2017-9-6.
+[13] Eric S. Raymond (2003). *[The Art of Unix Programming: Unix and Object-Oriented Languages](http://www.catb.org/esr/writings/taoup/html/unix_and_oo.html)*. Retrieved 2017-9-6.
+
+[14] Robert C. Martin. *[Principles of Object Oriented Design](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod)*. Retrieved 9-9-2017.
