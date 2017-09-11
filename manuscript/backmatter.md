@@ -8,7 +8,7 @@
 
 [2] Heitlager I, Kuipers T, Visser J (2007) *A practical model for measuring maintainability*. In: 6th Int. Conf. on the Quality of Information and Communications Technology (QUATIC 2007), IEEE Computer Society, pp 30–39.
 
-[3] http://pdf.aminer.org/000/326/312/software_complexity_and_maintainability.pdf, pp 251.
+[3] Rajiv D. Banker, Srikant M. Datar, and Dani Zweig. [*Software Complexity and Maintainability*](http://pdf.aminer.org/000/326/312/software_complexity_and_maintainability.pdf), pp 251.
 
 [4] Refactoring as a lifeline
 
@@ -17,7 +17,7 @@
 [6] *An Empirical Study of Dormant Bugs*,
 Queen’s University, Canada, Rochester Institute of Technology, USA
 
-[7] https://www.cqse.eu/publications/2009-do-code-clones-matter.pdf
+[7] Elmar Juergens et al. (2009). [*Do Code Clones Matter?*](https://www.cqse.eu/publications/2009-do-code-clones-matter.pdf). Institut fur Informatik, Technische Universitat Munche.
 
 [8] Martin Fowler, *Refactoring: Improving the Design of Existing Code*, 1999.
 
@@ -31,4 +31,8 @@ Queen’s University, Canada, Rochester Institute of Technology, USA
 
 [13] Eric S. Raymond (2003). *[The Art of Unix Programming: Unix and Object-Oriented Languages](http://www.catb.org/esr/writings/taoup/html/unix_and_oo.html)*. Retrieved 2017-9-6.
 
-[14] Robert C. Martin. *[Principles of Object Oriented Design](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod)*. Retrieved 9-9-2017.
+[14] George Fairbanks (2010). *Just Enough Software Architecture: A Risk-Driven Approach*. Marshall & Brainerd. pp.199
+
+[15] Robert C. Martin. *[Principles of Object Oriented Design](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod)*. Retrieved 9-9-2017.
+
+[16] Philip A. Bernstein and Eric Newcomer (2009). *Principles of Transaction Processing*. The Morgan Kaufmann Series in Data Management Systems, 2nd Edition.

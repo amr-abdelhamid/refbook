@@ -528,19 +528,19 @@ You may stop at this stage. Or, you move to the next step and turn components in
 
 This section is a primer about types of software components. As you may expect, software components may take some universal types which many experienced developers have noted. This will help you detect/uncover modules and enhance your code structure more effectively and efficiently. So, let's start with the first simple guideline for partitioning code:
 
-> Group similar code together!
+> *Group similar code together!*
 
 But, what if the component gets very large, the answer is a second guideline:
 
-> If a module become large, look for similar code inside it, and reapply the first guideline.
+> *If a module become large, look for similar code inside it, and reapply the first guideline.*
 
 Note that determining whether or not a component is large is a subjective decision. In the meanwhile, some experts have coined some "rules of thumb" which may give indication that a module or component is becoming big. One of these rules is the 3-30 rule. Which states that a module may provide at least 3 and at most 30 interfaces methods or functions.
 
-#### Functional (or Business) modules ####
+#### Functional (or Business)
 
 The first thing to think about while grouping similar code together is the business functions. The reason is that they are the easiest to detect and results in the most cohesive module type. The strategy of partitioning code according to business function results in a system abstraction which is more comprehensible and easier to read and understand.
 
-#### Utility modules ####
+#### Utility
 
 When grouping business functions together, you'll notice parts of the code doing some redundant type of work. Sometimes, this is part of the business function itself, like `validateEmployeeId` for validating an multi-part employee id is correctly formed; or `formatEmployeeName` for preparing a special print name of employees based on their name, department, and hiring date. For this type of redundancy, No need to move them to a separate module.
 
@@ -555,22 +555,38 @@ In these cases, the first step is to group all utility functions in a separate g
 
 ![](images/divideandconquer/utilityclasses.png)
 
-#### Port modules ####
+#### Port
 
 Port modules are those which encapsulate communication logic to and from a special resource. For example, communicating with web-services, RMI/IIOP, databases, file system, network resources, etc. So, any type of communication which may be needed by more than one *functional modules* should be encapsulated in a standalone module.
 
+Port modules may be considered a subtype of the *Utility modules* because at the end of the day, a port module is a group of utility functions specialized to do a logical job. Even though, I find it very important to think about port modules as a separate type for two reasons:
+
+* Sometimes, it encapsulates some business logic related to how objects or data are prepared or serialized before sending or after receiving. So, it may not be pure utility functions.
+* This type is almost in all applications and is very commonly used every where. This is why it deserves a special type.
+
 #### Archtypes (aka Core types)
 
-Archtypes are the most noticeable or important data types. Usually, these types are gathered in one core module used by almost all others. Although this raises coupling between this module and the rest of the system, gathering core types in one module reduces the overall coupling among all other modules in the system.
+Archtypes are the most noticeable or important data types [14]. Usually, these types are gathered in one core module used by almost all others. Although this raises coupling between this module and the rest of the system, gathering core types in one module reduces the overall coupling among all other modules in the system.
 
-#### View modules
+#### View
 
-Any software with a graphical user interface needs one or more view modules. Usually, views are tightly coupled with its corresponding functional modules; therefore, it is tempting to package them together in one deployable component. On the other hand, the *Release Reuse Equivalency Principle* states that *"The granule of reuse is the granule of release"* [14]. Meaning that you should keep an eye on how your components are reused. If part on the component is reused more than another, then it should be placed in a separate deployable release, or component.
+Any software with a graphical user interface needs one or more view modules. Usually, views are tightly coupled with its corresponding functional modules; therefore, it is tempting to package them together in one deployable component. On the other hand, the *Release Reuse Equivalency Principle* states that *"The granule of reuse is the granule of release"* [15]. Meaning that you should keep an eye on how your components are reused. If part on the component is reused more than another, then it should be placed in a separate deployable release, or component.
 
-The *Common Closure Principle* gives another dimension. It states that: *"Classes that change together are packaged together"* [14]. Sometimes, change in business requires a counterpart change in view and vice versa. In this case, following the principle, you should keep them together. However, if the changes are usually confined to view or business, you should place each one of them in a separate component.
+The *Common Closure Principle* gives another dimension. It states that: *"Classes that change together are packaged together"* [15]. Sometimes, change in business requires a change in view and vice versa. In this case, following the principle, you should keep them together. In contrast, if the changes are usually confined to view or business, you should place each one of them in a separate component.
 
 #### Architectural style
 
+This is one way of partitioning your code: following an architectural style [14]. If you're maintaining a heavy transactional system, a banking system for instance, then probably it will follow a *Transaction Processing* style [16]. In this architectural style, transactions are recorded and processed later on. This is a high level diagram of typical components in transaction processing application:
+
+![](images/divideandconquer/transactionprocessingarchstyle.png)
+
+* Transaction Input: Typically a view or port component
+* Transaction Dispatcher: A mediator component responsible for dispatching logged transaction to processors
+* Transaction Handlers: Components for processing different types of transactions
+
+As you may notice, these components can sometimes be considered functional (Transaction Handlers), Port or View (Transaction Input), or Utility (Dispatcher). Even though, the reason of their existence is the architectural style itself; and components and relationships are defined to fulfill a set of constraints and promote some pre-defined system quality attributes. This is why these components are put under this category.
+
+In most cases, you may find glimpses of these architectural styles while you are refactoring old code. Try to honor this structure and enhance its encapsulation.
 
 ## A walk through an example
 
@@ -582,7 +598,7 @@ Circular dependencies occurs when one component depends on another component whi
 
 ![A dependency cycle causing circular dependency between components B and C](images/divideandconquer/circular_dependency.png)
 
-With workarounds in compilation and late binding strategies, you can live with circular dependencies. However, overlooking this type of cyclic dependency increases coupling between components. After a while, this may grow more and more and result in higher level of complexity, more regression type of defects, upfront load time, and possible memory leaks due to cyclic references which never releases used objects.
+You can live with circular dependencies for some time. However, in the long term your code may become very complex with higher levels of coupling between components. In time, this will result in more regression type of defects, upfront load time, and possible memory leaks due to cyclic references which never releases used objects. A perfect recipe for how to create spaghetti code!
 
 Here are some strategies to break circular dependencies:
 
@@ -603,3 +619,19 @@ Here are some strategies to break circular dependencies:
 [^solid]: This is the sixth principle of the famous SOLID principles of object oriented design by Robert C. Martin [11]
 
 #### Honor existing architecture
+
+Developers tend to deviate from existing initial architecture for many reasons; for lack of design clarity, insufficient documentation, or emergent design consideration which was not handled before. The volume of these "violations" to initial architecture was found to be from 9% to 19% of all dependencies in the system [17] for healthy project (projects with updated reference architecture).
+
+For poor and cluttered projects, the percentage is much higher. The diagrams below present the amount of violations found in two projects I worked with. What we have done is that we have first drawn the architectural modules and the expected dependencies between them. Then, we have used ConQat [^conqat] to check the architecture validity and detect any violations:
+
+![Green lines are the expected dependencies between components. Redlines are relationships and dependencies which do not confirm to expected dependencies, and therefore, they are considered violations.](images/divideandconquer/arch_analysis_2.png)
+
+![Green lines are hidden in order to make violations clearer](images/divideandconquer/arch_analysis_1.png)
+
+As you can see, both systems suffer from so many violations and circular dependencies. You may also anticipate many un-necessary calls and high level coupling among components.
+
+To fix this situation, we gradually worked on moving classes and methods around to reduce dependencies and remove violations. Using two simple refactorings: *Move Class* and *Move Method*, we managed to remove most of the violations.
+
+The key takeaway of this experiment is that existing architectural components should be honored and refined during first attempts to reduce dependencies and lower coupling between components.
+
+[^conqat]: Architectural analysis is done by [ConQAT](https://www.cqse.eu/en/products/conqat/overview/), a **Con**tinuous **Q**u**a**li**t**y monitoring tool developed by the Technical University of Munich.
