@@ -393,13 +393,7 @@ A> Im many cases, using composition with the [Strategy pattern](https://en.wikip
 A>
 A> ![](images/cartype1.png)
 A>
-A> Now, consider adding a capability to simulate two steering systems: Power and Electric. If we continue using inheritance, we will have to introduce duplication, the enemy of clean code. In the example, the logic of power steering is now duplicated in both:
-A> * `PowerSteeringAbsBrakingCar`
-A> * `PowerSteeringStandardBrakingCar`
-A>
-A> and the logic of electric steering is duplicated in both:
-A> * `ElectricSteeringAbsBrakingCar`
-A> * `ElectricSteeringStandardBrakingCar`
+A> Now, consider adding a capability to simulate two steering systems: Power and Electric. If we continue using inheritance, we will have to introduce duplication, the enemy of clean code. In the example, the logic of power steering is now duplicated in both `PowerSteeringAbsBrakingCar` and `PowerSteeringStandardBrakingCar`, and the logic of electric steering is duplicated in both `ElectricSteeringAbsBrakingCar` and `ElectricSteeringStandardBrakingCar`
 A>
 A>
 A> ![](images/cartype2.png)
@@ -545,15 +539,24 @@ You may stop at this stage. Or, you move to the next step and turn components in
 
 ## Types of software components - Strategies for breaking code apart
 
-This section is a primer about types of software components. As you may expect, software components may take some universal types which many experienced developers have noted. This will help you detect/uncover modules and enhance your code structure more effectively and efficiently. So, let's start with the first simple guideline for partitioning code:
+This section is a primer about types of software components. As you may expect, software components may take some universal types which many experienced developers have noted. This will help you detect/uncover modules and enhance your code structure more effectively and efficiently. In this section, we will cover these types of software modules/components:
 
-> *Group similar code together!*
+* Functional (or business)
+* Utility
+* Port
+* View
+* Archtypes (or Code types)
+* Architectural style
+
+Before we do that, These are two guidelines for breaking code apart:
+
+> *Guideline 1: Group similar code together!*
 
 But, what if the component gets very large, the answer is a second guideline:
 
-> *If a module become large, look for similar code inside it, and reapply the first guideline.*
+> *Guideline 2: If a module becomes large, look for similar code inside it, and reapply the first guideline.*
 
-Note that determining whether or not a component is large is a subjective decision. In the meanwhile, some experts have coined some "rules of thumb" which may give indication that a module or component is becoming big. One of these rules is the 3-30 rule. Which states that a module may provide at least 3 and at most 30 interfaces methods or functions.
+Note that determining whether or not a component is large is a subjective decision. In the meanwhile, There 3-30 "rule of thumb" may give indication whether a module or component is becoming big. It states that a module may provide at least 3 and at most 30 interface methods or functions.
 
 #### Functional (or Business)
 
@@ -566,6 +569,7 @@ When grouping business functions together, you'll notice parts of the code doing
 In other cases, you may detect utility functions which are distinctive and may not relate to the core business functionality. These are some examples of utility functions:
 * Standard mathematical or string calculations, like `calculatePercentage(base, percent)` for calculating a percentage out of a base number, or `divideFullNameIntoParts` which returns person first to last names organized into an array
 * Batch operations on collections of raw data, like `multiplyByPercent`, which receives a collection of values and returns the same set multiplied by a parameter value.
+
 * Reading or writing records from an excel file.
 * Parsing XML or JSON structures
 * etc.
@@ -583,7 +587,7 @@ Port modules may be considered a subtype of the *Utility modules* because at the
 * Sometimes, it encapsulates some business logic related to how objects or data are prepared or serialized before sending or after receiving. So, it may not be pure utility functions.
 * This type is almost in all applications and is very commonly used every where. This is why it deserves a special type.
 
-#### Archtypes (aka Core types)
+#### Archtypes (or Core types)
 
 Archtypes are the most noticeable or important data types [14]. Usually, these types are gathered in one core module used by almost all others. Although this raises coupling between this module and the rest of the system, gathering core types in one module reduces the overall coupling among all other modules in the system.
 
@@ -608,6 +612,8 @@ As you may notice, these components can sometimes be considered functional (Tran
 In most cases, you may find glimpses of these architectural styles while you are refactoring old code. Try to honor this structure and enhance its encapsulation.
 
 ## A walk through an example
+
+< under development >
 
 ## Considerations while breaking code apart
 
