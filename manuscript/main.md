@@ -351,7 +351,7 @@ In an interesting study titled: *Concise and Consistent Naming*, the authors has
 
 ![Token analysis of Eclipse 3.0 source code shows that 70* of the code is identifiers which developers coin their names](images/eclipse_token_analysis.png)
 
-This is why "the names chosen as identifiers are of paramount importance for the readability of computer programs and therewith their comprehensibility" [18]. Imagine that every class, method, parameter, local variable, every name in your software is indicative and properly named, imagine how readable your software will become.
+This is why "the names chosen as identifiers are of paramount importance for the readability of computer programs and therewith their comprehensibility" [17]. Imagine that every class, method, parameter, local variable, every name in your software is indicative and properly named, imagine how readable your software will become.
 
 The good news is that renaming is a low hanging fruit that we can do with minimal side effects, especially if automated *Rename* refactoring is used.
 
@@ -418,7 +418,11 @@ Another example is working on reducing method size before removing duplicates. T
 
 #### How to determine whether or not we are done?
 
+< under development >
+
 #### Are these refactorings safe?
+
+< under development >
 
 # Divide and Conquer {#DivideAndConquer}
 
@@ -443,9 +447,31 @@ In this stage, introducing structure is the goal. Although all the enhancements 
 
 ## Guiding design principles
 
+#### Abstraction
+
+< under development >
+
+#### Stepwise refinement
+
+< under development >
+
+#### Modularity
+
+< under development >
+
+#### Information hiding (or Encapsulation)
+
+< under development >
+
+#### Simplicity
+
+< under development >
+
 #### Coupling and Cohesion
 
 Cohesion "measures the degree of connectivity among the elements of a single module" [grady booch, object oriented analysis and design]
+
+< under development >
 
 ## Modules, components, or services?
 
