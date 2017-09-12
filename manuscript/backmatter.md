@@ -36,3 +36,5 @@ Queen’s University, Canada, Rochester Institute of Technology, USA
 [15] Robert C. Martin. *[Principles of Object Oriented Design](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod)*. Retrieved 9-9-2017.
 
 [16] Philip A. Bernstein and Eric Newcomer (2009). *Principles of Transaction Processing*. The Morgan Kaufmann Series in Data Management Systems, 2nd Edition.
+
+[17] Florian Deißenbock and Markus Pizka *[Concise and Consistent Naming](http://www4.informatik.tu-muenchen.de/publ/papers/deissenboeck_pizka_identifier_naming.pdf)*. Institut fur Informatik, Technische Universitat Munchen. Retrieved 12-September-2017.
