@@ -25,7 +25,11 @@ Usually, code is already organized in high level modules. We will keep that and 
 
 #### Inject quality in: Cover components with automated tests
 
+< under development >
+
 #### Continuous Inspection
+
+< under development >
 
 # Quick-Wins
 
@@ -165,6 +169,10 @@ This type of clones are very interesting. It picks exact or similar code with 1-
 
 In both above examples, you may need to introspect the code before doing anything. It may be a valid case which should only be available in one clone and not the other.
 
+**Type 4: Semantic clones**
+
+The forth type of clones deals with fragments of code doing the same thing but do not share similar structure. For example, implementing a routine which calculates the factorial of a number, one using for loops and another using recursion. There are lots of efforts in the academia to research whether it is possible to detect type 4 of code clones or not. Till they reach something tangible, we will work on the first three types.
+
 A> #### Dormant Bugs and Gapped Clones
 A> *Dormant bugs* are bugs which have lived some time on production before they are discovered. Recent studies found that 30% of bugs are dormant. This is scary, because this indicates that there are other bugs with each and every deployment which is still not detected. You have no idea when they will fire back; you have no idea what would be the side effects [6].
 A>
@@ -173,10 +181,6 @@ A>
 A> ![If there are 100 code clones, 52 of them are gapped clones. If you drill into these gapped clones, you'll find 18% of them are system faults](images/duplicatecode/PercentageOfDefectsInGappedClones.png)
 A>
 A> This means that if you managed to remove 100 gapped clones, then congratulations! You've removed **18 dormant bugs!**
-
-**Type 4: Semantic clones**
-
-The forth type of clones deals with fragments of code doing the same thing but do not share similar structure. For example, implementing a routine which calculates the factorial of a number, one using for loops and another using recursion. There are lots of efforts in the academia to research whether it is possible to detect type 4 of code clones or not. Till they reach something tangible, we will work on the first three types.
 
 #### Removing code duplicates ####
 
@@ -203,7 +207,7 @@ One thing I like about this definition is the clearly-stated objectives of refac
 
 Having these two objectives in mind, it's possible to develop your "gut feeling" about the correct length of a method.
 
-Let's agree that a method is *maintainable* when it fulfills these two criteria: understandability and modifiability, and need no further refactoring;  Consider this method and try to evaluate how *maintainable* it is. To help you do that, start a stopwatch and measure the time to understand the intent of the method code lines.
+Let's agree that a method is *maintainable* and needs no further refactoring when it fulfills these two criteria of being understandable and modifiable. Now, consider this method and try to evaluate how *maintainable* it is. To help you do that, start a stopwatch and measure the time to understand the intent of the method code lines.
 
 {lang="java"}
 ~~~~~~~~
@@ -298,9 +302,10 @@ public List criteriaFind(String criteria) {
 }
 ~~~~~~~~
 
-Adding some comments makes the method somehow more readable. Sometimes, they make it harder to read the code because it overloads the code with more information. But, for this example, it's a bit better.
+Adding some comments are generally perceived to enhance code understandability. It may clutter the code a bit, but at least in this example, the code is a little more readable. But, wait a minute, if we are adding comments to make the code more readable, isn't this an indication that the code is not maintainable, according to our definition? The answer is yes. This is why *explanatory comments* are generally considered a code smell, or a sign of bad code.
 
-But, wait a minute. Why are we adding comments? To make the code more readable, right? which indicates that the code is not maintainable, according to our definition. Actually, this is why *explanatory comments* are generally considered a code smell, or a sign of bad code.
+{icon=bookmark}
+G> *If we are adding comments to make the code more readable, isn't this an indication that the code is not maintainable, according to our definition? The answer is yes. This is why __explanatory comments__ are generally considered a code smell, or a sign of bad code.*
 
 Now, let's work on this method. If you notice, comments are placed at perfect places. They give you a hint of the *Boundaries of Logical Units* inside the method. Such logical units are functionally cohesive and are candidate to become standalone methods. Not only that, the comment itself is a perfect starting point for naming of the newly born method.
 
@@ -342,11 +347,17 @@ G> *You know you are working on clean code when each routine you read turns out 
 G>
 G> \- *- Ron Jeffries*
 
-Identifiers constitute 70% of the characters of your program.
+In an interesting study titled: *Concise and Consistent Naming*, the authors has conducted token analysis on Eclipse 3.0 code, and found that *"Approximately 70% of the source code of a software system consists of identifiers"*:
+
+![Token analysis of Eclipse 3.0 source code shows that 70* of the code is identifiers which developers coin their names](images/eclipse_token_analysis.png)
+
+This is why "the names chosen as identifiers are of paramount importance for the readability of computer programs and therewith their comprehensibility" [18]. Imagine that every class, method, parameter, local variable, every name in your software is indicative and properly named, imagine how readable your software will become.
+
+The good news is that renaming is a low hanging fruit that we can do with minimal side effects, especially if automated *Rename* refactoring is used.
 
 A> #### Explanatory methods and fields
-
--- Aside for explanatory methods and fields
+A>
+A> < under development - put here the example of bubble sort>
 
 [^clean-ron]: Quoted in *Leading Lean Software Development: Results Are not the Point*, by Mary and Tom Poppendieck.
 

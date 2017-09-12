@@ -17,3 +17,5 @@ Instead, at this stage, we will concentrate on component, integration, and syste
 3. Still, the internal complexity of the component code is still high. Remember that we refrained from doing any risky refactorings so far. This is why unit tests may not be feasible at this stage
 
 ## Tracking coverage
+
+< under development >

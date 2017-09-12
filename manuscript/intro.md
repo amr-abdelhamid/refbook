@@ -82,12 +82,12 @@ G> *Managers will not sponsor an activity which they cannot track or control.*
 
 #### 4. The Technical Glut Trap {#thetrab}
 
-Some teams indulges in deep technical reviews and merciless code refactoring with no limits to their technical imagination and creativity. 
+Some teams indulges in deep technical review and merciless code refactoring with no limits to their technical imagination and creativity.
 
-As shown in the next figure, this formed an endless positive feedback loop, where refactoring might never end. This dynamic intensifies when the outer dashed loop pushes in the same direction and the changes deteriorates the code rather than enhance it.
+As shown in the next figure, this may form an endless positive feedback loop, because of which refactoring might never end. This dynamic intensifies when the outer dashed loop pushes in the same direction and the changes deteriorates the code rather than enhance it.
 
 {width=60%,float=left}
-![The dashed lines are another positive feedback loop. If changes make the code less clean (or less readable and more complex), this may escalate the effect of the inner positive feedback loop. Signs indicate whether an action has a positive or negative effect. The ± sign indicates that changing code may produce either more clean or less clean code based on the kind of change](images/technical_glut_trap.png)
+![The more you change the code, the more ideas you'll get to further change the code. Unless you keep your changes small and integrated frequently, the cycle will keep escalating and the code will be finally thrown away. The dashed lines are another positive feedback loop. If changes make the code less clean (or less readable and more complex), this may escalate the effect of the inner positive feedback loop.](images/technical_glut_trap.png)
 
 One very frequent example of the technical glut trap is when the team focuses more and more on refactoring to patterns to make the code more "robust" with respect to patterns, but less readable and more complex to maintain!
 
