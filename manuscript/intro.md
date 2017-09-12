@@ -82,9 +82,14 @@ G> *Managers will not sponsor an activity which they cannot track or control.*
 
 #### 4. The Technical Glut Trap {#thetrab}
 
-Some teams indulged in deep technical reviews and merciless code refactoring with no limits to their technical imagination and creativity. As shown in Fig. 1 below, this formed an endless positive feedback loop, where refactoring could never end. This dynamic intensified when the other dashed loop pushed in the same direction. That is when the enhancements did not enhance the code but only created more cluttered code. This happened when the team concentrated solely on refactoring to patterns, making the code more robust with respect to patterns, but less readable and more complex to maintain!
+Some teams indulges in deep technical reviews and merciless code refactoring with no limits to their technical imagination and creativity. 
 
+As shown in the next figure, this formed an endless positive feedback loop, where refactoring might never end. This dynamic intensifies when the outer dashed loop pushes in the same direction and the changes deteriorates the code rather than enhance it.
+
+{width=60%,float=left}
 ![The dashed lines are another positive feedback loop. If changes make the code less clean (or less readable and more complex), this may escalate the effect of the inner positive feedback loop. Signs indicate whether an action has a positive or negative effect. The ± sign indicates that changing code may produce either more clean or less clean code based on the kind of change](images/technical_glut_trap.png)
+
+One very frequent example of the technical glut trap is when the team focuses more and more on refactoring to patterns to make the code more "robust" with respect to patterns, but less readable and more complex to maintain!
 
 #### 5. Unsustainable Development Pace
 

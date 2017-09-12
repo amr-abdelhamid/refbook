@@ -4,7 +4,7 @@
 Start with high value-add and least risky activities, then work on re-organizing code chunks into components, and finally wrap everything with automated tests. In all stages, automate checks to make sure what is fixed will remain fixed.
 
 {id="refactoring_roadmap"}
-![](images/roadmap.jpg)
+![](images/roadmap.png)
 
 #### Quick-wins: simple and least risky enhancements
 
@@ -340,7 +340,7 @@ A> Such logical units are perfect candidates to be extracted into *private* meth
 {icon=quote-left}
 G> *You know you are working on clean code when each routine you read turns out to be pretty much what you expected[^clean-ron]*
 G>
-G> /- *- Ron Jeffries*
+G> \- *- Ron Jeffries*
 
 Identifiers constitute 70% of the characters of your program.
 
@@ -382,7 +382,14 @@ A> Im many cases, using composition with the [Strategy pattern](https://en.wikip
 A>
 A> ![](images/cartype1.png)
 A>
-A> Now, consider adding a capability to simulate two steering systems: Power and Electric. If we continue using inheritance, we will have to introduce duplication, the enemy of clean code. In the example, the logic of power steering is now duplicated in `PowerSteeringAbsBrakingCar` and `PowerSteeringStandardBrakingCar`; and the logic of electric steering is duplicated in `ElectricSteeringAbsBrakingCar` and `ElectricSteeringStandardBrakingCar`:
+A> Now, consider adding a capability to simulate two steering systems: Power and Electric. If we continue using inheritance, we will have to introduce duplication, the enemy of clean code. In the example, the logic of power steering is now duplicated in both:
+A> * `PowerSteeringAbsBrakingCar`
+A> * `PowerSteeringStandardBrakingCar`
+A>
+A> and the logic of electric steering is duplicated in both:
+A> * `ElectricSteeringAbsBrakingCar`
+A> * `ElectricSteeringStandardBrakingCar`
+A>
 A>
 A> ![](images/cartype2.png)
 A>
@@ -479,13 +486,14 @@ Modules and components run typically in the same process; unlike services, which
 
 So, Services enjoys the maximum level of decoupling. You can view them as standalone applications which could be glued together in order to provide greater value for some end user.
 
-Now, the questions is: *Do we need to divide our code into modules or components or services?* The only affirmative answer that I can provide is that: Divide the code into modules. Then, assess whether or not it is useful and safe to upgrade them to components or services.
+Now, the questions is: *Do we need to divide our code into modules or components or services?* The only answer that I can provide is: Divide the code into modules. Then, assess whether or not it is useful and safe to upgrade them to components or services.
 
 {icon=bookmark}
 G> *Divide the code into modules. Then, assess whether or not it is **useful AND safe** to upgrade them to components or services.*
 
 A> ## What about Microservices?
-The main difference between Web-services (or just services), which what I referenced in the past discussion, is that each microservice has a separate standalone datastore. Services, on the other hand, share a common datastore.
+A>
+A> In the above discussion, I have talked about web-service (or just services). The main difference between services and microservices is that services share a common datastore, whereas each microservice has a separate standalone datastore.
 A>
 A> When looking from the angle of refactoring legacy or monolithic application code bases, it is not feasible to exert any effort or even think about splitting a large backend database into smaller ones and move towards a microservices architecture. Some other challenges looms in the way like handling distributed transactions and understanding and supporting the call chain for every business transaction[^nealford].
 A>
@@ -618,7 +626,7 @@ Here are some strategies to break circular dependencies:
 
 [^solid]: This is the sixth principle of the famous SOLID principles of object oriented design by Robert C. Martin [11]
 
-#### Honor existing architecture
+#### Start from (and honor) existing architecture
 
 Developers tend to deviate from existing initial architecture for many reasons; for lack of design clarity, insufficient documentation, or emergent design consideration which was not handled before. The volume of these "violations" to initial architecture was found to be from 9% to 19% of all dependencies in the system [17] for healthy project (projects with updated reference architecture).
 
