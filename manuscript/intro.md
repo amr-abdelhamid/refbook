@@ -41,7 +41,7 @@ There are two fundamental problems with this approach:
 
 **As per the book**
 
-There are so many excellent books which teaches you a lot about clean coding, refactoring, design patterns, etc. While all these books are extremely helpful, none of them can be a step-by-step guide to refactoring poor code. Actually, they are not written to do so. Rather, they are like a buffet of so many good advice and proven practices and techniques. However, they don'e tell you which of them is higher priority than other in *your* case.
+There are so many excellent books which teaches you a lot about clean coding, refactoring, design patterns, etc. While all these books are extremely helpful, none of them can be a step-by-step guide to refactoring poor code. Actually, they are not written to do so. Rather, they are like a buffet of so many good advice and proven practices and techniques. However, they don't tell you which of them is higher priority than other in *your* case.
 
 **Try-then-retry**
 
