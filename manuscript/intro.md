@@ -18,7 +18,7 @@ In the 90’s, 70 billion of the 100 billion expenditure on software products ar
 
 Over the course of several years, I have struggled with teams to refactor their application code to be easier to understand and cheaper to modify. These attempts followed one or more of the old-way patterns described below. I have to say that most of these attempts failed or achieved very little value.
 
-**Re-write the whole**
+**1. Re-write the whole**
 
 This solution looms like the easiest solution from both technical and management point of views. If code is cluttered and causing lots of trouble, trash it and start from scratch. The question is: If you start from scratch, what makes you confident that you'll not hit the same wall again?
 
@@ -31,7 +31,7 @@ It's like the next picture of two accidents. Car capabilities are different, one
 
 So, if you would like to start over again and not hit the same wall, you have to change your development habits, rather than change the code. But, why not change development habits while still maintaining the same code? This would definitely save us millions of investment, and this book gives you a roadmap how to do that.
 
-**Technical hero**
+**2. Technical hero**
 
 This is a very common. Hire a highly qualified technical person and give him full authority and power. People usually expect that such a person is magically capable (someway or another) to fix things up and turn around the code from being cluttered and spaghetti to structured, readable, understandable and changeable.
 
@@ -40,11 +40,11 @@ There are two fundamental problems with this approach:
 1. Such persons are very expensive and may not be affordable by many organizations. If this is the only way to go, then refactoring has become a luxury product only attainable by big and wealthy organizations. For all others, hard luck. What we aspire, instead, is to enable all software people to refactor their own code themselves; regardless of their seniority or technical expertise. This is more sustainable, although requires some more time and effort.
 2. Beware that a technical hero may well take wrong refactoring decisions, especially if nobody is reviewing his work. Such decisions may lead the whole team into a dead end and waste so much time. Having full power and authority may also lead very easily to what I called a [Technical Glut Trab](#thetrab) described below.
 
-**As per the book**
+**3. As per the book**
 
-There are so many excellent books which teaches you a lot about clean coding, refactoring, design patterns, etc. While all these books are extremely helpful, none of them can be a step-by-step guide to refactoring poor code. Actually, they are not written to do so. Rather, they are like a buffet of so many good advice and proven practices and techniques. However, they don't tell you which of them is higher priority than other in *your* case.
+This is another pattern in which people tend to follow advice *as per the book*. There are so many excellent books which teaches you a lot about clean coding, refactoring, design patterns, etc. While all these books are extremely helpful, they might not be used as step-by-step guide to refactoring poor code. Rather, they are like a buffet of so many good advice and proven practices and techniques; however, they don't tell you which of them is higher priority than other in *your* case.
 
-**Try-then-retry**
+**4. Try-then-retry**
 
 This is another pattern which I see very frequently. If you have large amounts of technical debt, try to fix a part of the product once there is a change request related to this part. If it works, then fine. If not, retry with the next change request.
 
