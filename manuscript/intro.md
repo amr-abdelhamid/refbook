@@ -52,10 +52,6 @@ Although this is the most pragmatic approach to handling technical debt, but it 
 
 ---
 
-While these are all good efforts, there has to be a better way. The issue is that such haphazard efforts are usually faced with so many circumstances and risks which may lead to immature results and, sometimes, complications to the original problems.
-
-## Why refactoring fails? {#whyrefactoringfails}
-
 I have documented some observations (or rather surprises) from these failures in an experience report published several years ago [2]. This is a summary of the most important ones:
 
 * Covering your code with automated tests is not the first step in refactoring!
@@ -64,7 +60,9 @@ I have documented some observations (or rather surprises) from these failures in
 * In many cases, managers do believe that continuous refactoring is necessary to keep the code healthy. However, we noticed that they do not sponsor refactoring effort. Why? The answer is that _managers will not sponsor an activity which they cannot track or control._
 * For refactoring to succeed, several qualification should exist in the development environment. Qualifying the environment may take sometime to be done; but once done, refactoring is 90% complete!
 
-In the same report [2], I've listed some key factors or reasons why refactoring failed in early experiments:
+These observations may somehow be correlated to reasons why refactoring fails. In the same report [2], I have elaborated more on them and listed some key factors why refactoring failed in early experiments. This is the topic of the next section. 
+
+## Why refactoring fails? {#whyrefactoringfails}
 
 #### 1. Vague and hazy objectives
 
