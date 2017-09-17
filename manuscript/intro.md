@@ -36,6 +36,7 @@ So, if you would like to start over again and not hit the same wall, you have to
 This is a very common. Hire a highly qualified technical person and give him full authority and power. People usually expect that such a person is magically capable (someway or another) to fix things up and turn around the code from being cluttered and spaghetti to structured, readable, understandable and changeable.
 
 There are two fundamental problems with this approach:
+
 1. Such persons are very expensive and may not be affordable by many organizations. If this is the only way to go, then refactoring has become a luxury product only attainable by big and wealthy organizations. For all others, hard luck. What we aspire, instead, is to enable all software people to refactor their own code themselves; regardless of their seniority or technical expertise. This is more sustainable, although requires some more time and effort.
 2. Beware that a technical hero may well take wrong refactoring decisions, especially if nobody is reviewing his work. Such decisions may lead the whole team into a dead end and waste so much time. Having full power and authority may also lead very easily to what I called a [Technical Glut Trab](#thetrab) described below.
 
@@ -55,7 +56,7 @@ While these are all good efforts, there has to be a better way. The issue is tha
 
 ## Why refactoring fails? {#whyrefactoringfails}
 
-I have documented some observations (or rather surprises) from these failures in an experience report published several years ago [4]. This is a summary of the most important ones:
+I have documented some observations (or rather surprises) from these failures in an experience report published several years ago [2]. This is a summary of the most important ones:
 
 * Covering your code with automated tests is not the first step in refactoring!
 * Working on refactoring for a long time is like working on bug fixing for a long time. It simply sucks! There has to be another way which is more sustainable.
@@ -63,7 +64,7 @@ I have documented some observations (or rather surprises) from these failures in
 * In many cases, managers do believe that continuous refactoring is necessary to keep the code healthy. However, we noticed that they do not sponsor refactoring effort. Why? The answer is that _managers will not sponsor an activity which they cannot track or control._
 * For refactoring to succeed, several qualification should exist in the development environment. Qualifying the environment may take sometime to be done; but once done, refactoring is 90% complete!
 
-In the same report [4], I've listed some key factors or reasons why refactoring failed in early experiments:
+In the same report [2], I've listed some key factors or reasons why refactoring failed in early experiments:
 
 #### 1. Vague and hazy objectives
 
