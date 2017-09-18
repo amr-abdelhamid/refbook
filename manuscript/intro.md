@@ -2,7 +2,7 @@
 
 # Introduction and Background
 
-The story of this book started long ago in 2009 while helping organizations and coaching teams to adopt more agile ways of work. I have faced lots of problems working with team whose code is extremely poor. This was a show stopper, and teams suffered from frequent code failures and intermittent outages. Such code was literally stopping them from transitioning to shorter iterations or even smaller releases.
+The story of this book started long ago in 2009 while helping organizations and coaching teams to adopt more agile ways of work. I have faced lots of problems working with teams whose code is extremely poor. This was a show stopper, and teams suffered from frequent code failures and intermittent outages. Such code was literally stopping them from transitioning to shorter iterations or even smaller releases.
 
 ## Why am I writing this book?
 
@@ -12,7 +12,7 @@ This book is **not** a reference for all clean coding techniques and refactoring
 
 ## Why refactoring matters?
 
-In the 90’s, 70 billion of the 100 billion expenditure on software products are spent on maintenance; and 60% of which is consumed to locate defective code [1]. Using simple algebra, reducing the amount of time to locate defective code by 30% would reduce the overall expenditure on software by 15%, which is huge improvement.
+In the 90’s, 70 billion of the 100 billion expenditure on software products are spent on maintenance; and 60% of which is consumed to locate defective code [1]. Using simple algebra, reducing the amount of time to locate defective code by 30% would reduce the overall expenditure on software by 15%, which is a huge improvement.
 
 ## How to refactor - the "old" way
 
@@ -33,10 +33,10 @@ So, if you would like to start over again and not hit the same wall, you have to
 
 **Technical hero**
 
-This is a very common. Hire a highly qualified technical person and give him full authority and power. People usually expect that such a person is magically capable (someway or another) to fix things up and turn around the code from being cluttered and spaghetti to structured, readable, understandable and changeable.
+This is a very common workaround. Hire a highly qualified technical person and give him full authority and power. People usually expect that, such a person is magically capable (someway or another) to fix things up and turn around the code from being cluttered and spaghetti to structured, readable, understandable and changeable.
 
 There are two fundamental problems with this approach:
-1. Such persons are very expensive and may not be affordable by many organizations. If this is the only way to go, then refactoring has become a luxury product only attainable by big and wealthy organizations. For all others, hard luck. What we aspire, instead, is to enable all software people to refactor their own code themselves; regardless of their seniority or technical expertise. This is more sustainable, although requires some more time and effort.
+1. Such persons are very expensive and may not be affordable by many organizations. If this is the only way to go, then refactoring has become a luxury product that is only attainable by big and wealthy organizations. For all others, hard luck. What we aspire, instead, is to enable all software people to refactor their own code themselves; regardless of their seniority or technical expertise. This is more sustainable, although requires more time and effort.
 2. Beware that a technical hero may well take wrong refactoring decisions, especially if nobody is reviewing his work. Such decisions may lead the whole team into a dead end and waste so much time. Having full power and authority may also lead very easily to what I called a [Technical Glut Trab](#thetrab) described below.
 
 **As per the book**
