@@ -42,7 +42,7 @@ G> \- *- Kevlin Henney*
 
 Dead code is the "unnecessary, inoperative code that can be removed without affecting program’s functionality". These include: "functions and sub-programs that are never called, properties that are never read or written, and variables, constants and enumerators that are never referenced, user-defined types that are never used, API declarations that are redundant, and even entire modules and classes that are redundant." [10]
 
-It is fairly intuitive (and was shown empirically) that as code grows in size, it needs more maintenance [2][9]. This can be attributed to three factors:
+It is fairly intuitive (and was shown empirically) that as code grows in size, it needs more maintenance [4][9]. This can be attributed to three factors:
 
 1. More time needed to analyze code and locate bugs
 2. Larger code implies bigger amount of functionality, which, in turn, requires more maintenance
@@ -96,7 +96,7 @@ The idea is the same as measuring test coverage. In test coverage, tools help yo
 
 ---
 
-Removing dead code is a quick win by all means. It doesn't take time and gives a big relief for the team. In my experience, teams take no more than 2-3 days removing crap and end up with this feeling of achievement! On average, in this small period of time, teams manage to remove 4% to 7% (and sometimes 10%) or dead code [4].
+Removing dead code is a quick win by all means. It doesn't take time and gives a big relief for the team. In my experience, teams take no more than 2-3 days removing crap and end up with this feeling of achievement! On average, in this small period of time, teams manage to remove 4% to 7% (and sometimes 10%) of dead code [2].
 
 ## Removing code duplicates
 
@@ -412,7 +412,7 @@ Using automated refactoring tools contributes to safety and makes developers mor
 
 Yes, with little bit of overlap. This is logical and practical. For example, removing dead code, removes about 10% of your code duplicates[^deadcode].
 
-[^deadcode]: This was validated in one of our experiments. We found that removing dead code removes also 10% of duplicate code [4]. This is totally reasonable, because a good portion of duplicated code are duplicated and then abandoned.
+[^deadcode]: This was validated in one of our experiments. We found that removing dead code removes also 10% of duplicate code [2]. This is totally reasonable, because a good portion of duplicated code are duplicated and then abandoned.
 
 Another example is working on reducing method size before removing duplicates. This actually is a bad practice. Because, you may split a method apart while it is actually a duplicate of another. In this case, you have lost this similarity and may not be able to detect this duplication anymore.
 
