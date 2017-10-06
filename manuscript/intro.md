@@ -60,7 +60,7 @@ I have documented some observations (or rather surprises) from these failures in
 * In many cases, managers do believe that continuous refactoring is necessary to keep the code healthy. However, we noticed that they do not sponsor refactoring effort. Why? The answer is that _managers will not sponsor an activity which they cannot track or control._
 * For refactoring to succeed, several qualification should exist in the development environment. Qualifying the environment may take sometime to be done; but once done, refactoring is 90% complete!
 
-These observations may somehow be correlated to reasons why refactoring fails. In the same report [2], I have elaborated more on them and listed some key factors why refactoring failed in early experiments. This is the topic of the next section. 
+These observations inspired me about reasons behind such failures. In the same report, I have elaborated more on these reasons and listed some key factors why refactoring failed in early experiments [4]. This is the topic of the next section.
 
 ## Why refactoring fails? {#whyrefactoringfails}
 
@@ -116,6 +116,6 @@ G> *Disclaimer: Most of the information in this book is simple, and probably thi
 
 Refactoring should always be sustainable for developers, managers, and users.
 
-It's unsustainable for developers when they cannot find support from management to sponsor it and have to stay up at night to do it. It's unsustainable for managers when they wait for months till they see or "feel" the value out of it. It's unsustainable for users and customers when they have to wait for months with no updates or fixes and they have to live with the old code as is till development teams finish with refactoring.
+It's unsustainable for developers when they cannot find support from management and have to stay up at night to carry out refactoring tasks. It's unsustainable for managers when they wait for months till they see or "feel" the value out of it. It's unsustainable for users and customers when they have to wait for months with no updates or fixes till developers finish with refactoring.
 
 The refactoring roadmap in this book is designed to be sustainable for all; for developers, managers, customers, and end-users.

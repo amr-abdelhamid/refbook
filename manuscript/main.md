@@ -50,7 +50,7 @@ It is fairly intuitive (and was shown empirically) that as code grows in size, i
 
 ### What's evil about dead code?
 
-There are many reasons why dead code is bad. First of all, it increases the code size, and thus, as described above, increases the maintenance effort. Have you ever kept staring at a piece of code trying to understand why it is commented out? Did you or anyone of your teammates wasted hours of work trying to locate a bug in a piece of code which turned out to be dead?
+There are many reasons why dead code is bad. First of all, it increases the code size, and thus, as described above, increases the maintenance effort [4][9]. Do you recall a care at which you kept staring at a piece of code trying to understand why it is commented out? Did you or anyone of your teammates wasted hours of work trying to locate a bug in a piece of code which turned out to be unreachable?
 
 While these are very good arguments, there is another reason which makes removing dead code more compelling. [Fortune magazine tells a story](http://fortune.com/2012/08/02/why-knight-lost-440-million-in-45-minutes/) about Knight Capital Group (KCG), which "nearly blew up the market and lost the firm $440 million in 45 minutes". After investigation, it turned out that the code mistakenly set a flag which enabled the execution of a piece of dead code.
 
@@ -671,7 +671,7 @@ Here are some strategies to break circular dependencies:
 
 #### Start from (and honor) existing architecture
 
-Developers tend to deviate from existing initial architecture for many reasons; for lack of design clarity, insufficient documentation, or emergent design consideration which was not handled before. The volume of these "violations" to initial architecture was found to be from 9% to 19% of all dependencies in the system [17] for healthy project (projects with updated reference architecture).
+Developers tend to deviate from existing initial architecture for many reasons; for lack of design clarity, insufficient documentation, or emergent design consideration which was not handled before. The volume of these "violations" to initial architecture was found to be from 9% to 19% of all dependencies in the system for healthy project (projects with updated reference architecture) [17].
 
 For poor and cluttered projects, the percentage is much higher. The diagrams below present the amount of violations found in two projects I worked with. What we have done is that we have first drawn the architectural modules and the expected dependencies between them. Then, we have used ConQat [^conqat] to check the architecture validity and detect any violations:
 
