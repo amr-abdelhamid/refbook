@@ -19,17 +19,13 @@ As you can see, any artifact can be related to so many other concepts, artifacts
 
 Traceability enables the team to study the impact of a change and assess its costs, risks, and root-causes. In the scenario below, a defect reported by a customer is traced back to the defected code. This code is traced back to the reason of its existence or change, which is found to be a change requested by the customer sometime ago. Other information about the change request can be deduced:
 
-![](\images\root-cause-analysis.png)
+![Defected code is traced back to the reason of change and hence the root cause behind the defect](\images\root-cause-analysis.png)
 
 This is particularly important for a team trying to refactor and enhance existing code. The team should be able to distinguish issues resulting from refactoring from other issues resulting from developing new features or fixing bugs.
 
-## Production/staging environment readiness
-
-< under development >
-
 ## Continuous integration
 
-< under development >
+A Continuous Integration (CI) server is the companion of the development team. There are so many repetitive tasks which can be automated one way or another and a CI server will relieve the team pains of running and monitoring such tasks. As a result, the team will keep their focus on development and refactoring efforts.
 
 ## Starting with pin-down (aka characterization) tests
 
