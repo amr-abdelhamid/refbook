@@ -19,17 +19,17 @@ From my experience, teams working on the quick wins stage for a while usually st
 
 #### Divide & Conquer: Split code into components
 
-After getting rid of most of the fat during the last stage, we gradually start introducing structure into the code. The key idea is to move "similar" code together and giving room for cohesive code to form modules with clear interfaces.
+After getting rid of most of the fat during the last stage, we gradually start introducing structure into the code. The key idea is to move *similar* code together and let components with clear interfaces emerge gradually.
 
-Usually, code is already organized in high level modules. We will keep that and polish the existing modules. However, such modules have usually grown in size and gathered so much functionality in time. It may already be doing so many things for a middle-size code module; part of these things may well belong to another module, whether a new or existing one.
+Usually, code is already organized in high level modules. We will keep that and polish the existing modules. However, such modules may have grown in size may be doing so many things for a middle-size code module. Part of these things may be perfect candidate to move to another module, whether a new or existing ones.
 
 #### Inject quality in: Cover components with automated tests
 
-< under development >
+Automated tests is one of the key enablers of quality code. From a development perspective, automated tests empowers the team to refactor entangled code safely. From a customer perspective, automated tests enables fast changes by picking regression bugs early in the process. At this stage in the roadmap, After working on splitting code into components with clear interface methods, it is a perfect timing to start covering components with automated tests.
 
 #### Continuous Inspection
 
-< under development >
+Throughout the roadmap, enabling continuous inspection is key to sustainable refactoring. Continuous inspection ensures that the newly-introduced development habits are kept and enforced. In other words, it ensures that we do not hit the same wall again.
 
 # Quick-Wins
 

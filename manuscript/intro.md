@@ -2,7 +2,7 @@
 
 # Introduction and Background
 
-The story of this book started long ago in 2009 while helping organizations and coaching teams to adopt more agile ways of work. I have faced lots of problems working with team whose code is extremely poor. This was a show stopper, and teams suffered from frequent code failures and intermittent outages. Such code was literally stopping them from transitioning to shorter iterations or even smaller releases.
+The story of this book started long ago in 2009 while helping organizations and coaching teams to adopt more agile ways of work. I have faced lots of problems working with teams whose code is extremely poor. This was a show stopper, and teams suffered from frequent code failures and intermittent outages. Such code was literally stopping them from transitioning to shorter iterations or even smaller releases.
 
 ## Why am I writing this book?
 
@@ -12,7 +12,7 @@ This book is **not** a reference for all clean coding techniques and refactoring
 
 ## Why refactoring matters?
 
-In the 90’s, 70 billion of the 100 billion expenditure on software products are spent on maintenance; and 60% of which is consumed to locate defective code [1]. Using simple algebra, reducing the amount of time to locate defective code by 30% would reduce the overall expenditure on software by 15%, which is huge improvement.
+In the 90’s, 70 billion of the 100 billion expenditure on software products are spent on maintenance; and 60% of which is consumed to locate defective code [1]. Using simple algebra, reducing the amount of time to locate defective code by 30% would reduce the overall expenditure on software by 15%, which is a huge improvement.
 
 ## How to refactor - the "old" way
 
@@ -33,12 +33,12 @@ So, if you would like to start over again and not hit the same wall, you have to
 
 **2. Technical hero**
 
-This is a very common. Hire a highly qualified technical person and give him full authority and power. People usually expect that such a person is magically capable (someway or another) to fix things up and turn around the code from being cluttered and spaghetti to structured, readable, understandable and changeable.
+This is very common: Hire a highly qualified technical person and give him full authority and power. People usually expect that such a person is magically capable (someway or another) to fix things up and turn around the code from being cluttered and spaghetti to structured, readable, understandable and changeable.
 
-There are two fundamental problems with this approach:
+There are two fundamental problems in this approach:
 
-1. Such persons are very expensive and may not be affordable by many organizations. If this is the only way to go, then refactoring has become a luxury product only attainable by big and wealthy organizations. For all others, hard luck. What we aspire, instead, is to enable all software people to refactor their own code themselves; regardless of their seniority or technical expertise. This is more sustainable, although requires some more time and effort.
-2. Beware that a technical hero may well take wrong refactoring decisions, especially if nobody is reviewing his work. Such decisions may lead the whole team into a dead end and waste so much time. Having full power and authority may also lead very easily to what I called a [Technical Glut Trab](#thetrab) described below.
+1. Such persons are very expensive and may not be affordable by many organizations. If this is the only way to go, then refactoring will become an expensive activity which will not be carried out by many teams. What we aspire, instead, is to enable all software people to refactor their own code themselves; regardless of their seniority or technical expertise. This is more sustainable, though requires more time and effort.
+2. Beware that a technical hero may well take wrong refactoring decisions, especially if nobody is reviewing his/her work. Such decisions may lead the whole team to hit the wall and waste so much time and effort. Having full power and authority may also lead very easily to what I called a [Technical Glut Trab](#thetrab) described below.
 
 **3. As per the book**
 
@@ -70,11 +70,11 @@ Attempts to refactor had hazy and unclear objectives. It was the gut feeling of 
 
 #### 2. Covering poor code with fragile tests
 
-We always thought that an automated test suite is a safety net for any side effects or regression issues which refactoring may cause. Without such safety net, most of the time, we didn't have the courage to change the code and integrate it to the mainline. However, in all three projects, this turned out to be not possible due to many factors. For example, product code lacked clear system interfaces and suffered from scattered business logic in all layers, including the database. In other case, writing automating tests incurred very high costs, not only in development, but in toolset and training. In time, I felt that some team members viewed automated tests as the first impediment to refactoring!
+We always thought that an automated test suite is a safety net for any side effects or regression issues which refactoring may cause. Without such safety net, most of the time, we didn't have the courage to change the code and integrate it to the mainline. However, in all three projects, this turned out to be not possible due to many factors. For example, product code lacked clear system interfaces and suffered from scattered business logic in all layers, including the database. In another case, writing automating tests incurred very high costs, not only in development, but in toolset and training. In time, some team members viewed automated tests as an impediment to refactoring!
 
 #### 3. It's non of the managers' business!
 
-Technical teams had the attitude that refactoring was “none of the managers’ business”. Also, they did not spend any effort to involve busy managers and get their support. This attitude created a counter effect from managers towards refactoring. The refactoring effort was viewed by senior managers as a non-value adding activity and was only allowed due to pressure from the development teams. Once the planned time for refactoring elapsed, management became more and more resistant to spending any more effort on refactoring.
+Technical teams had the attitude that refactoring was “none of the managers’ business”. They did not spend any effort to involve busy managers and get their support. This attitude created a counter effect from managers towards refactoring and refactoring effort which was viewed by senior managers as a non-value adding activity and was only allowed due to pressure from the development teams. Once the planned time for refactoring elapsed, management became more and more resistant to spending any more effort on refactoring.
 
 {icon=bookmark}
 G> *Managers will not sponsor an activity which they cannot track or control.*

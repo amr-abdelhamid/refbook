@@ -17,7 +17,7 @@ Traceability it is a dynamic network of relationships which you can use to trace
 
 As you can see, any artifact can be related to so many other concepts, artifacts, or workitems. A user story can trace to many other workitems (white), trace to other information (light blue), or trace to physical artifacts (gray).
 
-Traceability enables the team to study the impact of a change and assess its costs, risks, and root-causes. In the scenario below, a defect reported by a customer is traced back to the defected code. This code is traced back to the reason of its existence or change, which is found to be a change requested by the customer sometime ago. Other information about the change request can be deduced:
+Traceability enables the team to study the impact of a change and assess its costs, risks, and root-causes. In the scenario below, a defect reported by a customer is traced back to the defected code. This code is traced back to the reason of its existence or change, which is found to be a change requested by the customer sometime ago. In turn, more information about the change request can be deduced:
 
 ![Defected code is traced back to the reason of change and hence the root cause behind the defect](\images\root-cause-analysis.png)
 
@@ -39,7 +39,7 @@ Micheal Feathers first introduced the idea of *characterization tests* which are
 * What results or return values are expected?
 * Does this combination of parameters raise an error?
 
-While you're introducing these tests, you may find weird behavior or even bugs. In this case, be cautious when introducing changes to the actual behavior of the system, or better wait until you have good understanding to it. 
+While you're introducing these tests, you may find weird behavior or even bugs. In this case, be cautious when introducing changes to the actual behavior of the system, or better wait until you have good understanding to it.
 
 ## Ground rules for sustainable refactoring {#ground-rules}
 
