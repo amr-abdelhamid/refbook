@@ -675,9 +675,9 @@ Developers tend to deviate from existing initial architecture for many reasons; 
 
 For poor and cluttered projects, the percentage is much higher. The diagrams below present the amount of violations found in two projects I worked with. What we have done is that we have first drawn the architectural modules and the expected dependencies between them. Then, we have used ConQat [^conqat] to check the architecture validity and detect any violations:
 
-![Green lines are the expected dependencies between components. Redlines are relationships and dependencies which do not confirm to expected dependencies, and therefore, they are considered violations.](images/divideandconquer/arch_analysis_2.png)
+![Green lines are the expected dependencies between components. Red lines are relationships and dependencies which do not confirm to expected dependencies, and therefore, they are considered violations.](images/divideandconquer/arch_analysis_2.png)
 
-![Green lines are hidden in order to make violations clearer](images/divideandconquer/arch_analysis_1.png)
+![Another example of architecture analysis. Green lines are hidden in order to make violations clearer](images/divideandconquer/arch_analysis_1.png)
 
 As you can see, both systems suffer from so many violations and circular dependencies. You may also anticipate many un-necessary calls and high level coupling among components.
 

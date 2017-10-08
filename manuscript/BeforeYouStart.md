@@ -29,7 +29,17 @@ A Continuous Integration (CI) server is the companion of the development team. T
 
 ## Starting with pin-down (aka characterization) tests
 
-< under development >
+Micheal Feathers first introduced the idea of *characterization tests* which are tests "that characterize the actual behavior of a piece of code" [18]. Pin-down or characterization tests are particularly useful in case of maintaining legacy code which you have little information about its behavior. Adding some tests around the area you're refactoring helps you understand and preserve the actual behavior of the code. Here are some examples for tests that you may consider:
+
+* Do I need to be logged in to use this code?
+* Who is authorized to do what?
+* Does it work with null parameters?
+* Should objects be initialized?
+* What possible values which will not throw errors?
+* What results or return values are expected?
+* Does this combination of parameters raise an error?
+
+While you're introducing these tests, you may find weird behavior or even bugs. In this case, be cautious when introducing changes to the actual behavior of the system, or better wait until you have good understanding to it. 
 
 ## Ground rules for sustainable refactoring {#ground-rules}
 

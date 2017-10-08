@@ -1,6 +1,6 @@
 # Inject Quality In
 
-The final stage in the roadmap is to cover components with unit tests and create what is called ‘trusted code regions’.
+The final stage in the roadmap is to cover components with automated tests and create *trusted code areas*. This, in return, enables the team do more profound and risky refactorings.
 
 ## Which type of tests?
 
