@@ -1,7 +1,7 @@
 
 # Refactoring Roadmap Overview
 
-Start with high value-add and least risky activities, then work on re-organizing code chunks into components, and finally wrap everything with automated tests. In all stages, automate checks to make sure what is fixed will remain fixed.
+In a nutshell, start with the highest value-add and least risky activities, then work on re-organizing code chunks into components, and finally wrap everything with automated tests. In all stages, automate checks to make sure what is fixed will remain fixed.
 
 {id="refactoring_roadmap"}
 ![](images/roadmap.png)
@@ -15,21 +15,21 @@ Working on the whole code base magnifies the impact and signifies the improvemen
 {icon=bookmark}
 G> *It may be better to move the whole code one foot forward, rather than to move part of the code a thousand feet forward.*
 
-From my experience, teams working on the quick wins stage for a while usually start feeling "more confident in enhancing the code and applying refactorings ideas". They also have "better grasp and ownership for the code".
+From my experience, teams working on the quick wins stage for a while usually start feeling "more confident" in enhancing the code and applying refactorings ideas. They also have better grasp and ownership for the code. In my opinion, this is one of the most important and great side effects of this approach to refactoring.
 
 #### Divide & Conquer: Split code into components
 
 After getting rid of most of the fat during the last stage, we gradually start introducing structure into the code. The key idea is to move *similar* code together and let components with clear interfaces emerge gradually.
 
-Usually, code is already organized in high level modules. We will keep that and polish the existing modules. However, such modules may have grown in size may be doing so many things for a middle-size code module. Part of these things may be perfect candidate to move to another module, whether a new or existing ones.
+In most cases, you may find that code is already organized into high level modules. However, such modules may have grown in size and collected so much responsibilities for a middle-size code module. Part of these responsibilities may be perfect candidate to move to another module or form a new one.
 
 #### Inject quality in: Cover components with automated tests
 
-Automated tests is one of the key enablers of quality code. From a development perspective, automated tests empowers the team to refactor entangled code safely. From a customer perspective, automated tests enables fast changes by picking regression bugs early in the process. At this stage in the roadmap, After working on splitting code into components with clear interface methods, it is a perfect timing to start covering components with automated tests.
+Automated tests is one of the key enablers of quality code. From a development perspective, automated tests empowers the team to refactor entangled code safely. From a customer perspective, automated tests enables fast changes by detecting regression bugs early in the process. At this stage in the roadmap, After working on splitting code into components with clear interface methods, it is a perfect timing to start covering components with automated tests.
 
 #### Continuous Inspection
 
-Throughout the roadmap, enabling continuous inspection is key to sustainable refactoring. Continuous inspection ensures that the newly-introduced development habits are kept and enforced. In other words, it ensures that we do not hit the same wall again.
+Throughout the roadmap, enabling continuous inspection is key to sustainable refactoring. Continuous inspection ensures that the newly-introduced development habits are kept and enforced and ensures that what is fixed will remain fixed. In other words, it ensures that we do not hit the same wall again.
 
 # Quick-Wins
 
@@ -40,17 +40,17 @@ G> *Deleting dead code is not a technical problem; it is a problem of mindset an
 G>
 G> \- *- Kevlin Henney*
 
-Dead code is the "unnecessary, inoperative code that can be removed without affecting program’s functionality". These include: "functions and sub-programs that are never called, properties that are never read or written, and variables, constants and enumerators that are never referenced, user-defined types that are never used, API declarations that are redundant, and even entire modules and classes that are redundant." [10]
+Dead code is the "unnecessary, inoperative code that can be removed without affecting program’s functionality". These include "functions and sub-programs that are never called, properties that are never read or written, and variables, constants and enumerators that are never referenced, user-defined types that are never used, API declarations that are redundant, and even entire modules and classes that are redundant." [10]
 
 It is fairly intuitive (and was shown empirically) that as code grows in size, it needs more maintenance [4][9]. This can be attributed to three factors:
 
 1. More time needed to analyze code and locate bugs
 2. Larger code implies bigger amount of functionality, which, in turn, requires more maintenance
-3. Software size has significant influence on quality. That is, as code size increases, code quality decreases. Which, in turn, has significant effect on maintenance cost [9]
+3. Software size has significant influence on quality. That is, as code size increases, code quality decreases. This, in turn, has significant effect on maintenance cost [9]
 
 ### What's evil about dead code?
 
-There are many reasons why dead code is bad. First of all, it increases the code size, and thus, as described above, increases the maintenance effort [4][9]. Do you recall a care at which you kept staring at a piece of code trying to understand why it is commented out? Did you or anyone of your teammates wasted hours of work trying to locate a bug in a piece of code which turned out to be unreachable?
+There are many reasons why dead code is bad. First of all, it increases the code size, and thus, as described above, increases the maintenance effort [4][9]. For example, Do you recall a case when you kept staring at a piece of code trying to understand why it is commented out? Did you or anyone of your teammates wasted hours of work trying to locate a bug in a piece of code which turned out to be unreachable?
 
 While these are very good arguments, there is another reason which makes removing dead code more compelling. [Fortune magazine tells a story](http://fortune.com/2012/08/02/why-knight-lost-440-million-in-45-minutes/) about Knight Capital Group (KCG), which "nearly blew up the market and lost the firm $440 million in 45 minutes". After investigation, it turned out that the code mistakenly set a flag which enabled the execution of a piece of dead code.
 
@@ -58,9 +58,9 @@ This piece of dead code "had been dead for years, but was awakened by a change t
 
 ### How to detect dead code?
 
-So, there are plenty of ways to detect dead code. It is as put by Kevlin Henney, "Deleting dead code is not a technical problem; it is a problem of mindset and culture." [5]
+There are plenty of ways to detect dead code. It is as put by Kevlin Henney: "Deleting dead code is not a technical problem; it is a problem of mindset and culture." [5]
 
-To help you start, here are ideas how to find dead code:
+To help you start, here are some ideas how to detect dead code:
 
 #### Static analyzers
 
@@ -68,7 +68,7 @@ Static analyzers detects unused code by semantic analysis of static code at comp
 
 ![Examples of *unreachable code*. In the first method, code returns before the rest of the code runs. The second is a private method which nobody calls in this class ](images/deadcode/eclipse_unreachablecodeerror.png)
 
-These are also called *Unreachable Code* and there is other long list of programming errors which may result into unreachable code, like:
+These are also called *Unreachable Code* and it is only one type of dead code. There are many other programming errors which may result into unreachable code, like:
 
 * Exception handling code for exceptions which can never be thrown
 * Unused parameters or local variables
@@ -80,23 +80,23 @@ All these cases are simple and straight forward to catch using compilers and sta
 
 #### Files not touched for so long
 
-Search for files that has never changed since a while. "There are many reasons code may be stable:
+One easy and very effective technique is to search for files that has never changed since a while. These are three main reasons why code files did not change for so long [5]:
 
-* it’s just right,
-* it’s just dead,
+* it’s just right
+* it’s just dead
 * it’s just too scary
 
-but unless you investigate you’ll never know." [5]
+Of course, this requires that you investigate and check whether the code is dead or not. This may take some time, but unless you investigate you’ll never know.
 
 #### Dynamic program analysis
 
-Runtime monitoring and dynamic program analysis may be used to rule out parts of the code which are **not** dead code. This effectively reduces the amount of code to be inspected.
+Runtime monitoring or dynamic program analysis may be used to rule out parts of the code which are **not** dead code. This effectively reduces the amount of code to be inspected.
 
-The idea is the same as measuring test coverage. In test coverage, tools help you pinpoint lines of code which are *not covered by any test*. In dynamic program coverage, tools help you pinpoint lines of code which are *never run by users*, either because the features themselves are never used, so you may remove them altogether from your product, or the code is just dead.
+The idea is the same as measuring test coverage. In test coverage, tools help you pinpoint lines of code which are *not covered by any test*. In dynamic program coverage, tools help you pinpoint lines of code which are *never run by users*, either because the code is dead or because the features themselves are never used.
 
 ---
 
-Removing dead code is a quick win by all means. It doesn't take time and gives a big relief for the team. In my experience, teams take no more than 2-3 days removing crap and end up with this feeling of achievement! On average, in this small period of time, teams manage to remove 4% to 7% (and sometimes 10%) of dead code [2].
+Removing dead code is a quick win by all means. It doesn't take time and gives a big relief for the team. In my experience, teams take no more than 2-3 days removing crap and end up with this feeling of achievement! On average, in this small period of time, teams manage to remove 4% to 7% (and in one case 10%) of the total lines of code [2].
 
 ## Removing code duplicates
 
