@@ -46,7 +46,9 @@ This is another pattern of people who tend to follow advice *as per the book*. T
 
 This is another pattern which I see very frequently. If you have large amounts of technical debt, try to fix a part of the product once there is a change request related to this part. If it works, then fine. If not, retry with the next change request.
 
-Although this is the most pragmatic approach to handling technical debt, but it incorporates a lot of risks postponed and accumulating over time. At one point of time, the system may reach what we call *system collapse point* where refactoring the code due to a simple change may become so expensive and not affordable.
+Although this is the most pragmatic approach to handling technical debt, but it incorporates a lot of risks postponing and accumulating technical debt over time. At one point of time, the system may reach what we call a *system collapse point* when refactoring code due to one change may become so expensive and not affordable:
+
+![Cost of change increases exponentially due to accumulating technical debt](\images\collapsepoint.png)
 
 ## Why refactoring fails? {#whyrefactoringfails}
 
