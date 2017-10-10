@@ -96,7 +96,7 @@ The idea is the same as measuring test coverage. In test coverage, tools help yo
 
 ---
 
-Removing dead code is a quick win by all means. It doesn't take time and gives a big relief for the team. In my experience, teams take no more than 2-3 days removing crap and end up with this feeling of achievement! On average, in this small period of time, teams manage to remove 4% to 7% (and in one case 10%) of the total lines of code [2].
+Removing dead code is a quick win by all means. It doesn't take time and gives a big relief for the team. In my experience, teams take no more than 2-3 days removing crap and end up with this feeling of achievement! On average, in this small period of time, teams managed to remove 4% to 7% (and in one case 10%) of the total lines of code [2].
 
 ## Removing code duplicates
 
