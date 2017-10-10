@@ -362,36 +362,7 @@ A>
 A> Examples of logical units may be an if statement validating a business condition, a for loop doing a batch job on a group of data records, a query statement which retrieves some data from the database, several statements populating data fields on a new form, etc. In my experience, sometimes the logical unit are as small as two or three lines of code. More frequently, they are bigger (like 5 to 12 lines). On very rare occasions I see logical units which are bigger than that.
 A>
 A> This is an example of logical units of code, extracted from the famous [OpenBravo](http://www.openbravo.com/) open source ERP solution. Notice how explanatory comments help you identify these units:
-
-{lang="java",starting-line-number=119}
-~~~~~~~~
-   // Initialize current stock qty and value amt.
-   BigDecimal currentStock = CostAdjustmentUtils.getStockOnTransactionDate(getCostOrg(), basetrx,
-       getCostDimensions(), isManufacturingProduct, areBackdatedTrxFixed);
-   BigDecimal currentValueAmt = CostAdjustmentUtils.getValuedStockOnTransactionDate(getCostOrg(),
-       basetrx, getCostDimensions(), isManufacturingProduct, areBackdatedTrxFixed,
-       getCostCurrency());
-   log.debug("Adjustment balance: " + adjustmentBalance.toPlainString()
-       + ", current stock {}, current value {}", currentStock.toPlainString(),
-       currentValueAmt.toPlainString());
-
-   // Initialize current unit cost including the cost adjustments.
-   Costing costing = AverageAlgorithm.getProductCost(trxDate, basetrx.getProduct(),
-       getCostDimensions(), getCostOrg());
-   if (costing == null) {
-     throw new OBException("@NoAvgCostDefined@ @Organization@: " + getCostOrg().getName()
-         + ", @Product@: " + basetrx.getProduct().getName() + ", @Date@: "
-         + OBDateUtils.formatDate(trxDate));
-   }
-   BigDecimal cost = null;
-
-   // If current stock is zero the cost is not modified until a related transaction that modifies the stock is found.
-   if (currentStock.signum() != 0) {
-     cost = currentValueAmt.add(adjustmentBalance).divide(currentStock, costCurPrecission,
-         RoundingMode.HALF_UP);
-   }
-~~~~~~~~
-
+A> ![logical units of code](\images\logicalunits.png)
 A> Such logical units are perfect candidates to be extracted into *private* methods. If you adopt this practice for a while, you'll start noticing some private methods which are similar in nature or shares the same "interest". In such case, you may extract and group them into a new logical component. More about this in the [Divide and Conquer](#DivideAndConquer) stage.
 
 ## Enhance identifier naming
