@@ -105,7 +105,7 @@ G> *Duplication may be the root of all evil in software*
 G>
 G> \- *- Robert C. Martin*
 
-It is interesting to read what gurus write about code duplication. It is like writing about a plague or a catastrophe which you should avoid by all means.
+It is interesting to read what gurus write about code duplication. You feel like reading about a plague or a catastrophe which you should avoid by all means.
 
 Andrew Hunt, one of the 17 signatories of the Agile Manifesto, and David Thomas, in their book *"The Pragramtic Programmer"*, have put down several principles for Pragmatic Programming, the first of which is: *Don't Repeat Yourself!*
 
@@ -113,7 +113,7 @@ Andrew Hunt, one of the 17 signatories of the Agile Manifesto, and David Thomas,
 
 [^Sonar]: [Developers' Seven Deadly Sins](https://docs.sonarqube.org/display/HOME/Developers%27+Seven+Deadly+Sins)
 
-Robert C Martin (aka uncle Bob), the famous author, speaker and developer, says that "Duplication may be the root of all evil in software"[^cleancoding]. In another article[^bobarticle], he is no longer hesitant and asserts that "Duplicate code *IS* the root of all evil in software design"
+Robert C Martin (aka uncle Bob), the famous author, speaker and developer, says that "Duplication may be the root of all evil in software"[^cleancoding]. In another article[^bobarticle], he is no longer hesitant and asserts that "Duplicate code *IS* the root of all evil in software design."
 
 [^cleancoding]: This is mentioned in his famous book: *Clean Code: A Handbook of Agile Software Craftsmanship*
 
@@ -121,19 +121,19 @@ Robert C Martin (aka uncle Bob), the famous author, speaker and developer, says 
 
 #### What's evil about code duplication
 
-In the introduction, I have mentioned the results of a study about software expenditure. They found that 70 billion of the 100 billion expenditure on software products on a 10-year period were spent on maintenance; and 60% of which is consumed to locate defective code [1]:
+In the introduction, I have mentioned the results of a [study conducted on software expenditure](#StudyAboutSoftwareExpenditure) during the 90's. They found that 70 billion of the 100 billion expenditure on development were spent on maintenance; and 60% of which is consumed to *locate defective code* [1]:
 
 ![60% of the maintenance effort is spent on locating bugs. That is, debugging and chasing code lines till you finally point to a lines of code and say 'I found the bug'. The remaining 40% are for everything else: Fixing, testing, reviews, integration, system testing, deployment, user Acceptance,...](images/duplicatecode/costoflocatingbugs.png)
 
-This means that duplication magnifies time of locating bugs. If you have a defective piece of code duplicated three times, then it's not enough to find the defect once (this already takes 60% of overall defect handling and resolution time). Rather, you'll need to find each and every copy of this defect anywhere else in the code, which is sometimes simply not possible. what usually happens is that we get an illusion that the bug is fixed upon fixing the first clone, ship the *fixed* software to the customer, who probably become very annoyed and backfire on us that the bug is still there.
+Duplication further magnifies time for locating bugs. If you have a defective piece of code duplicated two or three times, then it's not enough to spend the cost of finding the defect once (which already takes 60% of overall defect handling and resolution time). Rather, you'll need to find each and every copy of this defect elsewhere in the code, which is sometimes very expensive or even not possible. what usually happens is that we get an illusion that the bug is fixed upon fixing the first clone, ship the *fixed* software to the customer, who probably become very annoyed and backfire on us that the bug is still there.
 
 #### Why developers copy and paste code?
 
-Well, if code duplication is that evil. Why do we do it all the time? Throughout my career, I noticed developers follow this pattern one way or another: Copy Some code, change it to suite your new requirement, and finally test all changes.
+Well, if code duplication is that evil. Why do we duplicate code all the time? Throughout my career, I noticed developers follow this pattern one way or another: Copy some code, change it to suite your new requirement, and finally test all changes.
 
 ![](images/duplicatecode/copyChangeTestCycle.png)
 
-This is pretty natural. Actually, I myself always followed this pattern and I'm still following it. And, I've been doing excellent work with teams I worked with. So, where is the problem? The problem is that I always do a forth step which is necessary and cannot be neglected, which is refactoring. It's ok to copy and paste code only if you're going to refactor this code later on.
+This is pretty natural. Actually, I myself always followed this pattern and I'm still following it. And, I've been doing excellent work with teams I worked with. So, where is the problem? The problem is that I always do a forth step which is necessary and cannot be neglected: refactoring. It's ok to copy and paste code only if you're going to refactor this code later on.
 
 ![](images/duplicatecode/copyChangeTestRefactorCycle.png)
 
@@ -141,7 +141,7 @@ Neglecting this step is a fundamental mistake which rightly is one of the "deadl
 
 #### Type of code clones
 
-There are four types of code clones: *Exact, Similar, Gapped, and Semantic*. In the following sections, we will only shed light on each of them to help you detect and remove them mercilessly!
+There are four types of code clones: *Exact, Similar, Gapped, and Semantic*. They are also known as type 1, 2, 3, and 4 of clones. In the following sections, we will shed light on each of them to help you detect and remove them mercilessly!
 
 Note: All examples of code clones are detected by [ConQAT](https://www.cqse.eu/en/products/conqat/overview/), a **Con**tinuous **Q**u**a**li**t**y monitoring tool developed by the Technical University of Munich.
 
@@ -153,28 +153,51 @@ These are the most straight forward and the easiest to detect type of clones. He
 
 **Type 2: Similar Clones**
 
-Similar clones are more common than exact clones because most probably, when a programmer copies some code, he/she changes or renames some of the variables or parameters names:
+Similar clones are more common than exact clones because most probably, when a programmer copies some code, he/she changes or renames some of the variables or parameters:
 
 ![Notice that `Locator` is renamed to `AttributeSetInstance` and `PROPERTY_SEARCHKEY` is renamed to `PROPERTY_DESCRIPTION` ](images/duplicatecode/similarclones.png)
 
-As you can see in the above example, clones are similar, except for some renames of identifiers. Note that the structure of the code is the same, and the positions of the renamed identifiers are all the same.
+As you can see in the above example, clones are exactly the same except for some renamed identifiers. Note that the structure of the code is the same, and the positions of the renamed identifiers are all the same.
 
 **Type 3: Gapped Clones (aka inconsistent clones)**
 
-This type of clones are very interesting. It picks exact or similar code with 1-2 change lines of code. These changes are called *Gaps*. Why are they interesting? Because probably they are defects fixed in one location and wasn't fixed in another!
+This type of clones are very interesting. These are exact or similar code clones with one or two lines of code changed (either added, deleted, or modified). These changes are called *Gaps*. Why are they interesting? Because probably they are defects fixed in one location and wasn't fixed in the others!
 
 ![Two exact clones with only one line change (or gap). With minimal review, one may discover that this was a bug fixed in the left hand clone, and not in the other.](images/duplicatecode/gappedclones.png)
 
 ![Two similar clones (with some renames), but also with one gap: `if (criteria.has("fieldName"))` check.](images/duplicatecode/gappedclones-2.png)
 
-In both above examples, you may need to introspect the code before doing anything. It may be a valid case which should only be available in one clone and not the other.
+In both above examples, you need to review the code before fixing anything. It may be a valid business case or a *dormant bug*. Unless you review, you will never know.
 
 **Type 4: Semantic clones**
 
-The forth type of clones deals with fragments of code doing the same thing but do not share similar structure. For example, implementing a routine which calculates the factorial of a number, one using for loops and another using recursion. There are lots of efforts in the academia to research whether it is possible to detect type 4 of code clones or not. Till they reach something tangible, we will work on the first three types.
+The forth type of clones deals with fragments of code doing the same thing but not sharing similar structure. For example, implementing a routine which calculates the factorial of a number, one using loops and another using recursion:
+
+{lang="java"}
+~~~~~~~~
+int factorialUsingLoops(int n){
+  int factorial = 1;
+  for(int i = 1; i <= n; i++)
+    factorial = factorial * i;
+
+  return factorial;
+}
+~~~~~~~~
+
+{lang="java"}
+~~~~~~~~
+int factorialUsingRecursion(int n){
+  if (n == 0)
+    return 1;
+  else
+    return(n * factorialUsingRecursion(n-1));
+}
+~~~~~~~~
+
+There are lots of efforts in the academia to research whether it is possible to detect type 4 of code clones or not. Till they reach something tangible, let's focus our attention to detect and remove the first three types of code clones.
 
 A> #### Dormant Bugs and Gapped Clones
-A> *Dormant bugs* are bugs which have lived some time on production before they are discovered. Recent studies found that 30% of bugs are dormant. This is scary, because this indicates that there are other bugs with each and every deployment which is still not detected. You have no idea when they will fire back; you have no idea what would be the side effects [6].
+A> *Dormant bugs* are bugs which have lived some time on production before they are discovered. Recent studies found that 30% of bugs are dormant. This is scary, because this indicates that there are dormant bugs with each and every deployment. You have no idea when they will fire back; you have no idea what would be the side effects [6].
 A>
 A> Now, think about gapped clones. These are typically probable dormant bugs on production. Another study shows that the percentage of gapped clones in software systems running in large enterprises are 52%. Among these clones, 18% are system faults or defects [7]:
 A>
@@ -188,7 +211,7 @@ There are several refactoring techniques for removing duplicate code. The safest
 
 In all projects that I've worked on, we were very cautious while removing duplicates. These are several pre-cautions to keep in mind:
 
-* Rely on automatic refactoring capabilities in IDE's to extract methods. Sometime, it is the most obvious mistakes which you may spend hours trying to discover. Relying on automatic refactoring support will reduce or even eliminate such mistakes.
+* Rely on automatic refactoring capabilities in IDE's to extract methods. Sometimes, it is the most obvious mistakes which you may spend hours trying to discover. Relying on automatic refactoring support will reduce or even eliminate such mistakes.
 * Any change, what so ever, must be reviewed.
 
 Keeping these two pre-cautions in mind will save you, especially that we are refactoring on the mainline, not on a separate long living branch. More on this in this previous chapter on [how to prepare a healthy environment](#beforeYouStart) section.
@@ -200,14 +223,14 @@ G> *Refactoring: A change made to the internal structure of software to make it 
 G>
 G> \- *- Martin Fowler [8]*
 
-One thing I like about this definition is the clearly-stated objectives of refactoring: to the make software:
+One thing I like about this definition is the clearly-stated objectives of refactoring, which are to make software:
 
 1. Easier to understand
 2. Cheaper to modify
 
 Having these two objectives in mind, it's possible to develop your "gut feeling" about the correct length of a method.
 
-Let's agree that a method is *maintainable* and needs no further refactoring when it fulfills these two criteria of being understandable and modifiable. Now, consider this method and try to evaluate how *maintainable* it is. To help you do that, start a stopwatch and measure the time to understand the intent of the method code lines.
+Let's agree that a method is *maintainable* and needs no further refactoring when it fulfills these two criteria of being understandable and modifiable. Now, consider the below 28-line method and try to evaluate how *maintainable* it is. To help you do that, start a stopwatch and measure the time to understand the intent of the method code lines.
 
 {lang="java"}
 ~~~~~~~~
@@ -249,7 +272,7 @@ public List criteriaFind(String criteria) {
 }
 ~~~~~~~~
 
-This is a 28-line method. It seems to be a small method. However, you've spent some time (probably around 1-2 minutes) to grasp how the code works. So, according to our definition, Is this method *maintainable*? The answer is no.
+This is a 28-line method. It seems to be small. However, you've spent some time (probably around 1-2 minutes) to grasp how the code works. So, according to our definition, is this method *maintainable*? The answer is no.
 
 Now, consider this enhanced version of the method:
 
@@ -302,10 +325,10 @@ public List criteriaFind(String criteria) {
 }
 ~~~~~~~~
 
-Adding some comments are generally perceived to enhance code understandability. It may clutter the code a bit, but at least in this example, the code is a little more readable. But, wait a minute, if we are adding comments to make the code more readable, isn't this an indication that the code is not maintainable, according to our definition? The answer is yes. This is why *explanatory comments* are generally considered a code smell, or a sign of bad code.
+Adding some comments are generally perceived to enhance code understandability. It may clutter the code a bit, but at least in this example, the code is a little more readable. But, wait a minute, if we are adding comments to make the code more readable, isn't this an indication that the code is not maintainable? According to our definition of maintainability, the answer is yes. This is why *explanatory comments* are generally considered a code smell, or a sign of bad code.
 
 {icon=bookmark}
-G> *If we are adding comments to make the code more readable, isn't this an indication that the code is not maintainable, according to our definition? The answer is yes. This is why __explanatory comments__ are generally considered a code smell, or a sign of bad code.*
+G> *If we are adding comments to make the code more readable, isn't this an indication that the code is not maintainable? According to our definition of maintainability, the answer is yes. This is why __explanatory comments__ are generally considered a code smell, or a sign of bad code.*
 
 Now, let's work on this method. If you notice, comments are placed at perfect places. They give you a hint of the *Boundaries of Logical Units* inside the method. Such logical units are functionally cohesive and are candidate to become standalone methods. Not only that, the comment itself is a perfect starting point for naming of the newly born method.
 
@@ -324,20 +347,51 @@ public List criteriaFind(String criteria) {
 
 This is a 5-line method which narrates a story. No need to write comments or explain anything. It is self-explanatory and much easier now to instantly capture the intent of the code.
 
-I have done this experiment before, to give the three variants of the method above, without comments, with comments, and refactored into small method. I have measured the time it takes a person to understand the intent of the method. Results were as follows:
+I have done this experiment before with university students. I have given them the three variants of the method above, without comments, with comments, and refactored into small method. I have measured the time it takes them to understand the intent of the method. Results were as follows:
 
 * Method without comments: ~ 2 minutes
 * Method with comments: ~ 1 minute
 * Refactored short method: ~ 10 seconds
 
-It is stunning How much time you save by just reducing methods into smaller size with readable method names. It hits the hard of the refactoring effort: to make the code *"easier to understand and cheaper to modify"*.
+It is stunning how much time you save by just reducing methods into smaller size with readable method names. It realizes the core objective of refactoring: to make the code *"easier to understand and cheaper to modify"*.
 
 A> #### Logical units of code
 A>
-A> Notice that the original form of the `criteriaFind` method in the above example is functionally cohesive and follows the Single Responsibility Principle (SRP) in a perfect way. However, if you look inside the method, you may notice what I call *Logical Units*, which are single steps in the logic of execution; each step doesn't implement the full job, but still implements a conceivable part towards this goal.
+A> Notice that the original form of the `criteriaFind` method in the above example is functionally cohesive and follows the Single Responsibility Principle (SRP) in a perfect way. However, if you look inside the method, you may notice what I call *Logical Units of Code*, which are steps in the logic of execution; each step is composed of several lines of code. A single step doesn't implement the full job, but it implements a conceivable part towards this goal.
 A>
 A> Examples of logical units may be an if statement validating a business condition, a for loop doing a batch job on a group of data records, a query statement which retrieves some data from the database, several statements populating data fields on a new form, etc. In my experience, sometimes the logical unit are as small as two or three lines of code. More frequently, they are bigger (like 5 to 12 lines). On very rare occasions I see logical units which are bigger than that.
 A>
+A> This is an example of logical units of code, extracted from the famous [OpenBravo](http://www.openbravo.com/) open source ERP solution. Notice how explanatory comments help you identify these units:
+
+{lang="java",starting-line-number=119}
+~~~~~~~~
+   // Initialize current stock qty and value amt.
+   BigDecimal currentStock = CostAdjustmentUtils.getStockOnTransactionDate(getCostOrg(), basetrx,
+       getCostDimensions(), isManufacturingProduct, areBackdatedTrxFixed);
+   BigDecimal currentValueAmt = CostAdjustmentUtils.getValuedStockOnTransactionDate(getCostOrg(),
+       basetrx, getCostDimensions(), isManufacturingProduct, areBackdatedTrxFixed,
+       getCostCurrency());
+   log.debug("Adjustment balance: " + adjustmentBalance.toPlainString()
+       + ", current stock {}, current value {}", currentStock.toPlainString(),
+       currentValueAmt.toPlainString());
+
+   // Initialize current unit cost including the cost adjustments.
+   Costing costing = AverageAlgorithm.getProductCost(trxDate, basetrx.getProduct(),
+       getCostDimensions(), getCostOrg());
+   if (costing == null) {
+     throw new OBException("@NoAvgCostDefined@ @Organization@: " + getCostOrg().getName()
+         + ", @Product@: " + basetrx.getProduct().getName() + ", @Date@: "
+         + OBDateUtils.formatDate(trxDate));
+   }
+   BigDecimal cost = null;
+
+   // If current stock is zero the cost is not modified until a related transaction that modifies the stock is found.
+   if (currentStock.signum() != 0) {
+     cost = currentValueAmt.add(adjustmentBalance).divide(currentStock, costCurPrecission,
+         RoundingMode.HALF_UP);
+   }
+~~~~~~~~
+
 A> Such logical units are perfect candidates to be extracted into *private* methods. If you adopt this practice for a while, you'll start noticing some private methods which are similar in nature or shares the same "interest". In such case, you may extract and group them into a new logical component. More about this in the [Divide and Conquer](#DivideAndConquer) stage.
 
 ## Enhance identifier naming

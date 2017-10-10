@@ -10,6 +10,7 @@ This book is **not** a reference for all clean coding techniques and refactoring
 
 ## Why refactoring matters?
 
+{#StudyAboutSoftwareExpenditure}
 In the 90’s, 70 billion of the 100 billion expenditure on software products were spent on maintenance; and 60% of which was consumed to *locate defective code* [1]. Using simple algebra, reducing the amount of time to locate defective code by 30% would reduce the overall expenditure on software by 15%, which is a huge improvement.
 
 ## How to refactor - the "old" way
