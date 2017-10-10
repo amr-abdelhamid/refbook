@@ -374,17 +374,18 @@ G> *You know you are working on clean code when each routine you read turns out 
 G>
 G> \- *- Ron Jeffries*
 
-In an interesting study titled: *Concise and Consistent Naming*, the authors has conducted token analysis on Eclipse 3.0 code, and found that *"Approximately 70% of the source code of a software system consists of identifiers"*:
+In an interesting study titled: *Concise and Consistent Naming*, the authors has conducted token analysis on Eclipse 3.0 code, and found that *"Approximately 70% of the source code of a software system consists of identifiers"* [17]:
 
 ![Token analysis of Eclipse 3.0 source code shows that 70* of the code is identifiers which developers coin their names](images/eclipse_token_analysis.png)
 
-This is why "the names chosen as identifiers are of paramount importance for the readability of computer programs and therewith their comprehensibility" [17]. Imagine that every class, method, parameter, local variable, every name in your software is indicative and properly named, imagine how readable your software will become.
+This is why "the names chosen as identifiers are of paramount importance for the readability of computer programs and therewith their comprehensibility". Imagine that every class, method, parameter, local variable, every name in your software is indicative and properly named, imagine how readable your software will become.
 
-The good news is that renaming is a low hanging fruit that we can do with minimal side effects, especially if automated *Rename* refactoring is used.
+The good news is that renaming has become a safe refactoring which we can apply with minimal side effects; thanks to the automatic rename capability available in most modern IDE's.
 
 A> #### Explanatory methods and fields
 A>
 A> < under development - put here the example of bubble sort>
+A>
 
 [^clean-ron]: Quoted in *Leading Lean Software Development: Results Are not the Point*, by Mary and Tom Poppendieck.
 
@@ -392,7 +393,7 @@ A> < under development - put here the example of bubble sort>
 
 #### Avoid introducing inheritance trees
 
-One tempting technique to remove duplication is to introduce a parent type and gather common behavior among two or more child types:
+One tempting technique to remove duplication is to introduce a parent type which gathers common behavior among two or more child types:
 
 ![Highlighted parts represent duplicated behavior among A and B](images/duplicatecode/inheritanceisbad.png)
 
@@ -405,18 +406,18 @@ Instead, you may chose one of the following three simple alternatives:
 
     ![](images/duplicatecode/reusesame.png)
 
-1. If coupling between A and B is bad, then *Extract Methods* in A and then chose whether to *Move Methods* to an existing class, or *Extract Class*, a new class C. In both cases, A and B will depend on the common class:
+1. If coupling between A and B is bad, then *Extract Methods* in A and then *Move Methods* to an existing common class. If no candidate common class is available, use the *Extract Class* refactoring to extract the common methods to a new class C. In both cases, A and B will depend on the common class C:
 
     ![](images/duplicatecode/reusenew.png)
 
 A> #### Why we should favor composition over inheritance
 A>
-A> This is a controversial topic since the inception of object-oriented design. A lot has been said about when to use inheritance and whether you should favor composition and when. However, it seems there is a general "impression" that over use of inheritance causes problems and deteriorates program clarity; something which we are already trying to enhance. Here are some references:
+A> This is a controversial topic since the inception of object-oriented design. A lot has been said about when to use inheritance and whether you should favor composition and when. However, it seems there is a general "impression" that overuse of inheritance causes problems and deteriorates program clarity; something which we are already trying to avoid. Here are some references:
 A>
 A> * The GOF book, way back in 1995, advices us to "Favor 'object composition' over 'class inheritance'." They rightly argue that "because inheritance exposes a subclass to details of its parent's implementation, it's often said that 'inheritance breaks encapsulation'" [12]
-A> * Eric S. Raymond, in his book *The Art of Unix Programming*, argues that the over use of inheritance introduces layers in code and "destroys transparencies" [13]. I absolutely agree on this. From my experience, looking for a bug in a pile of inheritance hierarchy with five or six layers of polymorphic behavior is like searching for a needle in a haystack!
+A> * Eric S. Raymond, in his book *The Art of Unix Programming*, argues that the overuse of inheritance introduces layers in code and "destroys transparencies" [13]. I absolutely agree on this. From my experience, looking for a bug in a pile of inheritance hierarchy with five or six layers of polymorphic behavior is like searching for a needle in a haystack!
 A>
-A> Im many cases, using composition with the [Strategy pattern](https://en.wikipedia.org/wiki/Strategy_pattern) hits a sweet sport between composition and inheritance. Consider this example: We are building a car system simulator in which a car may have two breaking systems: standard and ABS. In this case, it may be straight forward to use inheritance:
+A> Im many cases, using composition with the [Strategy pattern](https://en.wikipedia.org/wiki/Strategy_pattern) hits a sweet spot between composition and inheritance. Consider this example: We are building a car system simulator in which a car may have two breaking systems: standard and ABS. In this case, it may be straight forward to use inheritance:
 A>
 A> ![](images/cartype1.png)
 A>
@@ -431,17 +432,17 @@ A> ![](images/cartype3.png)
 
 #### Always rely on tools support
 
-One important consideration in this stage is that **no manual refactoring is allowed!**. Detecting dead code, detecting and removing code clones, extracting methods to reduce method size, renaming identifier names; you can do all such activities with the assistance of strong IDE features or add-on tools.
+One important consideration in this stage is that **no manual refactoring is allowed!**. Detecting dead code, detecting and removing code clones, extracting methods to reduce method size, renaming identifier names; you can carry out all such tasks with the assistance of strong IDE features or add-on tools.
 
-Using automated refactoring tools contributes to safety and makes developers more confident when dealing with poor and cluttered code
+Using automated refactoring tools contributes to safety and makes developers more confident when dealing with poor and cluttered code.
 
 #### Should we do them in order?
 
 Yes, with little bit of overlap. This is logical and practical. For example, removing dead code, removes about 10% of your code duplicates[^deadcode].
 
-[^deadcode]: This was validated in one of our experiments. We found that removing dead code removes also 10% of duplicate code [2]. This is totally reasonable, because a good portion of duplicated code are duplicated and then abandoned.
+[^deadcode]: This was validated in one of our experiments. We found that removing dead code removes also 10% of duplicate code [2]. This is totally reasonable, because a good portion of duplicated code are eventually abandoned.
 
-Another example is working on reducing method size before removing duplicates. This actually is a bad practice. Because, you may split a method apart while it is actually a duplicate of another. In this case, you have lost this similarity and may not be able to detect this duplication anymore.
+Another example is working on reducing method size before removing duplicates. This actually is a bad practice. Because you may split a method apart while it is actually a duplicate of another. In this case, you have lost this similarity and may not be able to detect this duplication anymore.
 
 #### How to determine whether or not we are done?
 
@@ -453,9 +454,9 @@ Another example is working on reducing method size before removing duplicates. T
 
 # Divide and Conquer {#DivideAndConquer}
 
-Software design is all about components and their relationships. The better you divide your software into loosely-coupled and highly-cohesive parts, the more comprehensible, more responsive to change, and more agile your software design becomes. The act of partitioning your software in such manner is described by Fairbanks as authoring "a story at many levels", which results in a software design that will "tell a story to whoever looks at it, and it will be easy to understand":
+Software design is all about components and their relationships. The better you divide your software into loosely-coupled and highly-cohesive parts, the more comprehensible, more responsive to change, and more agile your software design becomes. The act of partitioning your software in this manner is described by Fairbanks as authoring "a story at many levels", which results in a software design that will "tell a story to whoever looks at it, and it will be easy to understand":
 
-> *"To be comprehensible, your software should be structured so that it reveals a story at many levels. Each level of nesting tells a story about how those parts interact. A developer who was unfamiliar with the system could be dropped it at any level and still make sense of it, rather than being swamped."*
+> *"To be comprehensible, your software should be structured so that it reveals a story at many levels. Each level of nesting tells a story about how those parts interact. A developer who was unfamiliar with the system could be dropped in at any level and still make sense of it, rather than being swamped."*
 >
 > \- George Fairbanks [14]
 
@@ -463,42 +464,14 @@ Now, here is a question: If software partitioning is that important, why didn't 
 
 We can describe what we achieved so far as removing "fat" from the application's body of code; namely, removing dead code, and reducing code duplication, plus applying some very basic and intuitive enhancements which makes the code slightly more readable, like reducing method size and using proper naming conventions. This is like *preparing the scene* or *organizing our backyard* before we start on re-organizing the parts. And, this has two very important side effects:
 
-1. We have saved the time that we would have spent working on dead or duplicate code.
+1. We have saved the time that we would have spent working on dead or duplicate code
 2. The team reached a better grasp of the code while scanning and reviewing duplicates and suspect dead code. They formed better understanding while breaking up large methods and trying to give better names to identifiers and code constructs
 
 I have noticed the effect in the second point above many times while working with teams on refactoring. As I explained before in the Introduction and Background section, teams become more courageous and bold in enhancing the code especially after the quick-wins stage.
 
-In this stage, introducing structure is the goal. Although all the enhancements in the quick-wins stage made the code *better*, but still *lacks structured* and the mission now is discovering/uncovering components and enhance their interfaces:
+Although all the enhancements in the quick-wins stage made the code *better*, but it still *lacks structure*. The mission now is introducing structure by discovering/uncovering components and enhance their interfaces:
 
 ![](\images\introduce_structure.png)
-
-## Guiding design principles
-
-#### Abstraction
-
-< under development >
-
-#### Stepwise refinement
-
-< under development >
-
-#### Modularity
-
-< under development >
-
-#### Information hiding (or Encapsulation)
-
-< under development >
-
-#### Simplicity
-
-< under development >
-
-#### Coupling and Cohesion
-
-Cohesion "measures the degree of connectivity among the elements of a single module" [grady booch, object oriented analysis and design]
-
-< under development >
 
 ## Modules, components, or services?
 
@@ -506,7 +479,7 @@ First, we need to answer this question: Are we splitting our code into modules, 
 
 #### Module
 
-The *UML User Guide* provided a very brief and broad definition of what a module is. It is a *"software unit of storage and manipulation"*.
+The *UML Reference Manual* provided a very brief and broad definition of what a module is. It is a *"software unit of storage and manipulation"* [19, pp 334].
 
 To elaborate on this definition, a module is any logical grouping of cohesive code functions which provides access to these functions in a uniform manner. This can be as big as a sub-system, like an accounting or HR module, or as small as a class, like a calculator or an xml parser.
 
@@ -515,9 +488,9 @@ To elaborate on this definition, a module is any logical grouping of cohesive co
 {icon=quote-left}
 G> *“A component is a physical and replaceable part of a system that conforms to and provides the realization of a set of interfaces. It is intended to be easily substitutable for other components that meet the same specifications.”*
 G>
-G> \- *- The UML User Guide*
+G> \- *- The UML Reference Manual [19, pp. 10]*
 
-From this definition, we understand that a component is a physical standalone file; a jar, war, dll, gem, etc. Also, it is replaceable, meaning that it can be deployed/redeployed on its own. Also, we understand that a component may contain one or more smaller modules; and vice versa, a big module may contain one or more components.
+From this definition, we understand that a component is a physical standalone file; a jar, war, dll, gem, etc. Also, it is replaceable, meaning that it can be deployed/redeployed on its own. Finally, we understand that a component may contain one or more smaller modules; and vice versa, a big module may contain one or more components.
 
 #### Service
 
@@ -528,7 +501,7 @@ G> *“A service is similar to a component in that it's used by foreign applicat
 G>
 G> \- *- Martin Fowler*
 
-[^fowler_article]: This quote is from Martin's article: [Inversion of Control Containers and the Dependency Injection pattern](https://www.martinfowler.com/articles/injection.html). For other interesting distinctions between components and services, please refer to Martin's famous article: [Microservices: a definition of this new architectural term](https://martinfowler.com/articles/microservices.html)
+[^fowler_article]: This quote is from Martin's article: [Inversion of Control Containers and the Dependency Injection pattern](https://www.martinfowler.com/articles/injection.html). You will find other interesting distinctions between components and services in Martin's famous article: [Microservices: a definition of this new architectural term](https://martinfowler.com/articles/microservices.html)
 
 One very important difference between a component and a service is that a component cannot run on its own. It has to be integrated in a bigger whole to achieve any value out of it. Unlike a service, which is available and standalone. It can be located and used whether on its own or as part of a bigger application.
 
@@ -540,24 +513,24 @@ As you may noticed from the past definitions, there are higher level of decoupli
 
 Modules may co-exist in the same (physical) deployable package; unlike components or services, which are physically standalone.
 
-Modules and components run typically in the same process; unlike services, which runs every service in its own process. Modules and components may communicate through in-memory method calls, while services may require inter-process communication through web-service requests or remote procedure calls.
+Modules and components run typically in the same process; unlike services, which runs every service in its own process. Modules and components may communicate through in-memory method calls, while services may require inter-process communication through web-service requests, remote procedure calls, etc.
 
-So, Services enjoys the maximum level of decoupling. You can view them as standalone applications which could be glued together in order to provide greater value for some end user.
+So, services enjoy the maximum level of decoupling. You can view them as standalone applications which could be glued together in order to provide greater value for some end user.
 
 Now, the questions is: *Do we need to divide our code into modules or components or services?* The only answer that I can provide is: Divide the code into modules. Then, assess whether or not it is useful and safe to upgrade them to components or services.
 
 {icon=bookmark}
 G> *Divide the code into modules. Then, assess whether or not it is **useful AND safe** to upgrade them to components or services.*
 
-A> ## What about Microservices?
+A> ## About Microservices
 A>
-A> In the above discussion, I have talked about web-service (or just services). The main difference between services and microservices is that services share a common datastore, whereas each microservice has a separate standalone datastore.
+A> In the above discussion, I have talked about web-services (or just services). The main difference between services and microservices is that services share a common datastore, whereas each microservice has a separate standalone datastore.
 A>
 A> When looking from the angle of refactoring legacy or monolithic application code bases, it is not feasible to exert any effort or even think about splitting a large backend database into smaller ones and move towards a microservices architecture. Some other challenges looms in the way like handling distributed transactions and understanding and supporting the call chain for every business transaction[^nealford].
 A>
 A> This is why I have intentionally omitted microservices as one of the options to which one can upgrade newly-born components. In stead, a middle-way is a course-grained service, following a service-based architecture of some kind.
 
-[^nealford]: More discussion about why microservice architecture is not suitable when refactoring monolithic applications is at this excellent talk by Neal Ford: [Comparing service-based architectures](https://vimeo.com/163918385).
+[^nealford]: More discussion about why microservices architecture is not suitable when refactoring monolithic applications is at this excellent talk by Neal Ford: [Comparing service-based architectures](https://vimeo.com/163918385).
 
 ## Componentization - Moving from spaghetti/cluttered code to components
 
@@ -565,7 +538,7 @@ The journey from cluttered code to module, components, or services is progressiv
 
 ![](images/divideandconquer/modules-unstructured.png)
 
-Gradually, we start moving methods and classes around to let modules emerge and become more apparent. Remember, only safe refactoring with support of an automated refactoring tools are allowed. In most of the cases, you can depend on the following refactorings:
+Gradually, we start moving methods and classes around to let modules emerge and become more apparent. Remember, only safe refactorings with support of an automated refactoring tools are allowed. In most of the cases, you can depend on the following refactorings:
 
 * Move Method
 * Move Class
@@ -581,39 +554,42 @@ This results in clearer module boundaries and better manifestation of module int
 Next, we should concentrate on more decoupling modules and create a solo-deployable components. At this stage, we should work more on polishing interfaces, move away un-needed interface methods and interface parameters. Some useful refactorings at this stage are:
 
 * Change Method Signature (to remove or reorder method parameters)
-* Introduce Parameter or Parameter Object
+* Introduce Parameter
+* Introduce Parameter Object
 * Turn Public Methods Private
 
 ![](images/divideandconquer/components.png)
 
-You may stop at this stage. Or, you move to the next step and turn components into services. Remind you that you may chose to do so only if you find it *valuable and safe*.
+You may stop at this stage. Or, you may move to the next step and turn components into services. Remind you that you may chose to do so only if you find it *valuable and safe*.
 
 ![](images/divideandconquer/services.png)
 
 ## Types of software components - Strategies for breaking code apart
 
-This section is a primer about types of software components. As you may expect, software components may take some universal types which many experienced developers have noted. This will help you detect/uncover modules and enhance your code structure more effectively and efficiently. In this section, we will cover these types of software modules/components:
+This section is a primer about types of software components. As you may expect, software components may take some universal types that many experienced developers have noted. This will help you detect/uncover modules and enhance your code structure more effectively and efficiently.
 
-* Functional (or business)
-* Utility
-* Port
-* View
-* Archtypes (or Code types)
-* Architectural style
-
-Before we do that, These are two guidelines for breaking code apart:
+Firsly, before we explain types of components, the following two guidelines are the general strategy for breaking code apart:
 
 > *Guideline 1: Group similar code together!*
 
-But, what if the component gets very large, the answer is a second guideline:
+If the component gets very large, then follow this second guideline:
 
 > *Guideline 2: If a module becomes large, look for similar code inside it, and reapply the first guideline.*
 
-Note that determining whether or not a component is large is a subjective decision. In the meanwhile, There 3-30 "rule of thumb" may give indication whether a module or component is becoming big. It states that a module may provide at least 3 and at most 30 interface methods or functions.
+Note that determining whether or not a component is large is a subjective decision. In the meanwhile, the *3-30* rule of thumb may give an indication whether a module or component is becoming big. It states that a module may provide at least 3 and at most 30 interface methods or functions.
+
+Next, in the remaining part of this section, we will cover the following types of software components. These are the most universal and commonly used ones:
+
+1. Functional (or business)
+1. Utility
+1. Port
+1. View
+1. Archtypes (or Code types)
+1. Architectural style
 
 #### Functional (or Business)
 
-The first thing to think about while grouping similar code together is the business functions. The reason is that they are the easiest to detect and results in the most cohesive module type. The strategy of partitioning code according to business function results in a system abstraction which is more comprehensible and easier to read and understand.
+The first thing to think about is to group similar business functions together. It is the easiest type of similarity to detect and results in the most cohesive module type. The strategy of partitioning code according to business function results in a system abstraction which is more comprehensible and easier to read and understand.
 
 #### Utility
 
@@ -621,9 +597,8 @@ When grouping business functions together, you'll notice parts of the code doing
 
 In other cases, you may detect utility functions which are distinctive and may not relate to the core business functionality. These are some examples of utility functions:
 * Standard mathematical or string calculations, like `calculatePercentage(base, percent)` for calculating a percentage out of a base number, or `divideFullNameIntoParts` which returns person first to last names organized into an array
-* Batch operations on collections of raw data, like `multiplyByPercent`, which receives a collection of values and returns the same set multiplied by a parameter value.
-
-* Reading or writing records from an excel file.
+* Batch operations on collections of raw data, like `multiplyByPercent`, which receives a collection of values and returns the same set multiplied by a parameter value
+* Reading or writing records from an excel file
 * Parsing XML or JSON structures
 * etc.
 
@@ -646,9 +621,9 @@ Archtypes are the most noticeable or important data types [14]. Usually, these t
 
 #### View
 
-Any software with a graphical user interface needs one or more view modules. Usually, views are tightly coupled with its corresponding functional modules; therefore, it is tempting to package them together in one deployable component. On the other hand, the *Release Reuse Equivalency Principle* states that *"The granule of reuse is the granule of release"* [15]. Meaning that you should keep an eye on how your components are reused. If part on the component is reused more than another, then it should be placed in a separate deployable release, or component.
+Any software with a graphical user interface needs one or more view modules. Usually, views are tightly coupled with its corresponding functional modules; therefore, it is tempting to package them together in one deployable component. On the other hand, the *Release Reuse Equivalency Principle* states that *"The granule of reuse is the granule of release"* [15]. Meaning that you should keep an eye on how your components are reused. If part of the component is reused more than another, then it should be placed in a separate deployable release, or component.
 
-The *Common Closure Principle* gives another dimension. It states that: *"Classes that change together are packaged together"* [15]. Sometimes, change in business requires a change in view and vice versa. In this case, following the principle, you should keep them together. In contrast, if the changes are usually confined to view or business, you should place each one of them in a separate component.
+The *Common Closure Principle* gives another dimension. It states that: *"Classes that change together are packaged together"* [15]. Sometimes, change in business requires a change in view and vice versa. In this case, following the principle, you should keep both view and business classes in the same component. In contrast, if the changes are usually confined to view or business, you should place each one of them in a separate component.
 
 #### Architectural style
 
@@ -664,17 +639,13 @@ As you may notice, these components can sometimes be considered functional (Tran
 
 In most cases, you may find glimpses of these architectural styles while you are refactoring old code. Try to honor this structure and enhance its encapsulation.
 
-## A walk through an example
-
-< under development >
-
 ## Considerations while breaking code apart
 
 #### Break circular (aka cyclic) dependencies
 
 Circular dependencies occurs when one component depends on another component which in turn depends directly or indirectly on the first one:
 
-![A dependency cycle causing circular dependency between components B and C](images/divideandconquer/circular_dependency.png)
+![A dependency cycle causing circular dependency between components A, B, and C](images/divideandconquer/circular_dependency.png)
 
 You can live with circular dependencies for some time. However, in the long term your code may become very complex with higher levels of coupling between components. In time, this will result in more regression type of defects, upfront load time, and possible memory leaks due to cyclic references which never releases used objects. A perfect recipe for how to create spaghetti code!
 
@@ -688,19 +659,19 @@ Here are some strategies to break circular dependencies:
 
     ![Extract common logic into a standalone component](images/divideandconquer/break_cycles_2.png)
 
-1. Apply the Dependency Inversion Principle[^solid], which states that *High-level modules should not depend on low-level modules. Both should depend on abstractions.* To do that, split one component (component B in the example below) into two components: One holds the abstractions (or the generic definitions of types and interfaces) and the other provides the concretions (or one default implementation). Then, component A and B depends on the newly-cerated component C.
+1. Apply the Dependency Inversion Principle[^solid], which states that *High-level modules should not depend on low-level modules. Both should depend on abstractions.* To do that, split one component (component B in the example below) into two components: One holds the abstractions (the generic definitions of types and interfaces) and the other provides the concretions (one default implementation). Then, component A and B depends on the newly-cerated abstract component.
 
     ![Apply the Dependency Inversion Principle](images/divideandconquer/break_cycles_3.png)
 
-1. Make use of some architectural patterns, like the Observer pattern. In my experience, this may be considered a large refactoring at this stage and breaks the [ground rules](#ground_rules) upon which we have agreed at the beginning of this book. In stead, I would resort to one of the previous two solutions.
+1. Make use of some architectural patterns, like the Observer pattern. In my experience, this may be considered a large refactoring at this stage and breaks the [ground rules](#ground_rules) upon which we have agreed at the beginning of this book. In stead, I would resort to one of the previous three solutions.
 
 [^solid]: This is the sixth principle of the famous SOLID principles of object oriented design by Robert C. Martin [11]
 
 #### Start from (and honor) existing architecture
 
-Developers tend to deviate from existing initial architecture for many reasons; for lack of design clarity, insufficient documentation, or emergent design consideration which was not handled before. The volume of these "violations" to initial architecture was found to be from 9% to 19% of all dependencies in the system for healthy project (projects with updated reference architecture) [17].
+Developers tend to deviate from existing initial architecture for many reasons: lack of design clarity, insufficient documentation, or emergent design consideration which was not handled before. The volume of these "violations" to initial architecture was found to be from 9% to 19% of all dependencies in the system for healthy project (projects with updated reference architecture) [17].
 
-For poor and cluttered projects, the percentage is much higher. The diagrams below present the amount of violations found in two projects I worked with. What we have done is that we have first drawn the architectural modules and the expected dependencies between them. Then, we have used ConQat [^conqat] to check the architecture validity and detect any violations:
+For poor and cluttered code projects, the percentage is much higher. The diagrams below present the amount of violations found in two projects I worked with. What we have done is that we first drew the architectural modules and the expected dependencies between them. Then, we used ConQat [^conqat] to check the architecture validity and detect any violations:
 
 ![Green lines are the expected dependencies between components. Red lines are relationships and dependencies which do not confirm to expected dependencies, and therefore, they are considered violations.](images/divideandconquer/arch_analysis_2.png)
 
