@@ -354,20 +354,16 @@ A>
 A> One of the interesting tools to enhance code readability is to use *explanatory methods and fields*. The idea is very simple: if you have a one line code which is vague and not self-explanatory, consider extracting it into a standalone method and give it an explanatory name.
 A>
 A> Similarly, if you have a piece of calculation whose intent is not clear, consider extracting it into a field and give an explanatory name.
-A>
-A>{lang="java", linenos=on}
+A>{lang="java", linenos=off}
 A>~~~~~~~~
 A>case RequestTypes.BOOK_SEATS: {
-  return new Boolean(dataHandler
-      .book(dataHandler
+  return new Boolean(dataHandler.book(dataHandler
       .getRecord(((Integer)request.getParametersList().get(0)).intValue()),
-    ((Integer)request.getParametersList().get(1)).intValue()));
+        ((Integer)request.getParametersList().get(1)).intValue()));
 }
 A>~~~~~~~~
-A>
-A> As you can see, there is a difficulty understanding what kind of parameters we are passing to the `dataHandler.book` method. In stead, we can use explanatory methods as such:
-A>
-A>{lang="java"}
+A> In the code sample above, there is a difficulty understanding what kind of parameters we are passing to the `dataHandler.book` method. In stead, we can use explanatory methods as such:
+A>{lang="java", linenos=off}
 A>~~~~~~~~
 case RequestTypes.BOOK_SEATS: {
   Boolean bookingResult = new Boolean(dataHandler.book(getFlightRecord(request),
@@ -375,10 +371,8 @@ case RequestTypes.BOOK_SEATS: {
   return bookingResult;
 }
 A>~~~~~~~~
-A>
 A> Or, we can use explanatory fields as such:
-A>
-A>{lang="java"}
+A>{lang="java", linenos=off}
 A>~~~~~~~~
 case RequestTypes.BOOK_SEATS: {
   DataInfo flightRecord = dataHandler.getRecord(
@@ -388,7 +382,6 @@ case RequestTypes.BOOK_SEATS: {
   return bookingResult;
 }
 A>~~~~~~~~
-A>
 A> Explanatory methods and fields are extremely simple and astonishingly helpful tool to enhance program readability.
 
 [^clean-ron]: Quoted in *Leading Lean Software Development: Results Are not the Point*, by Mary and Tom Poppendieck.
