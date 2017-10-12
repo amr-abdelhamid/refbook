@@ -358,32 +358,34 @@ A>
 A>{lang="java", linenos=off}
 A>~~~~~~~~
 A>case RequestTypes.BOOK_SEATS: {
-  return new Boolean(dataHandler.book(dataHandler
+  Boolean bookingResult = new Boolean(dataHandler.book(dataHandler
       .getRecord(((Integer)request.getParametersList().get(0)).intValue()),
         ((Integer)request.getParametersList().get(1)).intValue()));
-}
-A>~~~~~~~~
-A>
-A> In the `dataHandler.book` method, there is a difficulty understanding what kind of parameters we are passing. In stead, we can use explanatory methods as such:
-A>
-A>{lang="java", linenos=off}
-A>~~~~~~~~
-case RequestTypes.BOOK_SEATS: {
-  Boolean bookingResult = new Boolean(dataHandler.book(getFlightRecord(request),
-    getNumberOfSeats(request)));
   return bookingResult;
 }
 A>~~~~~~~~
 A>
-A> Or, we can use explanatory fields as such:
+A> In the `dataHandler.book` method, there is a difficulty understanding what kind of parameters we are passing. In stead, we can use **explanatory methods** as such:
 A>
 A>{lang="java", linenos=off}
 A>~~~~~~~~
 case RequestTypes.BOOK_SEATS: {
-  DataInfo flightRecord = dataHandler.getRecord(
+  Boolean bookingResult = new Boolean(dataHandler.book(**getFlightRecord(request)**,
+    **getNumberOfSeats(request)**));
+  return bookingResult;
+}
+A>~~~~~~~~
+A>
+A> Or, we can use **explanatory fields** as such:
+A>
+A>{lang="java", linenos=off}
+A>~~~~~~~~
+case RequestTypes.BOOK_SEATS: {
+  DataInfo **flightRecord** = dataHandler.getRecord(
     ((Integer)request.getParametersList().get(0)).intValue());
-  int numberOfSeats = ((Integer)request.getParametersList().get(1)).intValue();
-  Boolean bookingResult = new Boolean(dataHandler.book(flightRecord,numberOfSeats));
+  int **numberOfSeats** = ((Integer)request.getParametersList().get(1)).intValue();
+  Boolean bookingResult =
+    new Boolean(dataHandler.book(**flightRecord, numberOfSeats**));
   return bookingResult;
 }
 A>~~~~~~~~
