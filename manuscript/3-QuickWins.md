@@ -375,12 +375,13 @@ public Boolean bookSeats(Request request) {
   return bookingResult;
 }
 
-private int getNumberOfSeats(Request request) {
-	return ((Integer)request.getParametersList().get(1)).intValue();
-}
 private DataInfo getFlightRecord(Request request){
 	return dataHandler
     .getRecord(((Integer)request.getParametersList().get(0)).intValue());
+}
+
+private int getNumberOfSeats(Request request) {
+	return ((Integer)request.getParametersList().get(1)).intValue();
 }
 A>~~~~~~~~
 A>
