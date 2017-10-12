@@ -357,7 +357,7 @@ A> Similarly, if you have a piece of calculation whose intent is not clear, cons
 A>
 A>{lang="java", linenos=off}
 A>~~~~~~~~
-A>case RequestTypes.BOOK_SEATS: {
+A>public Boolean bookSeats(Request request) {
   Boolean bookingResult = new Boolean(dataHandler.book(dataHandler
       .getRecord(((Integer)request.getParametersList().get(0)).intValue()),
         ((Integer)request.getParametersList().get(1)).intValue()));
@@ -369,10 +369,18 @@ A> In the `dataHandler.book` method, there is a difficulty understanding what ki
 A>
 A>{lang="java", linenos=off}
 A>~~~~~~~~
-case RequestTypes.BOOK_SEATS: {
+public Boolean bookSeats(Request request) {
   Boolean bookingResult = new Boolean(dataHandler.book(getFlightRecord(request),
     getNumberOfSeats(request)));
   return bookingResult;
+}
+
+private int getNumberOfSeats(Request request) {
+	return ((Integer)request.getParametersList().get(1)).intValue();
+}
+private DataInfo getFlightRecord(Request request){
+	return dataHandler
+    .getRecord(((Integer)request.getParametersList().get(0)).intValue());
 }
 A>~~~~~~~~
 A>
@@ -380,7 +388,7 @@ A> Or, we can use **explanatory fields** as such:
 A>
 A>{lang="java", linenos=off}
 A>~~~~~~~~
-case RequestTypes.BOOK_SEATS: {
+public Boolean bookSeats(Request request) {
   DataInfo flightRecord = dataHandler.getRecord(
     ((Integer)request.getParametersList().get(0)).intValue());
   int numberOfSeats = ((Integer)request.getParametersList().get(1)).intValue();
@@ -449,10 +457,10 @@ Yes, with little bit of overlap. This is logical and practical. For example, rem
 
 Another example is working on reducing method size before removing duplicates. This actually is a bad practice. Because you may split a method apart while it is actually a duplicate of another. In this case, you have lost this similarity and may not be able to detect this duplication anymore.
 
-#### How to determine whether or not we are done?
+#### Are these refactorings safe?
 
 < under development >
 
-#### Are these refactorings safe?
+#### How to determine whether or not we are done?
 
 < under development >
