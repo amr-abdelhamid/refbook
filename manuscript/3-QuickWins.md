@@ -374,12 +374,12 @@ public Boolean bookSeats(Request request) {
     getNumberOfSeats(request)));
   return bookingResult;
 }
-
+A>
 private DataInfo getFlightRecord(Request request){
 	return dataHandler
     .getRecord(((Integer)request.getParametersList().get(0)).intValue());
 }
-
+A>
 private int getNumberOfSeats(Request request) {
 	return ((Integer)request.getParametersList().get(1)).intValue();
 }
@@ -460,7 +460,22 @@ Another example is working on reducing method size before removing duplicates. T
 
 #### Are these refactorings safe?
 
-< under development >
+Sometime, applying any change to production code is scary. Changes may result in unexpected flows and incorrect side effects, especially if the code is entangled. If this is the case, is it safe to carrying out those changes the quick-wins stage?
+
+In one of my experiments, the team applied the quick-wins refactorings side by side while developing new features. I have compared the results of this release with the previous release which witnessed new features development only. Table 4 compares some quality metrics of both releases. Note that effort spent on both releases are exactly 4 months, team members are the same, and they did not introduce any improvements in their process except their work on refactoring:
+
+TABLE 4. QUALITY METRICS FOR TWO RELEASES: 5.5 (BEFORE WORKING ON REFACTORING), AND 5.6 (RELEASED WHILE WORKING ON REFACTORING)
+{title="Quality metrics for two releases: 5.5 (released before working on refactoring), and 5.6 (released while working on refactoring)"}
+| Metric | Release 5.5 | Release 5.6 |
+|--------|-------------|-------------|
+| Total bugs detected | 128 | 176 |
+| % of Regression bugs | 29.7% | 25.1% |
+| Average bug fixing cost (hours) | 1.97 | 1.8 |
+
+Two important observations from this table:
+
+* Percentage of regression bugs and average cost of bug fixing decreased. Although this may give an indication of better code quality, the difference in numbers is not significant
+* Refactorings applied during release 5.6 did not produce higher rates of regression bugs. This is a proof that refactorings did not impact existing functionality or introduce further defects.
 
 #### How to determine whether or not we are done?
 
