@@ -370,8 +370,8 @@ A>
 A>{lang="java", linenos=off}
 A>~~~~~~~~
 case RequestTypes.BOOK_SEATS: {
-  Boolean bookingResult = new Boolean(dataHandler.book(**getFlightRecord(request)**,
-    **getNumberOfSeats(request)**));
+  Boolean bookingResult = new Boolean(dataHandler.book(getFlightRecord(request),
+    getNumberOfSeats(request)));
   return bookingResult;
 }
 A>~~~~~~~~
@@ -381,11 +381,11 @@ A>
 A>{lang="java", linenos=off}
 A>~~~~~~~~
 case RequestTypes.BOOK_SEATS: {
-  DataInfo **flightRecord** = dataHandler.getRecord(
+  DataInfo flightRecord = dataHandler.getRecord(
     ((Integer)request.getParametersList().get(0)).intValue());
-  int **numberOfSeats** = ((Integer)request.getParametersList().get(1)).intValue();
+  int numberOfSeats = ((Integer)request.getParametersList().get(1)).intValue();
   Boolean bookingResult =
-    new Boolean(dataHandler.book(**flightRecord, numberOfSeats**));
+    new Boolean(dataHandler.book(flightRecord, numberOfSeats));
   return bookingResult;
 }
 A>~~~~~~~~
