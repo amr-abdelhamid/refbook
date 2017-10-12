@@ -1,7 +1,7 @@
 
 # Refactoring Roadmap Overview
 
-In a nutshell, start with the highest value-add and least risky activities, then work on re-organizing code chunks into components, and finally wrap everything with automated tests. In all stages, automate checks to make sure what is fixed will remain fixed.
+In a nutshell, start with the highest value-add and least risky fixes, then work on re-organizing code chunks into components, and finally wrap everything with automated tests. In all stages, automate checks to make sure what is fixed will remain fixed.
 
 {id="refactoring_roadmap"}
 ![](images/roadmap.png)
