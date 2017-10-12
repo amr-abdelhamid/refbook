@@ -354,6 +354,7 @@ A>
 A> One of the interesting tools to enhance code readability is to use *explanatory methods and fields*. The idea is very simple: if you have a one line code which is vague and not self-explanatory, consider extracting it into a standalone method and give it an explanatory name.
 A>
 A> Similarly, if you have a piece of calculation whose intent is not clear, consider extracting it into a field and give an explanatory name.
+A>
 A>{lang="java", linenos=off}
 A>~~~~~~~~
 A>case RequestTypes.BOOK_SEATS: {
@@ -362,7 +363,9 @@ A>case RequestTypes.BOOK_SEATS: {
         ((Integer)request.getParametersList().get(1)).intValue()));
 }
 A>~~~~~~~~
-A> In the code sample above, there is a difficulty understanding what kind of parameters we are passing to the `dataHandler.book` method. In stead, we can use explanatory methods as such:
+A>
+A> In the `dataHandler.book` method, there is a difficulty understanding what kind of parameters we are passing. In stead, we can use explanatory methods as such:
+A>
 A>{lang="java", linenos=off}
 A>~~~~~~~~
 case RequestTypes.BOOK_SEATS: {
@@ -371,7 +374,9 @@ case RequestTypes.BOOK_SEATS: {
   return bookingResult;
 }
 A>~~~~~~~~
+A>
 A> Or, we can use explanatory fields as such:
+A>
 A>{lang="java", linenos=off}
 A>~~~~~~~~
 case RequestTypes.BOOK_SEATS: {
@@ -382,7 +387,8 @@ case RequestTypes.BOOK_SEATS: {
   return bookingResult;
 }
 A>~~~~~~~~
-A> Explanatory methods and fields are extremely simple and astonishingly helpful tool to enhance program readability.
+A>
+A> My advice is to always use explanatory methods and fields. They are extremely simple and astonishingly helpful tool to enhance program readability.
 
 [^clean-ron]: Quoted in *Leading Lean Software Development: Results Are not the Point*, by Mary and Tom Poppendieck.
 
