@@ -1,13 +1,17 @@
-intro.md
+1-intro.md
 
-BeforeYouStart.md
+2-BeforeYouStart.md
 
-main.md
+3-RefactoringRoadmapOverview.md
 
-injectQualityIn.md
+4-QuickWins.md
 
-ContinuousInspection.md
+5-DivideAndConquer.md
 
-NewProjects.md
+6-injectQualityIn.md
 
-backmatter.md
+7-ContinuousInspection.md
+
+8-NewProjects.md
+
+9-backmatter.md
