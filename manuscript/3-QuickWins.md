@@ -354,26 +354,36 @@ A>
 A> One of the interesting tools to enhance code readability is to use *explanatory methods and fields*. The idea is very simple: if you have a one line code which is vague and not self-explanatory, consider extracting it into a standalone method and give it an explanatory name.
 
 A> Similarly, if you have a piece of calculation whose intent is not clear, consider extracting it into a field and give an explanatory name.
+A>
+A>{lang="java"}
+A>~~~~~~~~
 A> 		case RequestTypes.BOOK_SEATS: {
 			return new Boolean(dataHandler.book(dataHandler.getRecord(((Integer)request.getParametersList().get(0)).intValue()),
 				((Integer)request.getParametersList().get(1)).intValue()));
 		}
+A>~~~~~~~~
 A>
 A> As you can see, there is a difficulty understanding what kind of parameters we are passing to the `dataHandler.book` method. In stead, we can use explanatory methods as such:
-
+A>
+A>{lang="java"}
+A>~~~~~~~~
 A> 		case RequestTypes.BOOK_SEATS: {
-			Boolean bookingResult = new Boolean(dataHandler.book(getFlightRecord(request), getNumberOfSeats(request)));
-			return bookingResult;
-		}
+A>			Boolean bookingResult = new Boolean(dataHandler.book(getFlightRecord(request), getNumberOfSeats(request)));
+A>			return bookingResult;
+A>		}
+A>~~~~~~~~
 A>
 A> Or, we can use explanatory fields as such:
 A>
+A>{lang="java"}
+A>~~~~~~~~
 A>    case RequestTypes.BOOK_SEATS: {
 			DataInfo flightRecord = dataHandler.getRecord(((Integer)request.getParametersList().get(0)).intValue());
 			int numberOfSeats = ((Integer)request.getParametersList().get(1)).intValue();
 			Boolean bookingResult = new Boolean(dataHandler.book(flightRecord,numberOfSeats));
 			return bookingResult;
 		}
+A>~~~~~~~~
 A>
 A> Explanatory methods and fields are extremely simple and astonishingly helpful tool to enhance program readability.
 
