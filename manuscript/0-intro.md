@@ -43,6 +43,8 @@ There are two fundamental problems in this approach:
 
 This is another pattern of people who tend to follow advice *as per the book*. There are so many excellent books about clean coding, refactoring, design patterns, etc. While all these books are extremely helpful, they might not be used as step-by-step guide to refactoring poor code. Rather, they are like a buffet of so many good advice and proven practices and techniques; however, they don't tell you which of these practices and techniques has of higher priority and would realize higher value in *your* specific case.
 
+Even this book. Although I tried to give a generic roadmap which should apply to any type of project (I hope). Although I did that, I believe that you should think and question and experiment a bit before you blindly follow the advice in any book.
+
 **4. Try-then-retry**
 
 This is another pattern which I see very frequently. If you have large amounts of technical debt, try to fix a part of the product once there is a change request related to this part. If it works, then fine. If not, retry with the next change request.
@@ -59,9 +61,14 @@ I have documented some of the root causes of these failures in an experience rep
 
 Attempts to refactoring had hazy and unclear objectives. What "good code" means and how to measure "goodness" was not specified or taken care of by the engineering staff. It was the gut feeling of them which determined what to do next in order to make the code "better".
 
-#### 2. Covering poor code with fragile tests
+#### 2. Start with covering poor code with fragile tests
 
-We always thought that an automated test suite with high test coverage is a safety net for a team refactoring poor code, because it picks any side effects or regression issues caused by refactoring old code. Without such safety net, most of the time, we didn't have the courage to change the code and integrate it to the mainline. However, in all three projects, covering poor code with automated tests turned out to be not possible due to many factors. For example, product code lacked clear system interfaces and suffered from scattered business logic in all layers, including the database. In another case, writing automated tests incurred very high costs, not only in development, but in toolset and training. In time, some team members viewed automated tests as an impediment to refactoring!
+We always thought that an automated test suite with high test coverage is a safety net for a team refactoring poor code, because it picks any side effects or regression issues caused by refactoring old code. Without such safety net, most of the time, we didn't have the courage to change the code and integrate it to the mainline. However, in all three projects, **covering poor code with automated tests turned out to be not possible due to many factors**. In two projects I worked with I faced these challenges:
+
+* Product code lacked clear system interfaces and suffered from scattered business logic in all layers, including the database.
+* Writing automated tests incurred very high costs, not only in development, but in toolset and training.
+
+In time, some team members viewed automated tests as an impediment to refactoring!
 
 #### 3. It's non of the managers' business!
 

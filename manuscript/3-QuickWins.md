@@ -328,9 +328,9 @@ A> Notice that the original form of the `criteriaFind` method in the above examp
 A>
 A> Examples of logical units may be an if statement validating a business condition, a for loop doing a batch job on a group of data records, a query statement which retrieves some data from the database, several statements populating data fields on a new form, etc. In my experience, sometimes the logical unit are as small as two or three lines of code. More frequently, they are bigger (like 5 to 12 lines). On very rare occasions I see logical units which are bigger than that.
 A>
-A> This is an example of logical units of code, extracted from the famous [OpenBravo](http://www.openbravo.com/) open source ERP solution:
+A> This is an example of logical units of code, extracted from the famous [OpenBravo](http://www.openbravo.com/) open source ERP solution. Notice how comments help you identify these units:
 A>
-A> ![logical units of code or steps of execution. Notice how explanatory comments help you identify these units](\images\logicalunits.png)
+A> ![logical units of code or steps of execution.](\images\logicalunits.png)
 A>
 A> Such logical units are perfect candidates to be extracted into *private* methods. If you adopt this practice for a while, you'll start noticing some private methods which are similar in nature or shares the same "interest". In such case, you may extract and group them into a new logical component. More about this in the [Divide and Conquer](#DivideAndConquer) stage.
 

@@ -115,13 +115,10 @@ You may stop at this stage. Or, you may move to the next step and turn component
 
 This section is a primer about types of software components. As you may expect, software components may take some universal types that many experienced developers have noted. This will help you detect/uncover modules and enhance your code structure more effectively and efficiently.
 
-Firsly, before we explain types of components, the following two guidelines are the general strategy for breaking code apart:
+Firsly, before we explain types of components, the following two guidelines are **the general strategy for breaking code apart**:
 
-> *Guideline 1: Group similar code together!*
-
-If the component gets very large, then follow this second guideline:
-
-> *Guideline 2: If a module becomes large, look for similar code inside it, and reapply the first guideline.*
+> **Guideline 1: Form modules by grouping similar code together.**
+> **Guideline 2: If a module becomes large, look for similar code inside it, and reapply the first guideline.**
 
 Note that determining whether or not a component is large is a subjective decision. In the meanwhile, the *3-30* rule of thumb may give an indication whether a module or component is becoming big. It states that a module may provide at least 3 and at most 30 interface methods or functions.
 
@@ -143,6 +140,7 @@ The first thing to think about is to group similar business functions together. 
 When grouping business functions together, you'll notice parts of the code doing some redundant type of work. Sometimes, this is part of the business function itself, like `validateEmployeeId` for validating an multi-part employee id is correctly formed; or `formatEmployeeName` for preparing a special print name of employees based on their name, department, and hiring date. For this type of redundancy, No need to move them to a separate module.
 
 In other cases, you may detect utility functions which are distinctive and may not relate to the core business functionality. These are some examples of utility functions:
+
 * Standard mathematical or string calculations, like `calculatePercentage(base, percent)` for calculating a percentage out of a base number, or `divideFullNameIntoParts` which returns person first to last names organized into an array
 * Batch operations on collections of raw data, like `multiplyByPercent`, which receives a collection of values and returns the same set multiplied by a parameter value
 * Reading or writing records from an excel file

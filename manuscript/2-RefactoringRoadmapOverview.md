@@ -27,6 +27,6 @@ In most cases, you may find that code is already organized into high level modul
 
 Automated tests is one of the key enablers of quality code. From a development perspective, automated tests empowers the team to refactor entangled code safely. From a customer perspective, automated tests enables fast changes by detecting regression bugs early in the process. At this stage in the roadmap, After working on splitting code into components with clear interface methods, it is a perfect timing to start covering components with automated tests.
 
-#### Continuous Inspection
+#### Continuous Inspection: Ensure what is fixed will remain fixed
 
 Throughout the roadmap, enabling continuous inspection is key to sustainable refactoring. Continuous inspection ensures that the newly-introduced development habits are kept and enforced and ensures that what is fixed will remain fixed. In other words, it ensures that we do not hit the same wall again.
