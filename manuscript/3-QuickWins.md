@@ -197,11 +197,21 @@ One thing I like about this definition is the clearly-stated objectives of refac
 1. Easier to understand
 2. Cheaper to modify
 
-Having these two objectives in mind, it's possible to develop your "gut feeling" about the correct length of a method.
+Having these two objectives in mind, it's possible to develop your "gut feeling" about the correct length of a method. So, let's agree for now that a method is *good* and needs no further refactoring **when it fulfills these two criteria of being understandable and modifiable**.
 
-Let's agree that a method is *maintainable* and needs no further refactoring when it fulfills these two criteria of being understandable and modifiable. Now, consider the below 28-line method and try to evaluate how *maintainable* it is. To help you do that, start a stopwatch and measure the time to understand the intent of the method code lines.
+#### An experiment on method size
 
-A>{lang="java"}
+I have done this experiment before with university students. I have given them the three variants of the method below, without comments, with comments, and refactored into a 5-line method. I have measured the time it takes them to understand the intent of the method. Results were as follows:
+
+* Method without comments: **~ 2 minutes**
+* Method with comments: **~ 1 minute**
+* Refactored short method: **~ 10 seconds**
+
+I advice you to do this experiment with your team. Take a stop watch and use the sample code below or any piece of code from your project. **It is stunning how much time you save by just reducing methods into smaller size with readable method names**. It realizes the core objective of refactoring: to make the code "easier to understand and cheaper to modify".
+
+Ready? Go!
+
+A>{title="Code with no comments", lang="java"}
 A>~~~~~~~~
 A>public List criteriaFind(String criteria) {
   if (criteria == null)
@@ -241,21 +251,25 @@ A>
 }
 ~~~~~~~~
 
-This is a 28-line method. It seems to be small. However, you've spent some time (probably around 1-2 minutes) to grasp how the code works. So, according to our definition, is this method *maintainable*? The answer is no.
+This is a 36-line method. It seems to be small. However, you've spent some time (probably around 1-2 minutes) to grasp how the code works. So, **according to our definition, is this method *maintainable*? The answer is no**.
 
 Now, consider this enhanced version of the method:
 
-A> {lang="java"}
+A> {title="Method with explanatory comments", lang="java"}
 A> ~~~~~~~~
 A> public List criteriaFind(String criteria) {
   if (criteria == null)
     criteria = "";
 A>
+  # leanpub-start-insert
   // convert the criteria to ordered pairs of field/value arrays.
+  # leanpub-end-insert
   List criteriaList = scanCriteria(criteria);
   List result = new ArrayList();
 A>
+  # leanpub-start-insert
   // search for records which satisfies all the criteria.
+  # leanpub-end-insert
   Iterator dataIterator = getDataCash().iterator();
   Iterator criteriaIterator = null;
   DataInfo currentRecord = null;
@@ -265,8 +279,10 @@ A>
   while (dataIterator.hasNext() && !interrupted) {
     currentRecord = (DataInfo) dataIterator.next();
 A>
+    # leanpub-start-insert
     // loop on the criteria; if any criterion is not fulfilled
     // set matching to false and break the loop immediately.
+    # leanpub-end-insert
     criteriaIterator = criteriaList.iterator();
     while (criteriaIterator.hasNext() && !interrupted) {
       currentCriterion = (List) criteriaIterator.next();
@@ -282,13 +298,17 @@ A>
       matching = true;
   }
 A>
+  # leanpub-start-insert
   // clear results if user interrupted search
+  # leanpub-end-insert
   if (interrupted) {
     interrupted = false;
     result.clear();
   }
 A>
+  # leanpub-start-insert
   // Sort Results
+  # leanpub-end-insert
   Collections.sort(result);
   return result;
 }
@@ -302,7 +322,7 @@ Now, let's work on this method. If you notice, comments are placed at perfect pl
 
 So, by extracting each chunk into a standalone method, we will reach this version of the method:
 
-A>{lang="java"}
+A>{title="Smaller method after extracting method steps into private methods", lang="java"}
 A>~~~~~~~~
 public List criteriaFind(String criteria) {
   List criteriaList = convertCriteriaToOrderedPairsOfFieldValueArrays(criteria);
@@ -314,14 +334,6 @@ public List criteriaFind(String criteria) {
 A>~~~~~~~~
 
 This is a 5-line method which narrates a story. No need to write comments or explain anything. It is self-explanatory and much easier now to instantly capture the intent of the code.
-
-I have done this experiment before with university students. I have given them the three variants of the method above, without comments, with comments, and refactored into small method. I have measured the time it takes them to understand the intent of the method. Results were as follows:
-
-* Method without comments: ~ 2 minutes
-* Method with comments: ~ 1 minute
-* Refactored short method: ~ 10 seconds
-
-It is stunning how much time you save by just reducing methods into smaller size with readable method names. It realizes the core objective of refactoring: to make the code *"easier to understand and cheaper to modify"*.
 
 A> #### Logical units of code
 A>
@@ -338,7 +350,7 @@ A> Such logical units are perfect candidates to be extracted into *private* meth
 ## Enhance identifier naming
 
 {icon=quote-left}
-G> *You know you are working on clean code when each routine you read turns out to be pretty much what you expected[^clean-ron]*
+G> *You know you are working on clean code when each routine you read turns out to be pretty much what you expected [^clean-ron]*
 G>
 G> \- *- Ron Jeffries*
 
@@ -352,24 +364,24 @@ The good news is that renaming has become a safe refactoring which we can apply 
 
 A> #### Explanatory methods and fields
 A>
-A> One of the interesting tools to enhance code readability is to use *explanatory methods and fields*. The idea is very simple: if you have a one line code which is vague and not self-explanatory, consider extracting it into a standalone method and give it an explanatory name.
+One of the interesting tools to enhance code readability is to use *explanatory methods and fields*. The idea is very simple: if you have a one line code which is vague and not self-explanatory, consider extracting it into a standalone method and give it an explanatory name.
 A>
-A> Similarly, if you have a piece of calculation whose intent is not clear, consider extracting it into a field and give an explanatory name.
+Similarly, if you have a piece of calculation whose intent is not clear, consider extracting it into a field and give an explanatory name.
 A>
-A>{lang="java", linenos=off}
-A>~~~~~~~~
-A>public Boolean bookSeats(Request request) {
+{title="`dataHandler.book` parameters are not clear" lang="java", linenos=off}
+~~~~~~~~
+public Boolean bookSeats(Request request) {
   Boolean bookingResult = new Boolean(dataHandler.book(dataHandler
       .getRecord(((Integer)request.getParametersList().get(0)).intValue()),
         ((Integer)request.getParametersList().get(1)).intValue()));
   return bookingResult;
 }
-A>~~~~~~~~
+~~~~~~~~
 A>
-A> In the `dataHandler.book` method, there is a difficulty understanding what kind of parameters we are passing. In stead, we can use **explanatory methods** as such:
+In the `dataHandler.book` method, there is a difficulty understanding what kind of parameters we are passing. In stead, we can use **explanatory methods** as such:
 A>
-A>{lang="java", linenos=off}
-A>~~~~~~~~
+{title="Using explanatory methods" lang="java", linenos=off}
+~~~~~~~~
 public Boolean bookSeats(Request request) {
   Boolean bookingResult = new Boolean(dataHandler.book(getFlightRecord(request),
     getNumberOfSeats(request)));
@@ -382,12 +394,12 @@ private DataInfo getFlightRecord(Request request){
 private int getNumberOfSeats(Request request) {
 	return ((Integer)request.getParametersList().get(1)).intValue();
 }
-A>~~~~~~~~
+~~~~~~~~
 A>
-A> Or, we can use **explanatory fields** as such:
+Or, we can use **explanatory fields** as such:
 A>
-A>{lang="java", linenos=off}
-A>~~~~~~~~
+{title="Using explanatory fields" lang="java", linenos=off}
+~~~~~~~~
 public Boolean bookSeats(Request request) {
   DataInfo flightRecord = dataHandler.getRecord(
     ((Integer)request.getParametersList().get(0)).intValue());
@@ -396,9 +408,9 @@ public Boolean bookSeats(Request request) {
     new Boolean(dataHandler.book(flightRecord, numberOfSeats));
   return bookingResult;
 }
-A>~~~~~~~~
+~~~~~~~~
 A>
-A> My advice is to always use explanatory methods and fields. They are extremely simple and astonishingly helpful tool to enhance program readability.
+My advice is to always use explanatory methods and fields. They are extremely simple and astonishingly helpful tool to enhance program readability.
 
 [^clean-ron]: Quoted in *Leading Lean Software Development: Results Are not the Point*, by Mary and Tom Poppendieck.
 
