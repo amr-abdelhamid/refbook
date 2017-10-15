@@ -220,6 +220,7 @@ I advice you to do this experiment with your team. Get a stopwatch and use the s
 Ready? Go!
 
 A> **Method with no comments**
+A>
 A>{lang="java"}
 A>~~~~~~~~
 A>public List criteriaFind(String criteria) {
@@ -272,15 +273,11 @@ A> public List criteriaFind(String criteria) {
 A>  if (criteria == null)
 A>    criteria = "";
 A>
-A>  # leanpub-start-insert
 A>  // convert the criteria to ordered pairs of field/value arrays.
-A>  # leanpub-end-insert
 A>  List criteriaList = scanCriteria(criteria);
 A>  List result = new ArrayList();
 A>
-A>  # leanpub-start-insert
 A>  // search for records which satisfies all the criteria.
-A>  # leanpub-end-insert
 A>  Iterator dataIterator = getDataCash().iterator();
 A>  Iterator criteriaIterator = null;
 A>  DataInfo currentRecord = null;
@@ -290,10 +287,8 @@ A>
 A>  while (dataIterator.hasNext() && !interrupted) {
 A>    currentRecord = (DataInfo) dataIterator.next();
 A>
-A>    # leanpub-start-insert
 A>    // loop on the criteria; if any criterion is not fulfilled
 A>    // set matching to false and break the loop immediately.
-A>    # leanpub-end-insert
 A>    criteriaIterator = criteriaList.iterator();
 A>    while (criteriaIterator.hasNext() && !interrupted) {
 A>      currentCriterion = (List) criteriaIterator.next();
@@ -309,17 +304,13 @@ A>    else
 A>      matching = true;
 A>  }
 A>
-A>  # leanpub-start-insert
 A>  // clear results if user interrupted search
-A>  # leanpub-end-insert
 A>  if (interrupted) {
 A>    interrupted = false;
 A>    result.clear();
 A>  }
 A>
-A>  # leanpub-start-insert
 A>  // Sort Results
-A>  # leanpub-end-insert
 A>  Collections.sort(result);
 A>  return result;
 A>}
@@ -333,7 +324,8 @@ Now, let's work on this method. If you notice, comments are placed at perfect pl
 
 So, by extracting each chunk into a standalone method, we will reach this version of the method:
 
-A> ##### Smaller method after extracting method steps into private methods
+A> **_After extracting method steps into private methods_**
+A>
 A>{lang="java"}
 A>~~~~~~~~
 public List criteriaFind(String criteria) {
@@ -380,7 +372,7 @@ One of the interesting tools to enhance code readability is to use *explanatory 
 A>
 Similarly, if you have a piece of calculation whose intent is not clear, consider extracting it into a field and give an explanatory name.
 A>
-{title="`dataHandler.book` parameters are not clear" lang="java", linenos=off}
+{lang="java", linenos=off}
 ~~~~~~~~
 public Boolean bookSeats(Request request) {
   Boolean bookingResult = new Boolean(dataHandler.book(dataHandler
@@ -390,9 +382,10 @@ public Boolean bookSeats(Request request) {
 }
 ~~~~~~~~
 A>
-In the `dataHandler.book` method, there is a difficulty understanding what kind of parameters we are passing. In stead, we can use **explanatory methods** as such:
+**`dataHandler.book` parameters are not clear**. There is a difficulty understanding what kind of parameters we are passing. In stead, we can use **explanatory methods** as such:
+A> *Using explanatory methods:*
 A>
-{title="Using explanatory methods" lang="java", linenos=off}
+{lang="java", linenos=off}
 ~~~~~~~~
 public Boolean bookSeats(Request request) {
   Boolean bookingResult = new Boolean(dataHandler.book(getFlightRecord(request),
@@ -409,8 +402,9 @@ private int getNumberOfSeats(Request request) {
 ~~~~~~~~
 A>
 Or, we can use **explanatory fields** as such:
+A> *Using explanatory fields:*
 A>
-{title="Using explanatory fields" lang="java", linenos=off}
+{lang="java", linenos=off}
 ~~~~~~~~
 public Boolean bookSeats(Request request) {
   DataInfo flightRecord = dataHandler.getRecord(
