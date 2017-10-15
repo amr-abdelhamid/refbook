@@ -5,7 +5,7 @@
 {icon=quote-left}
 G> *Deleting dead code is not a technical problem; it is a problem of mindset and culture*
 G>
-G> \- *- Kevlin Henney, author of "97 Things Every Java Programmer Should Know"*
+G> \- *- Kevlin Henney [^kevlin]*
 
 Dead code is the "unnecessary, inoperative code that can be removed without affecting program’s functionality". These include "functions and sub-programs that are never called, properties that are never read or written, and variables, constants and enumerators that are never referenced, user-defined types that are never used, API declarations that are redundant, and even entire modules and classes that are redundant." [10]
 
@@ -197,21 +197,22 @@ One thing I like about this definition is the clearly-stated objectives of refac
 1. Easier to understand
 2. Cheaper to modify
 
-Having these two objectives in mind, it's possible to develop your "gut feeling" about the correct length of a method. So, let's agree for now that a method is *good* and needs no further refactoring **when it fulfills these two criteria of being understandable and modifiable**.
+Having these two objectives in mind, it's possible to develop your "gut feeling" about the correct length of a method. So, let's agree for now that **a method is *good* and needs no further refactoring when it fulfills these two criteria of being understandable and modifiable**.
 
 #### An experiment on method size
 
-I have done this experiment before with university students. I have given them the three variants of the method below, without comments, with comments, and refactored into a 5-line method. I have measured the time it takes them to understand the intent of the method. Results were as follows:
+I have done this experiment with university students. I gave them three variants of a method: without comments, with comments, and refactored into a small 5-line method. I have measured the time it takes them to understand the intent of the method. Results were as follows:
 
 * Method without comments: **~ 2 minutes**
 * Method with comments: **~ 1 minute**
 * Refactored short method: **~ 10 seconds**
 
-I advice you to do this experiment with your team. Take a stop watch and use the sample code below or any piece of code from your project. **It is stunning how much time you save by just reducing methods into smaller size with readable method names**. It realizes the core objective of refactoring: to make the code "easier to understand and cheaper to modify".
+I advice you to do this experiment with your team. Get a stopwatch and use the sample code below or any piece of code from your project. **It is stunning how much time you save by just reducing methods sizes into smaller ones with readable private method calls**. It realizes the core objective of refactoring: to make the code "easier to understand and cheaper to modify".
 
 Ready? Go!
 
-A>{title="Code with no comments", lang="java"}
+A> ##### Method with no comments
+A>{lang="java"}
 A>~~~~~~~~
 A>public List criteriaFind(String criteria) {
   if (criteria == null)
@@ -255,7 +256,8 @@ This is a 36-line method. It seems to be small. However, you've spent some time 
 
 Now, consider this enhanced version of the method:
 
-A> {title="Method with explanatory comments", lang="java"}
+A> ##### Method with explanatory comments
+A> {lang="java"}
 A> ~~~~~~~~
 A> public List criteriaFind(String criteria) {
   if (criteria == null)
@@ -322,7 +324,8 @@ Now, let's work on this method. If you notice, comments are placed at perfect pl
 
 So, by extracting each chunk into a standalone method, we will reach this version of the method:
 
-A>{title="Smaller method after extracting method steps into private methods", lang="java"}
+A> ##### Smaller method after extracting method steps into private methods
+A>{lang="java"}
 A>~~~~~~~~
 public List criteriaFind(String criteria) {
   List criteriaList = convertCriteriaToOrderedPairsOfFieldValueArrays(criteria);
