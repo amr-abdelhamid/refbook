@@ -1,5 +1,5 @@
 
-# Divide and Conquer {#DivideAndConquer}
+# Stage 2: Divide and Conquer {#DivideAndConquer}
 
 Software design is all about components and their relationships. The better you divide your software into loosely-coupled and highly-cohesive parts, the more comprehensible, more responsive to change, and more agile your software design becomes. The act of partitioning your software in this manner is described by Fairbanks as authoring "a story at many levels", which results in a software design that will "tell a story to whoever looks at it, and it will be easy to understand":
 

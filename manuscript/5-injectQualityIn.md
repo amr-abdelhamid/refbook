@@ -1,4 +1,4 @@
-# Inject Quality In
+# Stage 3: Inject Quality In
 
 The final stage in the roadmap is to cover components with automated tests and create *trusted code areas*. This, in return, enables the team do more profound and risky refactorings.
 
