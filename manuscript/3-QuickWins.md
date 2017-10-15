@@ -201,12 +201,12 @@ Having these two objectives in mind, it's possible to develop your "gut feeling"
 
 Let's agree that a method is *maintainable* and needs no further refactoring when it fulfills these two criteria of being understandable and modifiable. Now, consider the below 28-line method and try to evaluate how *maintainable* it is. To help you do that, start a stopwatch and measure the time to understand the intent of the method code lines.
 
-{lang="java"}
-~~~~~~~~
-public List criteriaFind(String criteria) {
+A>{lang="java"}
+A>~~~~~~~~
+A>public List criteriaFind(String criteria) {
   if (criteria == null)
     criteria = "";
-
+A>
   List criteriaList = scanCriteria(criteria);
   List result = new ArrayList();
   Iterator dataIterator = getDataCash().iterator();
@@ -214,10 +214,10 @@ public List criteriaFind(String criteria) {
   DataInfo currentRecord = null;
   List currentCriterion = null;
   boolean matching = true;
-
+A>
   while (dataIterator.hasNext() && !interrupted) {
     currentRecord = (DataInfo) dataIterator.next();
-
+A>
     criteriaIterator = criteriaList.iterator();
     while (criteriaIterator.hasNext() && !interrupted) {
       currentCriterion = (List) criteriaIterator.next();
@@ -251,21 +251,21 @@ A> public List criteriaFind(String criteria) {
   if (criteria == null)
     criteria = "";
 A>
-A>  // convert the criteria to ordered pairs of field/value arrays.
+  // convert the criteria to ordered pairs of field/value arrays.
   List criteriaList = scanCriteria(criteria);
   List result = new ArrayList();
 A>
-A>  // search for records which satisfies all the criteria.
+  // search for records which satisfies all the criteria.
   Iterator dataIterator = getDataCash().iterator();
   Iterator criteriaIterator = null;
   DataInfo currentRecord = null;
   List currentCriterion = null;
   boolean matching = true;
 A>
-A>  while (dataIterator.hasNext() && !interrupted) {
+  while (dataIterator.hasNext() && !interrupted) {
     currentRecord = (DataInfo) dataIterator.next();
 A>
-A>    // loop on the criteria; if any criterion is not fulfilled
+    // loop on the criteria; if any criterion is not fulfilled
     // set matching to false and break the loop immediately.
     criteriaIterator = criteriaList.iterator();
     while (criteriaIterator.hasNext() && !interrupted) {
@@ -282,13 +282,13 @@ A>    // loop on the criteria; if any criterion is not fulfilled
       matching = true;
   }
 A>
-A>  // clear results if user interrupted search
+  // clear results if user interrupted search
   if (interrupted) {
     interrupted = false;
     result.clear();
   }
 A>
-A>  // Sort Results
+  // Sort Results
   Collections.sort(result);
   return result;
 }
@@ -302,8 +302,8 @@ Now, let's work on this method. If you notice, comments are placed at perfect pl
 
 So, by extracting each chunk into a standalone method, we will reach this version of the method:
 
-{lang="java"}
-~~~~~~~~
+A>{lang="java"}
+A>~~~~~~~~
 public List criteriaFind(String criteria) {
   List criteriaList = convertCriteriaToOrderedPairsOfFieldValueArrays(criteria);
   List result = searchForRecordsWhichSatisfiesAllCriteria(criteriaList);
@@ -311,7 +311,7 @@ public List criteriaFind(String criteria) {
   sortResults(result);
   return result;
 }
-~~~~~~~~
+A>~~~~~~~~
 
 This is a 5-line method which narrates a story. No need to write comments or explain anything. It is self-explanatory and much easier now to instantly capture the intent of the code.
 
