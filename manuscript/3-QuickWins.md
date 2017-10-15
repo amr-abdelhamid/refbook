@@ -1,5 +1,7 @@
 # Stage 1: Quick-Wins
 
+![Stage 1: Quick-wins - Simple and least risky enhancements](\images\roadmap-stage1.png)
+
 ## Removing dead code
 
 {icon=quote-left}
@@ -31,7 +33,7 @@ There are plenty of ways to detect dead code. It is as put by Kevlin Henney[^kev
 
 To help you start, here are some ideas how to detect dead code:
 
-#### Static analyzers
+#### 1. Static analyzers
 
 Static analyzers detects unused code by semantic analysis of static code at compile or assembly time. For example:
 
@@ -47,7 +49,7 @@ These are also called *Unreachable Code* and it is only one type of dead code. T
 
 All these cases are simple and straight forward to catch using compilers and static analyzers. More examples of tools in the [Catalogue of practices and techniques](#catalogue). However, if your program allows for dynamic code changes, reflection, or dynamic loading of libraries and late binding; in such cases, static analyzers may not help.
 
-#### Files not touched for so long
+#### 2. Files not touched for so long
 
 One easy and very effective technique is to search for files that has never changed since a while. These are three main reasons why code files did not change for so long [5]:
 
@@ -57,7 +59,7 @@ One easy and very effective technique is to search for files that has never chan
 
 Of course, this requires that you investigate and check whether the code is dead or not. This may take some time, but unless you investigate you’ll never know.
 
-#### Dynamic program analysis
+#### 3. Dynamic program analysis
 
 Runtime monitoring or dynamic program analysis may be used to rule out parts of the code which are **not** dead code. This effectively reduces the amount of code to be inspected.
 

@@ -1,6 +1,6 @@
 # Continuous Inspection Throughout the Roadmap
 
-< under development >
+![Continuous Inspection - Ensure what is fixed will remain fixed](\images\roadmap-ci.png)
 
 ## Why continuous inspection is important?
 

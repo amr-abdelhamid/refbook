@@ -1,5 +1,7 @@
 # Stage 3: Inject Quality In
 
+![Stage 3: Inject quality in - Cover components with automated tests](\images\roadmap-stage3.png)
+
 The final stage in the roadmap is to cover components with automated tests and create *trusted code areas*. This, in return, enables the team do more profound and risky refactorings.
 
 ## Which type of tests?

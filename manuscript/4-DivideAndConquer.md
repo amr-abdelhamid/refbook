@@ -1,6 +1,8 @@
 
 # Stage 2: Divide and Conquer {#DivideAndConquer}
 
+![Stage 2: Divide & Conquer - Split code into components](\images\roadmap-stage2.png)
+
 Software design is all about components and their relationships. The better you divide your software into loosely-coupled and highly-cohesive parts, the more comprehensible, more responsive to change, and more agile your software design becomes. The act of partitioning your software in this manner is described by Fairbanks as authoring "a story at many levels", which results in a software design that will "tell a story to whoever looks at it, and it will be easy to understand":
 
 > *"To be comprehensible, your software should be structured so that it reveals a story at many levels. Each level of nesting tells a story about how those parts interact. A developer who was unfamiliar with the system could be dropped in at any level and still make sense of it, rather than being swamped."*
@@ -131,11 +133,11 @@ Next, in the remaining part of this section, we will cover the following types o
 1. Archtypes (or Code types)
 1. Architectural style
 
-#### Functional (or Business)
+#### Type 1: Functional (or Business)
 
 The easiest type of similarity to detect and results in the most cohesive module type is to group code related to the same business area together. This results in a system abstraction which is more comprehensible and easier to read and understand.
 
-#### Utility
+#### Type 2: Utility
 
 When grouping business functions together, you'll notice parts of the code doing some redundant type of work. Sometimes, this is part of the business function itself, like `validateEmployeeId` for validating an multi-part employee id is correctly formed; or `formatEmployeeName` for preparing a special print name of employees based on their name, department, and hiring date. For this type of redundancy, No need to move them to a separate module.
 
@@ -151,7 +153,7 @@ In these cases, the first step is to group all utility functions in a separate g
 
 ![](images/divideandconquer/utilityclasses.png)
 
-#### Port
+#### Type 3: Port
 
 Port modules are those which encapsulate communication logic to and from a special resource. For example, communicating with web-services, RMI/IIOP, databases, file system, network resources, etc. So, any type of communication which may be needed by more than one *functional modules* should be encapsulated in a standalone module.
 
@@ -160,17 +162,17 @@ Port modules may be considered a subtype of the *Utility modules* because at the
 * Sometimes, it encapsulates some business logic related to how objects or data are prepared or serialized before sending or after receiving. So, it may not be pure utility functions.
 * This type is almost in all applications and is very commonly used every where. This is why it deserves a special type.
 
-#### Archtypes (or Core types)
+#### Type 4: Archtypes (or Core types)
 
 Archtypes are the most noticeable or important data types [14]. Usually, these types are gathered in one core module used by almost all others. Although this raises coupling between this module and the rest of the system, gathering core types in one module reduces the overall coupling among all other modules in the system.
 
-#### View
+#### Type 5: View
 
 Any software with a graphical user interface needs one or more view modules. Usually, views are tightly coupled with its corresponding functional modules; therefore, it is tempting to package them together in one deployable component. On the other hand, the *Release Reuse Equivalency Principle* states that *"The granule of reuse is the granule of release"* [15]. Meaning that you should keep an eye on how your components are reused. If part of the component is reused more than another, then it should be placed in a separate deployable release, or component.
 
 The *Common Closure Principle* gives another dimension. It states that: *"Classes that change together are packaged together"* [15]. Sometimes, change in business requires a change in view and vice versa. In this case, following the principle, you should keep both view and business classes in the same component. In contrast, if the changes are usually confined to view or business, you should place each one of them in a separate component.
 
-#### Architectural style
+#### Type 6: Architectural style
 
 This is one way of partitioning your code: following an architectural style [14]. If you're maintaining a heavy transactional system, a banking system for instance, then probably it will follow a *Transaction Processing* style [16]. In this architectural style, transactions are recorded and processed later on. This is a high level diagram of typical components in transaction processing application:
 
