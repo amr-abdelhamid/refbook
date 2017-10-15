@@ -351,6 +351,8 @@ A> ![logical units of code or steps of execution.](\images\logicalunits.png)
 A>
 A> Such logical units are perfect candidates to be extracted into *private* methods. If you adopt this practice for a while, you'll start noticing some private methods which are similar in nature or shares the same "interest". In such case, you may extract and group them into a new logical component. More about this in the [Divide and Conquer](#DivideAndConquer) stage.
 
+{pagebreak}
+
 ## Enhance identifier naming
 
 {icon=quote-left}
@@ -383,7 +385,6 @@ public Boolean bookSeats(Request request) {
 ~~~~~~~~
 A>
 **`dataHandler.book` parameters are not clear**. There is a difficulty understanding what kind of parameters we are passing. In stead, we can use **explanatory methods** as such:
-A> *Using explanatory methods:*
 A>
 {lang="java", linenos=off}
 ~~~~~~~~
@@ -402,7 +403,6 @@ private int getNumberOfSeats(Request request) {
 ~~~~~~~~
 A>
 Or, we can use **explanatory fields** as such:
-A> *Using explanatory fields:*
 A>
 {lang="java", linenos=off}
 ~~~~~~~~
@@ -481,14 +481,13 @@ Sometime, applying any change to production code is scary. Changes may result in
 
 In one of my experiments, the team applied the quick-wins refactorings side by side while developing new features. I have compared the results of this release with the previous release which witnessed new features development only. Table 4 compares some quality metrics of both releases. Note that effort spent on both releases are exactly 4 months, team members are the same, and they did not introduce any improvements in their process except their work on refactoring:
 
-TABLE 4. QUALITY METRICS FOR TWO RELEASES: 5.5 (BEFORE WORKING ON REFACTORING), AND 5.6 (RELEASED WHILE WORKING ON REFACTORING)
+*TABLE 1. Quality metrics for two releases: 5.5 (released before working on refactoring), and 5.6 (released while working on refactoring)*
 
-{title="Quality metrics for two releases: 5.5 (released before working on refactoring), and 5.6 (released while working on refactoring)"}
-
-|Metric                          | Release 5.5 | Release 5.6 |
-| Total bugs detected             | 128         | 176         |
-| % of Regression bugs            | 29.7%       | 25.1%       |
-| Average bug fixing cost (hours) | 1.97        | 1.8         |
+|Metric                         |Release 5.5|Release 5.6|
+|-------------------------------------------------------|
+|Total bugs detected            |128        |176        |
+|% of Regression bugs           |29.7%      |25.1%      |
+|Average bug fixing cost (hours)|1.97       |1.8        |
 
 Two important observations from this table:
 
