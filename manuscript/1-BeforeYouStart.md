@@ -3,19 +3,19 @@
 
 # Before You Start - Prepare a Healthy Environment {#beforeYouStart}
 
-## Workitem tracking
+## Work item tracking
 
-Workitem tracking is an important topic in configuration management and a basic constituent in a healthy agile environment. However, many agile teams may not have a clear idea about what workitem types and workflows they should track, what state information they should collect, what kind of relations to be maintained between workitems.
+Work item tracking (aka issue tracking) is an important topic in configuration management and a basic constituent in a healthy software development environment. However, many software teams may not have a clear idea about what work item types and workflows they should track, what state information they should collect, what kind of relations to be maintained between work items.
 
-One sign of a mature agile team is that they start creating new workitem types and adjust their workflows to suite their specific needs. They also use it not only to track their everyday development activities, but also to generate rich progress reports, build traceability networks, do impact analysis, etc.
+One sign of a mature development team is that they start creating new work item types and adjust their workflows to suite their specific needs. They also use it not only to track their everyday development activities, but also to generate rich progress reports, build traceability networks, do impact analysis, etc.
 
 ## End-to-end traceability
 
 Traceability is a dynamic network of relationships which you can use to trace or relate software artifacts to each other:
 
-![Example traceability network which should possible links between a group of workitems](\images\traceability.png)
+![Example traceability network which should possible links between a group of work items](\images\traceability.png)
 
-As you can see, any artifact can be related to so many other concepts, artifacts, or workitems. A user story can trace to many other workitems (white), trace to other information (light blue), or trace to physical artifacts (gray).
+As you can see, any artifact can be related to so many other concepts, artifacts, or work items. A user story can trace to many other work items (like tasks of defects), trace to other information (like iteration or release), or trace to physical artifacts (like code or design document).
 
 Traceability enables the team to study the impact of a change and assess its costs, risks, and root-causes. In the scenario below, a defect reported by a customer is traced back to the defected code. This code is traced back to the reason of its existence, which is found to be a change requested by the customer sometime ago. In turn, more information about the change request can be deduced:
 

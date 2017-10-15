@@ -17,7 +17,7 @@ In the 90’s, 70 billion of the 100 billion expenditure on software products we
 
 Over the course of several years, I have struggled with teams to refactor their application code to be easier to understand and cheaper to modify. These attempts followed one or more of the old-way patterns described below. I have to say that most of these attempts failed or achieved very little value.
 
-**1. Re-write the whole**
+#### 1. Re-write the whole
 
 This solution looms like the easiest solution from both technical and management point of views. If code is cluttered and causing lots of trouble, trash it and start from scratch. The question is: If you start from scratch, what makes you confident that you'll not hit the same wall again?
 
@@ -30,7 +30,7 @@ It's like the next picture of two accidents. Car capabilities are different, one
 
 So, if you would like to start over again and not hit the same wall, you have to change your development habits, rather than change the code. But, why not change development habits while still maintaining the same code? This would definitely save us huge costs of development, and this book gives you a roadmap how to do that.
 
-**2. Technical hero**
+#### 2. Technical hero
 
 This is very common: Hire a highly qualified technical person and give him full authority and power. People usually expect that such a person is magically capable (someway or another) to fix things up and turn the code from cluttered and spaghetti to structured, readable, understandable and changeable code.
 
@@ -39,13 +39,13 @@ There are two fundamental problems in this approach:
 1. Such persons are very expensive and may not be affordable by many organizations. If this is the only way to go, then refactoring will become an expensive activity monopolized by some wealthy teams. What we aspire, instead, is to enable all software people to refactor their own code themselves; regardless of their seniority or technical expertise. This is more sustainable, though requires more time and effort.
 2. Beware that a technical hero may well take wrong refactoring decisions, especially if nobody is reviewing his/her work. Such decisions may lead the whole team to hit the wall and waste so much time and effort. Having full power and authority may also lead very easily to what I call a [Technical Glut Trab](#thetrab) - described below.
 
-**3. As per the book**
+#### 3. As per the book
 
 This is another pattern of people who tend to follow advice *as per the book*. There are so many excellent books about clean coding, refactoring, design patterns, etc. While all these books are extremely helpful, they might not be used as step-by-step guide to refactoring poor code. Rather, they are like a buffet of so many good advice and proven practices and techniques; however, they don't tell you which of these practices and techniques has of higher priority and would realize higher value in *your* specific case.
 
 Even this book. Although I tried to give a generic roadmap which should apply to any type of project (I hope). Although I did that, I believe that you should think and question and experiment a bit before you blindly follow the advice in any book.
 
-**4. Try-then-retry**
+#### 4. Try-then-retry
 
 This is another pattern which I see very frequently. If you have large amounts of technical debt, try to fix a part of the product once there is a change request related to this part. If it works, then fine. If not, retry with the next change request.
 
@@ -59,7 +59,7 @@ I have documented some of the root causes of these failures in an experience rep
 
 #### 1. Vague and hazy objectives
 
-Attempts to refactoring had hazy and unclear objectives. What "good code" means and how to measure "goodness" was not specified or taken care of by the engineering staff. It was the gut feeling of them which determined what to do next in order to make the code "better".
+The first reason was due to hazy and unclear objectives. We didn't specify what "good code" looks like or how to measure "goodness". **The decision of what to do next or whether or not the code is *good* was decided by the gut feeling of the engineering staff**, not a clear and indicative measures or indicators.
 
 #### 2. Start with covering poor code with fragile tests
 
