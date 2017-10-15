@@ -113,7 +113,7 @@ You may stop at this stage. Or, you may move to the next step and turn component
 
 ## Types of software components - Strategies for breaking code apart
 
-This section is a primer about types of software components. As you may expect, software components may take some universal types that many experienced developers have noted. This will help you detect/uncover modules and enhance your code structure more effectively and efficiently.
+This section is a primer about types of software components. As you may expect, software components may take some universal types that many experienced developers have noted. This will help you detect/uncover modules and enhance your code structure more effectively and efficiefdntly.
 
 Firsly, before we explain types of components, the following two guidelines are **the general strategy for breaking code apart**:
 

@@ -5,7 +5,7 @@
 {icon=quote-left}
 G> *Deleting dead code is not a technical problem; it is a problem of mindset and culture*
 G>
-G> \- *- Kevlin Henney*
+G> \- *- Kevlin Henney, author of "97 Things Every Java Programmer Should Know"*
 
 Dead code is the "unnecessary, inoperative code that can be removed without affecting program’s functionality". These include "functions and sub-programs that are never called, properties that are never read or written, and variables, constants and enumerators that are never referenced, user-defined types that are never used, API declarations that are redundant, and even entire modules and classes that are redundant." [10]
 
@@ -13,7 +13,7 @@ It is fairly intuitive (and was shown empirically) that as code grows in size, i
 
 1. More time needed to analyze code and locate bugs
 2. Larger code implies bigger amount of functionality, which, in turn, requires more maintenance
-3. Software size has significant influence on quality. That is, as code size increases, code quality decreases. This, in turn, has significant effect on maintenance cost [9]
+3. Software size has significant influence on quality. This was shown in an empirical study which researched the relationship between several project parameters (including size) and project quality. "Information systems project size was found to be a **significant influence on quality**. That is, as project size increased, project quality decreased." [9, p.6]. This, in turn, has significant effect on maintenance cost
 
 ### What's evil about dead code?
 
@@ -25,7 +25,9 @@ This piece of dead code "had been dead for years, but was awakened by a change t
 
 ### How to detect dead code?
 
-There are plenty of ways to detect dead code. It is as put by Kevlin Henney: "Deleting dead code is not a technical problem; it is a problem of mindset and culture." [5]
+There are plenty of ways to detect dead code. It is as put by Kevlin Henney[^kevlin]: "Deleting dead code is not a technical problem; it is a problem of mindset and culture." [5]
+
+[^kevlin]: [Kevlin Henney](https://en.wikipedia.org/wiki/Kevlin_Henney) is a famous author, keynote speaker, and consultant on software development; and an IEEE Software Advisory Board member
 
 To help you start, here are some ideas how to detect dead code:
 
@@ -74,13 +76,13 @@ G> \- *- Robert C. Martin*
 
 It is interesting to read what gurus write about code duplication. You feel like reading about a plague or a catastrophe which you should avoid by all means.
 
-Andrew Hunt, one of the 17 signatories of the Agile Manifesto, and David Thomas, in their book *"The Pragramtic Programmer"*, have put down several principles for Pragmatic Programming, the first of which is: *Don't Repeat Yourself!*
+Andrew Hunt, one of the 17 signatories of the Agile Manifesto, and David Thomas, in their book *"The Pragramtic Programmer"*, have put down several principles for Pragmatic Programming, the first of which is: **Don't Repeat Yourself!**
 
-[SonarQube](https://www.sonarqube.org/), the famous tool for continuous inspection of code quality, lists duplication as one of the *seven deadly sins of developers!*[^Sonar]
+[SonarQube](https://www.sonarqube.org/), the famous tool for continuous inspection of code quality, lists duplication as one of the **seven deadly sins of developers!**[^Sonar]
 
-[^Sonar]: [Developers' Seven Deadly Sins](https://docs.sonarqube.org/display/HOME/Developers%27+Seven+Deadly+Sins)
+[^Sonar]: [Developers' Seven Deadly Sins](https://docs.sonarqube.org/display/SONARQUBE45/Developers%27+Seven+Deadly+Sins)
 
-Robert C Martin (aka uncle Bob), the famous author, speaker and developer, says that "Duplication may be the root of all evil in software"[^cleancoding]. In another article[^bobarticle], he is no longer hesitant and asserts that "Duplicate code *IS* the root of all evil in software design."
+Robert C Martin (aka uncle Bob), the famous author, speaker and developer, says that "Duplication may be the root of all evil in software"[^cleancoding]. In another article[^bobarticle], he is no longer hesitant and asserts that **"Duplicate code *IS* the root of all evil in software design."**
 
 [^cleancoding]: This is mentioned in his famous book: *Clean Code: A Handbook of Agile Software Craftsmanship*
 
@@ -88,7 +90,7 @@ Robert C Martin (aka uncle Bob), the famous author, speaker and developer, says 
 
 #### What's evil about code duplication
 
-In the introduction, I have mentioned the results of a [study conducted on software expenditure](#StudyAboutSoftwareExpenditure) during the 90's. They found that 70 billion of the 100 billion expenditure on development were spent on maintenance; and 60% of which is consumed to *locate defective code* [1]:
+In a study conducted on software expenditure during the 90's, they found that 70 billion of the 100 billion expenditure on development were spent on maintenance; and 60% of which is consumed to *locate defective code* [1]:
 
 ![60% of the maintenance effort is spent on locating bugs. That is, debugging and chasing code lines till you finally point to a lines of code and say 'I found the bug'. The remaining 40% are for everything else: Fixing, testing, reviews, integration, system testing, deployment, user Acceptance,...](images/duplicatecode/costoflocatingbugs.png)
 
@@ -243,27 +245,27 @@ This is a 28-line method. It seems to be small. However, you've spent some time 
 
 Now, consider this enhanced version of the method:
 
-{lang="java"}
-~~~~~~~~
-public List criteriaFind(String criteria) {
+A> {lang="java"}
+A> ~~~~~~~~
+A> public List criteriaFind(String criteria) {
   if (criteria == null)
     criteria = "";
-
-  // convert the criteria to ordered pairs of field/value arrays.
+A>
+A>  // convert the criteria to ordered pairs of field/value arrays.
   List criteriaList = scanCriteria(criteria);
   List result = new ArrayList();
-
-  // search for records which satisfies all the criteria.
+A>
+A>  // search for records which satisfies all the criteria.
   Iterator dataIterator = getDataCash().iterator();
   Iterator criteriaIterator = null;
   DataInfo currentRecord = null;
   List currentCriterion = null;
   boolean matching = true;
-
-  while (dataIterator.hasNext() && !interrupted) {
+A>
+A>  while (dataIterator.hasNext() && !interrupted) {
     currentRecord = (DataInfo) dataIterator.next();
-
-    // loop on the criteria; if any criterion is not fulfilled
+A>
+A>    // loop on the criteria; if any criterion is not fulfilled
     // set matching to false and break the loop immediately.
     criteriaIterator = criteriaList.iterator();
     while (criteriaIterator.hasNext() && !interrupted) {
@@ -279,14 +281,14 @@ public List criteriaFind(String criteria) {
     else
       matching = true;
   }
-
-  // clear results if user interrupted search
+A>
+A>  // clear results if user interrupted search
   if (interrupted) {
     interrupted = false;
     result.clear();
   }
-
-  // Sort Results
+A>
+A>  // Sort Results
   Collections.sort(result);
   return result;
 }
@@ -294,8 +296,7 @@ public List criteriaFind(String criteria) {
 
 Adding some comments are generally perceived to enhance code understandability. It may clutter the code a bit, but at least in this example, the code is a little more readable. But, wait a minute, if we are adding comments to make the code more readable, isn't this an indication that the code is not maintainable? According to our definition of maintainability, the answer is yes. This is why *explanatory comments* are generally considered a code smell, or a sign of bad code.
 
-{icon=bookmark}
-G> *If we are adding comments to make the code more readable, isn't this an indication that the code is not maintainable? According to our definition of maintainability, the answer is yes. This is why __explanatory comments__ are generally considered a code smell, or a sign of bad code.*
+I> *If we are adding comments to make the code more readable, isn't this an indication that the code is not maintainable? According to our definition of maintainability, the answer is yes. This is why __explanatory comments__ are generally considered a code smell, or a sign of bad code.*
 
 Now, let's work on this method. If you notice, comments are placed at perfect places. They give you a hint of the *Boundaries of Logical Units* inside the method. Such logical units are functionally cohesive and are candidate to become standalone methods. Not only that, the comment itself is a perfect starting point for naming of the newly born method.
 
@@ -328,7 +329,7 @@ A> Notice that the original form of the `criteriaFind` method in the above examp
 A>
 A> Examples of logical units may be an if statement validating a business condition, a for loop doing a batch job on a group of data records, a query statement which retrieves some data from the database, several statements populating data fields on a new form, etc. In my experience, sometimes the logical unit are as small as two or three lines of code. More frequently, they are bigger (like 5 to 12 lines). On very rare occasions I see logical units which are bigger than that.
 A>
-A> This is an example of logical units of code, extracted from the famous [OpenBravo](http://www.openbravo.com/) open source ERP solution. Notice how comments help you identify these units:
+A> This is an example of logical units of code, extracted from the famous [OpenBravo](https://github.com/bippo/openbravo) open source ERP solution. Notice how comments help you identify these units:
 A>
 A> ![logical units of code or steps of execution.](\images\logicalunits.png)
 A>
@@ -463,9 +464,10 @@ Sometime, applying any change to production code is scary. Changes may result in
 In one of my experiments, the team applied the quick-wins refactorings side by side while developing new features. I have compared the results of this release with the previous release which witnessed new features development only. Table 4 compares some quality metrics of both releases. Note that effort spent on both releases are exactly 4 months, team members are the same, and they did not introduce any improvements in their process except their work on refactoring:
 
 TABLE 4. QUALITY METRICS FOR TWO RELEASES: 5.5 (BEFORE WORKING ON REFACTORING), AND 5.6 (RELEASED WHILE WORKING ON REFACTORING)
+
 {title="Quality metrics for two releases: 5.5 (released before working on refactoring), and 5.6 (released while working on refactoring)"}
-| Metric                          | Release 5.5 | Release 5.6 |
-|-------------------------------------------------------------|
+
+|Metric                          | Release 5.5 | Release 5.6 |
 | Total bugs detected             | 128         | 176         |
 | % of Regression bugs            | 29.7%       | 25.1%       |
 | Average bug fixing cost (hours) | 1.97        | 1.8         |

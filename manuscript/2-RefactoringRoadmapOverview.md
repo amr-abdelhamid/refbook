@@ -21,7 +21,7 @@ From my experience, teams working on the quick wins stage for a while usually st
 
 After getting rid of most of the fat during the last stage, we gradually start introducing structure into the code. The key idea is to move *similar* code together and let components with clear interfaces emerge gradually.
 
-In most cases, you may find that code is already organized into high level modules. However, such modules may have grown in size and collected so much responsibilities for a middle-size code module. Part of these responsibilities may be perfect candidate to move to another module or form a new one.
+In most cases, you may find that code is already organized into high level modules. However, such modules may have grown in size and collected so much responsibilities for a middle-size code module. Part of these responsibilities may be perfect candidates to move to another module or form a new one.
 
 #### Inject quality in: Cover components with automated tests
 
