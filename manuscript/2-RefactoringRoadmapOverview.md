@@ -8,7 +8,7 @@ In a nutshell, start with the highest value-add and least risky fixes, then work
 
 #### Stage 1: Quick-wins - Simple and least risky enhancements
 
-In this early stage of refactoring, we rely heavily on tools to detect and fix issues with code. As appears in the roadmap, the kind of issues we are tackling involve the whole code base. So, when we _remove dead code_ or _remove code duplicates_, we do this for the whole code base, not part of the code.
+In this early stage of refactoring, we rely heavily on tools to detect and fix issues with code. As appears in the roadmap, the kind of issues we are tackling involve the whole code base. **So, when we _remove dead code_ or _remove code duplicates_, we do this for the whole code base, not part of the code.**
 
 Working on the whole code base magnifies the impact and signifies the improvement. You may put it this way: It may be better to move the whole code one foot forward, rather than to move part of the code a thousand feet forward.
 

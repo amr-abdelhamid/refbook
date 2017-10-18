@@ -3,7 +3,7 @@
 
 ![Stage 2: Divide & Conquer - Split code into components](\images\roadmap-stage2.png)
 
-Software design is all about components and their relationships. The better you divide your software into loosely-coupled and highly-cohesive parts, the more comprehensible, more responsive to change, and more agile your software design becomes. The act of partitioning your software in this manner is described by Fairbanks as authoring "a story at many levels", which results in a software design that will "tell a story to whoever looks at it, and it will be easy to understand":
+**Software design is all about components and their relationships**. The better you divide your software into loosely-coupled and highly-cohesive parts, the more comprehensible, more responsive to change, and more agile your software design becomes. The act of partitioning your software in this manner is described by Fairbanks as authoring "a story at many levels", which results in a software design that will "tell a story to whoever looks at it, and it will be easy to understand":
 
 > *"To be comprehensible, your software should be structured so that it reveals a story at many levels. Each level of nesting tells a story about how those parts interact. A developer who was unfamiliar with the system could be dropped in at any level and still make sense of it, rather than being swamped."*
 >
@@ -11,7 +11,7 @@ Software design is all about components and their relationships. The better you 
 
 Now, here is a question: If software partitioning is that important, why didn't we start with it right away in the [refactoring roadmap](#refactoring_roadmap)?
 
-We can describe what we achieved so far as removing "fat" from the application's body of code; namely, removing dead code, and reducing code duplication, plus applying some very basic and intuitive enhancements which makes the code slightly more readable, like reducing method size and using proper naming conventions. This is like *preparing the scene* or *organizing our backyard* before we start on re-organizing the parts. And, this has two very important side effects:
+We can describe what we achieved so far as **removing "fat" from the application's body of code;** namely, removing dead code, and reducing code duplication, plus applying some very basic and intuitive enhancements which makes the code slightly more readable, like reducing method size and using proper naming conventions. This is like *preparing the scene* or *organizing our backyard* before we start on re-organizing the parts. And, this has two very important side effects:
 
 1. We have saved the time that we would have spent working on dead or duplicate code
 2. The team reached a better grasp of the code while scanning and reviewing duplicates and suspect dead code. They formed better understanding while breaking up large methods and trying to give better names to identifiers and code constructs
@@ -30,7 +30,7 @@ First, we need to answer this question: Are we splitting our code into modules, 
 
 The *UML Reference Manual* provided a very brief and broad definition of what a module is. It is a *"software unit of storage and manipulation"* [19, pp 334].
 
-To elaborate on this definition, a module is any logical grouping of cohesive code functions which provides access to these functions in a uniform manner. This can be as big as a sub-system, like an accounting or HR module, or as small as a class, like a calculator or an xml parser.
+To elaborate on this definition, **a module is any logical grouping of cohesive code functions which provides access to these functions in a uniform manner**. This can be as big as a sub-system, like an accounting or HR module, or as small as a class, like a calculator or an xml parser.
 
 #### Component
 
@@ -66,10 +66,10 @@ Modules and components run typically in the same process; unlike services, which
 
 So, services enjoy the maximum level of decoupling. You can view them as standalone applications which could be glued together in order to provide greater value for some end user.
 
-Now, the questions is: *Do we need to divide our code into modules or components or services?* The only answer that I can provide is: Divide the code into modules. Then, assess whether or not it is useful and safe to upgrade them to components or services.
+Now, the questions is: **Do we need to divide our code into modules or components or services?** The answer that I can provide is: Divide the code into modules. Then, assess whether or not it is useful and safe to upgrade them to components or services.
 
 {icon=bookmark}
-G> *Divide the code into modules. Then, assess whether or not it is **useful AND safe** to upgrade them to components or services.*
+G> *Divide the code into modules. Then, assess whether or not it is **useful and safe** to upgrade them to components or services.*
 
 A> ## About Microservices
 A>
@@ -119,8 +119,8 @@ This section is a primer about types of software components. As you may expect, 
 
 Firsly, before we explain types of components, the following two guidelines are **the general strategy for breaking code apart**:
 
-* **Guideline 1: Form modules by grouping similar code together.**
-* **Guideline 2: If a module becomes large, look for similar code inside it, and reapply the first guideline.**
+* **Guideline 1: Let modules emerge by grouping similar code together.**
+* **Guideline 2: If a module becomes large, zoom into it and reapply the first guideline.**
 
 Note that determining whether or not a component is large is a subjective decision. In the meanwhile, the *3-30* rule of thumb may give an indication whether a module or component is becoming big. It states that a module may provide at least 3 and at most 30 interface methods or functions.
 

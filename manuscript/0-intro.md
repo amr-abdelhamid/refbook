@@ -59,7 +59,7 @@ I have documented some of the root causes of these failures in an experience rep
 
 #### 1. Vague and hazy objectives
 
-The first reason was due to hazy and unclear objectives. We didn't specify what "good code" looks like or how to measure "goodness". **The decision of what to do next or whether or not the code is *good* was decided by the gut feeling of the engineering staff**, not a clear and indicative measures or indicators.
+The first reason was due to hazy and unclear objectives. We didn't specify what "good code" looks like or how to measure "goodness". **The decision of what to refactor or whether or not the code is *good* was based on the gut feeling of the engineering staff**, not clear and indicative measures.
 
 #### 2. Start with covering poor code with fragile tests
 
@@ -79,9 +79,9 @@ G> *Managers will not sponsor an activity which they cannot track or control.*
 
 #### 4. The Technical Glut Trap {#thetrab}
 
-Some teams indulges in deep technical review and merciless code refactoring with no limits to their technical imagination and creativity.
+Sometime, technical teams indulge in deep technical review and merciless code refactoring with no limits to their technical imagination and creativity.
 
-As shown in the next figure, this may form an endless positive feedback loop, because of which refactoring might never end. This dynamic intensifies when the outer dashed loop pushes in the same direction and the changes deteriorates the code rather than enhance it.
+As shown in the next figure, this may form an endless positive feedback loop and refactoring might never end. This dynamic intensifies when the outer dashed loop pushes in the same direction and the changes deteriorates the code rather than enhance it.
 
 ![The more you change the code, the more ideas you'll get to further change the code. Unless you keep your changes small and integrated frequently, the cycle will keep escalating and the code will be finally thrown away. The dashed lines are another positive feedback loop. If changes make the code less clean (or less readable and more complex), this may escalate the effect of the inner positive feedback loop.](images/technical_glut_trap.png)
 

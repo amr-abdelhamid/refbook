@@ -29,25 +29,47 @@ A Continuous Integration (CI) server is the companion of the development team. T
 
 ## Starting with characterization (aka pin-down) tests
 
-Micheal Feathers first introduced the idea of *characterization tests*, which are tests "that characterize the actual behavior of a piece of code" [18]. Pin-down or characterization tests are particularly useful in case of maintaining legacy code which you have little information about its behavior. Adding some tests around the area you're refactoring helps you understand and preserve the actual behavior of the code. Here are some examples for tests that you may consider:
+Micheal Feathers first introduced the idea of **characterization tests**, which are **tests "that characterize the actual behavior of a piece of code"** [18]. The aim of adding these tests are not to discover bugs, but rather to understand how the system behaves. This is why characterization tests are particularly useful if you are maintaining code which you have little very little experience with and know very little about its behavior. **Adding some tests around the area you're refactoring helps you understand and preserve the actual behavior of the code.**
 
-* Who is authorized to do what?
+Here are some examples for tests that you may consider:
+
+* Does calling a specific interface requires logged in user?
 * Does it work with null parameters?
 * Should objects be initialized?
 * What possible values which will not throw errors?
-* What results or return values are expected?
+* What return values are expected?
 * Does this combination of parameters raise an error?
 
-While you're introducing these tests, you may find weird behavior or even bugs. In this case, be cautious when introducing changes to the actual behavior of the system, or better wait until you have good understanding to it.
+Adding some of these tests will help you *characterize* the code under investigation and will help you *pin-down* and preserve some of its key behaviors.
+
+While you're introducing these tests, you may find weird behaviors or even bugs. In this case, be cautious when fixing bugs or changing things because you still can't anticipate side effects. Moreover, some bugs might have become featured in the system, and fixing/changing them may not be accepted by end user! My advice is to wait until you have good understanding of the code.
 
 ## Ground rules for sustainable refactoring {#ground-rules}
 
 Before you start, this is a final step in preparing a healthy refactoring environment: to agree on this set of ground rules. These ground rules are necessary to alleviate some of the issues discussed earlier in the ['Why refactoring fails?'](#whyrefactoringfails) section:
 
-* Refactorings are committed daily on the development mainline, not a dedicated branch
-* Timebox an agreed upon percentage of the development effort to refactoring
-* Refactoring effort and outcome should be visible to everybody, including management
-* Any change *must* be reviewed. This can be done by pair/mob programming the change or peer review it later on
-* Large refactorings are not allowed. Example large refactorings is to introduce an architectural enhancement which may require changes in many places in code. These are two rules of thumb to detect whether or not a refactoring is large:
+A> Rule 1. Refactorings are committed daily on the development mainline, not a dedicated branch.
+
+Maintaining two branches of code is a nightmare. Development teams cannot sustain manually integrating and merging features, fixes, and patches from one branch to the other, especially after applying profound refactorings in one of them.
+
+This is why I deliberately advice teams to integrate refactorings on their mainline of development not on a dedicated branch. This is not easy, but it is possible.
+
+A> Rule 2. Timebox an agreed upon percentage of the development effort to refactoring.
+
+Agree on this in advance. Negotiate this with senior management if necessary. Let refactoring be a development habit rather than an unpleasant mandatory task to do.
+
+A> Rule 3. Refactoring effort and outcome should be visible to everybody, including management.
+
+This is crucial to keep the momentum and maintain the sponsorship of refactoring as an expensive activity, especially when refactoring old systems with tons of technical debt.
+
+A> Rule 4. Any change **must** be reviewed.
+
+Review can take place either by pair programming the change, mob programming the change, or peer reviewing it later on.
+
+A> Rule 5. Large refactorings are not allowed throughout the roadmap.
+
+Example large refactorings is to introduce an architectural enhancement which may require changes in many places in code. These refactorings need special care and must be handled differently.
+
+These are two rules of thumb to detect whether or not a refactoring is large:
   * Think a lot before you start working on it
   * Take more than 10-30 minutes to get things running
