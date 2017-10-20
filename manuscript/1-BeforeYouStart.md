@@ -48,28 +48,23 @@ While you're introducing these tests, you may find weird behaviors or even bugs.
 
 Before you start, this is a final step in preparing a healthy refactoring environment: to agree on this set of ground rules. These ground rules are necessary to alleviate some of the issues discussed earlier in the ['Why refactoring fails?'](#whyrefactoringfails) section:
 
-A> Rule 1. Refactorings are committed daily on the development mainline, not a dedicated branch.
 
-Maintaining two branches of code is a nightmare. Development teams cannot sustain manually integrating and merging features, fixes, and patches from one branch to the other, especially after applying profound refactorings in one of them.
+A> *Rule 1: Refactorings are committed daily on the development mainline, not a dedicated branch.*
+A> Maintaining two branches of code is a nightmare. Development teams cannot sustain manually integrating and merging features, fixes, and patches from one branch to the other, especially after applying profound refactorings in one of them.
+A> This is why I deliberately advice teams to integrate refactorings on their mainline of development not on a dedicated branch. This is not easy, but it is possible.
 
-This is why I deliberately advice teams to integrate refactorings on their mainline of development not on a dedicated branch. This is not easy, but it is possible.
+A> *Rule 2: Timebox an agreed upon percentage of the development effort to refactoring.*
+A> Agree on this in advance. Negotiate this with senior management if necessary. Let refactoring be a development habit rather than an unpleasant mandatory task to do.
 
-A> Rule 2. Timebox an agreed upon percentage of the development effort to refactoring.
+A> *Rule 3: Refactoring effort and outcome should be visible to everybody, including management.*
+A> This is crucial to keep the momentum and maintain the sponsorship of refactoring as an expensive activity, especially when refactoring old systems with tons of technical debt.
 
-Agree on this in advance. Negotiate this with senior management if necessary. Let refactoring be a development habit rather than an unpleasant mandatory task to do.
+A> *Rule 4: Any change **must** be reviewed.*
+A> Review can take place either by pair programming the change, mob programming the change, or peer reviewing it later on.
 
-A> Rule 3. Refactoring effort and outcome should be visible to everybody, including management.
-
-This is crucial to keep the momentum and maintain the sponsorship of refactoring as an expensive activity, especially when refactoring old systems with tons of technical debt.
-
-A> Rule 4. Any change **must** be reviewed.
-
-Review can take place either by pair programming the change, mob programming the change, or peer reviewing it later on.
-
-A> Rule 5. Large refactorings are not allowed throughout the roadmap.
-
-Example large refactorings is to introduce an architectural enhancement which may require changes in many places in code. These refactorings need special care and must be handled differently.
-
-These are two rules of thumb to detect whether or not a refactoring is large:
-  * Think a lot before you start working on it
-  * Take more than 10-30 minutes to get things running
+A> *Rule 5: Large refactorings are not allowed throughout the roadmap.*
+A> Example large refactorings is to introduce an architectural enhancement which may require changes in many places in code. These refactorings need special care and must be handled differently.
+A> These are two rules of thumb to detect whether or not a refactoring is large:
+A>
+A> * Think a lot before you start working on it
+A> * Take more than 10-30 minutes to get things running
