@@ -5,13 +5,13 @@
 
 ## Work item tracking
 
-Work item tracking (aka issue tracking) is an important topic in configuration management and a basic constituent in a healthy software development environment. However, many software teams may not have a clear idea about what work item types and workflows they should track, what state information they should collect, what kind of relations to be maintained between work items.
+Work items (aka issues) are *tasks or things which we do at work to reach a greater goal or carry out a value-adding job*. Examples of work items are: user stories, epics, bugs, tasks, change requests, etc. Work item tracking (aka issue tracking) is an important topic in configuration management and a basic constituent in a healthy software development environment. However, many software teams may not have a clear idea about what work item types and workflows they should track, what state information they should collect, or what kind of relations to be maintained between work items.
 
-One sign of a mature development team is that they start creating new work item types and adjust their workflows to suite their specific needs. They also use it not only to track their everyday development activities, but also to generate rich progress reports, build traceability networks, do impact analysis, etc.
+One sign of a mature development team is that they start creating new work item types and adjust their workflows to suite their specific needs. They also use it not only to track their everyday development activities, but also to generate rich progress reports, build traceability networks, do impact analysis, and improve their internal process.
 
 ## End-to-end traceability
 
-Traceability is a dynamic network of relationships which you can use to trace or relate software artifacts to each other:
+Traceability is a dynamic network of relationships which you can use to trace or relate work items and software artifacts:
 
 ![Example traceability network which should possible links between a group of work items](\images\traceability.png)
 
