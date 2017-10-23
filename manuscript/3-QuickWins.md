@@ -37,17 +37,19 @@ To help you start, here are some ideas how to detect dead code:
 
 Static analyzers detects unused code by semantic analysis of static code at compile or assembly time. For example:
 
-![Examples of *unreachable code*. In the first method, code returns before the rest of the code runs. The second is a private method which nobody calls in this class ](images/deadcode/eclipse_unreachablecodeerror.png)
+![Examples of *unreachable code* detected by Eclipse. In the first method, the method returns and the rest of the code is ignored. The second one is a private method which nobody calls in this class ](images/deadcode/eclipse_unreachablecodeerror.png)
 
-These are also called *Unreachable Code* and it is only one type of dead code. There are many other programming errors which may result into unreachable code, like:
-
-* Exception handling code for exceptions which can never be thrown
-* Unused parameters or local variables
-* Unused default code in switch statements, or switch conditions which can never be true
-* Objects allocated and probably does some internal construction logic, but the object itself is never used
-* Unreachable cases in if/else statements
-
-All these cases are simple and straight forward to catch using compilers and static analyzers. More examples of tools in the [Catalogue of practices and techniques](#catalogue). However, if your program allows for dynamic code changes, reflection, or dynamic loading of libraries and late binding; in such cases, static analyzers may not help.
+A> **Examples of unreachable code**
+A>
+A> These are also called *Unreachable Code* and it is only one type of dead code. There are many other programming errors which may result into unreachable code, like:
+A>
+A> * Exception handling code for exceptions which can never be thrown
+A> * Unused parameters or local variables
+A> * Unused default code in switch statements, or switch conditions which can never be true
+A> * Objects allocated and probably does some internal construction logic, but the object itself is never used
+A> * Unreachable cases in if/else statements
+A>
+A> All these cases are simple and straight forward to catch using compilers and static analyzers. However, if your program allows for dynamic code changes, reflection, or dynamic loading of libraries and late binding; in such cases, static analyzers may not help.
 
 #### 2. Files not touched for so long
 
@@ -211,7 +213,7 @@ Having these two objectives in mind, it's possible to develop your "gut feeling"
 
 #### An experiment on method size
 
-I have done this experiment with university students. I gave them three variants of a method: without comments, with comments, and refactored into a small 5-line method. I have measured the time it takes them to understand the intent of the method. Results were as follows:
+To measure the effect of the method length on the code readability, I have done an experiment with university students. I gave them three variants of a method: without comments, with comments, and refactored into a small 5-line method. I have measured the time it takes them to understand the intent of the method. Results were as follows:
 
 * Method without comments: **~ 2 minutes**
 * Method with comments: **~ 1 minute**
@@ -221,7 +223,7 @@ I advice you to do this experiment with your team. Get a stopwatch and use the s
 
 Ready? Go!
 
-A> **Method with no comments**
+A> **_Method with no comments:_**
 A>
 A>{lang="java"}
 A>~~~~~~~~
@@ -267,7 +269,7 @@ This is a 36-line method. It seems to be small. However, you've spent some time 
 
 Now, consider this enhanced version of the method:
 
-A> **Method with explanatory comments**
+A> **_Method with explanatory comments:_**
 A>
 A> {lang="java"}
 A> ~~~~~~~~
@@ -326,7 +328,7 @@ Now, let's work on this method. If you notice, comments are placed at perfect pl
 
 So, by extracting each chunk into a standalone method, we will reach this version of the method:
 
-A> **_After extracting method steps into private methods_**
+A> **_After extracting method steps into private methods:_**
 A>
 A>{lang="java"}
 A>~~~~~~~~
@@ -452,16 +454,15 @@ A> * Eric S. Raymond, in his book *The Art of Unix Programming*, argues that the
 A>
 A> Im many cases, using composition with the [Strategy pattern](https://en.wikipedia.org/wiki/Strategy_pattern) hits a sweet spot between composition and inheritance. Consider this example: We are building a car system simulator in which a car may have two breaking systems: standard and ABS. In this case, it may be straight forward to use inheritance:
 A>
-A> ![](images/cartype1.png)
+A> ![Car abstract class in a car system simulator. The car may be specialized by the type of breaking system it has: standard and ABS](images/cartype1.png)
 A>
 A> Now, consider adding a capability to simulate two steering systems: Power and Electric. If we continue using inheritance, we will have to introduce duplication, the enemy of clean code. In the example, the logic of power steering is now duplicated in both `PowerSteeringAbsBrakingCar` and `PowerSteeringStandardBrakingCar`, and the logic of electric steering is duplicated in both `ElectricSteeringAbsBrakingCar` and `ElectricSteeringStandardBrakingCar`
 A>
-A>
-A> ![](images/cartype2.png)
+A> ![Further specialization results in duplication, as in the case of `PowerSteeringAbsBrakingCar` and `PowerSteeringStandardBrakingCar`](images/cartype2.png)
 A>
 A> Instead, let's collapse this inheritance tree, and use composition with the Strategy pattern. Here, we will design a Car with many components, each component is an *abstract strategy* which may have several *concrete implementations*:
 A>
-A> ![](images/cartype3.png)
+A> ![Using composition with the [Strategy pattern](https://en.wikipedia.org/wiki/Strategy_pattern) hits a sweet spot between composition and inheritance](images/cartype3.png)
 
 #### Always rely on tools support
 

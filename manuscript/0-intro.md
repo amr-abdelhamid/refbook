@@ -59,7 +59,7 @@ I have documented some of the root causes of these failures in an experience rep
 
 #### 1. Vague and hazy objectives
 
-The first reason was due to hazy and unclear objectives. We didn't specify what "good code" looks like or how to measure "goodness". **The decision of what to refactor or whether or not the code is *good* was based on the gut feeling of the engineering staff**, not clear and indicative measures.
+The first reason was due to hazy and unclear objectives. We didn't specify what "good code" looks like or how to measure "goodness". The decision of what to refactor or whether or not the code is "good" was based on the gut feeling of the engineering staff, rather than clear and indicative measures.
 
 #### 2. Start with covering poor code with fragile tests
 
