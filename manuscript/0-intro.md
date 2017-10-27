@@ -95,7 +95,7 @@ Managers and customers started to receive delayed fixes and prolonged plans for 
 
 ## Is there a better way?
 
-After these failures, I realized that there has to be another way of doing it. This triggered my research and experiments with some volunteering teams till we reached what we believe to be a better way.
+After these failures, I realized that there has to be another way. This triggered my research and experiments with some volunteering teams till we reached what we believe to be a better way.
 
 This new approach of refactoring is put in a roadmap format, and is explained in detail in the rest of this book. But, before we do that, these are some guiding principles which governed my thinking when I designed this roadmap.
 
