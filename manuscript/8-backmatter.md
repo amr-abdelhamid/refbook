@@ -1,8 +1,20 @@
 {backmatter}
 
-# Catalogue of Practices and Techniques {#catalogue}
+# Catalogue of Useful Refactorings {#catalogue}
 
-*\<Under Development>*
+This chapter is still under development. Basically, these are the most useful refactorings which are commonly used throughout the refactoring roadmap:
+
+* Inline Class
+* Move Method
+* Move Class
+* Rename
+* Extract Class
+* Extract Interface
+* Extract Method
+* Change Method Signature
+* Introduce Parameter
+* Introduce Parameter Object
+* Turn Public Methods Private
 
 # References
 

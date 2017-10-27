@@ -20,7 +20,7 @@ I have noticed the effect in the second point above many times while working wit
 
 Although all the enhancements in the quick-wins stage made the code *better*, but it still *lacks structure*. The mission now is introducing structure by discovering/uncovering components and enhance their interfaces:
 
-![](\images\introduce_structure.png)
+![Code evolution throughout the quick-wins and the divide & conquer stages](\images\introduce_structure.png)
 
 ## Modules, components, or services?
 
@@ -54,7 +54,7 @@ G> \- *- Martin Fowler*
 
 One very important difference between a component and a service is that a component cannot run on its own. It has to be integrated in a bigger whole to achieve any value out of it. Unlike a service, which is available and standalone. It can be located and used whether on its own or as part of a bigger application.
 
----
+#### Then what?
 
 So, what's the value of outlining these differences between modules, components, and services?
 
@@ -176,15 +176,18 @@ The *Common Closure Principle* gives another dimension. It states that: *"Classe
 
 #### Type 6: Architectural style
 
-This is one way of partitioning your code: following an architectural style [14]. If you're maintaining a heavy transactional system, a banking system for instance, then probably it will follow a *Transaction Processing* style [16]. In this architectural style, transactions are recorded and processed later on. This is a high level diagram of typical components in transaction processing application:
+This is one way of partitioning your code: following an architectural style. For example, if you're maintaining a heavy transactional system, a banking system for instance, then probably it will follow a *Transaction Processing* style[^ref-transaction-processing]. In this architectural style, transactions are recorded and processed later on. This is a high level diagram of typical components in transaction processing application:
 
-![](images/divideandconquer/transactionprocessingarchstyle.png)
+![Banking application following the Transaction Processing architectural style](images/divideandconquer/transactionprocessingarchstyle.png)
 
-* Transaction Input: Typically a view or port component
-* Transaction Dispatcher: A mediator component responsible for dispatching logged transaction to processors
-* Transaction Handlers: Components for processing different types of transactions
+This architectural style has four component types:
+* **Transaction Port**: Typically a port or view component which receives or input transactions information
+* **Transaction Dispatcher**: A mediator component responsible for dispatching logged transaction to processors
+* **Transaction Processors**: Components for processing or handling different types of transactions
 
-As you may notice, these components can sometimes be considered functional (Transaction Handlers), Port or View (Transaction Input), or Utility (Dispatcher). Even though, the reason of their existence is the architectural style itself; and components and relationships are defined to fulfill a set of constraints and promote some pre-defined system quality attributes. This is why these components are put under this category.
+[^ref-transaction-processing]: For a description of the Transaction Processing architectural pattern, refer to Philip Bernstein and Eric Newcomer book: *Principles of Transaction Processing* [14]
+
+As you may notice, these components can sometimes be considered functional (Transaction Processors), Port or View (Transaction Ports), or Utility (Dispatcher). Even though, the reason of their existence is the architectural style itself; and components and relationships are defined to fulfill a set of constraints and promote some pre-defined system quality attributes. This is why these components are put under this category.
 
 In most cases, you may find glimpses of these architectural styles while you are refactoring old code. Try to honor this structure and enhance its encapsulation.
 

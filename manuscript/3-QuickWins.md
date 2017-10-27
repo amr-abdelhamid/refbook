@@ -108,13 +108,13 @@ Duplication further magnifies time for locating bugs. If you have a defective pi
 
 #### Why developers copy and paste code?
 
-Well, if code duplication is that evil. Why do we duplicate code all the time? Throughout my career, I noticed developers follow this pattern one way or another: Copy some code, change it to suite your new requirement, and finally test all changes.
+Well, if code duplication is that evil. Why do we duplicate code all the time? Throughout my career, I noticed developers follow this pattern one way or another: Copy some code, change it to suite your new behavior, and finally test all changes.
 
-![](images/duplicatecode/copyChangeTestCycle.png)
+![Usually, developers start by copying some code, change it to suite the new behavior, then test.](images/duplicatecode/copyChangeTestCycle.png)
 
 This is pretty natural. Actually, I myself always followed this pattern and I'm still following it. And, I've been doing excellent work with teams I worked with. So, where is the problem? The problem is that I always do a forth step which is necessary and cannot be neglected: refactoring. It's ok to copy and paste code only if you're going to refactor this code later on.
 
-![](images/duplicatecode/copyChangeTestRefactorCycle.png)
+![What's missing is to refactor before committing changed code. Overlooking this step results in a huge amount of duplicate code.](images/duplicatecode/copyChangeTestRefactorCycle.png)
 
 Neglecting this step is a fundamental mistake which rightly is one of the "deadly sins of developers", as put by SonarQube.
 
