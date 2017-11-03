@@ -1,3 +1,10 @@
+# Measuring Code Quality and Reporting Progress
+
+This chapter is still under development. It serves two purposes:
+
+1. How to measure code quality in every stage of the refactoring roadmap.
+2. It gives you more insights about how to report progress and show improvement to upper management. 
+
 # Starting a New Project? Important Considerations
 
 #### Start with your production environment ready!
