@@ -162,17 +162,17 @@ Port modules may be considered a subtype of the *Utility modules* because at the
 * Sometimes, it encapsulates some business logic related to how objects or data are prepared or serialized before sending or after receiving. So, it may not be pure utility functions.
 * This type is almost in all applications and is very commonly used every where. This is why it deserves a special type.
 
-#### Type 4: Archtypes (aka Core types or Model)
-
-Archtypes are the most noticeable or important data types [14]. Usually, these types are gathered in one core module used by almost all others. Although this raises coupling between this module and the rest of the system, gathering core types in one module reduces the overall coupling among all other modules in the system.
-
-#### Type 5: View
+#### Type 4: View
 
 Any software with a graphical user interface needs one or more view modules. Usually, views are tightly coupled with its corresponding functional modules; therefore, it is tempting to package them together in one deployable component. On the other hand, the *Release Reuse Equivalency Principle* states that *"The granule of reuse is the granule of release"* [15]. Meaning that you should keep an eye on how your components are reused. If part of the component is reused more than another, then it should be placed in a separate deployable release, or component.
 
 The *Common Closure Principle* gives another dimension. It states that: *"Classes that change together are packaged together"* [15]. Sometimes, change in business requires a change in view and vice versa. In this case, following the principle, you should keep both view and business classes in the same component. In contrast, if the changes are usually confined to view or business, you should place each one of them in a separate component.
 
 **In summary, package the view and the business in one component if they are reused together and change together. If this is not the case, separate them into two components.**
+
+#### Type 5: Archtypes (aka Core types or Model)
+
+Archtypes are the most noticeable or important data types [14]. Usually, these types are gathered in one core module used by almost all others. Although this raises coupling between this module and the rest of the system, gathering core types in one module reduces the overall coupling among all other modules in the system.
 
 #### Type 6: Architectural style
 

@@ -4,17 +4,20 @@
 
 This chapter is still under development. Basically, these are the most useful refactorings which are commonly used throughout the refactoring roadmap:
 
-* Inline Class
-* Move Method
-* Move Class
-* Rename
-* Extract Class
-* Extract Interface
+## Quick-wins stage
 * Extract Method
+* Move Method
+* Rename
+
+## Divide and conquer stage
+* Extract Class
+* Move Class
+* Inline Class
+* Turn Public Methods Private
+* Extract Interface
 * Change Method Signature
 * Introduce Parameter
 * Introduce Parameter Object
-* Turn Public Methods Private
 
 # References
 
