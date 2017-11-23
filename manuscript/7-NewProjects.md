@@ -47,17 +47,22 @@ private double getEducationAllowance(Employee employee){
 }
 ~~~~~~~~
 
-This behavior is widespread, and appears in every single organization. This was noted by Eli Goldratt, the father of Theory of Constraints, who said: "Tell me how you measure me, and I will tell you how I will behave!"
+This behavior is widespread, and appears in every single organization. This was noted by Eli Goldratt, the father of Theory of Constraints, who said:
+
+{icon=quote-left}
+G> *“Tell me how you measure me, and I will tell you how I will behave!”*
+G>
+G> \- *- Eli Goldratt*
 
 A> #### My story with peer reviews
 A>
-A> A few years ago, I led the product development of an business process management suite. My main responsibilities were technical design, supervision and mentorship. I used to do code review for team members and record what we called "review issues". Recording issues was very healthy because every now and then we used to collect similar issues, think about their root causes, and take prevention actions which may stop them from re-occurring.
+A> A few years ago, I led product development of a business process management suite. My main responsibilities were technical design, supervision, and mentorship. I used to do code reviews for team members and record what we called *review issues* on our issue tracking tool. Recording issues was very healthy because every now and then we used to collect similar issues, think about their root causes, and take prevention actions to stop them from re-occurring.
 A>
-A> Everything was ok till the organization designed the employee appraisal system. One of the elements affecting this complicated formula was the number of review issues opened on the person's work. After this point of time, I almost stopped reporting review issues on the issue tracking system. Instead, I was leaving my notes on a piece of paper with the person, or sending them by email.
+A> **Everything was ok till the organization designed an employee appraisal system to be held twice a year.** Employee's performance is determined by a complicated formula or many contributing measures, and one of these measures was the number of review issues opened on the person's work! After this point of time, I almost stopped reporting review issues on the issue tracking system. Instead, I was leaving my notes on a piece of paper with the person, or sending them by email.
 A>
 A> Although this broke the continuous improvement cycle I described above, my Inner self convinced me that these issues were very minor and not worth the time of reporting them on the issue tracking, especially if these issues would negatively impact my colleagues' evaluation!
 A>
-A> This is an example of the negative subtle effect of metrics in organizations when used for personal evaluation. You may not detect their downsides except after they do the damage for the organization.
+A> **This is an example of the negative subtle effect of metrics in organizations when used for individual evaluation. You may not detect their downsides until the damage is already done in the organization.**
 
 ## Useful code metrics
 
@@ -67,38 +72,20 @@ The idea of tracing code metrics to code smells is a fundamentals and crucial is
 
 For example, if your code has lots of dead code, you may concentrate on code size and nothing else. If you have so many conditionals, you may focus on the cyclomatic complexity and nothing else. If you are covering code with tests, you may focus more on code coverage, and probably one or types of coverage metrics only.
 
-The next table summarizes some important code metrics, when they may be important, and what code smell they may uncover:
+The next table summarizes some important code metrics, when they may be important, and what code smell they may expose:
 
 *TABLE 2. A listing of useful code metrics*
 
-|Metric     |Related code smells|Used in stage|
-|-------------------------------------------------------|
-|Code size            | Lines of code with or without comments. Number of statements or number of lines.       |        |
-|Method length        |    |     |
-|Duplication level |      |        |
-|Cyclomatic complexity   |   |   |
-|Coverage   |   |   |
-|Build time   |   |   |
-
-#### Code size
-
-Lines of code with or without comments. Number of statements or number of lines.
-
-#### Methods with LOC > 10
-
-#### Duplication level
-
-#### Cyclomatic complexity
-
-#### Coverage
-
-Which coverage?
-
-* Code coverage
-* Path coverage
-* Branch coverage
-
-#### Build time
+|Metric |Description |Usage | Related code smells |
+|*-------------------------------------------------*|
+|Code size |Can be measures either in lines of code or number of statements. Lines of code excludes whitespace and preferably excludes comments. Number of statements is a better metric because it is not affected by grouping multiple statements on the same line.       |Used throughout the product lifecycle. However, in case of refactoring poor legacy code, we target to reduce this metric till it reaches a stable lower limit. |Large methods. Large Classes. Unused code. Unnecessary code. Extra features.
+|Methods with size > 10 LOC |Lengthy methods is a sign of poor code. When a method exceed the threshold of 10 lines of code, most probably they have violation the Single Responsibility Principle (SRP). Also, methods are no longer self explanatory and much less maintainable accordingly. It results in multitudes of problems just because of the lengthy methods.   |Should be controlled throughout the project. However, it is so much needed in the Quick-wins Stage and specifically in the step: Reducing method size. |Big Methods. Too many conditionals.
+|Duplication level |% of code duplicated. There are several ways to calculate this number. The idea is to use the same tool and the same set of parameters every time. Basically, this measure takes into account exact and similar clones only.       |Used heavily in the quick-wins stage. We rely on it to assess whether we need to continue working on *removing code duplicates* or not.       |Duplication is the enemy of clean code
+|Cyclomatic complexity (CC)  |Cyclomatic complexity is an indicator of how execution paths one method has. The more execution paths, the more logic and complexity the method contains.   |Mainly, it's used during the quick-wins to pinpoint big and complex methods which needs to be refactored. Usually, you may find that CC and method length are both high. So, sometimes I prefer to look at the method length first before the CC  |Long Method. Too many conditionals. Switch statement |
+|Code Coverage   |% of code covered by automated tests.   |Used mainly in the *Inject Quality In* stage.    |It helps identify part of code which are not covered by any test. |
+|Build time   |Time elapsed to build, package and deploy the product on the target environment.   |This number is used throughout the project lifecycle. First, it may be several days of manual effort to package, test, and deploy. The target is to reach a less-than-an-hour process end-to-end   |Long build time. Manual repetitive work.  |
+|Method parameters   |number of parameters in methods.  |Used in the *Divide and Conquer* stage while reviewing and improving the components interfaces.    |Long Parameter List. |
+|Class coupling   |A measure of how many calls back and forth between two classes or packages. It pinpoints high coupling between classes and packages.   |This measure is used mainly in the *Divide and Conquer* stage. It guides you while resolving dependencies and reducing overall coupling in your code   | Feature Envy. Inappropriate Intimacy. Middle Man. |
 
 ## Making sense of code measures
 
