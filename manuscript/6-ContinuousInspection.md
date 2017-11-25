@@ -1,6 +1,6 @@
 # Continuous Inspection Throughout the Roadmap
 
-![Continuous Inspection - Ensure what is fixed will remain fixed](\images\roadmap-ci.png)
+![Continuous Inspection - Ensure what is fixed will remain fixed](resources/images/roadmap-ci.png)
 
 ## Why continuous inspection is important?
 
@@ -20,7 +20,7 @@ This is done by specifying the ConQat Run configuration files (.cqr) using eclip
 
 For example, you may define a cqr file which detects exact code clones of length greater than 10 lines of code. This is a screen shot of a cqr file which does exactly this job:
 
-![ConQat "Run conf" file with parameters](\images\cqr.png)
+![ConQat "Run conf" file with parameters](resources/images/cqr.png)
 
 #### Step 2: Invoke ConQAT cqr from Jenkins
 
@@ -69,4 +69,4 @@ The way this works is to find all lines containing the text "cloneClass" and put
 
 Note: In order to pass parameters to the ant script, click on the advanced button and add parameters as in the following screen:
 
-![Passing parameters to Ant](\images\ant_params.png)
+![Passing parameters to Ant](resources/images/ant_params.png)

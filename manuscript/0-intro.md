@@ -26,7 +26,7 @@ G> *The question is: If you start from scratch, what makes you confident that yo
 
 It's like the next picture of two accidents. Car capabilities are different, one is ordinary sedan car while the other is an expensive sports car. However, the accidents are similar, because the *driving habits* are also similar.
 
-![Bad driving habits may cause very bad accidents, similar to bad *development habits*, which may also lead to very poor code with lots of technical debt](images/car_accidents.png)
+![Bad driving habits may cause very bad accidents, similar to bad *development habits*, which may also lead to very poor code with lots of technical debt](resources/images/car_accidents.png)
 
 So, if you would like to start over again and not hit the same wall, you have to change your development habits, rather than change the code. But, why not change development habits while still maintaining the same code? This would definitely save us huge costs of development, and this book gives you a roadmap how to do that.
 
@@ -51,7 +51,7 @@ This is another pattern which I see very frequently. If you have large amounts o
 
 Although this is the most pragmatic approach to handling technical debt, but it incorporates a lot of risks postponing and accumulating technical debt over time. At one point of time, the system may reach what we call a *system collapse point* when refactoring code due to one change may become so expensive and not affordable:
 
-![Cost of change increases exponentially due to accumulating technical debt](\images\collapsepoint.png)
+![Cost of change increases exponentially due to accumulating technical debt](resources/images/collapsepoint.png)
 
 ## Why refactoring fails? {#whyrefactoringfails}
 
@@ -83,7 +83,7 @@ Sometime, technical teams indulge in deep technical review and merciless code re
 
 As shown in the next figure, this may form an endless positive feedback loop and refactoring might never end. This dynamic intensifies when the outer dashed loop pushes in the same direction and the changes deteriorates the code rather than enhance it.
 
-![The more you change the code, the more ideas you'll get to further change the code. Unless you keep your changes small and integrated frequently, the cycle will keep escalating and the code will be finally thrown away. The dashed lines are another positive feedback loop. If changes make the code less clean (or less readable and more complex), this may escalate the effect of the inner positive feedback loop.](images/technical_glut_trap.png)
+![The more you change the code, the more ideas you'll get to further change the code. Unless you keep your changes small and integrated frequently, the cycle will keep escalating and the code will be finally thrown away. The dashed lines are another positive feedback loop. If changes make the code less clean (or less readable and more complex), this may escalate the effect of the inner positive feedback loop.](resources/images/technical_glut_trap.png)
 
 One very frequent example of the technical glut trap is when the team focuses more and more on refactoring to patterns to make the code more "robust" with respect to patterns, but less readable and more complex to maintain!
 

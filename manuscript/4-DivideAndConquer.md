@@ -1,7 +1,7 @@
 
 # Stage 2: Divide and Conquer {#DivideAndConquer}
 
-![Stage 2: Divide & Conquer - Split code into components](\images\roadmap-stage2.png)
+![Stage 2: Divide & Conquer - Split code into components](resources/images/roadmap-stage2.png)
 
 **Software design is all about components and their relationships**. The better you divide your software into loosely-coupled and highly-cohesive parts, the more comprehensible, more responsive to change, and more agile your software design becomes. The act of partitioning your software in this manner is described by Fairbanks as authoring "a story at many levels", which results in a software design that will "tell a story to whoever looks at it, and it will be easy to understand":
 
@@ -20,7 +20,7 @@ I have noticed the effect in the second point above many times while working wit
 
 Although all the enhancements in the quick-wins stage made the code *better*, but it still *lacks structure*. The mission now is introducing structure by discovering/uncovering components and enhance their interfaces:
 
-![Code evolution throughout the quick-wins and the divide & conquer stages](\images\introduce_structure.png)
+![Code evolution throughout the quick-wins and the divide & conquer stages](resources/images/introduce_structure.png)
 
 ## Modules, components, or services?
 
@@ -85,7 +85,7 @@ A> This is why I have intentionally omitted microservices as one of the options 
 
 The journey from cluttered code to module, components, or services is progressive and multi-stage. Code with large amount of technical debt usually looks like this figure. No clear boundaries between modules, high level glimpses of module interfaces, unstructured or unbounded module communication, etc.
 
-![](images/divideandconquer/modules-unstructured.png)
+![](resources/images/divideandconquer/modules-unstructured.png)
 
 Gradually, we start moving methods and classes around to let modules emerge and become more apparent. Remember, only safe refactorings with support of an automated refactoring tools are allowed. In most of the cases, you can depend on the following refactorings:
 
@@ -98,7 +98,7 @@ Gradually, we start moving methods and classes around to let modules emerge and 
 
 This results in clearer module boundaries and better manifestation of module interfaces.
 
-![](images/divideandconquer/modules-structured.png)
+![](resources/images/divideandconquer/modules-structured.png)
 
 Next, we should concentrate on more decoupling modules and create a solo-deployable components. At this stage, we should work more on polishing interfaces, move away un-needed interface methods and interface parameters. Some useful refactorings at this stage are:
 
@@ -107,11 +107,11 @@ Next, we should concentrate on more decoupling modules and create a solo-deploya
 * Introduce Parameter Object
 * Turn Public Methods Private
 
-![](images/divideandconquer/components.png)
+![](resources/images/divideandconquer/components.png)
 
 You may stop at this stage. Or, you may move to the next step and turn components into services. Remind you that you may chose to do so only if you find it *valuable and safe*.
 
-![](images/divideandconquer/services.png)
+![](resources/images/divideandconquer/services.png)
 
 ## Types of software components - Strategies for breaking code apart
 
@@ -151,7 +151,7 @@ In other cases, you may detect utility functions which are distinctive and may n
 
 In these cases, the first step is to group all utility functions in a separate generic "utility" module or class. Then, revisit this module and see what groups of utilities emerged and need to be grouped in a separate more cohesive utility class:
 
-![](images/divideandconquer/utilityclasses.png)
+![](resources/images/divideandconquer/utilityclasses.png)
 
 #### Type 3: Port
 
@@ -178,7 +178,7 @@ Archtypes are the most noticeable or important data types [14]. Usually, these t
 
 This is one way of partitioning your code: following an architectural style. For example, if you're maintaining a heavy transactional system, a banking system for instance, then probably it will follow a *Transaction Processing* style[^ref-transaction-processing]. In this architectural style, transactions are recorded and processed later on. This is a high level diagram of typical components in transaction processing application:
 
-![Banking application following the Transaction Processing architectural style](images/divideandconquer/transactionprocessingarchstyle.png)
+![Banking application following the Transaction Processing architectural style](resources/images/divideandconquer/transactionprocessingarchstyle.png)
 
 This architectural style has four component types:
 * **Transaction Port**: Typically a port or view component which receives or input transactions information
@@ -197,7 +197,7 @@ In most cases, you may find glimpses of these architectural styles while you are
 
 Circular dependencies occurs when one component depends on another component which in turn depends directly or indirectly on the first one:
 
-![A dependency cycle causing circular dependency between components A, B, and C](images/divideandconquer/circular_dependency.png)
+![A dependency cycle causing circular dependency between components A, B, and C](resources/images/divideandconquer/circular_dependency.png)
 
 You can live with circular dependencies for some time. However, in the long term your code may become very complex with higher levels of coupling between components. In time, this will result in more regression type of defects, upfront load time, and possible memory leaks due to cyclic references which never releases used objects. A perfect recipe for how to create spaghetti code!
 
@@ -205,15 +205,15 @@ Here are some strategies to break circular dependencies:
 
 1. Move variable/method/class to the dependent component. This should always be the first solution to think about, because very often this variable or method was created by a lazy programmer who didn't bother to place things in the proper place. Using an IDE's automated refactoring for moving things around would be the safest, fastest, and cleanest solution.
 
-    ![Move code from A to B, so that B is no longer dependent on A](images/divideandconquer/break_cycles_1.png)
+    ![Move code from A to B, so that B is no longer dependent on A](resources/images/divideandconquer/break_cycles_1.png)
 
 1. Extract common logic into a standalone component, on which both original components depend
 
-    ![Extract common logic into a standalone component](images/divideandconquer/break_cycles_2.png)
+    ![Extract common logic into a standalone component](resources/images/divideandconquer/break_cycles_2.png)
 
 1. Apply the Dependency Inversion Principle[^solid], which states that *High-level modules should not depend on low-level modules. Both should depend on abstractions.* To do that, split one component (component B in the example below) into two components: One holds the abstractions (the generic definitions of types and interfaces) and the other provides the concretions (one default implementation). Then, component A and B depends on the newly-cerated abstract component.
 
-    ![Apply the Dependency Inversion Principle](images/divideandconquer/break_cycles_3.png)
+    ![Apply the Dependency Inversion Principle](resources/images/divideandconquer/break_cycles_3.png)
 
 1. Make use of some architectural patterns, like the Observer pattern. In my experience, this may be considered a large refactoring at this stage and breaks the [ground rules](#ground_rules) upon which we have agreed at the beginning of this book. In stead, I would resort to one of the previous three solutions.
 
@@ -225,9 +225,9 @@ Developers tend to deviate from existing initial architecture for many reasons: 
 
 For poor and cluttered code projects, the percentage is much higher. The diagrams below present the amount of violations found in two projects I worked with. What we have done is that we first drew the architectural modules and the expected dependencies between them. Then, we used ConQat [^conqat] to check the architecture validity and detect any violations:
 
-![Green lines are the expected dependencies between components. Red lines are relationships and dependencies which do not confirm to expected dependencies, and therefore, they are considered violations.](images/divideandconquer/arch_analysis_2.png)
+![Green lines are the expected dependencies between components. Red lines are relationships and dependencies which do not confirm to expected dependencies, and therefore, they are considered violations.](resources/images/divideandconquer/arch_analysis_2.png)
 
-![Another example of architecture analysis. Green lines are hidden in order to make violations clearer](images/divideandconquer/arch_analysis_1.png)
+![Another example of architecture analysis. Green lines are hidden in order to make violations clearer](resources/images/divideandconquer/arch_analysis_1.png)
 
 As you can see, both systems suffer from so many violations and circular dependencies. You may also anticipate many un-necessary calls and high level coupling among components.
 

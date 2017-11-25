@@ -13,13 +13,13 @@ One sign of a mature development team is that they start creating new work item 
 
 Traceability is a dynamic network of relationships which you can use to trace or relate work items and software artifacts:
 
-![Example traceability network which should possible links between a group of work items](\images\traceability.png)
+![Example traceability network which should possible links between a group of work items](resources/images/traceability.png)
 
 As you can see, any artifact can be related to so many other concepts, artifacts, or work items. A user story can trace to many other work items (like tasks of defects), trace to other information (like iteration or release), or trace to physical artifacts (like code or design document).
 
 Traceability enables the team to study the impact of a change and assess its costs, risks, and root-causes. In the scenario below, a defect reported by a customer is traced back to the defected code. This code is traced back to the reason of its existence, which is found to be a change requested by the customer sometime ago. In turn, more information about the change request can be deduced:
 
-![Defected code is traced back to the reason of change and hence the root cause behind the defect](\images\root-cause-analysis.png)
+![Defected code is traced back to the reason of change and hence the root cause behind the defect](resources/images/root-cause-analysis.png)
 
 This is particularly important for a team trying to refactor and enhance existing code. The team should be able to distinguish regression bugs resulting from refactoring old code from other bugs resulting from developing new features or fixing bugs.
 
