@@ -76,10 +76,11 @@ The next table summarizes some important code metrics, when they may be importan
 
 *TABLE 2. A listing of useful code metrics*
 
-{width="100%"}
+{widths: "10,*,30,10"}
+
 |Metric |Description                     |Usage            |Related code smells |
 |-------|--------------------------------|-----------------|-------|
-|Code size |Can be measures either in lines of code or number of statements. Lines of code excludes whitespace and preferably excludes comments. Number of statements is a better metric because it is not affected by grouping multiple statements on the same line.       |Used throughout the product lifecycle. However, in case of refactoring poor legacy code, we target to reduce this metric till it reaches a stable lower limit. |Large methods. Large Classes. Unused code. Unnecessary code. Extra features.
+|Code size |Can be measures either in lines of code or number of statements. Lines of code excludes whitespace and preferably excludes comments. Number of statements is a better metric because it is not affected by grouping multiple statements on the same line.|Used throughout the product lifecycle. However, in case of refactoring poor legacy code, we target to reduce this metric till it reaches a stable lower limit. |Large methods. Large Classes. Unused code. Unnecessary code. Extra features.|
 |Methods with size > 10 LOC |Lengthy methods is a sign of poor code. When a method exceed the threshold of 10 lines of code, most probably they have violation the Single Responsibility Principle (SRP). Also, methods are no longer self explanatory and much less maintainable accordingly. It results in multitudes of problems just because of the lengthy methods.   |Should be controlled throughout the project. However, it is so much needed in the Quick-wins Stage and specifically in the step: Reducing method size. |Big Methods. Too many conditionals.
 |Duplication level |% of code duplicated. There are several ways to calculate this number. The idea is to use the same tool and the same set of parameters every time. Basically, this measure takes into account exact and similar clones only.       |Used heavily in the quick-wins stage. We rely on it to assess whether we need to continue working on *removing code duplicates* or not.       |Duplication is the enemy of clean code
 |Cyclomatic complexity (CC)  |Cyclomatic complexity is an indicator of how execution paths one method has. The more execution paths, the more logic and complexity the method contains.   |Mainly, it's used during the quick-wins to pinpoint big and complex methods which needs to be refactored. Usually, you may find that CC and method length are both high. So, sometimes I prefer to look at the method length first before the CC  |Long Method. Too many conditionals. Switch statement |
@@ -88,7 +89,22 @@ The next table summarizes some important code metrics, when they may be importan
 |Method parameters   |number of parameters in methods.  |Used in the *Divide and Conquer* stage while reviewing and improving the components interfaces.    |Long Parameter List. |
 |Class coupling   |A measure of how many calls back and forth between two classes or packages. It pinpoints high coupling between classes and packages.   |This measure is used mainly in the *Divide and Conquer* stage. It guides you while resolving dependencies and reducing overall coupling in your code   | Feature Envy. Inappropriate Intimacy. Middle Man. |
 
-## Making sense of code measures
+## Making sense of code metrics
+
+**A metric is not an indicator**. It doesn't indicate anything. What if I told you that your code size is 1.5 million lines of code. Is this good or bad? Is it a big or small number? No body knows, and it is incorrect to start reasoning using single readings of any metric.
+
+To make sense of code metrics, you need to do other things like:
+
+{widths: "30,70"}
+|Type of indicators |Examples  |
+|-------------------|-----------|
+|**Compare metrics to known benchmarks** |Methods size is bad when it exceeds 10 LOC|
+|**Compare metrics to desirable targets** |Code coverage should be 100% |
+|**Relate metrics to each other** | Build time relation to module code size |
+|**Show the metric trend over time** | Burn down for the level of duplication over time|
+
+This is the difference between a metric and an indicator. A metric is just a number, while the indicator is a graph which tells a story around these numbers.
+
 
 # Starting a New Project? Important Considerations
 
