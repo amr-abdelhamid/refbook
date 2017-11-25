@@ -4,7 +4,7 @@
 In a nutshell, start with the highest value-add and least risky fixes, then work on re-organizing code chunks into components, and finally wrap everything with automated tests. In all stages, automate checks to make sure what is fixed will remain fixed.
 
 {id="refactoring_roadmap"}
-![](resources/images/roadmap.png)
+![](images/roadmap.png)
 
 #### Stage 1: Quick-wins - Simple and least risky enhancements
 

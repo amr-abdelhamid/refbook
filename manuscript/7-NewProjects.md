@@ -23,7 +23,7 @@ One example for that is the code size. As a general rule, you should keep your c
 {format: java,line-numbers: true}
 ```
 public double getSalary(Employee employee) {
-		return employee.getBasicSalary() + employee.getChildren().count * (employee.getBasicSalary() * utils.getEduAllownacePer(employee)) + utils.getTransportationFees(employee.getAddress());
+	return employee.getBasicSalary() + employee.getChildren().count * (employee.getBasicSalary() * utils.getEduAllownacePer(employee)) + utils.getTransFees(employee.getAddress());
 }
 ```
 
@@ -34,7 +34,7 @@ Instead of this one:
 public double getSalary(Employee employee) {
   double basicSalary = employee.getBasicSalary();
   double educationAllowance = getEducationAllowance(employee);
-  double transportationAllowance = utils.getTransportationFees(employee.getAddress());
+  double transportationAllowance = utils.getTransFees(employee.getAddress());
 
   double totalSalary = basicSalary + educationAllowance + transportationAllowance;
   return totalSalary;

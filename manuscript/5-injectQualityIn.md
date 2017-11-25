@@ -1,6 +1,6 @@
 # Stage 3: Inject Quality In
 
-![Stage 3: Inject quality in - Cover components with automated tests](resources/images/roadmap-stage3.png)
+![Stage 3: Inject quality in - Cover components with automated tests](images/roadmap-stage3.png)
 
 The final stage in the roadmap is to cover components with automated tests and make it self-testing. This, in return, enables the team do more profound and risky refactorings.
 
@@ -8,7 +8,7 @@ The final stage in the roadmap is to cover components with automated tests and m
 
 There are several types of automated developer tests. The following diagram is a typical distribution of automated tests for a “healthy” product:
 
-![Distribution of automated tests](resources/images/test_types.png)
+![Distribution of automated tests](images/test_types.png)
 
 **In case of high technical debt and poor code structure, coding unit tests on method level while mocking/faking everything else would have very little Return On Investment (ROI) and would take so much time and effort before the team feels any value.**
 
