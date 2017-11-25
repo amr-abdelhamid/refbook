@@ -12,8 +12,8 @@ In this early stage of refactoring, we rely heavily on tools to detect and fix i
 
 Working on the whole code base magnifies the impact and signifies the improvement. You may put it this way: It may be better to move the whole code one foot forward, rather than to move part of the code a thousand feet forward.
 
-{icon=bookmark}
-G> *It may be better to move the whole code one foot forward, rather than to move part of the code a thousand feet forward.*
+{icon:bookmark}
+B> *It may be better to move the whole code one foot forward, rather than to move part of the code a thousand feet forward.*
 
 From my experience, teams working on the quick wins stage for a while usually start feeling "more confident" in enhancing the code and applying refactorings ideas. They also have better grasp and ownership for the code. In my opinion, this is one of the most important and great side effects of this approach to refactoring.
 

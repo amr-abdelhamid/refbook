@@ -4,10 +4,10 @@
 
 ## Removing dead code
 
-{icon=quote-left}
-G> *Deleting dead code is not a technical problem; it is a problem of mindset and culture*
-G>
-G> \- *- Kevlin Henney [^kevlin]*
+{icon:quote-left}
+B> *Deleting dead code is not a technical problem; it is a problem of mindset and culture*
+B>
+B> \- *- Kevlin Henney [^kevlin]*
 
 Dead code is the "unnecessary, inoperative code that can be removed without affecting program’s functionality". These include "functions and sub-programs that are never called, properties that are never read or written, and variables, constants and enumerators that are never referenced, user-defined types that are never used, API declarations that are redundant, and even entire modules and classes that are redundant." [10]
 
@@ -79,10 +79,10 @@ Removing dead code is a quick win by all means. It doesn't take time and gives a
 
 ## Removing code duplicates
 
-{icon=quote-left}
-G> *Duplication may be the root of all evil in software*
-G>
-G> \- *- Robert C. Martin*
+{icon:quote-left}
+B> *Duplication may be the root of all evil in software*
+B>
+B> \- *- Robert C. Martin*
 
 It is interesting to read what gurus write about code duplication. You feel like reading about a plague or a catastrophe which you should avoid by all means.
 
@@ -199,10 +199,10 @@ Keeping these two pre-cautions in mind will save you, especially that we are ref
 
 ## Reduce method size
 
-{icon=quote-left}
-G> *Refactoring: A change made to the internal structure of software to make it easier to understand and cheaper to modify without changing its existing behavior.*
-G>
-G> \- *- Martin Fowler [8]*
+{icon:quote-left}
+B> *Refactoring: A change made to the internal structure of software to make it easier to understand and cheaper to modify without changing its existing behavior.*
+B>
+B> \- *- Martin Fowler [8]*
 
 One thing I like about this definition is the clearly-stated objectives of refactoring, which are to make software:
 
@@ -359,10 +359,10 @@ A> Such logical units are perfect candidates to be extracted into *private* meth
 
 ## Enhance identifier naming
 
-{icon=quote-left}
-G> *You know you are working on clean code when each routine you read turns out to be pretty much what you expected [^clean-ron]*
-G>
-G> \- *- Ron Jeffries*
+{icon:quote-left}
+B> *You know you are working on clean code when each routine you read turns out to be pretty much what you expected [^clean-ron]*
+B>
+B> \- *- Ron Jeffries*
 
 In an interesting study titled: *Concise and Consistent Naming*, the authors has conducted token analysis on Eclipse 3.0 code, and found that *"Approximately 70% of the source code of a software system consists of identifiers"* [17]:
 

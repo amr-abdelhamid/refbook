@@ -2,10 +2,10 @@
 
 Measuring code gives you visibility and helps you set clear objectives. As put by Deming:
 
-{icon=quote-left}
-G> *“Without data you’re just another person with an opinion.”*
-G>
-G> \- *- W. Edwards Deming*
+{icon:quote-left}
+B> *“Without data you’re just another person with an opinion.”*
+B>
+B> \- *- W. Edwards Deming*
 
 But, before we measure anything, we need to know that metrics are very powerful tools. If these tools are used in the wrong direction, they drive negative behaviors, demotivate individuals, and undermine team values. So, first, we need to agree on the purpose of measuring code.
 
@@ -13,10 +13,10 @@ But, before we measure anything, we need to know that metrics are very powerful 
 
 **Code metrics should only be used for enhancing code, not for anything else.** You should never use them to judge personal capabilities, individual performance, or team productivity, especially if the team is enhancing poor code with already lots of problems. Using code metrics in evaluation and ranking people and teams creates a very unsafe environment and drives negative behaviors. Eventually, you may get better code metrics, but less maintainable code:
 
-{icon=quote-left}
-G> *“People with targets and jobs dependent upon meeting them will probably meet the targets – even if they have to destroy the enterprise to do it.”*
-G>
-G> \- *- W. Edwards Deming*
+{icon:quote-left}
+B> *“People with targets and jobs dependent upon meeting them will probably meet the targets – even if they have to destroy the enterprise to do it.”*
+B>
+B> \- *- W. Edwards Deming*
 
 One example for that is the code size. As a general rule, you should keep your code base simple and remove any unnecessary code. If you reward the behavior of reducing code size (or punish the otherwise behavior), probably you'll get code like this first code sample below, which is three line of code, instead of the second self-explanatory code sample, which is fourteen lines of code:
 
@@ -49,10 +49,10 @@ private double getEducationAllowance(Employee employee){
 
 This behavior is widespread, and appears in every single organization. This was noted by Eli Goldratt, the father of Theory of Constraints, who said:
 
-{icon=quote-left}
-G> *“Tell me how you measure me, and I will tell you how I will behave!”*
-G>
-G> \- *- Eli Goldratt*
+{icon:quote-left}
+B> *“Tell me how you measure me, and I will tell you how I will behave!”*
+B>
+B> \- *- Eli Goldratt*
 
 A> #### My story with peer reviews
 A>
@@ -77,10 +77,11 @@ The next table summarizes some important code metrics, when they may be importan
 *TABLE 2. A listing of useful code metrics*
 
 {widths: "10,*,30,10"}
-
+|=======|================================|=================|====================|
 |Metric |Description                     |Usage            |Related code smells |
-|-------|--------------------------------|-----------------|-------|
+|=======|================================|=================|====================|
 |Code size |Can be measures either in lines of code or number of statements. Lines of code excludes whitespace and preferably excludes comments. Number of statements is a better metric because it is not affected by grouping multiple statements on the same line.|Used throughout the product lifecycle. However, in case of refactoring poor legacy code, we target to reduce this metric till it reaches a stable lower limit. |Large methods. Large Classes. Unused code. Unnecessary code. Extra features.|
+|----|-----|------------|-----|
 |Methods with size > 10 LOC |Lengthy methods is a sign of poor code. When a method exceed the threshold of 10 lines of code, most probably they have violation the Single Responsibility Principle (SRP). Also, methods are no longer self explanatory and much less maintainable accordingly. It results in multitudes of problems just because of the lengthy methods.   |Should be controlled throughout the project. However, it is so much needed in the Quick-wins Stage and specifically in the step: Reducing method size. |Big Methods. Too many conditionals.
 |Duplication level |% of code duplicated. There are several ways to calculate this number. The idea is to use the same tool and the same set of parameters every time. Basically, this measure takes into account exact and similar clones only.       |Used heavily in the quick-wins stage. We rely on it to assess whether we need to continue working on *removing code duplicates* or not.       |Duplication is the enemy of clean code
 |Cyclomatic complexity (CC)  |Cyclomatic complexity is an indicator of how execution paths one method has. The more execution paths, the more logic and complexity the method contains.   |Mainly, it's used during the quick-wins to pinpoint big and complex methods which needs to be refactored. Usually, you may find that CC and method length are both high. So, sometimes I prefer to look at the method length first before the CC  |Long Method. Too many conditionals. Switch statement |

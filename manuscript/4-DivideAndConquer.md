@@ -34,10 +34,10 @@ To elaborate on this definition, **a module is any logical grouping of cohesive 
 
 #### Component
 
-{icon=quote-left}
-G> *“A component is a physical and replaceable part of a system that conforms to and provides the realization of a set of interfaces. It is intended to be easily substitutable for other components that meet the same specifications.”*
-G>
-G> \- *- The UML Reference Manual [19, pp. 10]*
+{icon:quote-left}
+B> *“A component is a physical and replaceable part of a system that conforms to and provides the realization of a set of interfaces. It is intended to be easily substitutable for other components that meet the same specifications.”*
+B>
+B> \- *- The UML Reference Manual [19, pp. 10]*
 
 From this definition, we understand that a component is a physical standalone file; a jar, war, dll, gem, etc. Also, it is replaceable, meaning that it can be deployed/redeployed on its own. Finally, we understand that a component may contain one or more smaller modules; and vice versa, a big module may contain one or more components.
 
@@ -45,10 +45,10 @@ From this definition, we understand that a component is a physical standalone fi
 
 In essence, web services (or just services), are components. They are physical, replaceable, provides clear interfaces, and easily substitutable. However, there is value in differentiating services from components.
 
-{icon=quote-left}
-G> *“A service is similar to a component in that it's used by foreign applications. The main difference is that I expect a component to be used locally (think jar file, assembly, dll, or a source import). A service will be used remotely through some remote interface, either synchronous or asynchronous (eg web service, messaging system, RPC, or socket.)”[^fowler_article]*
-G>
-G> \- *- Martin Fowler*
+{icon:quote-left}
+B> *“A service is similar to a component in that it's used by foreign applications. The main difference is that I expect a component to be used locally (think jar file, assembly, dll, or a source import). A service will be used remotely through some remote interface, either synchronous or asynchronous (eg web service, messaging system, RPC, or socket.)”[^fowler_article]*
+B>
+B> \- *- Martin Fowler*
 
 [^fowler_article]: This quote is from Martin's article: [Inversion of Control Containers and the Dependency Injection pattern](https://www.martinfowler.com/articles/injection.html). You will find other interesting distinctions between components and services in Martin's famous article: [Microservices: a definition of this new architectural term](https://martinfowler.com/articles/microservices.html)
 
@@ -68,8 +68,8 @@ So, services enjoy the maximum level of decoupling. You can view them as standal
 
 Now, the questions is: **Do we need to divide our code into modules or components or services?** The answer that I can provide is: Divide the code into modules. Then, assess whether or not it is useful and safe to upgrade them to components or services.
 
-{icon=bookmark}
-G> *Divide the code into modules. Then, assess whether or not it is **useful and safe** to upgrade them to components or services.*
+{icon:bookmark}
+B> *Divide the code into modules. Then, assess whether or not it is **useful and safe** to upgrade them to components or services.*
 
 A> ## About Microservices
 A>
