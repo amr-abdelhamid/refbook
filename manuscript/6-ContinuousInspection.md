@@ -35,7 +35,7 @@ Ant can do this using shell scripts or command lines, as follows:
 Let Ant check the clones.xml file generated. This is an ant target that does this job, add it to your build.xml file:
 
 {lang="xml"}
-~~~~~~~~
+```
 <!--
 Check the file named in the property file.to.check (the clons.xml file) to see
 if there are any clones.
@@ -65,7 +65,7 @@ The way this works is to find all lines containing the text "cloneClass" and put
        <echo message="Code clones found - setting build fail flag..." />
        <fail message="Code clones detected during ${codeline} build.  Check logs." />
 </target>
-~~~~~~~~
+```
 
 Note: In order to pass parameters to the ant script, click on the advanced button and add parameters as in the following screen:
 

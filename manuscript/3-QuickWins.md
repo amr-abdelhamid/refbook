@@ -152,8 +152,8 @@ In both above examples, you need to review the code before fixing anything. It m
 
 The forth type of clones deals with fragments of code doing the same thing but not sharing similar structure. For example, implementing a routine which calculates the factorial of a number, one using loops and another using recursion:
 
-{lang="java"}
-~~~~~~~~
+{format: java, line-numbers: true}
+```
 int factorialUsingLoops(int n){
   int factorial = 1;
   for(int i = 1; i <= n; i++)
@@ -161,17 +161,17 @@ int factorialUsingLoops(int n){
 
   return factorial;
 }
-~~~~~~~~
+```
 
-{lang="java"}
-~~~~~~~~
+{format: java, line-numbers: true}
+```
 int factorialUsingRecursion(int n){
   if (n == 0)
     return 1;
   else
     return(n * factorialUsingRecursion(n-1));
 }
-~~~~~~~~
+```
 
 There are lots of efforts in the academia to research whether it is possible to detect type 4 of code clones or not. Till they reach something tangible, let's focus our attention to detect and remove the first three types of code clones.
 
@@ -225,8 +225,8 @@ Ready? Go!
 
 A> **_Method with no comments:_**
 A>
-A>{lang="java"}
-A>~~~~~~~~
+A>{format: java, line-numbers: true}
+A>```
 A>public List criteriaFind(String criteria) {
   if (criteria == null)
     criteria = "";
@@ -263,7 +263,7 @@ A>
   Collections.sort(result);
   return result;
 }
-~~~~~~~~
+```
 
 This is a 36-line method. It seems to be small. However, you've spent some time (probably around 1-2 minutes) to grasp how the code works. So, **according to our definition, is this method *maintainable*? The answer is no**.
 
@@ -271,8 +271,8 @@ Now, consider this enhanced version of the method:
 
 A> **_Method with explanatory comments:_**
 A>
-A> {lang="java"}
-A> ~~~~~~~~
+A> {format: java, line-numbers: true}
+A> ```
 A> public List criteriaFind(String criteria) {
 A>  if (criteria == null)
 A>    criteria = "";
@@ -318,7 +318,7 @@ A>  // Sort Results
 A>  Collections.sort(result);
 A>  return result;
 A>}
-A>~~~~~~~~
+A>```
 
 Adding some comments are generally perceived to enhance code understandability. It may clutter the code a bit, but at least in this example, the code is a little more readable. But, wait a minute, if we are adding comments to make the code more readable, isn't this an indication that the code is not maintainable? According to our definition of maintainability, the answer is yes. This is why *explanatory comments* are generally considered a code smell, or a sign of bad code.
 
@@ -330,8 +330,8 @@ So, by extracting each chunk into a standalone method, we will reach this versio
 
 A> **_After extracting method steps into private methods:_**
 A>
-A>{lang="java"}
-A>~~~~~~~~
+A>{format: java, line-numbers: true}
+A>```
 public List criteriaFind(String criteria) {
   List criteriaList = convertCriteriaToOrderedPairsOfFieldValueArrays(criteria);
   List result = searchForRecordsWhichSatisfiesAllCriteria(criteriaList);
@@ -339,7 +339,7 @@ public List criteriaFind(String criteria) {
   sortResults(result);
   return result;
 }
-A>~~~~~~~~
+A>```
 
 This is a 5-line method which narrates a story. No need to write comments or explain anything. It is self-explanatory and much easier now to instantly capture the intent of the code.
 
@@ -378,20 +378,20 @@ One of the interesting tools to enhance code readability is to use *explanatory 
 A>
 Similarly, if you have a piece of calculation whose intent is not clear, consider extracting it into a field and give an explanatory name.
 A>
-{lang="java", linenos=off}
-~~~~~~~~
+{format: java, line-numbers: false}
+```
 public Boolean bookSeats(Request request) {
   Boolean bookingResult = new Boolean(dataHandler.book(dataHandler
       .getRecord(((Integer)request.getParametersList().get(0)).intValue()),
         ((Integer)request.getParametersList().get(1)).intValue()));
   return bookingResult;
 }
-~~~~~~~~
+```
 A>
 **`dataHandler.book` parameters are not clear**. There is a difficulty understanding what kind of parameters we are passing. In stead, we can use **explanatory methods** as such:
 A>
-{lang="java", linenos=off}
-~~~~~~~~
+{format: java, line-numbers: false}
+```
 public Boolean bookSeats(Request request) {
   Boolean bookingResult = new Boolean(dataHandler.book(getFlightRecord(request),
     getNumberOfSeats(request)));
@@ -404,12 +404,12 @@ private DataInfo getFlightRecord(Request request){
 private int getNumberOfSeats(Request request) {
 	return ((Integer)request.getParametersList().get(1)).intValue();
 }
-~~~~~~~~
+```
 A>
 Or, we can use **explanatory fields** as such:
 A>
-{lang="java", linenos=off}
-~~~~~~~~
+{format: java, line-numbers: false}
+```
 public Boolean bookSeats(Request request) {
   DataInfo flightRecord = dataHandler.getRecord(
     ((Integer)request.getParametersList().get(0)).intValue());
@@ -418,7 +418,7 @@ public Boolean bookSeats(Request request) {
     new Boolean(dataHandler.book(flightRecord, numberOfSeats));
   return bookingResult;
 }
-~~~~~~~~
+```
 A>
 My advice is to always use explanatory methods and fields. They are extremely simple and astonishingly helpful tool to enhance program readability.
 
