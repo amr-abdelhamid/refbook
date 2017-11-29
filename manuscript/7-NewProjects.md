@@ -97,6 +97,7 @@ The next table summarizes some important code metrics, when they may be importan
 To make sense of code metrics, you need to do other things like:
 
 {widths: "30,70"}
+
 |Type of indicators |Examples  |
 |-------------------|-----------|
 |**Compare metrics to known benchmarks** |Methods size is bad when it exceeds 10 LOC|
