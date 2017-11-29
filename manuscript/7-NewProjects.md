@@ -76,7 +76,8 @@ The next table summarizes some important code metrics, when they may be importan
 
 *TABLE 2. A listing of useful code metrics*
 
-{widths: "10,*,10"}
+{widths: "10,*,30,10"}
+
 |============|============|============|============|
 | Header A   | Header B   | Header C   | Header C   |
 |============|============|============|============|
