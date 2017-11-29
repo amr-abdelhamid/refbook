@@ -460,9 +460,9 @@ A> Now, consider adding a capability to simulate two steering systems: Power and
 A>
 A> ![Further specialization results in duplication, as in the case of `PowerSteeringAbsBrakingCar` and `PowerSteeringStandardBrakingCar`](images/cartype2.png)
 A>
-A> Instead, let's collapse this inheritance tree, and use composition with the Strategy pattern. Here, we will design a Car with many components, each component is an *abstract strategy* which may have several *concrete implementations*:
+A> Instead, let's collapse this inheritance tree, and use composition with [the Strategy pattern](https://en.wikipedia.org/wiki/Strategy_pattern). Here, we will design a Car with many components, each component is an *abstract strategy* which may have several *concrete implementations*:
 A>
-A> ![Using composition with the [Strategy pattern](https://en.wikipedia.org/wiki/Strategy_pattern) hits a sweet spot between composition and inheritance](images/cartype3.png)
+A> ![Using composition with the Strategy pattern hits a sweet spot between composition and inheritance](images/cartype3.png)
 
 #### Always rely on tools support
 
