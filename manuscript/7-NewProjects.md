@@ -76,11 +76,25 @@ The next table summarizes some important code metrics, when they may be importan
 
 *TABLE 2. A listing of useful code metrics*
 
-{type: table, widths: "10,*,30,10"}
+
+{type: table, widths: "10,*,*,10"}
+
 |============|============|============|============|
-| Header A   | Header B   | Header C   | Header C   |
+|Header A   |**Header B** |Header C |Header D   |
 |============|============|============|============|
-| Content A1 | Content B1 | Content C1 is really really big awy asdlfkj lkajsdf ladsjkf adslkjf adslkfj dslfjasd lfjkadsl fkj dsalfj lkj lkj lkj lj lkj lkj lj lkj lkj | Content C1 |
+| Content A1 | Content C1 is really really big awy asdlfkj lkajsdf ladsjkf adslkjf adslkfj dslfjasd lfjkadsl fkj dsalfj lkj lkj lkj lj lkj lkj lj lkj lkj | Content C1 | Content C1 is really really big awy asdlfkj lkajsdf ladsjkf adslkjf adslkfj dslfjasd lfjkadsl fkj dsalfj lkj lkj lkj lj lkj lkj lj lkj lkj | Content C1 |
+|------------|------------|------------|------------|
+| Content A2 | Content B2 | Content C2 | Content C2 |
+|------------|------------|------------|------------|
+| Content A3 | Content B3 | Content C3 | Content C3 |
+|============|============|============|============|
+
+
+{type: table, widths: "10,*,10,10"}
+|============|============|============|============|
+|Header A   |**Header B** |Header C |Header D   |
+|============|============|============|============|
+| Content A1 | Content C1 is really really big awy asdlfkj lkajsdf ladsjkf adslkjf adslkfj dslfjasd lfjkadsl fkj dsalfj lkj lkj lkj lj lkj lkj lj lkj lkj | Content C1 | Content C1 is really really big awy asdlfkj lkajsdf ladsjkf adslkjf adslkfj dslfjasd lfjkadsl fkj dsalfj lkj lkj lkj lj lkj lkj lj lkj lkj | Content C1 |
 |------------|------------|------------|------------|
 | Content A2 | Content B2 | Content C2 | Content C2 |
 |------------|------------|------------|------------|
