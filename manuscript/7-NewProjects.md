@@ -80,12 +80,18 @@ The next table summarizes some important code metrics, when they may be importan
 |Metric |Description          |Usage            |Related code smells |
 |-----------|--------------|-------|------------------|
 |Code size |Can be measures either in lines of code or number of statements. Lines of code excludes whitespace and preferably excludes comments. Number of statements is a better metric because it is not affected by grouping multiple statements on the same line.|Used throughout the product lifecycle. However, in case of refactoring poor legacy code, we target to reduce this metric till it reaches a stable lower limit. |Large methods. Large Classes. Unused code. Unnecessary code. Extra features.|
+|   |   |   |   |
 |Methods with size > 10 LOC |Lengthy methods is a sign of poor code. When a method exceed the threshold of 10 lines of code, most probably they have violation the Single Responsibility Principle (SRP). Also, methods are no longer self explanatory and much less maintainable accordingly. It results in multitudes of problems just because of the lengthy methods.   |Should be controlled throughout the project. However, it is so much needed in the Quick-wins Stage and specifically in the step: Reducing method size. |Big Methods. Too many conditionals.|
+|   |   |   |   |
 |Duplication level |% of code duplicated. There are several ways to calculate this number. The idea is to use the same tool and the same set of parameters every time. Basically, this measure takes into account exact and similar clones only.       |Used heavily in the quick-wins stage. We rely on it to assess whether we need to continue working on *removing code duplicates* or not.       |Duplication is the enemy of clean code
 |Cyclomatic complexity (CC)  |Cyclomatic complexity is an indicator of how execution paths one method has. The more execution paths, the more logic and complexity the method contains.   |Mainly, it's used during the quick-wins to pinpoint big and complex methods which needs to be refactored. Usually, you may find that CC and method length are both high. So, sometimes I prefer to look at the method length first before the CC  |Long Method. Too many conditionals. Switch statement |
+|   |   |   |   |
 |Code Coverage   |% of code covered by automated tests.   |Used mainly in the *Inject Quality In* stage.    |It helps identify part of code which are not covered by any test. |
+|   |   |   |   |
 |Build time   |Time elapsed to build, package and deploy the product on the target environment.   |This number is used throughout the project lifecycle. First, it may be several days of manual effort to package, test, and deploy. The target is to reach a less-than-an-hour process end-to-end   |Long build time. Manual repetitive work.  |
+|   |   |   |   |
 |Method parameters   |number of parameters in methods.  |Used in the *Divide and Conquer* stage while reviewing and improving the components interfaces.    |Long Parameter List. |
+|   |   |   |   |
 |Class coupling   |A measure of how many calls back and forth between two classes or packages. It pinpoints high coupling between classes and packages.   |This measure is used mainly in the *Divide and Conquer* stage. It guides you while resolving dependencies and reducing overall coupling in your code   | Feature Envy. Inappropriate Intimacy. Middle Man. |
 
 ## Making sense of code metrics
