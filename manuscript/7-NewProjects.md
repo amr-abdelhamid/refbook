@@ -76,6 +76,7 @@ The next table summarizes some important code metrics, when they may be importan
 
 *TABLE 2. A listing of useful code metrics*
 
+{type: table, widths: "10,*,*,10"}
 |Metric |Description          |Usage            |Related code smells |
 |-----------|--------------|-------|------------------|
 |Code size |Can be measures either in lines of code or number of statements. Lines of code excludes whitespace and preferably excludes comments. Number of statements is a better metric because it is not affected by grouping multiple statements on the same line.|Used throughout the product lifecycle. However, in case of refactoring poor legacy code, we target to reduce this metric till it reaches a stable lower limit. |Large methods. Large Classes. Unused code. Unnecessary code. Extra features.|
