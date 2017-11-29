@@ -464,6 +464,7 @@ A> Instead, let's collapse this inheritance tree, and use composition with [the 
 A>
 A> ![Using composition with the Strategy pattern hits a sweet spot between composition and inheritance](images/cartype3.png)
 A>
+A> Generally, maintaining code with lots of components is much easier than maintaining code with hierarchies of inheritance trees.
 
 #### Always rely on tools support
 
