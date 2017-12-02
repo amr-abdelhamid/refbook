@@ -53,7 +53,7 @@ To make sense of code metrics, you need to organize or present them in a visual 
 * **Relate metrics to each other.** For example, build time relation to module code size.
 * **Show the metric trend over time.** For example, burn down for the level of duplication over time.
 
-{icon:quote-left}
+{icon:bookmark}
 B> A metric is just a number, while the indicator is a data visualization technique which tells a story around these numbers.
 
 ## Examples of progress indicators
@@ -64,13 +64,14 @@ In several refactoring projects, I have used different types of indicators to sh
 
 One of the most effective techniques was the burn up/down charts, about which Alistair Cockburn says:
 
+{icon:quote-left}
 B> “Burn charts have become a favorite way to give visibility into a project’s progress. They are extremely simple and astonishingly powerful”
 B>
 B> \- *- Alistair Cockburn [^alistair]*
 
 [^kevlin]: Alistair Cockburn, a famous agile author and one of the 17. The quote is from his book: Crystal Clear [20].
 
-![This is an example of using burn down charts when your target is 0. In this case, the target was to clear out all violations of clean code. One example of these violations was methods larger than 10 LOC.](images/violations-burn-down)
+![This is an example of using burn down charts when your target is 0. In this case, the target was to clear out all violations of clean code. One example of these violations was methods larger than 10 LOC.](images/violations-burn-down.png)
 
 ![Code coverage burn up chart. The target is to cover all the code with automated tests. Using this chart started with the third stage, and in several iterations, we reached 75%](images/coverage-burn-up,png)
 
