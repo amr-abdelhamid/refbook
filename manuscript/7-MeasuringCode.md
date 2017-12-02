@@ -97,7 +97,7 @@ We used the following run chart which indicates how much code we remove per one 
 
 ![Run Chart for the Code Size Reduction Speed (CSRS). This chart indicates the amount of return on investment we get out of working on removing dead and duplicate code.](images/runchart.png)
 
-## Using code metrics in the wrong direction
+## Using code metrics for team evaluation
 
 Metrics are very powerful tools. If they are used in the wrong direction, they drive negative behaviors, demotivate individuals, and undermine team values.
 
