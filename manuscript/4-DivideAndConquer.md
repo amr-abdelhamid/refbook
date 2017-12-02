@@ -227,11 +227,9 @@ For poor and cluttered code projects, the percentage is much higher. The diagram
 
 ![Green lines are the expected dependencies between components. Red lines are relationships and dependencies which do not confirm to expected dependencies, and therefore, they are considered violations.](images/divideandconquer/arch_analysis_2.png)
 
-![Another example of architecture analysis. Green lines are hidden in order to make violations clearer](images/divideandconquer/arch_analysis_1.png)
+The above system suffered from so many violations and circular dependencies. You may also anticipate many un-necessary calls and high level coupling among components.
 
-As you can see, both systems suffer from so many violations and circular dependencies. You may also anticipate many un-necessary calls and high level coupling among components.
-
-To fix this situation, we gradually worked on moving classes and methods around to reduce dependencies and remove violations. Using two simple refactorings: *Move Class* and *Move Method*, we managed to remove most of the violations.
+To fix this situation, we started from existing architecture and gradually worked on moving classes and methods around to reduce dependencies and remove violations. Using two simple refactorings: *Move Class* and *Move Method*, we managed to remove most of the violations.
 
 The key takeaway of these experiences is that **existing architectural components should be honored and refined during first attempts to reduce dependencies and lower coupling between components.**
 

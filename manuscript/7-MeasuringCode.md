@@ -56,7 +56,7 @@ To make sense of code metrics, you need to organize or present them in a visual 
 {icon:bookmark}
 B> A metric is just a number, while the indicator is a data visualization technique which tells a story around these numbers.
 
-## Examples of progress indicators
+## Examples of progress/quality indicators
 
 In several refactoring projects, I have used different types of indicators to show progress and assist the team in taking refactoring decisions.
 
