@@ -73,7 +73,7 @@ B> \- *- Alistair Cockburn [^alistair]*
 
 ![This is an example of using burn down charts when your target is 0. In this case, the target was to clear out all violations of clean code. One example of these violations was methods larger than 10 LOC.](images/violations-burn-down.png)
 
-![Code coverage burn up chart. The target is to cover all the code with automated tests. Using this chart started with the third stage, and in several iterations, we reached 75%](images/coverage-burn-up,png)
+![Code coverage burn up chart. The target is to cover all the code with automated tests. Using this chart started with the third stage, and in several iterations, we reached 75%](images/coverage-burn-up.png)
 
 #### Tree maps
 
