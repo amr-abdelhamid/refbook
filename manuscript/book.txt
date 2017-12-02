@@ -12,6 +12,8 @@
 
 6-ContinuousInspection.md
 
-7-NewProjects.md
+7-MeasuringCode.md
 
-8-backmatter.md
+8-NewProjects.md
+
+9-backmatter.md

@@ -57,3 +57,5 @@ Queen’s University, Canada, Rochester Institute of Technology, USA
 [18] Michael C. Feathers (2005). *Working Effectively with Legacy Code*. Prentice Hall PTR. pp. 186
 
 [19] James Rumbaugh, Ivar Jacopson and Grady Booch (1999). *The Unified Modeling Language Reference Manual*. Addison-Wesley.
+
+[20] Alistair Cockburn (2004). *Crystal Clear: A Human-Powered Methodology for Small Teams*. pp. 113
