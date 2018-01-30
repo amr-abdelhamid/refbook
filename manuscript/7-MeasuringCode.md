@@ -3,9 +3,9 @@
 Measuring code gives you visibility and helps you set clear objectives. As put by Deming:
 
 {icon:quote-left}
-B> #### *Without data you’re just another person with an opinion.*
-B>
-B> \- *- W. Edwards Deming*
+G> #### *Without data you’re just another person with an opinion.*
+G>
+G> \- *- W. Edwards Deming*
 
 Measuring code and making sense of code metrics drives us away from almost all common [failure patterns](#whyrefactoringfails) of code refactoring. Mainly, the are very useful in reporting progress and gain support from busy managers. They also help us visualize areas with highest code issues and maximize the gain of our limited time of work.
 
@@ -54,7 +54,7 @@ To make sense of code metrics, you need to organize or present them in a visual 
 * **Show the metric trend over time.** For example, burn down for the level of duplication over time.
 
 {icon:bookmark}
-B> A metric is just a number, while the indicator is a data visualization technique which tells a story around these numbers.
+G> A metric is just a number, while the indicator is a data visualization technique which tells a story around these numbers.
 
 ## Examples of progress/quality indicators
 
@@ -65,9 +65,9 @@ In several refactoring projects, I have used different types of indicators to sh
 One of the most effective techniques was the burn up/down charts, about which Alistair Cockburn says:
 
 {icon:quote-left}
-B> “Burn charts have become a favorite way to give visibility into a project’s progress. They are extremely simple and astonishingly powerful”
-B>
-B> \- *- Alistair Cockburn [^alistair]*
+G> “Burn charts have become a favorite way to give visibility into a project’s progress. They are extremely simple and astonishingly powerful”
+G>
+G> \- *- Alistair Cockburn [^alistair]*
 
 [^kevlin]: Alistair Cockburn, a famous agile author and one of the 17. The quote is from his book: Crystal Clear [20].
 
@@ -104,9 +104,9 @@ Metrics are very powerful tools. If they are used in the wrong direction, they d
 **Code metrics should only be used for enhancing code and showing progress, not for anything else.** You should never use them to judge personal capabilities, individual performance, or team productivity, especially if the team is enhancing poor code with already lots of problems. Using code metrics in evaluation and ranking people and teams creates a very unsafe environment and drives negative behaviors. Eventually, you may get better code metrics, but less maintainable code:
 
 {icon:quote-left}
-B> *“People with targets and jobs dependent upon meeting them will probably meet the targets – even if they have to destroy the enterprise to do it.”*
-B>
-B> \- *- W. Edwards Deming*
+G> *“People with targets and jobs dependent upon meeting them will probably meet the targets – even if they have to destroy the enterprise to do it.”*
+G>
+G> \- *- W. Edwards Deming*
 
 One example for that is the code size. As a general rule, you should keep your code base simple and remove any unnecessary code. If you reward the behavior of reducing code size (or punish the otherwise behavior), probably you'll get code like this first code sample below, which is three line of code, instead of the second more readable and self-explanatory code sample, which is fourteen lines of code:
 
@@ -140,9 +140,9 @@ private double getEducationAllowance(Employee employee){
 This behavior is widespread, and appears in every single organization. This was noted by Eli Goldratt, the father of Theory of Constraints, who said:
 
 {icon:quote-left}
-B> *“Tell me how you measure me, and I will tell you how I will behave!”*
-B>
-B> \- *- Eli Goldratt*
+G> *“Tell me how you measure me, and I will tell you how I will behave!”*
+G>
+G> \- *- Eli Goldratt*
 
 A> #### My story with peer reviews
 A>
