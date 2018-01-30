@@ -35,7 +35,7 @@ To elaborate on this definition, **a module is any logical grouping of cohesive 
 #### Component
 
 {icon=quote-left}
-G> *“A component is a physical and replaceable part of a system that conforms to and provides the realization of a set of interfaces. It is intended to be easily substitutable for other components that meet the same specifications.”*
+G> **A component is a physical and replaceable part of a system that conforms to and provides the realization of a set of interfaces. It is intended to be easily substitutable for other components that meet the same specifications.**
 G>
 G> \- *- The UML Reference Manual [19, pp. 10]*
 
@@ -46,7 +46,7 @@ From this definition, we understand that a component is a physical standalone fi
 In essence, web services (or just services), are components. They are physical, replaceable, provides clear interfaces, and easily substitutable. However, there is value in differentiating services from components.
 
 {icon=quote-left}
-G> *“A service is similar to a component in that it's used by foreign applications. The main difference is that I expect a component to be used locally (think jar file, assembly, dll, or a source import). A service will be used remotely through some remote interface, either synchronous or asynchronous (eg web service, messaging system, RPC, or socket.)”[^fowler_article]*
+G> **A service is similar to a component in that it's used by foreign applications. The main difference is that I expect a component to be used locally (think jar file, assembly, dll, or a source import). A service will be used remotely through some remote interface, either synchronous or asynchronous (eg web service, messaging system, RPC, or socket.)[^fowler_article]**
 G>
 G> \- *- Martin Fowler*
 
@@ -69,7 +69,7 @@ So, services enjoy the maximum level of decoupling. You can view them as standal
 Now, the questions is: **Do we need to divide our code into modules or components or services?** The answer that I can provide is: Divide the code into modules. Then, assess whether or not it is useful and safe to upgrade them to components or services.
 
 {icon=bookmark}
-G> *Divide the code into modules. Then, assess whether or not it is **useful and safe** to upgrade them to components or services.*
+G> **Divide the code into modules. Then, assess whether or not it is *useful and safe* to upgrade them to components or services.**
 
 A> ## About Microservices
 A>
