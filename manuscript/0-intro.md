@@ -21,7 +21,7 @@ Over the course of several years, I have struggled with teams to refactor their 
 
 This solution looms like the easiest solution from both technical and management point of views. If code is cluttered and causing lots of trouble, trash it and start from scratch. The question is: If you start from scratch, what makes you confident that you'll not hit the same wall again?
 
-{icon:bookmark}
+{icon=bookmark}
 G> *The question is: If you start from scratch, what makes you confident that you'll not hit the same wall again?*
 
 It's like the next picture of two accidents. Car capabilities are different, one is ordinary sedan car while the other is an expensive sports car. However, the accidents are similar, because the *driving habits* are also similar.
@@ -74,7 +74,7 @@ In time, some team members viewed automated tests as an impediment to refactorin
 
 Technical teams had the attitude that refactoring was “none of the managers’ business”. They did not spend any effort to involve busy managers and get their support. This attitude created a counter effect from managers towards refactoring and refactoring effort which was viewed by senior managers as a non-value adding activity and was only allowed due to pressure from the development teams. Once the planned time for refactoring elapsed, management became more and more resistant to spending any more effort on refactoring.
 
-{icon:bookmark}
+{icon=bookmark}
 G> *Managers will not sponsor an activity which they cannot track or control.*
 
 #### 4. The Technical Glut Trap {#thetrab}
@@ -107,7 +107,7 @@ Now, I find this fact, that I'm an average developer who doesn't feel good towar
 
 This is why you may find most of the information in this book is simple, and probably this is why it is very effective!
 
-{icon:bookmark}
+{icon=bookmark}
 G> *Disclaimer: Most of the information in this book is simple, and probably this is why it is very effective!*
 
 ##### Sustainability

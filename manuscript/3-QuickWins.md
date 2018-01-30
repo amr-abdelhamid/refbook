@@ -4,7 +4,7 @@
 
 ## Removing dead code
 
-{icon:quote-left}
+{icon=quote-left}
 G> *Deleting dead code is not a technical problem; it is a problem of mindset and culture*
 G>
 G> \- *- Kevlin Henney [^kevlin]*
@@ -79,8 +79,8 @@ Removing dead code is a quick win by all means. It doesn't take time and gives a
 
 ## Removing code duplicates
 
-{icon:quote-left}
-G> *Duplication may be the root of all evil in software*
+{icon=quote-left}
+G> ###### Duplication may be *the* root of all evil in software
 G>
 G> \- *- Robert C. Martin*
 
@@ -199,7 +199,7 @@ Keeping these two pre-cautions in mind will save you, especially that we are ref
 
 ## Reduce method size
 
-{icon:quote-left}
+{icon=quote-left}
 G> *Refactoring: A change made to the internal structure of software to make it easier to understand and cheaper to modify without changing its existing behavior.*
 G>
 G> \- *- Martin Fowler [8]*
@@ -359,7 +359,7 @@ A> Such logical units are perfect candidates to be extracted into *private* meth
 
 ## Enhance identifier naming
 
-{icon:quote-left}
+{icon=quote-left}
 G> *You know you are working on clean code when each routine you read turns out to be pretty much what you expected [^clean-ron]*
 G>
 G> \- *- Ron Jeffries*

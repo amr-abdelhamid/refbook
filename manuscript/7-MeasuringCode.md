@@ -2,8 +2,8 @@
 
 Measuring code gives you visibility and helps you set clear objectives. As put by Deming:
 
-{icon:quote-left}
-G> ##### *Without data you’re just another person with an opinion.*
+{icon=quote-left}
+G> ###### Without data you’re just *another* person with an opinion.
 G>
 G> \- *- W. Edwards Deming*
 
@@ -53,7 +53,7 @@ To make sense of code metrics, you need to organize or present them in a visual 
 * **Relate metrics to each other.** For example, build time relation to module code size.
 * **Show the metric trend over time.** For example, burn down for the level of duplication over time.
 
-{icon:bookmark}
+{icon=bookmark}
 G> A metric is just a number, while the indicator is a data visualization technique which tells a story around these numbers.
 
 ## Examples of progress/quality indicators
@@ -64,8 +64,8 @@ In several refactoring projects, I have used different types of indicators to sh
 
 One of the most effective techniques was the burn up/down charts, about which Alistair Cockburn says:
 
-{icon:quote-left}
-G> “Burn charts have become a favorite way to give visibility into a project’s progress. They are extremely simple and astonishingly powerful”
+{icon=quote-left}
+G> ###### Burn charts have become a favorite way to give visibility into a project’s progress. They are extremely simple and astonishingly powerful.
 G>
 G> \- *- Alistair Cockburn [^alistair]*
 
@@ -103,8 +103,8 @@ Metrics are very powerful tools. If they are used in the wrong direction, they d
 
 **Code metrics should only be used for enhancing code and showing progress, not for anything else.** You should never use them to judge personal capabilities, individual performance, or team productivity, especially if the team is enhancing poor code with already lots of problems. Using code metrics in evaluation and ranking people and teams creates a very unsafe environment and drives negative behaviors. Eventually, you may get better code metrics, but less maintainable code:
 
-{icon:quote-left}
-G> *“People with targets and jobs dependent upon meeting them will probably meet the targets – even if they have to destroy the enterprise to do it.”*
+{icon=quote-left}
+G> ###### People with targets and jobs dependent upon meeting them will probably meet the targets – even if they have to destroy the enterprise to do it.
 G>
 G> \- *- W. Edwards Deming*
 
@@ -139,8 +139,8 @@ private double getEducationAllowance(Employee employee){
 
 This behavior is widespread, and appears in every single organization. This was noted by Eli Goldratt, the father of Theory of Constraints, who said:
 
-{icon:quote-left}
-G> *“Tell me how you measure me, and I will tell you how I will behave!”*
+{icon=quote-left}
+G> ###### Tell me how you measure me, and I will tell you how I will behave!
 G>
 G> \- *- Eli Goldratt*
 
