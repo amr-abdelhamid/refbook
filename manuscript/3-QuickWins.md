@@ -80,7 +80,7 @@ Removing dead code is a quick win by all means. It doesn't take time and gives a
 ## Removing code duplicates
 
 {icon=quote-left}
-G> ###### Duplication may be *the* root of all evil in software
+G> ####### Duplication may be *the* root of all evil in software
 G>
 G> \- *- Robert C. Martin*
 
