@@ -3,7 +3,7 @@
 Measuring code gives you visibility and helps you set clear objectives. As put by Deming:
 
 {icon:quote-left}
-G> #### *Without data you’re just another person with an opinion.*
+G> ##### *Without data you’re just another person with an opinion.*
 G>
 G> \- *- W. Edwards Deming*
 
