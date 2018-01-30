@@ -110,17 +110,17 @@ B> \- *- W. Edwards Deming*
 
 One example for that is the code size. As a general rule, you should keep your code base simple and remove any unnecessary code. If you reward the behavior of reducing code size (or punish the otherwise behavior), probably you'll get code like this first code sample below, which is three line of code, instead of the second more readable and self-explanatory code sample, which is fourteen lines of code:
 
-{format: java,line-numbers: true}
-```
+{lang=java, line-numbers=on}
+~~~~~~~~
 public double getSalary(Employee employee) {
 	return employee.getBasicSalary() + employee.getChildren().count * (employee.getBasicSalary() * utils.getEduAllownacePer(employee)) + utils.getTransFees(employee.getAddress());
 }
-```
+~~~~~~~~
 
 Instead of this one:
 
-{format: java,line-numbers: true}
-```
+{lang=java, line-numbers=on}
+~~~~~~~~
 public double getSalary(Employee employee) {
   double basicSalary = employee.getBasicSalary();
   double educationAllowance = getEducationAllowance(employee);
@@ -135,7 +135,7 @@ private double getEducationAllowance(Employee employee){
   double allowancePercentage = utils.getEduAllownacePer(employee);
   return numberOfChildren * (employee.getBasicSalary() * allowancePercentage);
 }
-```
+~~~~~~~~
 
 This behavior is widespread, and appears in every single organization. This was noted by Eli Goldratt, the father of Theory of Constraints, who said:
 
