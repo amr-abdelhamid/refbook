@@ -135,6 +135,8 @@ Now, you have much better grasp of the system, you may draw the boundaries of yo
 
 ![Draw the boundaries of physical and replaceable components. Now, you can control the interfaces for accessing components more deliberately and enhance the overall structure of the application.](images/sprout-components.png)
 
+Notice how we let the design of the system emerge. With very small steps of extracting methods and classes them moving things around we were able *sprout* new modules and components and *see* the new structure of the system. 
+
 ## Types of software components - Strategies for breaking code apart
 
 This section is a primer about types of software components, which follows some universal types that many experienced developers have noted. Being aware of these types will help you detect/uncover modules and enhance your code structure more effectively and efficiently.
