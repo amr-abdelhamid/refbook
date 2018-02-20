@@ -87,7 +87,9 @@ The journey from cluttered code to module, components, or services is progressiv
 
 ![](images/divideandconquer/modules-unstructured.png)
 
-Gradually, we start moving methods and classes around to let modules emerge and become more apparent. Remember, only safe refactorings with support of an automated refactoring tools are allowed. In most of the cases, you can depend on the following refactorings:
+Gradually, we start moving methods and classes around to let modules emerge and become more apparent. This process is usually referred to as *sprout classes* described by Micheal Feathers [18]. This process can be generalized to *sprout modules* or *sprout components*. The idea is that modules and components emerge while refactoring code.
+
+To do that, we use safe refactorings with support of an automated refactoring tools. In most of the cases, you can depend on the following refactorings:
 
 * Move Method
 * Move Class
@@ -113,16 +115,52 @@ You may stop at this stage. Or, you may move to the next step and turn component
 
 ![](images/divideandconquer/services.png)
 
+In the next example, consider we have an business application with all its business coded in one big module. The code base is becoming very large and maintenance is definitely taking so much time. This image depicts some of the utility methods used in this module:
+
+![A business module with many utility methods.](images/module.png)
+
+The first step might be to look at some utility methods and move them to a new utility class. The new utility class constitutes a new *sprout* module. Take into account that till now we are not concerned with the best design of this module or the overall system. We are just grouping similar code together:
+
+![Utility methods are separated into a new sprout utility class. Initially, this is one class contains all types of utilities.](images/sprout-utility.png)
+
+After a while, you may notice that the utility class has grown in size and is candidate for being split into separate more specialized utility classes:
+
+![Specialized utility classes emerge due to the big size of the original utility class.](images/sprout-more-utilities.png)
+
+In the meanwhile, you might be tempted to split the business module itself into more cohesive and standalone parts. This will definitely enhance the readability of the code and alleviate some of the maintenance pain:
+
+![Business module is broken down into smaller more cohesive business modules.](images/sprout-business.png)
+
+Now, you have much better grasp of the system, you may draw the boundaries of your components more smoothly. Splitting the system into physical and replaceable components will divide the overall complexity of the system into smaller and manageable parts. It will make any future change more contained in one or two components. It will also make your live much easier while deploying the system to production. You don't need to replace the while system because now you have the luxury of deploying the updated part only:
+
+![Draw the boundaries of physical and replaceable components. Now, you can control the interfaces for accessing components more deliberately and enhance the overall structure of the application.](images/sprout-components.png)
+
 ## Types of software components - Strategies for breaking code apart
 
-This section is a primer about types of software components. As you may expect, software components may take some universal types that many experienced developers have noted. This will help you detect/uncover modules and enhance your code structure more effectively and efficiently.
+This section is a primer about types of software components, which follows some universal types that many experienced developers have noted. Being aware of these types will help you detect/uncover modules and enhance your code structure more effectively and efficiently.
 
-Firsly, before we explain types of components, the following two guidelines are **the general strategy for breaking code apart**:
+#### How big a 'code part' should be?
+
+The following two guidelines are *the general strategy for breaking code apart*:
 
 * **Guideline 1: Let modules emerge by grouping similar code together.**
 * **Guideline 2: If a module becomes large, zoom into it and reapply the first guideline.**
 
-Note that determining whether or not a component is large is a subjective decision. In the meanwhile, the *3-30* rule of thumb may give an indication whether a module or component is becoming big. It states that a module may provide at least 3 and at most 30 interface methods or functions.
+Determining whether or not a component is large is a subjective decision. In the meanwhile, the *3-30* rule of thumb may give an indication whether a module or component is becoming very large. It states that a module may provide at least 3 and at most 30 interface methods or functions.
+
+#### Two factors which drives code decomposition
+
+The two main factors which drive your thinking about code decomposition are:
+
+First, *code artifacts which change together should be kept together*. This is known as the Common Closure Principle [15], and states that "Classes that change together are packaged together". Packaging such files together will reduce the overall coupling in the system and will reduce the change "ripple effect" on other packages or components in the system.
+
+%% <to be added - the folder structure of a typical mvc pattern as opposed to the doman driven design>
+
+The second factor which drives your thinking about how to decompose your code is that *code artifacts which are released together belong together*. Again, this is derived from the Release-Reused Equivalency Principle [15] which states that "the granule of reuse is the granule of release".
+
+In a sense, both factors co-exists in most cases. If two code artifacts change together, then most probably they will be released together. On the other side, if two code artifacts are reused together, then most probably they will both change together, or at least they will be affected by each other's change.
+
+#### Types of software components
 
 Next, in the remaining part of this section, we will cover the following types of software components. These are the most universal and commonly used ones:
 
@@ -187,9 +225,29 @@ This architectural style has four component types:
 
 [^ref-transaction-processing]: For a description of the Transaction Processing architectural pattern, refer to Philip Bernstein and Eric Newcomer book: *Principles of Transaction Processing* [14]
 
-As you may notice, these components can sometimes be considered functional (Transaction Processors), Port or View (Transaction Ports), or Utility (Dispatcher). Even though, the reason of their existence is the architectural style itself; and components and relationships are defined to fulfill a set of constraints and promote some pre-defined system quality attributes. This is why these components are put under this category.
+As you may notice, these components can sometimes be considered functional (Transaction Processors), Port or View (Transaction Ports), or Utility (Dispatcher). Even though, the reason of their existence is the architectural style itself; and components and relationships are defined to fulfill a set of constraints and promote some pre-defined system quality attributes. This is why these components are categorized as "architectural components".
 
 In most cases, you may find glimpses of these architectural styles while you are refactoring old code. Try to honor this structure and enhance its encapsulation.
+
+## From Services to Microservices - Important Considerations
+
+<Under Development>
+What’s your objective out of refactoring?
+Better Quality, more structured code? You have it
+Better maintainability? Also there
+Disjoined parts, updating one won’t blow-up others? Perfectly done!
+Faster time to develop new features? Absolutely yes
+Think twice before you move forward
+Next steps may be over-engineering and less-rewarding
+
+Have you thought of:
+Risks of splitting the DB
+Synchronization and aggregation of data
+Hosting costs
+Required skills and calibers
+Tools needed
+Security issues
+…
 
 ## Considerations while breaking code apart
 
@@ -234,3 +292,6 @@ To fix this situation, we started from existing architecture and gradually worke
 The key takeaway of these experiences is that **existing architectural components should be honored and refined during first attempts to reduce dependencies and lower coupling between components.**
 
 [^conqat]: Architectural analysis is done by [ConQAT](https://www.cqse.eu/en/products/conqat/overview/), a **Con**tinuous **Q**u**a**li**t**y monitoring tool developed by the Technical University of Munich.
+
+## Stations not stages
+<under development>

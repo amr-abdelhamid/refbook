@@ -54,7 +54,7 @@ Queen’s University, Canada, Rochester Institute of Technology, USA
 
 [17] Florian Deißenbock and Markus Pizka *[Concise and Consistent Naming](http://www4.informatik.tu-muenchen.de/publ/papers/deissenboeck_pizka_identifier_naming.pdf)*. Institut fur Informatik, Technische Universitat Munchen. Retrieved 12-September-2017.
 
-[18] Michael C. Feathers (2005). *Working Effectively with Legacy Code*. Prentice Hall PTR. pp. 186
+[18] Michael C. Feathers (2005). *Working Effectively with Legacy Code*. Prentice Hall PTR.
 
 [19] James Rumbaugh, Ivar Jacopson and Grady Booch (1999). *The Unified Modeling Language Reference Manual*. Addison-Wesley.
 
