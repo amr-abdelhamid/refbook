@@ -22,7 +22,7 @@ Although all the enhancements in the quick-wins stage made the code *better*, bu
 
 ![Code evolution throughout the quick-wins and the divide & conquer stages](images/introduce_structure.png)
 
-## Modules, components, or services?
+## Modules, components, services, or micro-services?
 
 First, we need to answer this question: Are we splitting our code into modules, components, or services? Before we do that, let's agree on what a module, component, and service is.
 
@@ -81,9 +81,11 @@ A> This is why I have intentionally omitted microservices as one of the options 
 
 [^nealford]: More discussion about why microservices architecture is not suitable when refactoring monolithic applications is at this excellent talk by Neal Ford: [Comparing service-based architectures](https://vimeo.com/163918385).
 
-## Componentization - Moving from spaghetti/cluttered code to components
+## Moving from spaghetti to structured code
 
-The journey from cluttered code to module, components, or services is progressive and multi-stage. Code with large amount of technical debt usually looks like this figure. No clear boundaries between modules, high level glimpses of module interfaces, unstructured or unbounded module communication, etc.
+The journey from spaghetti and tangled to structured code and from Big Ball of Mud[^ballofmud] to modular design is progressive and multi-stage. Code with large amount of technical debt usually looks like this figure. No clear boundaries between modules, high level glimpses of module interfaces, unstructured or unbounded module communication, etc.
+
+[^ballofmud]: A [https://en.wikipedia.org/wiki/Big_ball_of_mud](Big Ball of Mud) is a conventional name for the architecture of a system which lacks "conceivable structure". Usually, the code as well lacks structure and all parts are tangled and highly coupled.
 
 ![](images/divideandconquer/modules-unstructured.png)
 
@@ -115,11 +117,15 @@ You may stop at this stage. Or, you may move to the next step and turn component
 
 ![](images/divideandconquer/services.png)
 
-In the next example, consider we have an business application with all its business coded in one big module. The code base is becoming very large and maintenance is definitely taking so much time. This image depicts some of the utility methods used in this module:
+In the next section, let's take an example of how code structure emerge, and how sprout modules and components are born.
+
+#### Sprout Classes, Modules, and Components
+
+Consider a business application with all its business coded in one big module. The code base is becoming very large and maintenance is definitely taking so much time. This image depicts some of the distinctive methods in this module:
 
 ![A business module with many utility methods.](images/module.png)
 
-The first step might be to look at some utility methods and move them to a new utility class. The new utility class constitutes a new *sprout* module. Take into account that till now we are not concerned with the best design of this module or the overall system. We are just grouping similar code together:
+The first step might be to group such utility methods and move them to a standalone "sprout" utility class. Take into account that till now we are not concerned with the best design of this module or the overall system. We are just grouping similar code together:
 
 ![Utility methods are separated into a new sprout utility class. Initially, this is one class contains all types of utilities.](images/sprout-utility.png)
 
@@ -135,13 +141,11 @@ Now, you have much better grasp of the system, you may draw the boundaries of yo
 
 ![Draw the boundaries of physical and replaceable components. Now, you can control the interfaces for accessing components more deliberately and enhance the overall structure of the application.](images/sprout-components.png)
 
-Notice how we let the design of the system emerge. With very small steps of extracting methods and classes them moving things around we were able *sprout* new modules and components and *see* the new structure of the system. 
+Notice how we let the design of the system emerge. With very small steps of extracting methods and classes and moving things around we were able to *sprout* new modules and components and *see* the new structure of the system.
 
 ## Types of software components - Strategies for breaking code apart
 
 This section is a primer about types of software components, which follows some universal types that many experienced developers have noted. Being aware of these types will help you detect/uncover modules and enhance your code structure more effectively and efficiently.
-
-#### How big a 'code part' should be?
 
 The following two guidelines are *the general strategy for breaking code apart*:
 
@@ -150,7 +154,7 @@ The following two guidelines are *the general strategy for breaking code apart*:
 
 Determining whether or not a component is large is a subjective decision. In the meanwhile, the *3-30* rule of thumb may give an indication whether a module or component is becoming very large. It states that a module may provide at least 3 and at most 30 interface methods or functions.
 
-#### Two factors which drives code decomposition
+#### Factors which drive code decomposition
 
 The two main factors which drive your thinking about code decomposition are:
 
@@ -170,7 +174,7 @@ Next, in the remaining part of this section, we will cover the following types o
 1. Utility
 1. Port
 1. View
-1. Archtypes (or Code types)
+1. Archtypes
 1. Architectural style
 
 #### Type 1: Functional (or Business)
@@ -231,25 +235,39 @@ As you may notice, these components can sometimes be considered functional (Tran
 
 In most cases, you may find glimpses of these architectural styles while you are refactoring old code. Try to honor this structure and enhance its encapsulation.
 
-## From Services to Microservices - Important Considerations
+## Refactoring to Microservices - Important Considerations
 
-<Under Development>
-What’s your objective out of refactoring?
-Better Quality, more structured code? You have it
-Better maintainability? Also there
-Disjoined parts, updating one won’t blow-up others? Perfectly done!
-Faster time to develop new features? Absolutely yes
-Think twice before you move forward
-Next steps may be over-engineering and less-rewarding
+Refactoring a monolithic application to microservices is sometimes indispensable to achieve scalability and resilience in your architecture. While this makes perfect sense, it may not be the right decision, considering the costs and overheads. As put by Martin Fowler, its the **Microservice Trade-Offs**[^fowlertradeoffs].
 
-Have you thought of:
-Risks of splitting the DB
-Synchronization and aggregation of data
-Hosting costs
-Required skills and calibers
-Tools needed
-Security issues
-…
+[^fowlertradeoffs]: [Microservice Trad-Offs](https://martinfowler.com/articles/microservice-trade-offs.html#summary) is an article by Martin Fowler which will give you an idea about what trade-offs you may consider when taking the decision whether moving to microservices or not.
+
+Another viewpoint is to consider moving your code to modules then components and probably services as stations in the journey from monolithic application architecture to microservices. Each step is an achievement and results in a better overall code structure. Taking one step forward is rewarding and manageable as opposed to moving all the way till the end. After each step, you may pause, inspect and adapt, then decide whether to move forward or break off if you're satisfied with what you've achieved:
+
+![Moving to microservices has many intermediate stations. You don't need to continue the journey till the end. Rather, you may embark at any station if you're satisfied with what you've achieved](images/stations-not-stages.png)
+
+Now, let's consider valid question: Shall we move forward to services or microservices or stop at this stage? The bottom line is to reach a component-based architecture, where all components are disjoint and can be deployed each one on its own. Sometimes, it's wise to stop and reap the benefits. In other cases, when scalability is a concern, it may be a good choice to think about upgrading the system to several (3-4) big web-services. Again, another question here: Shall we move forward to microservices?
+
+#### From service-based architecture to microservices
+
+Before you move to microservices, you must answer this question: What’s your objective out of refactoring? These are some possible answers:
+
+* Better quality and more structured code.
+* Better maintainability. Changes need not take ages to be developed.
+* Disjoined parts, so that updating one won’t blow-up others!
+* Faster time to develop and deploy new features.
+
+If your objectives are around these ideas, then you don't need to move to microservices, because most probably you have achieved these objectives by refactoring to component-based or service-based architectures.
+
+These are some of the additional costs one should pay by moving to microservices:
+1. Risks of splitting the monolithic data store into multiple smaller ones, most probably organized around the idea of *Bounded Contexts*. With databases collecting huge amount of data over the years, splitting this database definitely incurs huge risks.
+2. Synchronization and aggregation of data among several data-stores
+3. Costs for hosting the new architecture.
+4. Required skills and calibers.
+5. Tools needed to operate and maintain the new development and production environments.
+6. Security risks and issues. The increased number of services also increases the number of vulnerable points hackers may attack and compromise.
+
+{icon=bookmark}
+G> **Think twice before moving to microservices. You might be over-engineering your solution and adding unnecessary complexity.**
 
 ## Considerations while breaking code apart
 
