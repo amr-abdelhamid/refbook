@@ -77,7 +77,7 @@ A> In the above discussion, I have talked about web-services (or just services).
 A>
 A> When looking from the angle of refactoring legacy or monolithic application code bases, it is not feasible to exert any effort or even think about splitting a large backend database into smaller ones and move towards a microservices architecture. Some other challenges looms in the way like handling distributed transactions and understanding and supporting the call chain for every business transaction[^nealford].
 A>
-A> This is why I have intentionally omitted microservices as one of the options to which one can upgrade newly-born components. In stead, a middle-way is a course-grained service, following a service-based architecture of some kind.
+A> I'll discuss some considerations related to microservices later in this chapter. For now, let's accept that a middle-way is a course-grained service, following a service-based architecture of some kind.
 
 [^nealford]: More discussion about why microservices architecture is not suitable when refactoring monolithic applications is at this excellent talk by Neal Ford: [Comparing service-based architectures](https://vimeo.com/163918385).
 
@@ -93,12 +93,9 @@ Gradually, we start moving methods and classes around to let modules emerge and 
 
 To do that, we use safe refactorings with support of an automated refactoring tools. In most of the cases, you can depend on the following refactorings:
 
-* Move Method
-* Move Class
 * Rename
-* Extract Class
-* Extract Interface
-* Extract Method
+* Extract Method/Class/Interface
+* Move Method/Class
 
 This results in clearer module boundaries and better manifestation of module interfaces.
 
