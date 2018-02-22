@@ -143,11 +143,48 @@ Now, you have much better grasp of the system, you may draw the boundaries of yo
 
 Notice how we let the design of the system emerge. With very small steps of extracting methods and classes and moving things around we were able to *sprout* new modules and components and *see* the new structure of the system.
 
-## Types of software components - Strategies for breaking code apart
+#### From component-based architecture to microservices
+
+Now, let's consider this valid question: Shall we move forward to services or microservices or stop at this stage? The bottom line is to reach a component-based architecture, where all components are disjoint and can be deployed each one on its own. Sometimes, it's wise to stop and reap the benefits. In other cases (for instance, when scalability is a concern), it may be a good choice upgrading the system to several (3-4) big web-services. In this case, you'll get some of the benefits of service-based architectures without paying the cost of moving to microservices.
+
+The next question is: Shall we move forward to microservices? Actually, this depends on your objectives out of refactoring. These might be some of your possible objectives:
+
+* Better quality and more structured code.
+* Better maintainability. Changes need not take ages to be developed.
+* Disjoined parts, so that updating one won’t blow-up others!
+* Faster time to develop and deploy new features.
+
+If your objectives are around these ideas, then you don't need to move to microservices, because most probably you have already achieved these objectives by refactoring to component-based or service-based architectures.
+
+![This diagram depicts the difference between components, services and microservices. Notice the split of the data-store into multiple smaller ones.](images/micro-dbs.png)
+
+In the meanwhile, there are some benefits that may not be achieved unless you move to microservices; namely, scalability and resilience. However, as put by Martin Fowler, its the **Microservice Trade-Offs**[^fowlertradeoffs]. Meaning that nothing is for free and you need to pay some costs and mitigate some risks when moving to microservices:
+
+1. Risks of splitting the monolithic data store into multiple smaller ones, most probably organized around the idea of [*Bounded Contexts*](https://martinfowler.com/bliki/BoundedContext.html). With databases collecting huge amount of data over the years, splitting this database definitely incurs huge risks.
+2. Synchronization and aggregation of data among several data-stores
+3. Costs for hosting the new architecture.
+4. Required skills and calibers.
+5. Tools needed to operate and maintain the new development and production environments.
+6. Security risks and issues. The increased number of services also increases the number of vulnerable points hackers may attack and compromise.
+
+[^fowlertradeoffs]: [Microservice Trad-Offs](https://martinfowler.com/articles/microservice-trade-offs.html#summary) is an article by Martin Fowler which highlights what trade-offs you may consider when moving to microservices.
+
+{icon=bookmark}
+G> **Think twice before moving to microservices. You might be over-engineering your solution and adding unnecessary complexity. In many cases, it may not be the right decision, considering the costs and overheads.**
+
+#### Stations not stages
+
+This is a my viewpoint summarizing the dilemma of refactoring to microservices, to deal with it as a **journey with many stations**.
+
+ Consider moving your code to modules then components and probably services as stations in the journey from monolithic application architecture to microservices. Each step is an achievement and results in a better overall code structure. Taking one step forward is rewarding and manageable as opposed to moving all the way till the end. After each step, you may pause, inspect and adapt, then decide whether to move forward or break off if you're satisfied with what you've achieved:
+
+![Moving to microservices has many intermediate stations. You don't need to continue the journey till the end. Rather, you may embark at any station if you're satisfied with what you've achieved](images/stations-not-stages.png)
+
+## Types of software components - Strategies for code decomposition
 
 This section is a primer about types of software components, which follows some universal types that many experienced developers have noted. Being aware of these types will help you detect/uncover modules and enhance your code structure more effectively and efficiently.
 
-The following two guidelines are *the general strategy for breaking code apart*:
+The following two guidelines are *the general strategy for code decomposition*:
 
 * **Guideline 1: Let modules emerge by grouping similar code together.**
 * **Guideline 2: If a module becomes large, zoom into it and reapply the first guideline.**
@@ -235,43 +272,6 @@ As you may notice, these components can sometimes be considered functional (Tran
 
 In most cases, you may find glimpses of these architectural styles while you are refactoring old code. Try to honor this structure and enhance its encapsulation.
 
-## Refactoring to Microservices - Important Considerations
-
-Refactoring a monolithic application to microservices is sometimes indispensable to achieve scalability and resilience in your architecture. While this makes perfect sense, it may not be the right decision, considering the costs and overheads. As put by Martin Fowler, its the **Microservice Trade-Offs**[^fowlertradeoffs].
-
-[^fowlertradeoffs]: [Microservice Trad-Offs](https://martinfowler.com/articles/microservice-trade-offs.html#summary) is an article by Martin Fowler which will give you an idea about what trade-offs you may consider when taking the decision whether moving to microservices or not.
-
-Another viewpoint is to consider moving your code to modules then components and probably services as stations in the journey from monolithic application architecture to microservices. Each step is an achievement and results in a better overall code structure. Taking one step forward is rewarding and manageable as opposed to moving all the way till the end. After each step, you may pause, inspect and adapt, then decide whether to move forward or break off if you're satisfied with what you've achieved:
-
-![Moving to microservices has many intermediate stations. You don't need to continue the journey till the end. Rather, you may embark at any station if you're satisfied with what you've achieved](images/stations-not-stages.png)
-
-Now, let's consider valid question: Shall we move forward to services or microservices or stop at this stage? The bottom line is to reach a component-based architecture, where all components are disjoint and can be deployed each one on its own. Sometimes, it's wise to stop and reap the benefits. In other cases, when scalability is a concern, it may be a good choice to think about upgrading the system to several (3-4) big web-services. Again, another question here: Shall we move forward to microservices?
-
-#### From service-based architecture to microservices
-
-Before you move to microservices, you must answer this question: What’s your objective out of refactoring? These are some possible answers:
-
-* Better quality and more structured code.
-* Better maintainability. Changes need not take ages to be developed.
-* Disjoined parts, so that updating one won’t blow-up others!
-* Faster time to develop and deploy new features.
-
-If your objectives are around these ideas, then you don't need to move to microservices, because most probably you have achieved these objectives by refactoring to component-based or service-based architectures.
-
-![This diagram depicts the difference between components, services and microservices. Notice the split of the data-store into multiple smaller ones.](images/micro-dbs.png)
-
-In the meanwhile, there are some benefits that may not be achieved unless you move to microservices. Namely, scalability and resilience. However, nothing is for free and these are some of the costs you should pay and risks you have to mitigate when moving to microservices:
-
-1. Risks of splitting the monolithic data store into multiple smaller ones, most probably organized around the idea of [*Bounded Contexts*](https://martinfowler.com/bliki/BoundedContext.html). With databases collecting huge amount of data over the years, splitting this database definitely incurs huge risks.
-2. Synchronization and aggregation of data among several data-stores
-3. Costs for hosting the new architecture.
-4. Required skills and calibers.
-5. Tools needed to operate and maintain the new development and production environments.
-6. Security risks and issues. The increased number of services also increases the number of vulnerable points hackers may attack and compromise.
-
-{icon=bookmark}
-G> **Think twice before moving to microservices. You might be over-engineering your solution and adding unnecessary complexity.**
-
 ## Considerations while breaking code apart
 
 #### Break circular (aka cyclic) dependencies
@@ -315,6 +315,3 @@ To fix this situation, we started from existing architecture and gradually worke
 The key takeaway of these experiences is that **existing architectural components should be honored and refined during first attempts to reduce dependencies and lower coupling between components.**
 
 [^conqat]: Architectural analysis is done by [ConQAT](https://www.cqse.eu/en/products/conqat/overview/), a **Con**tinuous **Q**u**a**li**t**y monitoring tool developed by the Technical University of Munich.
-
-## Stations not stages
-<under development>
