@@ -258,8 +258,11 @@ Before you move to microservices, you must answer this question: What’s your o
 
 If your objectives are around these ideas, then you don't need to move to microservices, because most probably you have achieved these objectives by refactoring to component-based or service-based architectures.
 
-These are some of the additional costs one should pay by moving to microservices:
-1. Risks of splitting the monolithic data store into multiple smaller ones, most probably organized around the idea of *Bounded Contexts*. With databases collecting huge amount of data over the years, splitting this database definitely incurs huge risks.
+![This diagram depicts the difference between components, services and microservices. Notice the split of the data-store into multiple smaller ones.](images/micro-dbs.png)
+
+In the meanwhile, there are some benefits that may not be achieved unless you move to microservices. Namely, scalability and resilience. However, nothing is for free and these are some of the costs you should pay and risks you have to mitigate when moving to microservices:
+
+1. Risks of splitting the monolithic data store into multiple smaller ones, most probably organized around the idea of [*Bounded Contexts*](https://martinfowler.com/bliki/BoundedContext.html). With databases collecting huge amount of data over the years, splitting this database definitely incurs huge risks.
 2. Synchronization and aggregation of data among several data-stores
 3. Costs for hosting the new architecture.
 4. Required skills and calibers.
