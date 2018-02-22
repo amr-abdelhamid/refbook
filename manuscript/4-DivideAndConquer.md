@@ -56,22 +56,18 @@ One very important difference between a component and a service is that a compon
 
 #### Then what?
 
-So, what's the value of outlining these differences between modules, components, and services?
+So, what's the value of outlining these differences between modules, components, and services? This distinction is important because there are higher level of decoupling and increased formality in defining interfaces when moving from modules to components to services.
 
-As you may noticed from the past definitions, there are higher level of decoupling and increased formality in defining interfaces when moving from modules to components to services.
-
-Modules may co-exist in the same (physical) deployable package; unlike components or services, which are physically standalone.
-
-Modules and components run typically in the same process; unlike services, which runs every service in its own process. Modules and components may communicate through in-memory method calls, while services may require inter-process communication through web-service requests, remote procedure calls, etc.
+Modules may co-exist in the same (physical) deployable package; unlike components or services, which are physically standalone. Modules and components run typically in the same process; unlike services, where every service resides in its own process. Modules and components may communicate through in-memory method calls, while services requires inter-process communication through web-service requests, remote procedure calls, etc.
 
 So, services enjoy the maximum level of decoupling. You can view them as standalone applications which could be glued together in order to provide greater value for some end user.
 
-Now, the questions is: **Do we need to divide our code into modules or components or services?** The answer that I can provide is: Divide the code into modules. Then, assess whether or not it is useful and safe to upgrade them to components or services.
+So, **do we need to divide our code into modules or components or services?** The answer is to start by splitting your code into modules. Then, assess whether or not it is useful and safe to upgrade them to components or services.
 
 {icon=bookmark}
 G> **Divide the code into modules. Then, assess whether or not it is *useful and safe* to upgrade them to components or services.**
 
-A> ## About Microservices
+A> ### About Microservices
 A>
 A> In the above discussion, I have talked about web-services (or just services). The main difference between services and microservices is that services share a common datastore, whereas each microservice has a separate standalone datastore.
 A>
