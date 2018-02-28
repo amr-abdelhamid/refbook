@@ -3,7 +3,7 @@
 
 ![Stage 2: Divide & Conquer - Split code into components](images/roadmap-stage2.png)
 
-**Software design is all about components and their relationships**. The better you divide your software into loosely-coupled and highly-cohesive parts, the more comprehensible, more responsive to change, and more agile your software design becomes. The act of partitioning your software in this manner is described by Fairbanks as authoring "a story at many levels", which results in a software design that will "tell a story to whoever looks at it, and it will be easy to understand":
+**Software design is all about components and their relationships**. The better you divide your software into loosely-coupled and highly-cohesive parts, the more comprehensible, more responsive to change, and more agile your software design becomes. The act of partitioning your software in this manner is described by George Fairbanks as authoring "a story at many levels", which results in a software design that will "tell a story to whoever looks at it, and it will be easy to understand":
 
 > *"To be comprehensible, your software should be structured so that it reveals a story at many levels. Each level of nesting tells a story about how those parts interact. A developer who was unfamiliar with the system could be dropped in at any level and still make sense of it, rather than being swamped."*
 >
@@ -11,14 +11,14 @@
 
 Now, here is a question: If software partitioning is that important, why didn't we start with it right away in the [refactoring roadmap](#refactoring_roadmap)?
 
-We can describe what we achieved so far as **removing "fat" from the application's body of code;** namely, removing dead code, and reducing code duplication, plus applying some very basic and intuitive enhancements which makes the code slightly more readable, like reducing method size and using proper naming conventions. This is like *preparing the scene* or *organizing our backyard* before we start on re-organizing the parts. And, this has two very important side effects:
+We can describe what we achieved so far as **removing "fat" from the application's body of code;** namely, removing dead code, and reducing code duplication, plus applying some very basic and intuitive enhancements which makes the code slightly more readable, like reducing method size and using proper naming conventions. This is like *preparing the scene* or *organizing our backyard* before we work on partitioning the code and re-organizing the parts. This has two very important side effects:
 
 1. We have saved the time that we would have spent working on dead or duplicate code
-2. The team reached a better grasp of the code while scanning and reviewing duplicates and suspect dead code. They formed better understanding while breaking up large methods and trying to give better names to identifiers and code constructs
+2. The team reached a better grasp of the code while scanning and reviewing duplicates and suspect dead code. Also, after working on breaking large methods and trying to give better names to identifiers and code constructs, they formed better understanding about the intent of the code.
 
-I have noticed the effect in the second point above many times while working with teams on refactoring. As I explained before in the Introduction and Background section, teams become more courageous and bold in enhancing the code especially after the quick-wins stage.
+As I explained before in the Introduction and Background section, I have noticed the effect in the second point above many times while working with teams on refactoring, and teams become more courageous and bold in enhancing the code especially after the quick-wins stage.
 
-Although all the enhancements in the quick-wins stage made the code *better*, but it still *lacks structure*. The mission now is introducing structure by discovering/uncovering components and enhance their interfaces:
+Although all the enhancements in the quick-wins stage made the code *better*, but the code still *lacks structure*. The mission now is introducing structure by discovering/uncovering components and enhance their interfaces:
 
 ![Code evolution throughout the quick-wins and the divide & conquer stages](images/introduce_structure.png)
 
@@ -30,7 +30,7 @@ First, we need to answer this question: Are we splitting our code into modules, 
 
 The *UML Reference Manual* provided a very brief and broad definition of what a module is. It is a *"software unit of storage and manipulation"* [19, pp 334].
 
-To elaborate on this definition, **a module is any logical grouping of cohesive code functions which provides access to these functions in a uniform manner**. This can be as big as a sub-system, like an accounting or HR module, or as small as a class, like a calculator or an xml parser.
+To elaborate on this definition, **a module is any logical grouping of cohesive code which provides access to its functions in a uniform manner**. This can be as big as a sub-system, like an accounting or HR module, or as small as a class, like a calculator or an xml parser.
 
 #### Component
 
@@ -62,7 +62,7 @@ Modules may co-exist in the same (physical) deployable package; unlike component
 
 So, services enjoy the maximum level of decoupling. You can view them as standalone applications which could be glued together in order to provide greater value for some end user.
 
-So, **do we need to divide our code into modules or components or services?** The answer is to start by splitting your code into modules. Then, assess whether or not it is useful and safe to upgrade them to components or services.
+So, **should we divide code into modules or components or services?** The answer is to start by splitting your code into modules. Then, assess whether or not it is useful and safe to upgrade them to components or services.
 
 {icon=bookmark}
 G> **Divide the code into modules. Then, assess whether or not it is *useful and safe* to upgrade them to components or services.**
@@ -75,11 +75,11 @@ A> When looking from the angle of refactoring legacy or monolithic application c
 A>
 A> I'll discuss some considerations related to microservices later in this chapter. For now, let's accept that a middle-way is a course-grained service, following a service-based architecture of some kind.
 
-[^nealford]: More discussion about why microservices architecture is not suitable when refactoring monolithic applications is at this excellent talk by Neal Ford: [Comparing service-based architectures](https://vimeo.com/163918385).
+[^nealford]: More discussion about why microservices architecture is not suitable when refactoring monolithic applications is at this talk by Neal Ford: [Comparing service-based architectures](https://vimeo.com/163918385).
 
 ## Moving from spaghetti to structured code
 
-The journey from spaghetti and tangled to structured code and from Big Ball of Mud[^ballofmud] to modular design is progressive and multi-stage. Code with large amount of technical debt usually looks like this figure. No clear boundaries between modules, high level glimpses of module interfaces, unstructured or unbounded module communication, etc.
+The journey from spaghetti and tangled to structured code and from Big Ball of Mud[^ballofmud] to modular design is progressive and multi-stage. Code with large amount of technical debt usually looks like this figure. No clear boundaries between modules, high level glimpses of module interfaces, unstructured or tangled module communication, etc.
 
 [^ballofmud]: A [https://en.wikipedia.org/wiki/Big_ball_of_mud](Big Ball of Mud) is a conventional name for the architecture of a system which lacks "conceivable structure". Usually, the code as well lacks structure and all parts are tangled and highly coupled.
 
@@ -87,13 +87,13 @@ The journey from spaghetti and tangled to structured code and from Big Ball of M
 
 Gradually, we start moving methods and classes around to let modules emerge and become more apparent. This process is usually referred to as *sprout classes* described by Micheal Feathers [18]. This process can be generalized to *sprout modules* or *sprout components*. The idea is that modules and components emerge while refactoring code.
 
-To do that, we use safe refactorings with support of an automated refactoring tools. In most of the cases, you can depend on the following refactorings:
+To do that, we use safe refactorings with support of automated refactoring tools. In most cases, you can depend on the following refactorings:
 
 * Rename
 * Extract Method/Class/Interface
 * Move Method/Class
 
-This results in clearer module boundaries and better manifestation of module interfaces.
+This results in clearer module boundaries and better manifestation of module interfaces:
 
 ![](images/divideandconquer/modules-structured.png)
 
@@ -110,7 +110,7 @@ You may stop at this stage. Or, you may move to the next step and turn component
 
 ![](images/divideandconquer/services.png)
 
-In the next section, let's take an example of how code structure emerge, and how sprout modules and components are born.
+In the next section, let's take an example of how code is gradually structured, and how sprout modules and components emerge.
 
 #### Sprout Classes, Modules, and Components
 
@@ -130,7 +130,7 @@ In the meanwhile, you might be tempted to split the business module itself into 
 
 ![Business module is broken down into smaller more cohesive business modules.](images/sprout-business.png)
 
-Now, you have much better grasp of the system, you may draw the boundaries of your components more smoothly. Splitting the system into physical and replaceable components will divide the overall complexity of the system into smaller and manageable parts. It will make any future change more contained in one or two components. It will also make your live much easier while deploying the system to production. You don't need to replace the while system because now you have the luxury of deploying the updated part only:
+Now, you have much better grasp of the system, you may draw the boundaries of your components more smoothly. Splitting the system into physical and replaceable components will divide the overall complexity of the system into smaller and manageable parts. It will make any future change more contained in one or two components. It will also make your live much easier while deploying the system to production. You don't need to replace the whole system because now you have the luxury of deploying the changed one or two component only:
 
 ![Draw the boundaries of physical and replaceable components. Now, you can control the interfaces for accessing components more deliberately and enhance the overall structure of the application.](images/sprout-components.png)
 
@@ -138,23 +138,24 @@ Notice how we let the design of the system emerge. With very small steps of extr
 
 #### From component-based architecture to microservices
 
-Now, let's consider this valid question: Shall we move forward to services or microservices or stop at this stage? The bottom line is to reach a component-based architecture, where all components are disjoint and can be deployed each one on its own. Sometimes, it's wise to stop and reap the benefits. In other cases (for instance, when scalability is a concern), it may be a good choice upgrading the system to several (3-4) big web-services. In this case, you'll get some of the benefits of service-based architectures without paying the cost of moving to microservices.
+Now, let's consider this valid question: **Shall we move forward to services or microservices or stop at this stage?** The bottom line is to reach a component-based architecture, where all components are disjoint and can be deployed each one on its own. Sometimes, it's wise to stop and reap the benefits. In other cases (for instance, when scalability is a concern), it may be a good choice upgrading the system to several (3-4) big web-services. In this case, you'll get some of the benefits of service-based architectures without paying the cost of moving to microservices.
 
-The next question is: Shall we move forward to microservices? Actually, this depends on your objectives out of refactoring. These might be some of your possible objectives:
+For example, if your objectives out of refactoring are around these ideas:
 
 * Better quality and more structured code.
 * Better maintainability. Changes need not take ages to be developed.
 * Disjoined parts, so that updating one won’t blow-up others!
 * Faster time to develop and deploy new features.
 
-If your objectives are around these ideas, then you don't need to move to microservices, because most probably you have already achieved these objectives by refactoring to component-based or service-based architectures.
+If these are your objectives, then you don't need to move to microservices, because most probably you have already achieved these objectives by refactoring to component-based or service-based architectures.
 
-![This diagram depicts the difference between components, services and microservices. Notice the split of the data-store into multiple smaller ones.](images/micro-dbs.png)
+![Moving from component-based or service-based architectures to microservies requires splitting the data-store into multiple smaller ones, and incurs more costs and risks to be paid and mitigated.](images/micro-dbs.png)
 
 In the meanwhile, there are some benefits that may not be achieved unless you move to microservices; namely, scalability and resilience. However, as put by Martin Fowler, its the **Microservice Trade-Offs**[^fowlertradeoffs]. Meaning that nothing is for free and you need to pay some costs and mitigate some risks when moving to microservices:
 
 1. Risks of splitting the monolithic data store into multiple smaller ones, most probably organized around the idea of [*Bounded Contexts*](https://martinfowler.com/bliki/BoundedContext.html). With databases collecting huge amount of data over the years, splitting this database definitely incurs huge risks.
 2. Synchronization and aggregation of data among several data-stores
+2. Handling distributed transactions and understanding and supporting the call chain for every business transaction.
 3. Costs for hosting the new architecture.
 4. Required skills and calibers.
 5. Tools needed to operate and maintain the new development and production environments.
@@ -167,11 +168,11 @@ G> **Think twice before moving to microservices. You might be over-engineering y
 
 #### Stations not stages
 
-This is a my viewpoint summarizing the dilemma of refactoring to microservices, to deal with it as a **journey with many stations**.
+A quick answer fot the dilemma of refactoring to microservices is to deal with it as a **journey with many stations not stages**.
 
- Consider moving your code to modules then components and probably services as stations in the journey from monolithic application architecture to microservices. Each step is an achievement and results in a better overall code structure. Taking one step forward is rewarding and manageable as opposed to moving all the way till the end. After each step, you may pause, inspect and adapt, then decide whether to move forward or break off if you're satisfied with what you've achieved:
+ Consider moving your code to modules, components, and probably services as stations in the journey from monolithic application architecture to microservices. Each step is an achievement and results in a better overall code structure. Taking one step forward is rewarding and manageable as opposed to moving all the way till the end. After each step, you may pause, inspect and adapt, then decide whether to move forward or break off if you're satisfied with what you've achieved:
 
-![Moving to microservices has many intermediate stations. You don't need to continue the journey till the end. Rather, you may embark at any station if you're satisfied with what you've achieved](images/stations-not-stages.png)
+![Moving to microservices has many intermediate stations. You don't need to continue the journey till the end. Rather, you may embark at any station if you're satisfied with what you've achieved.](images/stations-not-stages.png)
 
 ## Types of software components - Strategies for code decomposition
 
@@ -190,11 +191,11 @@ The two main factors which drive your thinking about code decomposition are:
 
 First, *code artifacts which change together should be kept together*. This is known as the Common Closure Principle [15], and states that "Classes that change together are packaged together". Packaging such files together will reduce the overall coupling in the system and will reduce the change "ripple effect" on other packages or components in the system.
 
-%% <to be added - the folder structure of a typical mvc pattern as opposed to the doman driven design>
+%% <to be added - the folder structure of a typical mvc pattern as opposed to the domain driven design>
 
-The second factor which drives your thinking about how to decompose your code is that *code artifacts which are released together belong together*. Again, this is derived from the Release-Reused Equivalency Principle [15] which states that "the granule of reuse is the granule of release".
+The second factor is that *code artifacts which are released together belong together*. Again, this is derived from the Release-Reused Equivalency Principle [15] which states that "the granule of reuse is the granule of release".
 
-In a sense, both factors co-exists in most cases. If two code artifacts change together, then most probably they will be released together. On the other side, if two code artifacts are reused together, then most probably they will both change together, or at least they will be affected by each other's change.
+In a sense, both factors co-exist in most cases. If two code artifacts change together, then most probably they will be released together. Vice versa, if two code artifacts are reused together, then most probably they will both change together, or at least they will be affected by each other's change.
 
 #### Types of software components
 
@@ -242,7 +243,7 @@ Any software with a graphical user interface needs one or more view modules. Usu
 
 The *Common Closure Principle* gives another dimension. It states that: *"Classes that change together are packaged together"* [15]. Sometimes, change in business requires a change in view and vice versa. In this case, following the principle, you should keep both view and business classes in the same component. In contrast, if the changes are usually confined to view or business, you should place each one of them in a separate component.
 
-**In summary, package the view and the business in one component if they are reused together and change together. If this is not the case, separate them into two components.**
+**In summary, package the view or UI code with the business code in one component if they are reused together and change together. If this is not the case, separate them into two components.**
 
 #### Type 5: Archtypes (aka Core types or Model)
 
@@ -250,7 +251,7 @@ Archtypes are the most noticeable or important data types [14]. Usually, these t
 
 #### Type 6: Architectural style
 
-This is one way of partitioning your code: following an architectural style. For example, if you're maintaining a heavy transactional system, a banking system for instance, then probably it will follow a *Transaction Processing* style[^ref-transaction-processing]. In this architectural style, transactions are recorded and processed later on. This is a high level diagram of typical components in transaction processing application:
+You can also partition your code following an architectural style. For example, if you're maintaining a heavy transactional system, a banking system for instance, then probably it will follow a *Transaction Processing* style[^ref-transaction-processing]. In this architectural style, transactions are recorded and processed later on. This is a high level diagram of typical components in transaction processing application:
 
 ![Banking application following the Transaction Processing architectural style](images/divideandconquer/transactionprocessingarchstyle.png)
 
@@ -263,7 +264,7 @@ This architectural style has four component types:
 
 As you may notice, these components can sometimes be considered functional (Transaction Processors), Port or View (Transaction Ports), or Utility (Dispatcher). Even though, the reason of their existence is the architectural style itself; and components and relationships are defined to fulfill a set of constraints and promote some pre-defined system quality attributes. This is why these components are categorized as "architectural components".
 
-In most cases, you may find glimpses of these architectural styles while you are refactoring old code. Try to honor this structure and enhance its encapsulation.
+**In most cases, you may find glimpses of these architectural styles while you are refactoring old code. Try to honor this structure and enhance its encapsulation.**
 
 ## Considerations while breaking code apart
 
@@ -273,35 +274,35 @@ Circular dependencies occurs when one component depends on another component whi
 
 ![A dependency cycle causing circular dependency between components A, B, and C](images/divideandconquer/circular_dependency.png)
 
-You can live with circular dependencies for some time. However, in the long term your code may become very complex with higher levels of coupling between components. In time, this will result in more regression type of defects, upfront load time, and possible memory leaks due to cyclic references which never releases used objects. A perfect recipe for how to create spaghetti code!
+You can live with circular dependencies for some time. However, in time, your code may become very complex with higher levels of coupling between components. This will result in more regression type of defects, upfront load time, and possible memory leaks due to cyclic references which never releases used objects. A perfect recipe for how to create spaghetti code!
 
 Here are some strategies to break circular dependencies:
 
-1. Move variable/method/class to the dependent component. This should always be the first solution to think about, because very often this variable or method was created by a lazy programmer who didn't bother to place things in the proper place. Using an IDE's automated refactoring for moving things around would be the safest, fastest, and cleanest solution.
+1. **Move variable/method/class to the dependent component.** This should always be the first solution to think about, because very often this variable or method was created by a lazy programmer who didn't bother to place things in the proper place. Using an IDE's automated refactoring for moving things around would be the safest, fastest, and cleanest solution.
 
     ![Move code from A to B, so that B is no longer dependent on A](images/divideandconquer/break_cycles_1.png)
 
-1. Extract common logic into a standalone component, on which both original components depend
+1. **Extract common logic into a standalone component,** on which both original components depend
 
     ![Extract common logic into a standalone component](images/divideandconquer/break_cycles_2.png)
 
-1. Apply the Dependency Inversion Principle[^solid], which states that *High-level modules should not depend on low-level modules. Both should depend on abstractions.* To do that, split one component (component B in the example below) into two components: One holds the abstractions (the generic definitions of types and interfaces) and the other provides the concretions (one default implementation). Then, component A and B depends on the newly-cerated abstract component.
+1. **Apply the Dependency Inversion Principle[^solid],** which states that *High-level modules should not depend on low-level modules. Both should depend on abstractions.* To do that, split one component (component B in the example below) into two components: One holds the abstractions (the generic definitions of types and interfaces) and the other provides the concretions (one default implementation). Then, component A and B depends on the newly-cerated abstract component.
 
     ![Apply the Dependency Inversion Principle](images/divideandconquer/break_cycles_3.png)
 
-1. Make use of some architectural patterns, like the Observer pattern. In my experience, this may be considered a large refactoring at this stage and breaks the [ground rules](#ground_rules) upon which we have agreed at the beginning of this book. In stead, I would resort to one of the previous three solutions.
+1. **Make use of some architectural patterns,** like the Observer pattern. In my experience, this may be considered a large refactoring at this stage and breaks the [ground rules](#ground_rules) upon which we have agreed at the beginning of this book. In stead, I would resort to one of the previous three solutions.
 
 [^solid]: This is the sixth principle of the famous SOLID principles of object oriented design by Robert C. Martin [11]
 
 #### Start from (and honor) existing architecture
 
-Developers tend to deviate from existing initial architecture for many reasons: lack of design clarity, insufficient documentation, or emergent design consideration which was not handled before. The volume of these "violations" to initial architecture was found to be from 9% to 19% of all dependencies in the system for healthy project (projects with updated reference architecture) [17].
+Developers tend to deviate from existing initial architecture for many reasons: lack of design clarity, insufficient documentation, or emergent design consideration which was not handled properly. The volume of these "violations" to initial architecture was found to be from 9% to 19% of all dependencies in the system for healthy project (projects with updated reference architecture) [17].
 
-For poor and cluttered code projects, the percentage is much higher. The diagrams below present the amount of violations found in two projects I worked with. What we have done is that we first drew the architectural modules and the expected dependencies between them. Then, we used ConQat [^conqat] to check the architecture validity and detect any violations:
+For poor and tangled code projects, the percentage is much higher. The diagrams below present the amount of violations found in a project I worked with. We first drew the architectural modules and the expected dependencies between them. Then, we used ConQat [^conqat] to check the architecture validity and detect any violations:
 
 ![Green lines are the expected dependencies between components. Red lines are relationships and dependencies which do not confirm to expected dependencies, and therefore, they are considered violations.](images/divideandconquer/arch_analysis_2.png)
 
-The above system suffered from so many violations and circular dependencies. You may also anticipate many un-necessary calls and high level coupling among components.
+The above system suffered from so many violations, circular dependencies, many un-necessary calls, and high level coupling among components.
 
 To fix this situation, we started from existing architecture and gradually worked on moving classes and methods around to reduce dependencies and remove violations. Using two simple refactorings: *Move Class* and *Move Method*, we managed to remove most of the violations.
 
