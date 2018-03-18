@@ -28,7 +28,7 @@ Coupling and Cohesion are two principal concepts in software design. Coupling be
 
 Cohesion, on the other hand, indicates the level of connectedness and interaction among constituents of one part of the system. High cohesion is a good quality of a module or component. A high cohesive module means that parts of the module needs each other to carry out the responsibilities of this module, and thus may not be broken apart into two distinct modules.
 
-![Low coupling and high cohesion are among the most important principles of good design. Image adapted from: [Agile Code Design – how to keep your code flexible](https://www.planetgeek.ch/2011/07/08/presentation-agile-code-design-how-to-keep-your-code-flexible/) ](images/coupling-cohesion.png)
+![Low coupling and high cohesion are among the most important principles of good design. Image adapted from: https://www.planetgeek.ch/2011/07/08/presentation-agile-code-design-how-to-keep-your-code-flexible/](images/coupling-cohesion.png)
 
 In the next sections, we will explore more ideas and techniques to reduce coupling and increase cohesion in existing code.
 
