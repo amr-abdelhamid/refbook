@@ -7,13 +7,13 @@
 
 > *"To be comprehensible, your software should be structured so that it reveals a story at many levels. Each level of nesting tells a story about how those parts interact. A developer who was unfamiliar with the system could be dropped in at any level and still make sense of it, rather than being swamped."*
 >
-> \- George Fairbanks [14]
+> \- - George Fairbanks [14]
 
 Now, here is a question: If software partitioning is that important, why didn't we start with it right away in the [refactoring roadmap](#refactoring_roadmap)?
 
 We can describe what we achieved so far as **removing "fat" from the application's body of code;** namely, removing dead code, and reducing code duplication, plus applying some very basic and intuitive enhancements which makes the code slightly more readable, like reducing method size and using proper naming conventions. This is like *preparing the scene* or *organizing our backyard* before we work on partitioning the code and re-organizing the parts. This has two very important side effects:
 
-1. We have saved the time that we would have spent working on dead or duplicate code
+1. We have saved the time that we would have spent working on dead or duplicate code.
 2. The team reached a better grasp of the code while scanning and reviewing duplicates and suspect dead code. Also, after working on breaking large methods and trying to give better names to identifiers and code constructs, they formed better understanding about the intent of the code.
 
 As I explained before in the Introduction and Background section, I have noticed the effect in the second point above many times while working with teams on refactoring, and teams become more courageous and bold in enhancing the code especially after the quick-wins stage.
@@ -22,9 +22,21 @@ Although all the enhancements in the quick-wins stage made the code *better*, bu
 
 ![Code evolution throughout the quick-wins and the divide & conquer stages](images/introduce_structure.png)
 
+## Coupling and Cohesion
+
+Coupling and Cohesion are two principal concepts in software design. Coupling between two code modules indicates the level of connectedness and interaction between them. We can measure coupling between two classes, packages, modules, components, or any two parts of the system. Low coupling between any two modules is a good system property because it reduces unnecessary dependencies and minimizes change ripple effect in the system.
+
+Cohesion, on the other hand, indicates the level of connectedness and interaction among constituents of one part of the system. High cohesion is a good quality of a module or component. A high cohesive module means that parts of the module needs each other to carry out the responsibilities of this module, and thus may not be broken apart into two distinct modules.
+
+![Low coupling and high cohesion are among the most important principles of good design[^image-source]. ](images/coupling-cohesion.png)
+
+In the next sections, we will explore more ideas and techniques to reduce coupling and increase cohesion in existing code.
+
+[^image-source]: Image adapted from: [Agile Code Design – how to keep your code flexible](https://www.planetgeek.ch/2011/07/08/presentation-agile-code-design-how-to-keep-your-code-flexible/)
+
 ## Modules, components, services, or micro-services?
 
-First, we need to answer this question: Are we splitting our code into modules, components, or services? Before we do that, let's agree on what a module, component, and service is.
+Now, are we splitting our code into modules, components, or services? let's first agree on what a module, component, and service are.
 
 #### Module
 
@@ -48,9 +60,9 @@ In essence, web services (or just services), are components. They are physical, 
 {icon=quote-left}
 G> **A service is similar to a component in that it's used by foreign applications. The main difference is that I expect a component to be used locally (think jar file, assembly, dll, or a source import). A service will be used remotely through some remote interface, either synchronous or asynchronous (eg web service, messaging system, RPC, or socket.)[^fowler_article]**
 G>
-G> \- *- Martin Fowler*
+G> \- *- Martin Fowler - [Inversion of Control Containers and the Dependency Injection pattern](https://www.martinfowler.com/articles/injection.html)*
 
-[^fowler_article]: This quote is from Martin's article: [Inversion of Control Containers and the Dependency Injection pattern](https://www.martinfowler.com/articles/injection.html). You will find other interesting distinctions between components and services in Martin's famous article: [Microservices: a definition of this new architectural term](https://martinfowler.com/articles/microservices.html)
+[^fowler_article]: This quote is from Martin's article: [Inversion of Control Containers and the Dependency Injection pattern](https://www.martinfowler.com/articles/injection.html). Also, you will find other interesting distinctions between components and services in this other famous article by Martin Fowler: [Microservices: a definition of this new architectural term](https://martinfowler.com/articles/microservices.html)
 
 One very important difference between a component and a service is that a component cannot run on its own. It has to be integrated in a bigger whole to achieve any value out of it. Unlike a service, which is available and standalone. It can be located and used whether on its own or as part of a bigger application.
 
@@ -65,13 +77,13 @@ So, services enjoy the maximum level of decoupling. You can view them as standal
 So, **should we divide code into modules or components or services?** The answer is to start by splitting your code into modules. Then, assess whether or not it is useful and safe to upgrade them to components or services.
 
 {icon=bookmark}
-G> **Divide the code into modules. Then, assess whether or not it is *useful and safe* to upgrade them to components or services.**
+G> **Divide the code into modules and components. Then, assess whether or not it is *useful and safe* to upgrade them to services or microservices.**
 
 A> ### About Microservices
 A>
 A> In the above discussion, I have talked about web-services (or just services). The main difference between services and microservices is that services share a common datastore, whereas each microservice has a separate standalone datastore.
 A>
-A> When looking from the angle of refactoring legacy or monolithic application code bases, it is not feasible to exert any effort or even think about splitting a large backend database into smaller ones and move towards a microservices architecture. Some other challenges looms in the way like handling distributed transactions and understanding and supporting the call chain for every business transaction[^nealford].
+A> When looking from the angle of refactoring legacy or monolithic application code bases, it is very risky and may not be feasible splitting a large backend database collecting data over the years into smaller ones and move towards a microservices architecture. Other challenges loom in the way like handling distributed transactions and understanding and supporting the call chain for every business transaction[^nealford].
 A>
 A> I'll discuss some considerations related to microservices later in this chapter. For now, let's accept that a middle-way is a course-grained service, following a service-based architecture of some kind.
 
@@ -168,7 +180,7 @@ G> **Think twice before moving to microservices. You might be over-engineering y
 
 #### Stations not stages
 
-A quick answer fot the dilemma of refactoring to microservices is to deal with it as a **journey with many stations not stages**.
+A quick answer for the dilemma of refactoring to microservices is to deal with it as a **journey with many stations not stages**.
 
  Consider moving your code to modules, components, and probably services as stations in the journey from monolithic application architecture to microservices. Each step is an achievement and results in a better overall code structure. Taking one step forward is rewarding and manageable as opposed to moving all the way till the end. After each step, you may pause, inspect and adapt, then decide whether to move forward or break off if you're satisfied with what you've achieved:
 
@@ -183,7 +195,7 @@ The following two guidelines are *the general strategy for code decomposition*:
 * **Guideline 1: Let modules emerge by grouping similar code together.**
 * **Guideline 2: If a module becomes large, zoom into it and reapply the first guideline.**
 
-Determining whether or not a component is large is a subjective decision. In the meanwhile, the *3-30* rule of thumb may give an indication whether a module or component is becoming very large. It states that a module may provide at least 3 and at most 30 interface methods or functions.
+Determining whether or not a module is large is a subjective decision. One of the very important factors which guides this decision is the level of cohesion of the module. A highly cohesive module is a good one which needs not to be split regardless its size. In the meanwhile, the *3-30* rule of thumb may give an indication whether a module is becoming very large. It states that a module may provide at least 3 and at most 30 interface methods or functions.
 
 #### Factors which drive code decomposition
 
@@ -199,7 +211,7 @@ In a sense, both factors co-exist in most cases. If two code artifacts change to
 
 #### Types of software components
 
-Next, in the remaining part of this section, we will cover the following types of software components. These are the most universal and commonly used ones:
+Next, in the remaining part of this section, we will cover the following types of software components. These are the most universal and commonly used ones[^fairbank-ref]:
 
 1. Functional (or business)
 1. Utility
@@ -207,6 +219,8 @@ Next, in the remaining part of this section, we will cover the following types o
 1. View
 1. Archtypes
 1. Architectural style
+
+[^fairbank-ref]: George Fairbanks in his excellent book: **Just enough Software Architecture [14]** discussed most of these component types in detail. 
 
 #### Type 1: Functional (or Business)
 
