@@ -161,7 +161,7 @@ If these are your objectives, then you don't need to move to microservices, beca
 
 ![Moving from component-based or service-based architectures to microservies requires splitting the data-store into multiple smaller ones, and incurs more costs and risks to be paid and mitigated.](images/micro-dbs.png)
 
-In the meanwhile, there are some benefits that may not be achieved unless you move to microservices; namely, scalability and resilience. However, as put by Martin Fowler, its the **Microservice Trade-Offs**[^fowlertradeoffs]. Meaning that nothing is for free and you need to pay some costs and mitigate some risks when moving to microservices:
+In the meanwhile, there are some benefits that may not be achieved unless you move to microservices; namely, scalability and resilience in your development organization. Microservices promote separate development cycles, independent deployments, loosely coupled code bases, and technical and functional separation of concerns. All these are pre-requisites for "large scale software projects with a high degree of parallelism"[^microservicesimpact]. However, as put by Martin Fowler, its the **Microservice Trade-Offs**[^fowlertradeoffs]. Meaning that nothing is for free and you need to pay some costs and mitigate some risks when moving to microservices:
 
 1. Risks of splitting the monolithic data store into multiple smaller ones, most probably organized around the idea of [*Bounded Contexts*](https://martinfowler.com/bliki/BoundedContext.html). With databases collecting huge amount of data over the years, splitting this database definitely incurs huge risks.
 2. Synchronization and aggregation of data among several data-stores
@@ -170,6 +170,8 @@ In the meanwhile, there are some benefits that may not be achieved unless you mo
 4. Required skills and calibers.
 5. Tools needed to operate and maintain the new development and production environments.
 6. Security risks and issues. The increased number of services also increases the number of vulnerable points hackers may attack and compromise.
+
+[^microservicesimpact] [Microservices and the organizational Impact](https://articles.microservices.com/microservices-and-the-organizational-impact-9510a224df4e)
 
 [^fowlertradeoffs]: [Microservice Trad-Offs](https://martinfowler.com/articles/microservice-trade-offs.html#summary) is an article by Martin Fowler which highlights what trade-offs you may consider when moving to microservices.
 
