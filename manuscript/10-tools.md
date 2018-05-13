@@ -6,35 +6,50 @@ In this chapter, I will list some tools which I used and found useful to carry o
 
 I'm pretty sure that there are tens of other very useful tools which I've never heard about. So, don't limit yourself to this set of tools. They are just examples!
 
-#### Code measurement
+### Code measurement
 
 In any improvement activity, measurement is everything, and refactoring is no exception. If you don't measure, it's like traveling in the deserts without a compass. May be you'll travel very far, but no guarantee you're on the right direction.
 
-* [Eclipse Metrics plugin](https://sourceforge.net/projects/metrics/) is very useful plugin for java-based projects.
+**[Eclipse Metrics plugin](https://sourceforge.net/projects/metrics/)**
 
-| |
 
-* Another excellent tool I used is [Nitriq code analysis](). Nitriq uses the familiar LINQ query language to extract metrics from your code. Something like:
+This is a very useful eclipse plugin for java-based projects. I always use it for several purposes:
 
-        {lang="SQL"}
-				~~~~~~~~
-        from m in Methods
-        where m.Calls.Contains(m)
-        select new { m.MethodId, m.Name, m.FullName };
-				~~~~~~~~
+* Count the total lines of code
+* Pinpoint lengthy methods, which usually accumulate large technical debt and are first candidates for refactoring
+* Get a feeling about coupling between classes and packages in the system. This is just a high level view. Later on, you may use more tools to better guide you while breaking the system apart and reducing coupling between components
 
-    This lists all recursive methods in your code! I have used Nitriq measure some very interesting metrics. For example, measure the amount of business logic lines of code and rule out all auto-generated and UI code. Another example is to count all the public methods which are neither constructors nor setters or getters.
+**[Nitriq code analysis](http://www.nitriq.com/)**
 
-#### Dead code - Dynamic code analysis
 
-* [Clover](https://www.atlassian.com/software/clover) for dynamic code analysis. This can listen to the running code and build a coverage report exactly similar to the test coverage report.
+This is another excellent tool. Nitriq uses the familiar LINQ query language to extract metrics from your code. For example:
 
-| |
+{lang="SQL", line-numbers=off}
+~~~~~~~~
+from m in Methods
+where m.Calls.Contains(m)
+select new { m.MethodId, m.Name, m.FullName };
+~~~~~~~~
 
-* For Ruby on Rails, there is a nice tool called [Coverband](https://github.com/danmayer/coverband), which does the same thing, and uses the coverage tool of Rspec to do the job.
+Which lists all recursive methods in your code! I have used Nitriq to measure some very interesting metrics. For example, measure the amount of business logic lines of code and rule out all auto-generated and UI code. Another example is to count all the public methods which are neither constructors nor setters or getters.
 
-| |
+### Dead code - Dynamic code analysis
 
-* For .Net applications, you can also do it using [OpenCover](https://github.com/OpenCover/opencover) [^opencoverblog]
+Tools in this category can monitor a live application running in a test or production environment and build a production code usage report exactly similar to the test coverage report.
 
-[^opencoverblog]: This blog post: https://fuqua.io/blog/2016/08/finding-dead-csharp-code-in-aspnet/ describes step by step how you can do dynamic dead code detection using OpenCover. Accessed Mat 13, 2018.
+**[Clover](https://www.atlassian.com/software/clover)**
+
+
+Clover is typically used for test code coverage. However, it can be used for dynamic code analysis.
+
+**[Coverband](https://github.com/danmayer/coverband)**
+
+
+For Ruby on Rails, Coverband is a nice and easy tool. It produces output which is [SimpleCov](https://github.com/colszowka/simplecov) compatible and thus can be formatted the same way as test coverage reports produced by SimpleCov.
+
+**[OpenCover](https://github.com/OpenCover/opencover)**
+
+
+For .Net applications you can use OpenCover for code usage analysis[^opencoverblog].
+
+[^opencoverblog]: This blog post: [https://fuqua.io/blog/2016/08/finding-dead-csharp-code-in-aspnet/](https://fuqua.io/blog/2016/08/finding-dead-csharp-code-in-aspnet/) describes step by step how to do dynamic dead code detection using OpenCover. Accessed May 13, 2018.
