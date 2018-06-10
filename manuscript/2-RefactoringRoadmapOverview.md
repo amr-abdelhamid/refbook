@@ -1,5 +1,5 @@
 
-# Refactoring Roadmap Overview {id="refactoring_roadmap"}
+# Refactoring Roadmap Overview {#refactoring_roadmap}
 
 In a nutshell, start with the highest value-add and least risky fixes, then work on re-organizing code chunks into components, and finally wrap everything with automated tests. In all stages, automate checks to make sure what is fixed will remain fixed.
 

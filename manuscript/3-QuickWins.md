@@ -2,7 +2,7 @@
 
 ![Stage 1: Quick-wins - Simple and least risky enhancements](images/roadmap-stage1.png)
 
-## Removing dead code
+## Remove dead code
 
 {icon=quote-left}
 G> **Deleting dead code is not a technical problem; it is a problem of mindset and culture**
@@ -77,7 +77,7 @@ Removing dead code is a quick win by all means. It doesn't take time and gives a
 
 {pagebreak}
 
-## Removing code duplicates
+## Remove code duplicates
 
 {icon=quote-left}
 G> **Duplication may be *the* root of all evil in software**
