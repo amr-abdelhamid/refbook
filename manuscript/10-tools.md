@@ -55,29 +55,29 @@ For .Net applications you can use OpenCover for code usage analysis[^opencoverbl
 
 ### Duplicate code
 
-Discover duplicate code is one of the very important and early steps towards clean code. Without a good tool, your ability to pinpoint and remove duplicates is very minimal.
+Identifying and removing duplicate code is one of the very important and early steps towards clean code. Without a good tool, your ability to pinpoint and remove duplicates is very minimal.
 
 **[ConQAT](https://www.cqse.eu/en/products/conqat/overview/)**
 
-ConQAT is probably the best tool I've evaluated to detect code clones. It has a very powerful algorithm which detects type 1, 2 and 3 of code clones. It also has a nice plugin to analyze and visualize duplicates on eclipse, even if you're analyzing languages other than java.
+ConQAT is probably the best tool I've evaluated to detect code clones. It has a very powerful algorithm to detect type 1, 2 and 3 of code clones. It also comes with nice plugin to analyze and visualize duplicates on eclipse, even if you're analyzing languages other than java.
 
 The second best thing about ConQAT is that it is extremely powerful when working with large code bases. I have used it to analyze duplicates for a code base of 5 million LOC. Guess what? it took less than 3 minutes to finish!
 
-The only downside of ConQAT is the very limited community using and supporting this tool. Also, ConQAT 2015 is the last released open-source version of the tool.
+The only downside of ConQAT is the very limited community using and supporting this tool. Also, ConQAT 2015 is the last released open-source version of the tool, and [TeamScale](https://www.cqse.eu/en/products/teamscale/landing/) is the replacement for ConQAT, although you can still use ConQAT and get paid support for it.
 
 **[Visual Studio](https://msdn.microsoft.com/en-us/library/hh205279.aspx)**
 
-Visual Studio has a very powerful code detection tool which works live while you're typing! Still there are two downsides I found. The first one is that it only detects exact and similar code clones (type 1 and 2). The second drawback is that it doesn't work for large code bases. I've tried it for 400k lines of code, it took around 35 minutes to complete the code analysis and generate the duplicates list.
+Visual Studio has a very powerful code detection tool which detects duplicates live while you're typing! However, there are two downsides I found. First, it only detects exact and similar code clones (type 1 and 2). The second drawback is that it is not fast enough when analyzing large code bases. I've tried it with 400k lines of code, it took around 35 minutes to complete the code analysis and generate the duplicates list.
 
 **[SonarQube](https://www.sonarqube.org/)**
 
-SonarQube has a basic component for detecting code clones. I found ConQAT much more powerful in detecting clones. However, with the vast documentation and huge user community, sonarqube may become a good choice for enabling continuous detection of clones.
+SonarQube has a basic component for detecting code clones. I found ConQAT much more powerful in detecting clones. However, with the vast documentation and huge user community, sonarqube may well be a good choice for enabling continuous detection of clones.
 
 ### Structural analysis and componentization
 
 **[ConQAT](https://www.cqse.eu/en/products/conqat/overview/)**
 
-ConQAT help define and test existing dependencies in your code. First, you start with visually creating the blueprint of your components, assign code parts (classes or packages) to them, and finally define access rules. ConQAT help you test whether these rules are really followed and pinpoint any access violations[conqat_blog].
+ConQAT help define and test existing dependencies in your code. First, you start with visually creating the blueprint of your components, assign code parts (classes or packages) to them, and finally define access rules. ConQAT helps you test whether these rules are really followed and pinpoint any access violations[^conqat_blog].
 
 [^conqat_blog]: This is a step by step guide from my blog about [How to detect architectural violations using ConQAT](http://amr-noaman.blogspot.com/2013/04/detect-architectural-violations-using.html). Accessed July 15, 2018.
 
@@ -87,6 +87,6 @@ Stan4J does a great job in visualizing dependencies in your code. You can very q
 
 ![Directed graphs of dependencies drawn by Stan4J](\images\dependency-towards-stability.png)
 
-What it does really good, is organizing code in a way which help you resolve violations. So, if there is an **circular dependency**, Stan4J isolates the interacting classes/packages in what is called **Tangles** in a way which minimizes the number of arrows which need to be inverted:
+What it does really good, is organizing code in a way which help you resolve violations. So, if there is a **circular dependency**, Stan4J isolates the interacting classes/packages in what is called **Tangles** in a way which minimizes the number of arrows need to be inverted:
 
 ![Notice the circular dependency between `Font` and `FontFactory` in this example.](\images\font-tangle.png)
