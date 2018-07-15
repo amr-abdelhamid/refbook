@@ -16,6 +16,6 @@
 
 8-NewProjects.md
 
-9-backmatter.md
+9-tools.md
 
-10-tools.md
+10-backmatter.md
